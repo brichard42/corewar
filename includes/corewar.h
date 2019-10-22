@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/21 16:16:07 by plaurent         ###   ########.fr       */
+/*   Updated: 2019/10/22 14:53:38 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_process
 	int32_t				reg[REG_NUMBER];
 	int32_t				pc;
 	int32_t				cycles_left;
+	uint8_t				carry;
 }					t_process;
 
 /*
@@ -39,6 +40,10 @@ typedef struct		s_vm
 	char				mem[MEM_SIZE];
 }					t_vm;
 
-
+/*
+**	-------PROCESS STRUCT FUNCTIONS-------
+*/
+t_process			init_process(int32_t reg_1, int32_t pc);
+t_process			*create_process(int32_t reg_1, int32_t pc);
 
 #endif
