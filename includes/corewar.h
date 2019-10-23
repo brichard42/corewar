@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/22 14:53:38 by brichard         ###   ########.fr       */
+/*   Updated: 2019/10/23 12:10:11 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "op.h"
+# include <stdlib.h>
 
 /*
 **	-------TYPEDEF PROCESS STRUCTURE-------
@@ -45,5 +46,6 @@ typedef struct		s_vm
 */
 t_process			init_process(int32_t reg_1, int32_t pc);
 t_process			*create_process(int32_t reg_1, int32_t pc);
+void				delete_process(t_process *to_delete);
 
 #endif
