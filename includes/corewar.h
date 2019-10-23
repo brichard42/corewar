@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/23 14:34:12 by brichard         ###   ########.fr       */
+/*   Updated: 2019/10/23 15:04:58 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct		s_process
 typedef struct		s_vm
 {
 	t_process			*process_list;
-	char				*champ_names[4];
+	char				*champ_names[MAX_PLAYERS];
 	uint32_t			cycles_to_die;
 	char				*mem;
 }					t_vm;
@@ -54,8 +54,8 @@ void				free_process(t_process **to_delete);
 /*
 **	-------COREWAR STRUCT FUNCTIONS-------
 */
-t_vm    			*create_vm(void);
-t_vm    			init_vm(void);
+t_vm    			*create_vm(size_t mem_size);
+t_vm    			init_vm(size_t mem_size);
 void    			delete_vm(t_vm *to_delete);
 void				free_vm(t_vm **to_free);
 
