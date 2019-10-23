@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/23 14:08:12 by brichard         ###   ########.fr       */
+/*   Updated: 2019/10/23 14:34:12 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "libft.h"
 # include "op.h"
 # include <stdlib.h>
+# include <stdbool.h>
+# include "core_define.h"
 
 /*
 **	-------TYPEDEF PROCESS STRUCTURE-------
