@@ -6,14 +6,14 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/10/22 14:49:48 by brichard         ###   ########.fr       */
+/*   Updated: 2019/10/23 14:32:53 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
 
-//# include "../ft_printf/includes/printf.h"
+# include <stdbool.h>
 
 /*
 ** Toutes les tailles sont en octets.
@@ -84,18 +84,18 @@ typedef struct		s_header
   unsigned int		prog_size;
   char				comment[COMMENT_LENGTH + 1];
 }					t_header;
-//
-//typedef struct		s_op
-//{
-	//char			*name;
-	//int				nb_param;
-	//int				type_param[3];
-	//int				op_code;
-	//int				nb_cycle;
-	//char			*comment;
-	//t_bool			have_param_byte;
-	//t_bool			is_int;
-//}					t_op;
+
+typedef struct		s_op
+{
+  char				*name;
+  int				nb_param;
+  int				type_param[3];
+  int				op_code;
+  int				nb_cycle;
+  char				*comment;
+  bool				have_param_byte;
+  bool				is_int;
+}					t_op;
 //
 ///*
 //** ===========
