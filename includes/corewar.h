@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
+/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/23 15:04:58 by paullaurent      ###   ########.fr       */
+/*   Created: 2019/10/23 18:13:47 by brichard          #+#    #+#             */
+/*   Updated: 2019/10/23 18:13:50 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,14 @@ void				free_process(t_process **to_delete);
 /*
 **	-------COREWAR STRUCT FUNCTIONS-------
 */
-t_vm    			*create_vm(size_t mem_size);
-t_vm    			init_vm(size_t mem_size);
-void    			delete_vm(t_vm *to_delete);
+t_vm				*create_vm(size_t mem_size);
+t_vm				init_vm(size_t mem_size);
+void				delete_vm(t_vm *to_delete);
 void				free_vm(t_vm **to_free);
+
+/*
+**	-------PARSING	FUNCTIONS-------
+*/
+int8_t				vm_parser(t_vm *env, char **av);
 
 #endif

@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_vm.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2019/10/23 17:35:35 by brichard         ###   ########.fr       */
+/*   Updated: 2019/10/23 17:35:34 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_vm	*create_vm(size_t mem_size)
+int8_t	vm_parser(t_vm *env, char **av)
 {
-	t_vm	*new_vm;
-
-	new_vm = (t_vm *)ft_memalloc(sizeof(t_vm));
-	if (new_vm != NULL)
-		*new_vm = init_vm(mem_size);
-	return (new_vm);
+	(void)env;
+	(void)av;
+	return (SUCCESS);
 }

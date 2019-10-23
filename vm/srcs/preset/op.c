@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   op.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpoinsot <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/04 11:40:03 by lpoinsot          #+#    #+#             */
-/*   Updated: 2019/10/23 14:32:56 by brichard         ###   ########.fr       */
+/*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
+/*   Updated: 2019/10/23 17:35:34 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_op    op_tab[17] =
+t_op	op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
@@ -22,7 +22,7 @@ t_op    op_tab[17] =
 	{"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
 		"et (and  r1, r2, r3   r1&r2 -> r3", 1, 0},
 	{"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
-		"ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
+		"ou  (or   r1, r2, r3	r1 | r2 -> r3", 1, 0},
 	{"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
 		"ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
 	{"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
