@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/23 15:04:58 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/10/24 09:56:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 # include "core_define.h"
+# include "visualisator.h"
 
 /*
 **	-------TYPEDEF PROCESS STRUCTURE-------
@@ -37,10 +38,12 @@ typedef struct		s_process
 */
 typedef struct		s_vm
 {
+	t_vis				*v_data;
 	t_process			*process_list;
 	char				*champ_names[MAX_PLAYERS];
 	uint32_t			cycles_to_die;
-	char				*mem;
+	char				mem[MEM_SIZE];
+	uint8_t				visu_on;
 }					t_vm;
 
 /*
@@ -58,5 +61,10 @@ t_vm    			*create_vm(size_t mem_size);
 t_vm    			init_vm(size_t mem_size);
 void    			delete_vm(t_vm *to_delete);
 void				free_vm(t_vm **to_free);
+
+/*
+**	-------OPTIONS FUNCTIONS-------
+*/
+void				option_parser(int ac, char **av, t_vm *env);
 
 #endif

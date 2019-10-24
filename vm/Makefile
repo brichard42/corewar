@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/10/21 15:45:14 by plaurent         ###   ########.fr        #
+#    Updated: 2019/10/24 13:49:57 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,11 @@ LIB_FILES += libft.a
 #                                   SRCS_FILES                                 #
 #------------------------------------------------------------------------------#
 
-SRCS += main.c
+SRCS += main.c \
+		parsopt.c \
+		init_visu.c \
+		window_manager.c \
+		drawer.c \
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #
@@ -61,8 +65,8 @@ LIB_PATH += $(LIB_DIR)
 #                                     VPATH                                    #
 #------------------------------------------------------------------------------#
 
-vpath %.c $(SRCS_PATH)
 vpath %.h $(INC_PATH)
+vpath %.c $(SRCS_PATH)
 
 #------------------------------------------------------------------------------#
 #                                  COMPILATION                                 #
@@ -78,7 +82,7 @@ IFLAGS += $(addprefix -I, $(INC_PATH))
 
 LDFLAGS = $(addprefix -L , $(LIB_PATH))
 
-LDLIBS = -lft
+LDLIBS = -lft -lncurses -lpthread
 
 CFLAGS += -Werror
 CFLAGS += -Wall

@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/22 12:23:00 by brichard         ###   ########.fr       */
+/*   Updated: 2019/10/24 11:44:59 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,31 @@ int8_t	cycles(t_vm *env)
 }
 */
 
+static int	usage(void)
+{
+	ft_putendl("Usage: ./corewar [-dump n_cycles] [(-n num) champ1.cor] ...");
+	ft_putendl("   -v: Visualisator");
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-/*
+
 	t_vm env;
 
-	if (ac != 2)
+	ft_bzero((void *)&env, sizeof(t_vm));
+	if (ac < 2)
 		return (usage());
-	env = init();
-	parsing(&env, av[1]);
-	cycles(&env);
-*/
+	option_parser(ac, av, &env);
+	if (env.visu_on == TRUE)
+	{
+		if (init_visu(env.v_data, env.mem) == FAILURE)
+			return (1);
+	}
+	//env = init();
+	//parsing(&env, av[1]);
+	//cycles(&env);
 	return (0);
 }
