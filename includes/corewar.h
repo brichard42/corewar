@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/24 09:56:31 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/10/25 16:42:42 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct		s_process
 */
 typedef struct		s_vm
 {
-	t_vis				*v_data;
+	t_window			*window;
 	t_process			*process_list;
 	char				*champ_names[MAX_PLAYERS];
 	uint32_t			cycles_to_die;

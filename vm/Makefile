@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/10/24 13:49:57 by tlandema         ###   ########.fr        #
+#    Updated: 2019/10/25 17:57:09 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,18 @@ LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
 
 LIB_FILES += libft.a
 
+LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
+
 #------------------------------------------------------------------------------#
 #                                   SRCS_FILES                                 #
 #------------------------------------------------------------------------------#
 
 SRCS += main.c \
 		parsopt.c \
-		init_visu.c \
-		window_manager.c \
-		drawer.c \
+		draw_image.c \
+		draw_primitive.c \
+		draw_text.c \
+		window.c \
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #
@@ -59,7 +62,9 @@ OBJS_PATH = $(OBJS_DIR)
 
 SRCS_PATH += $(SRCS_DIR)
 
-LIB_PATH += $(LIB_DIR)
+LIB_DWN_PATH = ~/.brew/lib
+
+LIB_PATH += $(LIB_DIR) ~/.brew/lib
 
 #------------------------------------------------------------------------------#
 #                                     VPATH                                    #
@@ -74,20 +79,19 @@ vpath %.c $(SRCS_PATH)
 
 CC = gcc
 
+DWL = brew
+
 DEBUG += $(CFLAGS)
 DEBUG += -fsanitize=address,undefined
 DEBUG += -g3
 
-IFLAGS += $(addprefix -I, $(INC_PATH))
+IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
 
-LDFLAGS = $(addprefix -L , $(LIB_PATH))
+LDLIBS = ft sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
-LDLIBS = -lft -lncurses -lpthread
+LDFLAGS = $(addprefix -L , $(LIB_PATH)) $(addprefix -l, $(LDLIBS))
 
-CFLAGS += -Werror
-CFLAGS += -Wall
-CFLAGS += -Wextra
-CFLAGS += $(IFLAGS)
+#CFLAGS += -Werror -Wall -Wextra
 
 #------------------------------------------------------------------------------#
 #                                   COMMANDS                                   #
@@ -149,10 +153,10 @@ COM_STRING   = "Compiling"
 all: $(CLEAR) $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
-	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@)
+	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@)
 
 $(OBJS): $(OBJS_PATH)%.o : %.c $(INCS) Makefile
-	$(call run_and_test, $(CC) $(CFLAGS) -c $< -o $@)
+	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@)
 
 $(OBJS_PATH):
 	$(MKDIR) $@
@@ -163,6 +167,14 @@ $(LIBS):
 
 $(CLEAR):
 	$@
+
+show:
+	@echo "IFLAGS : \n$(IFLAGS)"
+	@echo "CFLAGS : \n$(CFLAGS)"
+	@echo "LDFLAGS : \n$(LDFLAGS)"
+
+install:
+	$(foreach lib, $(LIB_DWN), $(DWL) install $(lib); )
 
 norme:
 	norminette $(SRCS_PATH) $(INC_PATH) | grep -v 'Warning: Not a valid file' | grep -B 1 -e 'Error' -e 'Warning'

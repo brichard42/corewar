@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/10/24 11:44:59 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/10/25 18:09:16 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,16 @@ static int	usage(void)
 
 int		main(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
 
 	t_vm env;
-
 	ft_bzero((void *)&env, sizeof(t_vm));
 	if (ac < 2)
 		return (usage());
 	option_parser(ac, av, &env);
 	if (env.visu_on == TRUE)
 	{
-		if (init_visu(env.v_data, env.mem) == FAILURE)
-			return (1);
+		t_window *win = open_window("Test");
+		handle_event(win);
 	}
 	//env = init();
 	//parsing(&env, av[1]);
