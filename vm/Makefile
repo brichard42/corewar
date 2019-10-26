@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/10/25 17:57:09 by tlandema         ###   ########.fr        #
+#    Updated: 2019/10/26 14:43:28 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,10 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 SRCS += main.c \
 		parsopt.c \
 		draw_image.c \
-		draw_primitive.c \
+		draw_rectangles.c \
 		draw_text.c \
 		window.c \
+		object_creation.c \
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #

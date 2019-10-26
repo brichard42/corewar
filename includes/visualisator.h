@@ -53,8 +53,8 @@ typedef struct s_image
 #define YELLOW			21
 #define DARK_YELLOW		22
 #define LIGHT_PURPLE	23
-#define PURPLE			24
-#define DARK_PURPLE		25
+#define BORDER			24
+#define TEXT			25
 
 #define NORMAL TTF_STYLE_NORMAL
 #define BOLD TTF_STYLE_BOLD
@@ -62,21 +62,32 @@ typedef struct s_image
 #define UNDERLINE TTF_STYLE_UNDERLINE
 #define STRICK TTF_STYLE_STRIKETHROUGH
 
+/*
+**	--------WINDOW FUNCTIONS----------------------------------------------------
+*/
 t_window *open_window(char *name);
 void clear(t_window *win);
 void render(t_window *win);
 void handle_event(t_window *win);
+
+/*
+**	--------OBJECT CREATION FUNCTIONS-------------------------------------------
+*/
 SDL_Rect create_rect(int x, int y, int w, int h);
 SDL_Color create_color(int r, int g, int b, int a);
 SDL_Point create_point(int x, int y);
+t_image load_t_image(t_window *win, SDL_Surface *p_surface);
+t_image *malloc_t_image(t_window *win, SDL_Surface *p_surface);
+t_image load_t_image_from_file(t_window *win, char *path);
+
+/*
+**--------DRAWING FUNCTIONS---------------------------------------------------
+*/
+void draw_image(t_window *win, t_image *image, SDL_Rect dest);
 void draw_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
 void draw_centred_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
 void draw_border_rectangle(t_window *win, SDL_Rect rect, SDL_Color color_back, SDL_Color color_front, int border);
 void draw_centred_border_rectangle(t_window *win, SDL_Rect rect, SDL_Color color_back, SDL_Color color_front, int border);
-t_image load_t_image(t_window *win, SDL_Surface *p_surface);
-t_image *malloc_t_image(t_window *win, SDL_Surface *p_surface);
-t_image load_t_image_from_file(t_window *win, char *path);
-void draw_image(t_window *win, t_image *image, SDL_Rect dest);
 int draw_text(t_window *win, char *str, SDL_Point pos, int size, int color_index, int style_index);
 int	draw_centred_text(t_window *win, char *str, SDL_Point pos, int size, int color_index, int style_index);
 
