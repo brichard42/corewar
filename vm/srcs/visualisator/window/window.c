@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:44:45 by tlandema          #+#    #+#             */
-/*   Updated: 2019/10/26 17:32:45 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/06 16:55:20 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visualisator.h"
+#include "corewar.h"
 
-t_window	*open_window(char *name)
+t_window		*open_window(char *name)
 {
 	t_window		*win;
 	SDL_DisplayMode	current;
@@ -23,8 +23,8 @@ t_window	*open_window(char *name)
 		return (NULL);
 	if (SDL_GetDesktopDisplayMode(0, &current) < 0)
 		return (NULL);
-	win->x = current.w;
-	win->y = current.h;
+	win->x = current.w * 0.9;
+	win->y = current.h * 0.9;
 	if (!(win->window = SDL_CreateWindow(name, SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED, win->x, win->y, 0)))
 		return (NULL);
@@ -36,36 +36,44 @@ t_window	*open_window(char *name)
 	return (win);
 }
 
-void		clear(t_window *win)
+void			clear(t_window *win)
 {
 	SDL_SetRenderDrawColor(win->renderer, 76, 96, 133, 0);
 	SDL_RenderClear(win->renderer);
 }
 
-void		draw_corewar(t_window *win)
+static int8_t	draw_corewar(t_window *win)
 {
 	SDL_Rect	pos;
 	SDL_Rect	pos2;
+	int			*cor_text;
+	int			*name_text;
 
+	cor_text = create_tab_int3(64, TEXT, BOLD);
+	name_text = create_tab_int3(16, TEXT, BOLD);
 	clear(win);
 	pos = create_rect(5, 5, 500, 100);
 	pos2 = create_rect(5, 110, 500, 40);
-	draw_rectangle(win, pos, create_color(50, 50, 44, 255));
-	draw_rectangle(win, pos2, create_color(50, 50, 44, 255));
-	draw_text(win, "COREWAR", create_point(pos.x + 70, pos.y + 18), 64, TEXT, BOLD);
-	draw_text(win, "By: Armoulin, Brichard, Plaurent, Tlandema", create_point(pos.x + 70, pos2.y + 11), 16, TEXT, BOLD);
+	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE
+		|| draw_rectangle(win, pos2, create_color(50, 50, 44, 255)) == FAILURE
+			|| draw_text(win, "COREWAR", create_point(pos.x + 70, pos.y + 18),
+			cor_text) == FAILURE
+			|| draw_text(win, "By: Armoulin, Brichard, Plaurent, Tlandema",
+			create_point(pos.x + 70, pos2.y + 11), name_text) == FAILURE)
+		return (FAILURE);
 	SDL_RenderPresent(win->renderer);
+	return (SUCCESS);
 }
 
-void		handle_event(t_window *win)
+int8_t			drawer(t_window *win)
 {
 	int		ret;
 	bool	play;
 
 	play = true;
+	draw_corewar(win);
 	while (play == true)
 	{
-		draw_corewar(win);
 		ret = SDL_PollEvent(&(win->event));
 		if (ret != 0)
 		{
@@ -76,4 +84,5 @@ void		handle_event(t_window *win)
 				play = false;
 		}
 	}
+	return (SUCCESS);
 }

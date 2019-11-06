@@ -1,41 +1,33 @@
-#include "visualisator.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_image.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/06 10:32:49 by tlandema          #+#    #+#             */
+/*   Updated: 2019/11/06 13:55:58 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_image load_t_image(t_window *win, SDL_Surface *p_surface)
-{
-	t_image result;
+#include "corewar.h"
 
-	result.surface = p_surface;
-
-	result.texture = SDL_CreateTextureFromSurface(win->renderer, result.surface);
-
-	return (result);
-}
-
-t_image *malloc_t_image(t_window *win, SDL_Surface *p_surface)
+t_image	*malloc_t_image(t_window *win, SDL_Surface *p_surface)
 {
 	t_image *result;
 
-	result = malloc(sizeof(t_image));
-
+	if (!(result = (t_image *)ft_memalloc(sizeof(t_image))))
+		return (NULL);
 	result->surface = p_surface;
-
-	result->texture = SDL_CreateTextureFromSurface(win->renderer, result->surface);
-
+	if (!(result->texture = SDL_CreateTextureFromSurface(win->renderer,
+			result->surface)))
+		return (NULL);
 	return (result);
 }
 
-t_image load_t_image_from_file(t_window *win, char *path)
+int8_t	draw_image(t_window *win, t_image *image, SDL_Rect dest)
 {
-	t_image result;
-
-	result.surface = IMG_Load(path);
-
-	result.texture = SDL_CreateTextureFromSurface(win->renderer, result.surface);
-
-	return (result);
-}
-
-void draw_image(t_window *win, t_image *image, SDL_Rect dest)
-{
-	SDL_RenderCopy(win->renderer, image->texture, NULL, &dest);
+	if ((SDL_RenderCopy(win->renderer, image->texture, NULL, &dest) < 0))
+		return (FAILURE);
+	return (SUCCESS);
 }

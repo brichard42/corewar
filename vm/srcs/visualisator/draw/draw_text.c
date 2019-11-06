@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:47:14 by tlandema          #+#    #+#             */
-/*   Updated: 2019/10/26 15:55:47 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/06 15:31:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "visualisator.h"
+#include "corewar.h"
 
-SDL_Color color_tab[NB_COLOR] = {
+SDL_Color g_color_tab[NB_COLOR] = {
 	{0, 0, 0, 255},
 	{240, 240, 240, 255},
 	{135, 206, 250, 255},
@@ -41,87 +41,99 @@ SDL_Color color_tab[NB_COLOR] = {
 	{57, 160, 237, 255}
 };
 
-SDL_Color			get_color(int i)
-{
-	if (i < 0 || i >= NB_COLOR)
-		return (color_tab[0]);
-	return (color_tab[i]);
-}
-
-TTF_Font *get_font(int size)
+static TTF_Font		*get_font(int size)
 {
 	static TTF_Font *font_tab[NB_SIZE];
 
 	if (font_tab[size] == NULL)
-		font_tab[size] = TTF_OpenFont(FONT_PATH, size);
+		if (!(font_tab[size] = TTF_OpenFont(FONT_PATH, size)))
+			return (NULL);
 	return (font_tab[size]);
 }
 
-t_image *get_char(t_window *win, char c, int size, int color_index, int style_index)
+static t_image		*get_char(t_window *win, char c, int infos[3])
 {
-	static	t_image *text_tab[NB_SIZE][NB_COLOR][NB_STYLE][255];
-	char 	src[2];
+	static t_image	*text_tab[NB_SIZE][NB_COLOR][NB_STYLE][255];
+	char			src[2];
+	TTF_Font		*tmp_font;
+	SDL_Color		color;
 
 	src[0] = c;
 	src[1] = '\0';
-	if (text_tab[size][color_index][style_index][c] == NULL)
+	if (text_tab[infos[0]][infos[1]][infos[2]][c] == NULL)
 	{
-		TTF_Font *tmp_font = get_font(size);
+		if (!(tmp_font = get_font(infos[0])))
+			return (NULL);
 		if (tmp_font == NULL)
 			return (NULL);
-		TTF_SetFontStyle(tmp_font, style_index);
-		text_tab[size][color_index][style_index][c] = malloc_t_image(win, TTF_RenderText_Blended(tmp_font, src, get_color(color_index)));
+		TTF_SetFontStyle(tmp_font, infos[2]);
+		if (infos[1] >= 0 && infos[1] <= NB_COLOR)
+			color = g_color_tab[infos[1]];
+		else
+			color = g_color_tab[0];
+		if (!(text_tab[infos[0]][infos[1]][infos[2]][c] = malloc_t_image(win,
+				TTF_RenderText_Blended(tmp_font, src, color))))
+			return (NULL);
 	}
-	return (text_tab[size][color_index][style_index][c]);
+	return (text_tab[infos[0]][infos[1]][infos[2]][c]);
 }
 
-int				calc_text_len(t_window *win, char *str, int size, int color_index, int style_index)
+static int			calc_text_len(t_window *win, char *str, int infos[3])
 {
 	t_image			*image;
 	int				i;
 	int				delta;
 
-
 	i = 0;
 	delta = 0;
 	while (i < str[i])
 	{
-		image = get_char(win, str[i], size, color_index, style_index);
+		if (!(image = get_char(win, str[i], infos)))
+			return (FAILURE);
 		delta += image->surface->w;
 		i++;
 	}
 	return (delta);
 }
 
-int draw_text(t_window *win, char *str, SDL_Point pos, int size, int color_index, int style_index)
+int					draw_text(t_window *win, char *str, SDL_Point pos,
+					int infos[3])
 {
-	t_image *tmp_img;
-	SDL_Rect coord;
-	int delta;
-	int len;
-	int i;
+	t_image		*tmp_img;
+	SDL_Rect	coord;
+	int			delta;
+	int			len;
+	int			i;
 
 	len = strlen(str);
 	i = 0;
 	delta = 0;
 	while (i < len)
 	{
-		tmp_img = get_char(win, str[i], size, color_index, style_index);
+		if (!(tmp_img = get_char(win, str[i], infos)))
+			return (FAILURE);
 		if (tmp_img == NULL)
-			return (-1);
-
-		coord = create_rect(pos.x + delta, pos.y, tmp_img->surface->w, tmp_img->surface->h);
-		draw_image(win, tmp_img, coord);
+			return (FAILURE);
+		coord = create_rect(pos.x + delta, pos.y, tmp_img->surface->w,
+				tmp_img->surface->h);
+		if ((draw_image(win, tmp_img, coord) == FAILURE))
+			return (FAILURE);
 		delta += coord.w;
 		i++;
 	}
 	return (delta);
 }
 
-int				draw_centred_text(t_window *win, char *str, SDL_Point pos, int size, int color_index, int style_index)
+int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
+					int infos[3])
 {
-	int x = calc_text_len(win, str, size, color_index, style_index);
-	int y = get_char(win, 'M', size, color_index, style_index)->surface->h;
+	int x;
+	int y;
 
-	return (draw_text(win, str, create_point(pos.x - x / 2, pos.y - y / 2), size, color_index, style_index));
+	if ((x = calc_text_len(win, str, infos)) == FAILURE)
+		return (FAILURE);
+	if ((y = get_char(win, 'M', infos)->surface->h) == FAILURE)
+		return (FAILURE);
+	return (draw_text(win, str,
+			create_point(pos.x - x / 2, pos.y - y / 2), infos));
 }

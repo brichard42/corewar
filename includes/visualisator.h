@@ -7,21 +7,6 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 
-typedef struct s_window
-{
-	int x;
-	int y;
-
-	SDL_Window *window;
-	SDL_Renderer *renderer;
-	SDL_Event event;
-}				t_window;
-
-typedef struct s_image
-{
-	SDL_Surface *surface;
-	SDL_Texture *texture;
-}				t_image;
 
 #define FONT_PATH "vm/ressources/font/Tinos-Regular.ttf"
 
@@ -63,32 +48,70 @@ typedef struct s_image
 #define STRICK TTF_STYLE_STRIKETHROUGH
 
 /*
+** --------TYPEDEF BORDER RECT STRUCTURE----------------------------------------
+*/
+
+typedef struct      s_brect
+{
+    SDL_Rect		rect;
+    SDL_Color		c_front;
+    SDL_Color		c_back;
+}					t_brect;
+
+/*
+** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
+*/
+typedef struct		s_window
+{
+	int 			x;
+	int				y;
+
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Event		event;
+}					t_window;
+
+/*
+** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
+*/
+typedef struct		s_image
+{
+	SDL_Surface		*surface;
+	SDL_Texture		*texture;
+}					t_image;
+
+/*
 **	--------WINDOW FUNCTIONS----------------------------------------------------
 */
-t_window *open_window(char *name);
-void clear(t_window *win);
-void render(t_window *win);
-void handle_event(t_window *win);
+t_window 			*open_window(char *name);
+void 				clear(t_window *win);
+void				render(t_window *win);
+int8_t				drawer(t_window *win);
 
 /*
 **	--------OBJECT CREATION FUNCTIONS-------------------------------------------
 */
-SDL_Rect create_rect(int x, int y, int w, int h);
-SDL_Color create_color(int r, int g, int b, int a);
-SDL_Point create_point(int x, int y);
-t_image load_t_image(t_window *win, SDL_Surface *p_surface);
-t_image *malloc_t_image(t_window *win, SDL_Surface *p_surface);
-t_image load_t_image_from_file(t_window *win, char *path);
+SDL_Rect			create_rect(int x, int y, int w, int h);
+SDL_Color			create_color(int r, int g, int b, int a);
+SDL_Point			create_point(int x, int y);
+int					*create_tab_int3(int size, int color, int style);
+t_image				load_t_image(t_window *win, SDL_Surface *p_surface);
+t_image				*malloc_t_image(t_window *win, SDL_Surface *p_surface);
+t_image				load_t_image_from_file(t_window *win, char *path);
 
 /*
 **--------DRAWING FUNCTIONS---------------------------------------------------
 */
-void draw_image(t_window *win, t_image *image, SDL_Rect dest);
-void draw_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
-void draw_centred_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
-void draw_border_rectangle(t_window *win, SDL_Rect rect, SDL_Color color_back, SDL_Color color_front, int border);
-void draw_centred_border_rectangle(t_window *win, SDL_Rect rect, SDL_Color color_back, SDL_Color color_front, int border);
-int draw_text(t_window *win, char *str, SDL_Point pos, int size, int color_index, int style_index);
-int	draw_centred_text(t_window *win, char *str, SDL_Point pos, int size, int color_index, int style_index);
+int8_t				draw_image(t_window *win, t_image *image, SDL_Rect dest);
+int8_t				draw_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
+int8_t				draw_centred_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
+int8_t				draw_border_rectangle(t_window *win, t_brect *infos,
+					int border);
+int8_t				draw_centred_border_rectangle(t_window *win, t_brect *infos,
+					int border);
+int					draw_text(t_window *win, char *str, SDL_Point pos,
+					int infos[3]);
+int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
+					int infos[3]);
 
 #endif
