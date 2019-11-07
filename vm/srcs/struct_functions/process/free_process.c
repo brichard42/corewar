@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2019/10/23 17:35:35 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:19:15 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,4 @@ void	free_process(t_process **to_free)
 		free(*to_free);
 		*to_free = NULL;
 	}
-
 }
