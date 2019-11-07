@@ -1,19 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   visualisator.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
+/*   Updated: 2019/11/07 11:45:10 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TEST_H
 #define TEST_H
 
-#include <stdbool.h>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <SDL_mixer.h>
-
-
 #define FONT_PATH "vm/ressources/font/Tinos-Regular.ttf"
-
 #define NB_SIZE			150
 #define NB_COLOR		26
 #define NB_STYLE		5
-
 #define BLACK			0
 #define WHITE			1
 #define LIGHT_BLUE		2
@@ -37,7 +40,7 @@
 #define LIGHT_YELLOW	20
 #define YELLOW			21
 #define DARK_YELLOW		22
-#define LIGHT_PURPLE	23
+#define TEXT2			23
 #define BORDER			24
 #define TEXT			25
 
@@ -48,45 +51,12 @@
 #define STRICK TTF_STYLE_STRIKETHROUGH
 
 /*
-** --------TYPEDEF BORDER RECT STRUCTURE----------------------------------------
-*/
-
-typedef struct      s_brect
-{
-    SDL_Rect		rect;
-    SDL_Color		c_front;
-    SDL_Color		c_back;
-}					t_brect;
-
-/*
-** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
-*/
-typedef struct		s_window
-{
-	int 			x;
-	int				y;
-
-	SDL_Window		*window;
-	SDL_Renderer	*renderer;
-	SDL_Event		event;
-}					t_window;
-
-/*
-** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
-*/
-typedef struct		s_image
-{
-	SDL_Surface		*surface;
-	SDL_Texture		*texture;
-}					t_image;
-
-/*
 **	--------WINDOW FUNCTIONS----------------------------------------------------
 */
 t_window 			*open_window(char *name);
 void 				clear(t_window *win);
 void				render(t_window *win);
-int8_t				drawer(t_window *win);
+int8_t				drawer(t_window *win, t_vm *env);
 
 /*
 **	--------OBJECT CREATION FUNCTIONS-------------------------------------------
@@ -113,5 +83,6 @@ int					draw_text(t_window *win, char *str, SDL_Point pos,
 					int infos[3]);
 int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
 					int infos[3]);
+int8_t              draw_arena(t_window *win, t_vm *env);
 
 #endif

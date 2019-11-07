@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/06 09:54:54 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:24:12 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,15 @@
 
 # include "libft.h"
 # include "op.h"
+# include <SDL.h>
+# include <SDL_image.h>
+# include <SDL_ttf.h>
+# include <SDL_mixer.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include "typedef.h"
 # include "core_define.h"
 # include "visualisator.h"
-
-/*
-**	-------TYPEDEF PROCESS STRUCTURE--------------------------------------------
-*/
-typedef struct		s_process
-{
-	struct s_process	*next;
-	struct s_process	*prev;
-	int32_t				reg[REG_NUMBER];
-	int32_t				pc;
-	int32_t				cycles_left;
-	uint8_t				carry;
-}					t_process;
-
-/*
-**	-------TYPEDEF COREWAR STRUCTURE--------------------------------------------
-*/
-typedef struct		s_vm
-{
-	t_window			*window;
-	t_process			*process_list;
-	char				*champ_names[MAX_PLAYERS];
-	uint32_t			cycles_to_die;
-	char				mem[MEM_SIZE];
-	uint8_t				visu_on;
-}					t_vm;
 
 /*
 **	-------PROCESS STRUCT FUNCTIONS---------------------------------------------

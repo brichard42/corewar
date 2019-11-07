@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/06 06:57:38 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/07 09:59:08 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int		main(int ac, char **av)
 	{
 		if (!(win = open_window("Test")))
 			return (0);
-		drawer(win);
+		if (drawer(win, &env) == FAILURE)
+			return (1);
 	}
 	return (0);
 }

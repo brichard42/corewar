@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:44:45 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/06 16:55:20 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/07 11:45:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static int8_t	draw_corewar(t_window *win)
 	int			*cor_text;
 	int			*name_text;
 
-	cor_text = create_tab_int3(64, TEXT, BOLD);
-	name_text = create_tab_int3(16, TEXT, BOLD);
+	cor_text = create_tab_int3(64, TEXT2, BOLD);
+	name_text = create_tab_int3(16, TEXT2, BOLD);
 	clear(win);
 	pos = create_rect(5, 5, 500, 100);
 	pos2 = create_rect(5, 110, 500, 40);
@@ -61,19 +61,22 @@ static int8_t	draw_corewar(t_window *win)
 			|| draw_text(win, "By: Armoulin, Brichard, Plaurent, Tlandema",
 			create_point(pos.x + 70, pos2.y + 11), name_text) == FAILURE)
 		return (FAILURE);
-	SDL_RenderPresent(win->renderer);
 	return (SUCCESS);
 }
 
-int8_t			drawer(t_window *win)
+int8_t			drawer(t_window *win, t_vm *env)
 {
 	int		ret;
 	bool	play;
 
 	play = true;
+	clear(win);
 	draw_corewar(win);
+	draw_arena(win, env);
+	SDL_RenderPresent(win->renderer);
 	while (play == true)
 	{
+		//data_actualizer(win, env);
 		ret = SDL_PollEvent(&(win->event));
 		if (ret != 0)
 		{
