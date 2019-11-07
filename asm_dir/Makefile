@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/10/21 15:17:23 by plaurent         ###   ########.fr        #
+#    Updated: 2019/11/07 08:31:03 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,9 @@ IFLAGS += $(addprefix -I, $(INC_PATH))
 LDFLAGS = $(addprefix -L , $(LIB_PATH))
 
 LDLIBS = -lft
+
+$(info $$LDFLAGS is [${LDFLAGS}])
+$(info $$LDLIBS is [${LDLIBS}])
 
 CFLAGS += -Werror
 CFLAGS += -Wall

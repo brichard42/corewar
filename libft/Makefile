@@ -6,7 +6,7 @@
 #    By: brichard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by brichard          #+#    #+#              #
-#    Updated: 2019/09/11 13:10:36 by brichard         ###   ########.fr        #
+#    Updated: 2019/11/07 09:00:12 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -191,8 +191,9 @@ all: $(NAME)
 	@echo > /dev/null
 
 $(NAME): $(OBJS_PATH) $(INC) $(D_PRINTF_OBJS) $(D_OBJS)
-	@$(call run_and_test, ar -rc $(NAME) $(D_OBJS) $(D_PRINTF_OBJS))
+	@$(call run_and_test, ar -rc $(NAME) $(D_OBJS) $(D_PRINTF_OBJS) $@)
 	@ranlib $(NAME)
+	clear
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
 	@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $< -I$(INC))

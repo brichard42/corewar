@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/10/26 14:43:28 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/07 08:53:33 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ SRCS_PATH += $(SRCS_DIR)
 
 LIB_DWN_PATH = ~/.brew/lib
 
-LIB_PATH += $(LIB_DIR) ~/.brew/lib
+LIB_PATH += $(LIB_DIR)
+LIB_PATH += ~/.brew/lib
 
 #------------------------------------------------------------------------------#
 #                                     VPATH                                    #
@@ -164,7 +165,7 @@ $(OBJS_PATH):
 
 $(LIBS):
 	echo "$(COM_COLOR)Compiling $(OBJ_COLOR)Libraries$(NO_COLOR)"
-	make -C $(LIB_PATH)
+	make -C $(LIB_DIR)
 
 $(CLEAR):
 	$@
