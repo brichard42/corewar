@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/07 11:19:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/08 07:22:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct          s_vm
     t_process			*process_list;
     char				*champ_names[MAX_PLAYERS];
     uint32_t			cycles_to_die;
-    char				mem[MEM_SIZE];
+    unsigned char		mem[MEM_SIZE];
     uint8_t				visu_on;
 }                       t_vm;
 

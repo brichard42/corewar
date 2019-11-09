@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:44:45 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/07 11:45:31 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/08 15:48:43 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int8_t	draw_corewar(t_window *win)
 
 	cor_text = create_tab_int3(64, TEXT2, BOLD);
 	name_text = create_tab_int3(16, TEXT2, BOLD);
-	clear(win);
 	pos = create_rect(5, 5, 500, 100);
 	pos2 = create_rect(5, 110, 500, 40);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE
@@ -67,16 +66,18 @@ static int8_t	draw_corewar(t_window *win)
 int8_t			drawer(t_window *win, t_vm *env)
 {
 	int		ret;
+	int		tet;
 	bool	play;
 
 	play = true;
-	clear(win);
-	draw_corewar(win);
-	draw_arena(win, env);
-	SDL_RenderPresent(win->renderer);
+	tet = 0;
 	while (play == true)
 	{
-		//data_actualizer(win, env);
+		clear(win);
+		draw_corewar(win);
+		draw_arena(win, env);
+		if (draw_command_panel(win, tet) == FAILURE)
+			return (FAILURE);
 		ret = SDL_PollEvent(&(win->event));
 		if (ret != 0)
 		{
@@ -85,7 +86,11 @@ int8_t			drawer(t_window *win, t_vm *env)
 			if ((win->event.type == SDL_KEYUP
 					&& win->event.key.keysym.sym == SDLK_ESCAPE))
 				play = false;
+			if ((win->event.type == SDL_KEYUP
+					&& win->event.key.keysym.sym == SDLK_SPACE))
+					tet++;
 		}
+		SDL_RenderPresent(win->renderer);
 	}
 	return (SUCCESS);
 }

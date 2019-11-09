@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/07 11:45:10 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/08 10:11:53 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ t_image				load_t_image_from_file(t_window *win, char *path);
 int8_t				draw_image(t_window *win, t_image *image, SDL_Rect dest);
 int8_t				draw_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
 int8_t				draw_centred_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
+int8_t				draw_command_panel(t_window *win, int i);
 int8_t				draw_border_rectangle(t_window *win, t_brect *infos,
 					int border);
 int8_t				draw_centred_border_rectangle(t_window *win, t_brect *infos,
