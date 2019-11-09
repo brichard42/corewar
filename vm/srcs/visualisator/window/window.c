@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:44:45 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/08 15:48:43 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/09 11:53:07 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int8_t			drawer(t_window *win, t_vm *env)
 	int		ret;
 	int		tet;
 	bool	play;
+	int		truc;
 
 	play = true;
 	tet = 0;
@@ -78,6 +79,9 @@ int8_t			drawer(t_window *win, t_vm *env)
 		draw_arena(win, env);
 		if (draw_command_panel(win, tet) == FAILURE)
 			return (FAILURE);
+		truc = 0;
+		while (truc < 4)
+			draw_champions(win, env, truc++);
 		ret = SDL_PollEvent(&(win->event));
 		if (ret != 0)
 		{

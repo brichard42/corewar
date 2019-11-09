@@ -1,0 +1,7 @@
+A priori ce aui serait le plus judicieux maintenant c'est de recuperer a chaque
+cycles toutes les informations requises pour le bon fonctionnement du visu.
+Donc de r2voir a l'avance l'ajout du visu et donc une verification de la
+validite de la presence du flag de visu a chaque cycle.
+Sinon on le met en para, et on utilise vos diff2rents fonctions sur mon code
+le plus judicieux a mon avis est la premiere idee bien que cela met lors de la
+non utilisation du visu une condition negative a chaque fois.

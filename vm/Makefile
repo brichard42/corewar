@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/08 09:41:49 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/09 11:54:21 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,14 +33,15 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 #------------------------------------------------------------------------------#
 
 SRCS += main.c \
+		window.c \
 		parsopt.c \
+		draw_text.c \
 		draw_image.c \
+		draw_arena.c \
+		draw_champions.c \
+		object_creation.c \
 		draw_rectangles.c \
 		draw_command_panel.c \
-		draw_text.c \
-		draw_arena.c \
-		window.c \
-		object_creation.c \
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #
