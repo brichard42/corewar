@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/09 11:40:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/11 15:20:24 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int					draw_text(t_window *win, char *str, SDL_Point pos,
 					int infos[3]);
 int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
 					int infos[3]);
-int8_t              draw_arena(t_window *win, t_vm *env);
+int8_t              draw_arena(t_window *win, t_vm *env, int count);
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);
+int8_t				draw_corewar(t_window *win);
 
 #endif

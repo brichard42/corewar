@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/09 11:54:21 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/11 15:21:54 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCS += main.c \
 		draw_text.c \
 		draw_image.c \
 		draw_arena.c \
+		main_drawer.c \
+		draw_corewar.c \
 		draw_champions.c \
 		object_creation.c \
 		draw_rectangles.c \
