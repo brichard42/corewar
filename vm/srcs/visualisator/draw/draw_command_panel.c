@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:35:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/11 14:48:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/11 17:28:52 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 
 static int8_t	command_more_info(t_window *win, int *text)
 {
-	SDL_Point	point;
-	SDL_Point	point2;
-	SDL_Point	point3;
-
-	point = create_point(520, 120);
-	point2 = create_point(1200, 50);
-	point3 = create_point(1200, 120);
-	if (draw_text(win, "\'+\'       : Speed Up", point, text) == FAILURE)
-		return (FAILURE);
-	if (draw_text(win, "\'-\'                       : Speed Down", point2,
+	if (draw_text(win, "\'+\'       : Speed Up", create_point(520, 120),
 			text) == FAILURE)
 		return (FAILURE);
-	if (draw_text(win, "\'Arrow Up/Down\' : Move in process list", point3,
-			text) == FAILURE)
+	if (draw_text(win, "\'-\'                       : Speed Down",
+			create_point(1200, 50), text) == FAILURE)
+		return (FAILURE);
+	if (draw_text(win, "\'Arrow Up/Down\' : Move in process list",
+			create_point(1200, 120), text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -46,7 +40,7 @@ static int8_t	command_info(t_window *win, int i)
 				text) == FAILURE)
 			return (FAILURE);
 	}
-	else if (i % 2 == 1)
+	else if (i == 1)
 	{
 		if (draw_text(win, "\'space\' : Launch", point, text) == FAILURE)
 			return (FAILURE);

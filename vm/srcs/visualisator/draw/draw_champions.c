@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/11 14:44:40 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/11 18:44:39 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 	SDL_Rect	pos;
 	SDL_Point	point;
 	int			*text;
+	int			tmp;
 
-	text = create_tab_int3(13, TEXT2, BOLD);
+	tmp = 19 + champ_n;
+	text = create_tab_int3(13, tmp, BOLD);
 	point = create_name_point(champ_n);
 	pos = create_champ_rect(champ_n);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)

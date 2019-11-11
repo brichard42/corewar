@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/11 15:21:54 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/11 17:57:03 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS += main.c \
 		main_drawer.c \
 		draw_corewar.c \
 		draw_champions.c \
+		draw_process_list.c \
 		object_creation.c \
 		draw_rectangles.c \
 		draw_command_panel.c \
