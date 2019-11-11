@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/11 18:38:01 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/11 19:50:54 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int8_t				drawer(t_window *win, t_vm *env);
 SDL_Rect			create_rect(int x, int y, int w, int h);
 SDL_Color			create_color(int r, int g, int b, int a);
 SDL_Point			create_point(int x, int y);
+int8_t				set_tab_int3(int *dest, int size, int color, int style);
 int					*create_tab_int3(int size, int color, int style);
 t_image				load_t_image(t_window *win, SDL_Surface *p_surface);
 t_image				*malloc_t_image(t_window *win, SDL_Surface *p_surface);
@@ -87,5 +88,6 @@ int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
 int8_t              draw_arena(t_window *win, t_vm *env, int count);
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);
 int8_t				draw_corewar(t_window *win);
+int8_t				draw_process_list(t_window *win, t_vm *env);
 
 #endif

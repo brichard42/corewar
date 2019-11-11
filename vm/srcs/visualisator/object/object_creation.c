@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:36:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/06 16:47:00 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/11 19:50:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ int			*create_tab_int3(int size, int color, int style)
 	infos[1] = color;
 	infos[2] = style;
 	return (infos);
+}
+
+int8_t set_tab_int3(int *dest, int size, int color, int style)
+{
+	if (dest == NULL)
+		return (FAILURE);
+	dest[0] = size;
+	dest[1] = color;
+	dest[2] = style;
+	return (SUCCESS);
 }
 
 SDL_Rect	create_rect(int x, int y, int w, int h)
