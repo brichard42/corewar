@@ -14,18 +14,6 @@
 
 void	delete_vm(t_vm *to_delete)
 {
-	int		i;
-
-	i = -1;
 	if (to_delete != NULL)
-	{
 		free_process(&to_delete->process_list);
-		while (++i < MAX_PLAYERS)
-			if (to_delete->champ_names[i] != NULL)
-			{
-				free(to_delete->champ_names[i]);
-				to_delete->champ_names[i] = NULL;
-			}
-		to_delete->cycles_to_die = 0;
-	}
 }

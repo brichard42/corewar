@@ -39,4 +39,9 @@
 # define O_VERBOSE	"-v"
 # define O_VISU		"--visual"
 
+/*
+**	FILE EXTENSION
+*/
+# define DOT_COR	".cor"
+
 #endif

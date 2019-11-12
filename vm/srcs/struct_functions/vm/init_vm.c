@@ -17,7 +17,9 @@ t_vm	init_vm(void)
 	t_vm	new_vm;
 
 	new_vm.process_list = NULL;
-	ft_bzero((void *)new_vm.champ_names, sizeof(int32_t) * MAX_PLAYERS);
+	ft_bzero((void *)new_vm.champs_data, sizeof(t_champ) * MAX_PLAYERS);
+	ft_bzero((void *)new_vm.mem_owner, sizeof(uint8_t) * MEM_SIZE);
+	ft_bzero((void *)new_vm.mem, sizeof(char) * MEM_SIZE);
 	new_vm.cycles_to_die = CYCLE_TO_DIE;
 	new_vm.cycles_to_dump = -1;
 	new_vm.visu = OFF;

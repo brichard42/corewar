@@ -15,10 +15,13 @@
 
 # include "libft.h"
 # include "op.h"
+# include "core_define.h"
+# include <unistd.h>
+# include <sys/types.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
-# include "core_define.h"
 
 /*
 **	-------PARSING	STATES ENUM-------
@@ -46,13 +49,24 @@ typedef struct		s_process
 }					t_process;
 
 /*
+**	-------TYPEDEF CHAMPION STRUCTURE-------
+*/
+typedef struct		s_champ
+{
+	char			champ_name[PROG_NAME_LENGTH + 1];
+	int32_t			chp_num;
+	int32_t			last_live_cycle;
+}					t_champ;
+
+/*
 **	-------TYPEDEF COREWAR STRUCTURE-------
 */
 typedef struct		s_vm
 {
 	t_process			*process_list;
-	char				*champ_names[MAX_PLAYERS];
+	t_champ				champs_data[MAX_PLAYERS + 1];
 	char				mem[MEM_SIZE];
+	uint8_t				mem_owner[MEM_SIZE];
 	uint32_t			cycles_to_die;
 	int32_t				cycles_to_dump;
 	uint8_t				visu;
@@ -94,5 +108,9 @@ typedef void		(*t_get_func)(t_parser *, char **);
 **	-------PARSING	FUNCTIONS-------
 */
 int8_t				vm_arg_parser(t_parser *parser, char **av);
+void				get_opt(t_parser *parser, char **av);
+void				get_chpnum(t_parser *parser, char **av);
+void				get_dump(t_parser *parser, char **av);
+void				get_champ(t_parser *parser, char **av);
 
 #endif
