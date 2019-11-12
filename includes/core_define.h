@@ -13,15 +13,30 @@
 #ifndef CORE_DEFINE_H
 # define CORE_DEFINE_H
 
+/*
+**	TEST VALUE
+*/
 # define TRUE		1
 # define FALSE		0
+
+/*
+**	RETURN VALUE
+*/
 # define SUCCESS	0
 # define FAILURE	-1
+
+/*
+**	ON / OFF
+*/
+# define ON			1
+# define OFF		0
 
 /*
 **	PARSING OPTIONS
 */
 # define O_DUMP		"-dump"
 # define O_CHP_NUM	"-n"
+# define O_VERBOSE	"-v"
+# define O_VISU		"--visual"
 
 #endif

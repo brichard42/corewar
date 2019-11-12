@@ -17,6 +17,7 @@
 # include "op.h"
 # include <stdlib.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "core_define.h"
 
 /*
@@ -51,9 +52,11 @@ typedef struct		s_vm
 {
 	t_process			*process_list;
 	char				*champ_names[MAX_PLAYERS];
-	char				*mem;
+	char				mem[MEM_SIZE];
 	uint32_t			cycles_to_die;
 	int32_t				cycles_to_dump;
+	uint8_t				visu;
+	uint8_t				verbose;
 }					t_vm;
 
 /*
@@ -63,6 +66,7 @@ typedef struct		s_parser
 {
 	t_vm			env;
 	enum e_state	state;
+	int32_t			chp_num;
 }					t_parser;
 
 /*
@@ -75,10 +79,9 @@ void				free_process(t_process **to_delete);
 
 /*
 **	-------COREWAR STRUCT FUNCTIONS-------
-**	====init_vm allocate the mem variable -> NEEDS RETURN CHECK====
 */
-t_vm				*create_vm(size_t mem_size);
-t_vm				init_vm(size_t mem_size);
+t_vm				*create_vm(void);
+t_vm				init_vm(void);
 void				delete_vm(t_vm *to_delete);
 void				free_vm(t_vm **to_free);
 

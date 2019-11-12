@@ -33,6 +33,16 @@ LIB_FILES += libft.a
 SRCS += main.c
 SRCS += vm_arg_parser.c
 
+SRCS += init_vm.c
+SRCS += create_vm.c
+SRCS += delete_vm.c
+SRCS += free_vm.c
+
+SRCS += init_process.c
+SRCS += create_process.c
+SRCS += delete_process.c
+SRCS += free_process.c
+
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #
 #------------------------------------------------------------------------------#
@@ -143,7 +153,7 @@ COM_STRING   = "Compiling"
 .PHONY: all $(NAME) $(OBJS) $(OBJS_PATH) $(LIBS) $(CLEAR) lc lfc clean fclean re
 .SILENT:
 
-all: $(CLEAR) $(NAME)
+all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
 	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@)

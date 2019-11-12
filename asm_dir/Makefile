@@ -148,7 +148,7 @@ COM_STRING   = "Compiling"
 .PHONY: all $(NAME) $(OBJS) $(OBJS_PATH) $(LIBS) $(CLEAR) lc lfc clean fclean re
 .SILENT:
 
-all: $(CLEAR) $(NAME)
+all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
 	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@)

@@ -12,12 +12,12 @@
 
 #include "corewar.h"
 
-t_vm	*create_vm(size_t mem_size)
+t_vm	*create_vm(void)
 {
 	t_vm	*new_vm;
 
 	new_vm = (t_vm *)ft_memalloc(sizeof(t_vm));
 	if (new_vm != NULL)
-		*new_vm = init_vm(mem_size);
+		*new_vm = init_vm();
 	return (new_vm);
 }

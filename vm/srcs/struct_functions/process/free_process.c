@@ -16,6 +16,7 @@ void	free_process(t_process **to_free)
 {
 	if (to_free != NULL && *to_free != NULL)
 	{
+		free_process(&(*to_free)->next);
 		delete_process(*to_free);
 		free(*to_free);
 		*to_free = NULL;

@@ -27,7 +27,5 @@ void	delete_vm(t_vm *to_delete)
 				to_delete->champ_names[i] = NULL;
 			}
 		to_delete->cycles_to_die = 0;
-		if (to_delete->mem != NULL)
-			free(to_delete->mem);
 	}
 }
