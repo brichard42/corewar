@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/11 17:57:03 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/12 14:13:31 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS += main.c \
 		window.c \
 		parsopt.c \
 		draw_text.c \
+		draw_infos.c \
 		draw_image.c \
 		draw_arena.c \
 		main_drawer.c \

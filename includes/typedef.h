@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/10 10:04:48 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/12 17:10:46 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,8 @@ typedef struct			s_process
 
 typedef struct			s_champ
 {
-	unsigned char		comment[COMMENT_LENGTH + 1];
-	unsigned char		code[CHAMP_MAX_SIZE];
 	unsigned char		name[PROG_NAME_LENGTH + 1];
 	int32_t				champ_n;
-	int32_t				champ_size;
 	int32_t				last_cycle_alive;
 }						t_champ;
 
@@ -79,9 +76,10 @@ typedef struct          s_vm
 {
     t_window			*window;
     t_process			*process_list;
-    t_champ				*champ[MAX_PLAYERS];
+    t_champ				champ[MAX_PLAYERS];
+	unsigned char		mem[MEM_SIZE];
     uint32_t			cycles_to_die;
-    unsigned char		mem[MEM_SIZE];
+    uint32_t			current_cycles;
     uint8_t				visu_on;
 }                       t_vm;
 

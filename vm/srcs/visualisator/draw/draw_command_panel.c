@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:35:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/11 17:28:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/12 15:41:14 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ static int8_t	command_more_info(t_window *win, int *text)
 static int8_t	command_info(t_window *win, int i)
 {
 	SDL_Point	point;
-	int			*text;
+	int			text[3];
 
-	if (!(text = create_tab_int3(20, TEXT2, BOLD)))
+	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
 	point = create_point(520, 50);
-	if (i == 0)
+	if (i == TO_START)
 	{
 		if (draw_text(win, "\'space\' : Install champions", point,
 				text) == FAILURE)
 			return (FAILURE);
 	}
-	else if (i == 1)
+	else if (i == PAUSED)
 	{
 		if (draw_text(win, "\'space\' : Launch", point, text) == FAILURE)
 			return (FAILURE);
@@ -59,13 +59,16 @@ int8_t			draw_command_panel(t_window *win, int i)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;
-	int			*command_text;
+	int			command_text[3];
 
-	point = create_point(1300, 15);
-	command_text = create_tab_int3(30, TEXT2, BOLD);
-	pos = create_rect(510, 5, 1790, 145);
-	draw_rectangle(win, pos, create_color(50, 50, 44, 255));
-	draw_text(win, "COMMANDS :", point, command_text);
+	point = create_point(1000, 15);
+	if (create_tab_int3(command_text, 30, TEXT2, BOLD) == FAILURE)
+		return (FAILURE);
+	pos = create_rect(510, 5, 1295, 145);
+	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
+		return (FAILURE);
+	if (draw_text(win, "COMMANDS :", point, command_text) == FAILURE)
+		return (FAILURE);
 	if (command_info(win, i) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

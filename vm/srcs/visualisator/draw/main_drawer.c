@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/11 17:56:36 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/12 18:02:17 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ int8_t	draw(t_window *win, t_vm *env, int space_counter)
 	clear(win);
 	if (draw_corewar(win) == FAILURE)
 		return (FAILURE);
-	if (draw_arena(win, env, 0) == FAILURE)
-		return (FAILURE);
 	if (draw_command_panel(win, space_counter))
+		return (FAILURE);
+	if (draw_infos(win, env, space_counter) == FAILURE)
+		return (FAILURE);
+	if (draw_arena(win, env, 0) == FAILURE)
 		return (FAILURE);
 	if (draw_process_list(win, env) == FAILURE)
 		return (FAILURE);

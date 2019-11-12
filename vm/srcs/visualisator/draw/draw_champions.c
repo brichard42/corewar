@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/11 19:40:27 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/12 13:53:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,20 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 	int			tmp;
 
 	tmp = 19 + champ_n;
-	if (set_tab_int3(text, 13, tmp, BOLD) == FAILURE)
+	if (create_tab_int3(text, 13, tmp, BOLD) == FAILURE)
 		return (FAILURE);
 	point = create_name_point(champ_n);
 	pos = create_champ_rect(champ_n);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
 		return (FAILURE);
-	if (draw_text(win, "Nom Du Champion"/*var champ_name in process*/, point, text) == FAILURE)
+	if (draw_text(win, "Nom Du Champion", point, text) == FAILURE)
 		return (FAILURE);
 	point = create_alive_point(champ_n);
-	if ((tmp = draw_text(win, "Last process alive : ", point, text)) && tmp == FAILURE)
+	if ((tmp = draw_text(win, "Last time alive : ", point, text))
+			&& tmp == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	if (draw_text(win, "0"/*var last alive in process*/, point, text) == FAILURE)
+	if (draw_text(win, "0", point, text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
