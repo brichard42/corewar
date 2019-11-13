@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/12 14:13:31 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/13 14:24:58 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,17 +34,29 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
 SRCS += main.c \
 		window.c \
-		parsopt.c \
+		get_opt.c \
+		free_vm.c \
+		init_vm.c \
+		get_dump.c \
+		get_champ.c \
 		draw_text.c \
+		create_vm.c \
+		delete_vm.c \
+		get_chpnum.c \
 		draw_infos.c \
 		draw_image.c \
 		draw_arena.c \
 		main_drawer.c \
 		draw_corewar.c \
+		init_process.c \
+		free_process.c \
+		vm_arg_parser.c \
+		create_process.c \
+		delete_process.c \
 		draw_champions.c \
-		draw_process_list.c \
 		object_creation.c \
 		draw_rectangles.c \
+		draw_process_list.c \
 		draw_command_panel.c \
 
 #------------------------------------------------------------------------------#

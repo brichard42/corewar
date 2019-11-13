@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   create_vm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
+/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 12:20:49 by paullaurent       #+#    #+#             */
-/*   Updated: 2019/11/11 19:10:28 by tlandema         ###   ########.fr       */
+/*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
+/*   Updated: 2019/10/23 17:35:35 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_vm	*create_vm(size_t mem_size)
+t_vm	*create_vm(void)
 {
 	t_vm	*new_vm;
 
 	new_vm = (t_vm *)ft_memalloc(sizeof(t_vm));
 	if (new_vm != NULL)
-		*new_vm = init_vm(mem_size);
+		*new_vm = init_vm();
 	return (new_vm);
 }

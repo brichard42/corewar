@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 13:48:50 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 14:15:09 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int8_t	draw_process_list(t_window *win, t_vm *env, int champ_num)
 			&& tmp == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	if ((str = ft_lltoa(env->champ[champ_num].champ_n)) == NULL)
+	if ((str = ft_lltoa(env->champs_data[champ_num].chp_num)) == NULL)
 		return (FAILURE);
 	if ((draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);

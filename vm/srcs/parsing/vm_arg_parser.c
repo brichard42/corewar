@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_process.c                                   :+:      :+:    :+:   */
+/*   vm_arg_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2019/10/23 17:35:34 by brichard         ###   ########.fr       */
+/*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
+/*   Updated: 2019/11/13 14:46:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_process	*create_process(int32_t reg_1, int32_t pc)
+int8_t		vm_arg_parser(t_parser *parser, char **av)
 {
-	t_process	*new_process;
+	t_parser			d_parser;
+	static t_get_func	get_func[4] = {get_opt, get_dump, get_chpnum, get_champ};
 
-	new_process = (t_process *)ft_memalloc(sizeof(t_process));
-	if (new_process != NULL)
-		*new_process = init_process(reg_1, pc);
-	return (new_process);
+	d_parser = *parser;
+	parser->env = init_vm();
+	while (d_parser.state != S_ERR && *av != NULL)
+	{
+		get_func[d_parser.state](&d_parser, av);
+		++av;
+	}
+	*parser = d_parser;
+	return (d_parser.state == S_OPTION ? SUCCESS : FAILURE);
 }
