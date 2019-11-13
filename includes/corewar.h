@@ -54,6 +54,7 @@ typedef struct		s_process
 typedef struct		s_champ
 {
 	char			champ_name[PROG_NAME_LENGTH + 1];
+	char			comment[COMMENT_LENGTH + 1];
 	int32_t			chp_num;
 	int32_t			last_live_cycle;
 }					t_champ;
@@ -81,6 +82,7 @@ typedef struct		s_parser
 	t_vm			env;
 	enum e_state	state;
 	int32_t			chp_num;
+	int32_t			prog_size;
 }					t_parser;
 
 /*
@@ -105,12 +107,24 @@ void				free_vm(t_vm **to_free);
 typedef void		(*t_get_func)(t_parser *, char **);
 
 /*
+**	-------TYPEDEF READ_CHAMP.C FUNCTIONS-------
+*/
+typedef int8_t		(*t_read_func)(t_parser *, int32_t);
+
+/*
 **	-------PARSING	FUNCTIONS-------
 */
 int8_t				vm_arg_parser(t_parser *parser, char **av);
+
 void				get_opt(t_parser *parser, char **av);
 void				get_chpnum(t_parser *parser, char **av);
 void				get_dump(t_parser *parser, char **av);
 void				get_champ(t_parser *parser, char **av);
+
+int8_t				read_magic(t_parser *parser, int32_t fd);
+int8_t				read_name(t_parser *parser, int32_t fd);
+int8_t				read_size(t_parser *parser, int32_t fd);
+int8_t				read_comment(t_parser *parser, int32_t fd);
+int8_t				read_code(t_parser *parser, int32_t fd);
 
 #endif

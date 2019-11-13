@@ -33,10 +33,13 @@ LIB_FILES += libft.a
 SRCS += main.c
 
 SRCS += vm_arg_parser.c
+
 SRCS += get_opt.c
 SRCS += get_dump.c
 SRCS += get_chpnum.c
 SRCS += get_champ.c
+
+SRCS += read_champ.c
 
 SRCS += init_vm.c
 SRCS += create_vm.c
