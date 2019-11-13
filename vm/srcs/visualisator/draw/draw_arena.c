@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/12 15:34:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 16:07:47 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int8_t	draw_arena_helper(t_window *win, t_vm *env)
 	return (SUCCESS);
 }
 
-int8_t	draw_arena_helper_2(t_window *win, char c, int text[3], SDL_Point *pt)
+int8_t	draw_arena_helper_2(t_window *win, unsigned char c, int text[3], SDL_Point *pt)
 {
 	if ((create_tab_int3(text, 17, TEXT2, BOLD)) == FAILURE)
 		return (FAILURE);

@@ -6,18 +6,18 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 14:15:09 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 15:57:08 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int8_t	draw_process_list(t_window *win, t_vm *env, int champ_num)
+int8_t	draw_process_header(t_window *win, t_vm *env, int champ_num)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;
-	int			text[3];
 	int			tmp;
+	int			text[3];
 	char		*str;
 
 	point = create_point(1925, 665);
@@ -35,6 +35,16 @@ int8_t	draw_process_list(t_window *win, t_vm *env, int champ_num)
 	if ((draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str);
+}
+
+int8_t	draw_process_list(t_window *win, t_vm *env, int champ_num)
+{
+	SDL_Rect	pos;
+	SDL_Point	point;
+	int			text[3];
+
+	if (draw_process_header(win, env, champ_num) == FAILURE)
+		return (FAILURE);
 	pos = create_rect(1810, 705, 490, 585);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
 		return (FAILURE);

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/12 13:53:13 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 16:13:55 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 	pos = create_champ_rect(champ_n);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
 		return (FAILURE);
-	if (draw_text(win, "Nom Du Champion", point, text) == FAILURE)
+	if (draw_text(win, env->champs_data[champ_n].champ_name, point, text) == FAILURE)
 		return (FAILURE);
 	point = create_alive_point(champ_n);
 	if ((tmp = draw_text(win, "Last time alive : ", point, text))
