@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 15:57:08 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 18:23:11 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int8_t	draw_process_header(t_window *win, t_vm *env, int champ_num)
 	if ((draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str);
+	return (SUCCESS);
 }
 
-int8_t	draw_process_list(t_window *win, t_vm *env, int champ_num)
+int8_t	draw_process_pannel(t_window *win, t_vm *env, int champ_num)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;

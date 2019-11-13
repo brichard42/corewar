@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/13 14:24:58 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/13 18:00:50 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS += main.c \
 		draw_text.c \
 		create_vm.c \
 		delete_vm.c \
+		read_champ.c \
 		get_chpnum.c \
 		draw_infos.c \
 		draw_image.c \

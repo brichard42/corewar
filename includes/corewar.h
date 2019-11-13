@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/13 14:25:35 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 17:59:08 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,15 @@ void    			delete_vm(t_vm *to_delete);
 void				free_vm(t_vm **to_free);
 
 /*
-**	-------TYPEDEF ARG_PARSER FUNCTIONS-------
+**	-------TYPEDEF ARG_PARSER FUNCTIONS-----------------------------------------
 */
 typedef void		(*t_get_func)(t_parser *, char **);
+
+/*
+**	-------TYPEDEF READ_CHAMP.C FUNCTIONS---------------------------------------
+*/
+
+typedef int8_t		(*t_read_func)(t_parser *, int32_t);
 
 /*
 **	-------PARSING FUNCTIONS----------------------------------------------------
@@ -58,5 +64,10 @@ void				get_opt(t_parser *parser, char **av);
 void				get_chpnum(t_parser *parser, char **av);
 void				get_dump(t_parser *parser, char **av);
 void				get_champ(t_parser *parser, char **av);
+int8_t				read_magic(t_parser *parser, int32_t fd);
+int8_t				read_name(t_parser *parser, int32_t fd);
+int8_t				read_size(t_parser *parser, int32_t fd);
+int8_t				read_comment(t_parser *parser, int32_t fd);
+int8_t				read_code(t_parser *parser, int32_t fd);
 
 #endif

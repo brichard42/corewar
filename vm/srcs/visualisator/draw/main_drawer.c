@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 13:46:47 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 18:24:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int8_t	draw(t_window *win, t_vm *env, int space_counter, int champ_counter)
 		return (FAILURE);
 	if (draw_arena(win, env, 0) == FAILURE)
 		return (FAILURE);
-	if (draw_process_list(win, env, champ_counter) == FAILURE)
+	if (draw_process_pannel(win, env, champ_counter) == FAILURE)
 		return (FAILURE);
 	while (count < 4)
 		if (draw_champions(win, env, count++) == FAILURE)

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 14:13:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/13 19:02:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct			s_process
 typedef struct			s_champ
 {
 	unsigned char		champ_name[PROG_NAME_LENGTH + 1];
+	unsigned char		code[CHAMP_MAX_SIZE];
 	int32_t				chp_num;
 	int32_t				last_live_cycle;
 }						t_champ;
@@ -107,5 +108,6 @@ typedef struct			s_parser
 	t_vm				env;
 	enum e_state		state;
 	int32_t				chp_num;
+	int32_t				prog_size;
 }						t_parser;
 #endif
