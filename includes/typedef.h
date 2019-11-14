@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 19:02:27 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/14 16:20:57 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,20 @@ enum				e_state
 };
 
 /*
-** --------TYPEDEF BORDER RECT STRUCTURE----------------------------------------
+**	--------TYPEDEF DRAW STRUCTURE----------------------------------------------
+*/
+
+typedef struct		s_draw
+{
+	int32_t			process_ind;
+	uint8_t			state;
+	uint8_t			champ_ind;
+	uint8_t			champ_number;
+	uint8_t			play;
+}					t_draw;
+
+/*
+**	--------TYPEDEF BORDER RECT STRUCTURE---------------------------------------
 */
 
 typedef struct		s_brect

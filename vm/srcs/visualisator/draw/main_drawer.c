@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 18:24:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/14 17:01:09 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int8_t	draw(t_window *win, t_vm *env, int space_counter, int champ_counter)
+int8_t	draw(t_window *win, t_vm *env, t_draw infos)
 {
 	int	count;
 
@@ -20,13 +20,13 @@ int8_t	draw(t_window *win, t_vm *env, int space_counter, int champ_counter)
 	clear(win);
 	if (draw_corewar(win) == FAILURE)
 		return (FAILURE);
-	if (draw_command_panel(win, space_counter))
+	if (draw_command_panel(win, infos.state))
 		return (FAILURE);
-	if (draw_infos(win, env, space_counter) == FAILURE)
+	if (draw_infos(win, env, infos.state) == FAILURE)
 		return (FAILURE);
 	if (draw_arena(win, env, 0) == FAILURE)
 		return (FAILURE);
-	if (draw_process_pannel(win, env, champ_counter) == FAILURE)
+	if (draw_process_pannel(win, env, infos.champ_ind) == FAILURE)
 		return (FAILURE);
 	while (count < 4)
 		if (draw_champions(win, env, count++) == FAILURE)
@@ -34,42 +34,41 @@ int8_t	draw(t_window *win, t_vm *env, int space_counter, int champ_counter)
 	return (SUCCESS);
 }
 
-void	event_catcher(t_window *win, int *space_counter, int *champ_counter,
-		uint8_t *play)
+void	event_catcher(t_window *win, t_draw *infos)
 {
 	if (win->event.type == SDL_QUIT)
-		*play = 0;
+		infos->play = 0;
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_ESCAPE))
-		*play = 0;
+		infos->play = 0;
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_SPACE))
-		*space_counter = (*space_counter == 0 || *space_counter == 2) ? 1 : 2;
+		infos->state = (infos->state == 0
+				|| infos->state == 2) ? 1 : 2;
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_RIGHT))
-		*champ_counter = (*champ_counter < 3) ? *champ_counter + 1 : 0;
+		infos->champ_ind = (infos->champ_ind < infos->champ_number)
+				? infos->champ_ind + 1 : 0;
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_LEFT))
-		*champ_counter = (*champ_counter > 0) ? *champ_counter - 1 : 3;
+		infos->champ_ind = (infos->champ_ind > 0)
+				? infos->champ_ind - 1 : infos->champ_number - 1;
 }
 
 int8_t	drawer(t_window *win, t_vm *env)
 {
 	int		ret;
-	int		space_counter;
-	int		champ_counter;
-	uint8_t	play;
+	t_draw	infos;
 
-	play = 1;
-	space_counter = 0;
-	champ_counter = 0;
-	while (play)
+	ft_bzero((void *)&infos, sizeof(t_draw));
+	infos.play = 1;
+	while (infos.play)
 	{
-		if (draw(win, env, space_counter, champ_counter) == FAILURE)
+		if (draw(win, env, infos) == FAILURE)
 			return (FAILURE);
 		ret = SDL_PollEvent(&(win->event));
 		if (ret != 0)
-			event_catcher(win, &space_counter, &champ_counter, &play);
+			event_catcher(win, &infos);
 		SDL_RenderPresent(win->renderer);
 	}
 	return (SUCCESS);

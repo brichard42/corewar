@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 16:07:47 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/14 17:00:46 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*change_char_to_hexa(unsigned char c)
 	return (str);
 }
 
-int8_t	draw_arena_helper(t_window *win, t_vm *env)
+static int8_t	draw_arena_helper(t_window *win, t_vm *env)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;
