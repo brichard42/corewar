@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 09:03:49 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/16 13:51:10 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int8_t	draw(t_window *win, t_vm *env, t_draw infos)
 		return (FAILURE);
 	if (draw_command_panel(win, infos.state))
 		return (FAILURE);
-	if (draw_infos(win, env, infos.state) == FAILURE)
+	if (draw_infos(win, env, infos) == FAILURE)
 		return (FAILURE);
 	if (draw_arena(win, env, infos.state) == FAILURE)
 		return (FAILURE);
@@ -62,6 +62,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 
 	ft_bzero((void *)&infos, sizeof(t_draw));
 	infos.play = 1;
+	infos.cycles_per_sec = 32;
 	while (infos.play)
 	{
 		if (draw(win, env, infos) == FAILURE)

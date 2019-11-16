@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 18:25:12 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/16 16:30:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,37 @@ static SDL_Rect		create_champ_rect(int champ_n)
 	return (create_rect(x, y, 242, 242));
 }
 
+int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
+					SDL_Point point)
+{
+	int	text[3];
+
+	if (create_tab_int3(text, 25, 19 + champ_n, BOLD) == FAILURE)
+		return (FAILURE);
+	point.x += 30;
+	point.y += 50;
+	if (env->champs_data[champ_n].last_live_cycle == FAILURE || env->current_cycle > 200)
+	{
+		if (draw_text(win, "X       X", point, text) == FAILURE)
+			return (FAILURE);
+	}
+	else
+		if (draw_text(win, "0       0", point, text) == FAILURE)
+			return (FAILURE);
+	point.y += 70;
+	point.x -= 10;
+	if (env->champs_data[champ_n].last_live_cycle == FAILURE || env->current_cycle > 200)
+	{
+		if (draw_text(win, "/----------\\", point, text) == FAILURE)
+			return (FAILURE);
+	}
+	else
+		if (draw_text(win, "\\----------/", point, text) == FAILURE)
+			return (FAILURE);
+	return (SUCCESS);
+}
+
+
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 {
 	SDL_Rect	pos;
@@ -58,6 +89,8 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 		return (FAILURE);
 	if (draw_text(win, (char *)env->champs_data[champ_n].champ_name, point,
 			text) == FAILURE)
+		return (FAILURE);
+	if (draw_champion_face(win, env, champ_n, point) == FAILURE)
 		return (FAILURE);
 	point = create_alive_point(champ_n);
 	if ((tmp = draw_text(win, "Last time alive : ", point, text))

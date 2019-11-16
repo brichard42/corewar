@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/14 16:20:57 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/16 16:30:47 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ enum				e_state
 typedef struct		s_draw
 {
 	int32_t			process_ind;
+	int32_t			cycles_per_sec;
 	uint8_t			state;
 	uint8_t			champ_ind;
 	uint8_t			champ_number;
@@ -90,7 +91,6 @@ typedef struct			s_process
 typedef struct			s_champ
 {
 	unsigned char		champ_name[PROG_NAME_LENGTH + 1];
-	unsigned char		code[CHAMP_MAX_SIZE];
 	int32_t				chp_num;
 	int32_t				last_live_cycle;
 }						t_champ;
@@ -107,7 +107,7 @@ typedef struct          s_vm
 	uint8_t				mem_owner[MEM_SIZE];
     uint32_t			cycles_to_die;
     uint32_t			cycles_to_dump;
-    uint32_t			current_cycles;
+    uint32_t			current_cycle;
     uint8_t				visu;
     uint8_t				verbose;
 }                       t_vm;

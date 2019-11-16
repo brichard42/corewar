@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 08:59:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/16 13:07:38 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,6 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);
 int8_t				draw_corewar(t_window *win);
 int8_t				draw_process_pannel(t_window *win, t_vm *env,
 					int champ_num);
-int8_t				draw_infos(t_window *win, t_vm *env, int space_counter);
+int8_t				draw_infos(t_window *win, t_vm *env, t_draw infos);
 
 #endif
