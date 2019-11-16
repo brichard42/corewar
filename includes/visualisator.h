@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/14 17:00:56 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/16 08:59:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@
 #define LIGHT_GREY		14
 #define GREY			15
 #define DARK_GREY		16
-#define LIGHT_ORANGE	17
-#define ORANGE			18
+#define ORANGE			17
+#define TEXT2			18
 #define CHAMP_1			19
 #define CHAMP_2			20
 #define CHAMP_3			21
 #define CHAMP_4			22
-#define TEXT2			23
+#define LIGHT_ORANGE	23
 #define BORDER			24
 #define TEXT			25
 

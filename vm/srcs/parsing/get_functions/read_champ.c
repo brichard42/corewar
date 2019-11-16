@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 19:05:32 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/13 19:05:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/16 09:44:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ int8_t	read_comment(t_parser *parser, int32_t fd)
 
 int8_t	read_code(t_parser *parser, int32_t fd)
 {
-	static int8_t nice = 0;
+	static int8_t	nice = 0;
+	int				len;
 
-	read(fd, &parser->env.mem[(MEM_SIZE / 4) * nice++], CHAMP_MAX_SIZE);
+	len = read(fd, &parser->env.mem[(MEM_SIZE / 4) * nice++], CHAMP_MAX_SIZE);
+	ft_memset((void *)&parser->env.mem_owner[(MEM_SIZE / 4) * (nice - 1)], nice, len);
 	return (SUCCESS);
 }

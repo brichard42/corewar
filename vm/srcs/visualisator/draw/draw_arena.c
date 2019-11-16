@@ -6,22 +6,35 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/14 17:00:46 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/16 10:14:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-char	*change_char_to_hexa(unsigned char c)
+static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 {
-	char *str;
+	char *tmp;
 
-	if (!(str = ft_ulltoa_ubase(c, "0123456789abcedef")))
-		return (NULL);
-	return (str);
+	if (!(tmp = ft_ulltoa_ubase(c, "0123456789abcedef")))
+		return (FAILURE);
+	if (c < 16)
+	{
+		str[0] = '0';
+		str[1] = tmp[0];
+	}
+	else
+	{
+		str[0] = tmp[0];
+		str[1] = tmp[1];
+	}
+	str[2] = ' ';
+	str[3] = '\0';
+	ft_strdel(&tmp);
+	return (SUCCESS);
 }
 
-static int8_t	draw_arena_helper(t_window *win, t_vm *env)
+static int8_t	draw_arena_structure(t_window *win, t_vm *env)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;
@@ -42,44 +55,70 @@ static int8_t	draw_arena_helper(t_window *win, t_vm *env)
 	return (SUCCESS);
 }
 
-int8_t	draw_arena_helper_2(t_window *win, unsigned char c, int text[3], SDL_Point *pt)
+static int8_t	draw_uninit_arena(t_window *win)
 {
-	if ((create_tab_int3(text, 17, TEXT2, BOLD)) == FAILURE)
-		return (FAILURE);
-	if (c < 16)
-	{
-		if (draw_text(win, "0", *pt, text) == FAILURE)
-			return (FAILURE);
-		(*pt).x += 7;
-	}
-	return (SUCCESS);
-}
-
-int8_t	draw_arena(t_window *win, t_vm *env, int count)
-{
-	char		*str;
 	SDL_Point	point;
 	int			text[3];
+	int			count;
 
 	point = create_point(15, 195);
-	if (draw_arena_helper(win, env) == FAILURE)
+	if (create_tab_int3(text, 17, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
+	count = 0;
 	while (count < MEM_SIZE)
 	{
-		if (!(str = change_char_to_hexa(env->mem[count])))
+		if (draw_text(win, "00", point, text) == FAILURE)
 			return (FAILURE);
-		if (draw_arena_helper_2(win, env->mem[count], text, &point) == FAILURE)
-			return (FAILURE);
-		if (draw_text(win, str, point, text) == FAILURE)
-			return (FAILURE);
-		point.x = (env->mem[count] >= 16) ? point.x + 28 : point.x + 21;
+		point.x += 28;
 		if ((count + 1) % 64 == 0 && count != 0)
 		{
 			point.y += 17;
 			point.x = 15;
 		}
-		ft_strdel(&str);
 		count++;
 	}
+	return (SUCCESS);
+}
+
+static int8_t	draw_active_arena(t_window *win, t_vm *env)
+{
+	int			count;
+	int			text[3];
+	char		str[4];
+	SDL_Point	point;
+
+	count = 0;
+	point = create_point(15, 195);
+	while (count < MEM_SIZE)
+	{
+		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[count], BOLD)
+				== FAILURE)
+			return (FAILURE);
+		if (change_char_to_hexa(str, env->mem[count]) == FAILURE)
+			return (FAILURE);
+		if (draw_text(win, (char *)str, point, text) == FAILURE)
+			return (FAILURE);
+		point.x += 28;
+		if ((count + 1) % 64 == 0 && count != 0)
+		{
+			point.y += 17;
+			point.x = 15;
+		}
+		count++;
+	}
+	return (SUCCESS);
+}
+
+int8_t			draw_arena(t_window *win, t_vm *env, int state)
+{
+	if (draw_arena_structure(win, env) == FAILURE)
+		return (FAILURE);
+	if (state == TO_START)
+	{
+		if (draw_uninit_arena(win) == FAILURE)
+			return (FAILURE);
+	}
+	else if (draw_active_arena(win, env) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }
