@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/11/13 14:12:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/17 17:32:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,22 @@ typedef struct		s_op
 //*/
 //void				print_tab(void);
 //void				get_op_tab(t_op *tab);
+
+void				op_live(t_vm *v, t_list *process);
+void				op_ld(t_vm *v, t_list *process);
+void				op_st(t_vm *v, t_list *process);
+void				op_add(t_vm *v, t_list *process);
+void				op_sub(t_vm *v, t_list *process);
+void				op_and(t_vm *v, t_list *process);
+void				op_or(t_vm *v, t_list *process);
+void				op_xor(t_vm *v, t_list *process);
+void				op_zjmp(t_vm *v, t_list *process);
+void				op_ldi(t_vm *v, t_list *process);
+void				op_sti(t_vm *v, t_list *process);
+void				op_fork(t_vm *v, t_list *process);
+void				op_lld(t_vm *v, t_list *process);
+void				op_lldi(t_vm *v, t_list *process);
+void				op_lfork(t_vm *v, t_list *process);
+void				op_aff(t_vm *v, t_list *process);
 
 #endif
