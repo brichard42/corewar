@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/13 17:59:08 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/17 17:55:46 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define COREWAR_H
 
 # include "libft.h"
-# include "op.h"
 # include <SDL.h>
 # include <SDL_image.h>
 # include <SDL_ttf.h>
@@ -25,6 +24,7 @@
 # include <limits.h>
 # include <sys/types.h>
 # include <unistd.h>
+# include "op.h"
 # include "typedef.h"
 # include "core_define.h"
 # include "visualisator.h"
@@ -69,5 +69,25 @@ int8_t				read_name(t_parser *parser, int32_t fd);
 int8_t				read_size(t_parser *parser, int32_t fd);
 int8_t				read_comment(t_parser *parser, int32_t fd);
 int8_t				read_code(t_parser *parser, int32_t fd);
+
+/*
+**	-------OPERATION FUNCTIONS--------------------------------------------------
+*/
+void				op_live(t_vm *v, t_list *process);
+void				op_ld(t_vm *v, t_list *process);
+void				op_st(t_vm *v, t_list *process);
+void				op_add(t_vm *v, t_list *process);
+void				op_sub(t_vm *v, t_list *process);
+void				op_and(t_vm *v, t_list *process);
+void				op_or(t_vm *v, t_list *process);
+void				op_xor(t_vm *v, t_list *process);
+void				op_zjmp(t_vm *v, t_list *process);
+void				op_ldi(t_vm *v, t_list *process);
+void				op_sti(t_vm *v, t_list *process);
+void				op_fork(t_vm *v, t_list *process);
+void				op_lld(t_vm *v, t_list *process);
+void				op_lldi(t_vm *v, t_list *process);
+void				op_lfork(t_vm *v, t_list *process);
+void				op_aff(t_vm *v, t_list *process);
 
 #endif

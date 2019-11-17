@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 10:14:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/17 23:16:55 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 		str[0] = tmp[0];
 		str[1] = tmp[1];
 	}
-	str[2] = ' ';
-	str[3] = '\0';
+	str[2] = '\0';
 	ft_strdel(&tmp);
 	return (SUCCESS);
 }
@@ -84,7 +83,7 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 {
 	int			count;
 	int			text[3];
-	char		str[4];
+	char		str[3];
 	SDL_Point	point;
 
 	count = 0;

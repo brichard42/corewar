@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 16:30:47 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/17 17:57:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ typedef struct          s_vm
     uint32_t			cycles_to_dump;
     uint32_t			current_cycle;
     uint8_t				visu;
+    uint8_t				champ_number;
     uint8_t				verbose;
 }                       t_vm;
 
