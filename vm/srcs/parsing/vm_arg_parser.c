@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2019/11/07 16:11:57 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/18 15:10:10 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ int8_t		vm_arg_parser(t_parser *parser, char **av)
 		++av;
 	}
 	*parser = d_parser;
-	ft_printf("chp_name = [ %s ] | chp_num = %d\n", parser->env.champs_data[0].champ_name, parser->env.champs_data[0].chp_num);
 	return (d_parser.state != S_ERR ? SUCCESS : FAILURE);
 }

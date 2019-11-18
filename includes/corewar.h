@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 18:13:47 by brichard          #+#    #+#             */
-/*   Updated: 2019/11/07 14:59:54 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/18 13:59:33 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ typedef struct		s_process
 */
 typedef struct		s_champ
 {
-	char			champ_name[PROG_NAME_LENGTH + 1];
+	char			name[PROG_NAME_LENGTH + 1];
 	char			comment[COMMENT_LENGTH + 1];
-	int32_t			chp_num;
+	uint32_t		size;
+	int32_t			num;
 	int32_t			last_live_cycle;
 }					t_champ;
 
@@ -65,7 +66,7 @@ typedef struct		s_champ
 typedef struct		s_vm
 {
 	t_process			*process_list;
-	t_champ				champs_data[MAX_PLAYERS + 1];
+	t_champ				champ[MAX_PLAYERS + 1];
 	char				mem[MEM_SIZE];
 	uint8_t				mem_owner[MEM_SIZE];
 	uint32_t			cycles_to_die;
@@ -82,7 +83,7 @@ typedef struct		s_parser
 	t_vm			env;
 	enum e_state	state;
 	int32_t			chp_num;
-	int32_t			prog_size;
+	uint8_t			cur_chp_index;
 }					t_parser;
 
 /*
