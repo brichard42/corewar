@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/19 10:55:37 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:26:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ int8_t				read_name(t_parser *parser, int32_t fd);
 int8_t				read_size(t_parser *parser, int32_t fd);
 int8_t				read_comment(t_parser *parser, int32_t fd);
 int8_t				read_code(t_parser *parser, int32_t fd);
+
+int8_t				fill_arena(t_vm *env, uint8_t	champ_amount);
 
 /*
 **	-------OPERATION FUNCTIONS--------------------------------------------------

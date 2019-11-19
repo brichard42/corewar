@@ -1,6 +1,0 @@
-EHO le char dans draw arena pu ca mere tu peux faire un str[2] c'est plus propre
-et pas besoin de free fait ca et aussi change les create_tab_int_3 par les set
-qui sont aussi plus propre. 
-
-POUR LA LISTE DE PROCESSUS IL FAUT CHOISIR QUEL CHAMPION AVEC LES FLECHES GAUCHE
-DROITE ET DEROULER SA LISTE DE PROCESSUS AVEC HAUT/BAS

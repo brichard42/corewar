@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:02:25 by brichard          #+#    #+#             */
-/*   Updated: 2019/11/19 13:06:13 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:25:00 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int8_t	read_comment(t_parser *parser, int32_t fd)
 	i = parser->cur_chp_index;
 	ret = read(fd, parser->env.champ[i].comment, COMMENT_LENGTH);
 		parser->env.champ[i].comment[ret] = '\0';
+	lseek(fd, 4, SEEK_CUR);
 	return (ret == COMMENT_LENGTH ? SUCCESS : FAILURE);
 }
 
@@ -76,16 +77,19 @@ int8_t	read_code(t_parser *parser, int32_t fd)
 	int32_t			ret;
 	uint8_t			i;
 	uint8_t			error;
+	char			buf;
 
-	i = parser->cur_chp_index;
 	error = 0;
-	ret = read(fd, &parser->env.mem[MEM_SIZE / 4 * i], CHAMP_MAX_SIZE + 4);
+	i = parser->cur_chp_index;
+	ret = read(fd, parser->env.champ[i].code, parser->env.champ[i].size);
 	if (ret < 0)
 		error = 1;
-	else if (ret - 4 > CHAMP_MAX_SIZE)
+	else if (ret > CHAMP_MAX_SIZE)
 		error = 2;
-	else if (ret - 4 != (int32_t)parser->env.champ[i].size)
+	else if (ret != (int32_t)parser->env.champ[i].size)
 		error = 3;//EN PREPA POUR LA _DEBUG, CEST DEGUEU CEST NORMAL
+	if (read(fd, &buf, 1) > 0)
+		error = 4;
 	++parser->cur_chp_index;
 	return (error == 0 ? SUCCESS : FAILURE);
 }

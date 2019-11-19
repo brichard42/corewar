@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/17 23:16:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:02:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 {
 	char *tmp;
 
-	if (!(tmp = ft_ulltoa_ubase(c, "0123456789abcedef")))
+	if (!(tmp = ft_ulltoa_ubase(c, "0123456789ABCDEF")))
 		return (FAILURE);
 	if (c < 16)
 	{

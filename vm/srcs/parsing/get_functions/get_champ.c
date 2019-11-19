@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:27:22 by brichard          #+#    #+#             */
-/*   Updated: 2019/11/19 12:59:46 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:33:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static uint8_t	is_dot_cor(char *av)
 	size_t	size;
 
 	size = ft_strlen(av);
-	return (size >= 5 && ft_strequ(DOT_COR, &av[size - 4]) == TRUE ? SUCCESS : FAILURE);
+	return (size >= 5 && ft_strequ(DOT_COR, &av[size - 4]) == TRUE
+			? SUCCESS : FAILURE);
 }
 
 void			get_champ(t_parser *parser, char **av)

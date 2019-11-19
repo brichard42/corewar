@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/19 11:16:33 by brichard         ###   ########.fr        #
+#    Updated: 2019/11/19 16:29:25 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,8 @@ SRCS += get_chpnum.c
 SRCS += get_champ.c
 
 SRCS += read_champ.c
+
+SRCS += fill_arena.c
 
 SRCS += init_vm.c
 SRCS += create_vm.c

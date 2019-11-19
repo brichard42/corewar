@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/19 11:30:42 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/19 16:34:15 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ int			main(int ac, char **av)
 	ft_bzero((void *)&parser, sizeof(t_parser));
 	if (vm_arg_parser(&parser, ++av) == FAILURE)
 		return (usage());
+	if (fill_arena(&parser.env, parser.cur_chp_index) == FAILURE)
+		return (usage());
 	print_champ(parser.env.champ);
 	if (parser.env.visu == ON)
 	{
 		if (!(win = open_window("Test")))
 			return (0);
-		ft_printf("coucouille\n");
 		if (drawer(win, &parser.env) == FAILURE)
 			return (1);
 	}
