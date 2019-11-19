@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_champ.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/18 16:27:22 by brichard          #+#    #+#             */
+/*   Updated: 2019/11/19 12:59:46 by brichard         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 static uint8_t	is_dot_cor(char *av)
@@ -11,7 +23,7 @@ static uint8_t	is_dot_cor(char *av)
 void			get_champ(t_parser *parser, char **av)
 {
 	static t_read_func	read_func_tab[RD_F_NUM] = {read_magic, read_name
-										, read_comment, read_code};
+										, read_size, read_comment, read_code};
 	int32_t		fd;
 	int8_t		i;
 
@@ -22,6 +34,7 @@ void			get_champ(t_parser *parser, char **av)
 		if (fd > 0)
 			while (i < RD_F_NUM && read_func_tab[i](parser, fd) == SUCCESS)
 				++i;
+		++parser->env.champ_amount;
 	}
 	parser->state = (i == RD_F_NUM ? S_OPTION : S_ERR);
 }

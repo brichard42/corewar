@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 16:30:27 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/19 11:14:38 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
 		return (FAILURE);
 	point.x += 30;
 	point.y += 50;
-	if (env->champs_data[champ_n].last_live_cycle == FAILURE || env->current_cycle > 200)
+	if (env->champ[champ_n].last_live_cycle == FAILURE || env->current_cycle > 200)
 	{
 		if (draw_text(win, "X       X", point, text) == FAILURE)
 			return (FAILURE);
@@ -61,7 +61,7 @@ int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
 			return (FAILURE);
 	point.y += 70;
 	point.x -= 10;
-	if (env->champs_data[champ_n].last_live_cycle == FAILURE || env->current_cycle > 200)
+	if (env->champ[champ_n].last_live_cycle == FAILURE || env->current_cycle > 200)
 	{
 		if (draw_text(win, "/----------\\", point, text) == FAILURE)
 			return (FAILURE);
@@ -87,7 +87,7 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 	pos = create_champ_rect(champ_n);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
 		return (FAILURE);
-	if (draw_text(win, (char *)env->champs_data[champ_n].champ_name, point,
+	if (draw_text(win, (char *)env->champ[champ_n].name, point,
 			text) == FAILURE)
 		return (FAILURE);
 	if (draw_champion_face(win, env, champ_n, point) == FAILURE)

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/17 23:13:57 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/19 12:58:38 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int8_t	draw(t_window *win, t_vm *env, t_draw infos)
 		return (FAILURE);
 	if (draw_process_pannel(win, env, infos.champ_ind) == FAILURE)
 		return (FAILURE);
-	while (count < env->champ_number)
+	while (count < env->champ_amount)
+	{
 		if (draw_champions(win, env, count++) == FAILURE)
 			return (FAILURE);
+	}
 	return (SUCCESS);
 }
 
@@ -63,8 +65,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 	ft_bzero((void *)&infos, sizeof(t_draw));
 	infos.play = 1;
 	infos.cycles_per_sec = 32;
-	ft_putnbr(env->champ_number);
-	infos.champ_number = env->champ_number;
+	infos.champ_number = env->champ_amount;
 	while (infos.play)
 	{
 		if (draw(win, env, infos) == FAILURE)

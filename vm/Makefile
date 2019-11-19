@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/13 18:00:50 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/19 11:16:33 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,33 +32,39 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 #                                   SRCS_FILES                                 #
 #------------------------------------------------------------------------------#
 
-SRCS += main.c \
-		window.c \
-		get_opt.c \
-		free_vm.c \
-		init_vm.c \
-		get_dump.c \
-		get_champ.c \
+SRCS += window.c \
 		draw_text.c \
-		create_vm.c \
-		delete_vm.c \
-		read_champ.c \
-		get_chpnum.c \
 		draw_infos.c \
 		draw_image.c \
 		draw_arena.c \
 		main_drawer.c \
 		draw_corewar.c \
-		init_process.c \
-		free_process.c \
-		vm_arg_parser.c \
-		create_process.c \
-		delete_process.c \
 		draw_champions.c \
 		object_creation.c \
 		draw_rectangles.c \
 		draw_process_list.c \
 		draw_command_panel.c \
+
+SRCS += main.c
+
+SRCS += vm_arg_parser.c
+
+SRCS += get_opt.c
+SRCS += get_dump.c
+SRCS += get_chpnum.c
+SRCS += get_champ.c
+
+SRCS += read_champ.c
+
+SRCS += init_vm.c
+SRCS += create_vm.c
+SRCS += delete_vm.c
+SRCS += free_vm.c
+
+SRCS += init_process.c
+SRCS += create_process.c
+SRCS += delete_process.c
+SRCS += free_process.c
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #
@@ -172,7 +178,7 @@ COM_STRING   = "Compiling"
 .PHONY: all $(NAME) $(OBJS) $(OBJS_PATH) $(LIBS) $(CLEAR) lc lfc clean fclean re
 .SILENT:
 
-all: $(CLEAR) $(NAME)
+all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
 	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@)

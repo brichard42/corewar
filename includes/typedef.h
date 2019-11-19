@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/17 17:57:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/19 12:18:02 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,43 +85,43 @@ typedef struct			s_process
 }						t_process;
 
 /*
-**	------TYPEDEF CHAMPION STRUCTURE--------------------------------------------
+**	-------TYPEDEF CHAMPION STRUCTURE-------
 */
-
-typedef struct			s_champ
+typedef struct		s_champ
 {
-	unsigned char		champ_name[PROG_NAME_LENGTH + 1];
-	int32_t				chp_num;
-	int32_t				last_live_cycle;
-}						t_champ;
+	char			name[PROG_NAME_LENGTH + 1];
+	char			comment[COMMENT_LENGTH + 1];
+	uint32_t		size;
+	int32_t			num;
+	int32_t			last_live_cycle;
+}					t_champ;
 
 /*
-**  -------TYPEDEF COREWAR STRUCTURE--------------------------------------------
+**	-------TYPEDEF COREWAR STRUCTURE-------
 */
-typedef struct          s_vm
+typedef struct		s_vm
 {
-    t_window			*window;
-    t_process			*process_list;
-    t_champ				champs_data[MAX_PLAYERS + 1];
-	unsigned char		mem[MEM_SIZE];
+	t_process			*process_list;
+	t_champ				champ[MAX_PLAYERS + 1];
+	char				mem[MEM_SIZE];
 	uint8_t				mem_owner[MEM_SIZE];
-    uint32_t			cycles_to_die;
-    uint32_t			cycles_to_dump;
-    uint32_t			current_cycle;
-    uint8_t				visu;
-    uint8_t				champ_number;
-    uint8_t				verbose;
-}                       t_vm;
+	uint32_t			current_cycle;
+	uint32_t			cycles_to_die;
+	int32_t				cycles_to_dump;
+	uint8_t				champ_amount;
+	uint8_t				visu;
+	uint8_t				verbose;
+}					t_vm;
 
 /*
-**	-------TYPEDEF PARSING STRUCTURE--------------------------------------------
+**	-------TYPEDEF PARSING STRUCTURE-------
 */
-
-typedef struct			s_parser
+typedef struct		s_parser
 {
-	t_vm				env;
-	enum e_state		state;
-	int32_t				chp_num;
-	int32_t				prog_size;
-}						t_parser;
+	t_vm			env;
+	enum e_state	state;
+	int32_t			chp_num;
+	uint8_t			cur_chp_index;
+}					t_parser;
+
 #endif

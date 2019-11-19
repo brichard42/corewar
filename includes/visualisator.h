@@ -6,54 +6,54 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 13:07:38 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/19 11:34:17 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_H
-#define TEST_H
+# define TEST_H
 
-#define THE_END			3
-#define CONTINUE		1
-#define TO_START		0
-#define PAUSED			1
-#define ACTIVE			2
-#define FONT_PATH "vm/ressources/font/Tinos-Regular.ttf"
-#define NB_SIZE			150
-#define NB_COLOR		26
-#define NB_STYLE		5
-#define BLACK			0
-#define WHITE			1
-#define LIGHT_BLUE		2
-#define BLUE			3
-#define DARK_BLUE		4
-#define LIGHT_RED		5
-#define RED				6
-#define DARK_RED		7
-#define LIGHT_GREEN		8
-#define GREEN			9
-#define DARK_GREEN		10
-#define LIGHT_CYAN		11
-#define CYAN			12
-#define DARK_CYAN		13
-#define LIGHT_GREY		14
-#define GREY			15
-#define DARK_GREY		16
-#define ORANGE			17
-#define TEXT2			18
-#define CHAMP_1			19
-#define CHAMP_2			20
-#define CHAMP_3			21
-#define CHAMP_4			22
-#define LIGHT_ORANGE	23
-#define BORDER			24
-#define TEXT			25
+# define THE_END			3
+# define CONTINUE		1
+# define TO_START		0
+# define PAUSED			1
+# define ACTIVE			2
+# define FONT_PATH 		"vm/ressources/font/Tinos-Regular.ttf"
+# define NB_SIZE			150
+# define NB_COLOR		26
+# define NB_STYLE		5
+# define BLACK			0
+# define WHITE			1
+# define LIGHT_BLUE		2
+# define BLUE			3
+# define DARK_BLUE		4
+# define LIGHT_RED		5
+# define RED				6
+# define DARK_RED		7
+# define LIGHT_GREEN		8
+# define GREEN			9
+# define DARK_GREEN		10
+# define LIGHT_CYAN		11
+# define CYAN			12
+# define DARK_CYAN		13
+# define LIGHT_GREY		14
+# define GREY			15
+# define DARK_GREY		16
+# define ORANGE			17
+# define TEXT2			18
+# define CHAMP_1			19
+# define CHAMP_2			20
+# define CHAMP_3			21
+# define CHAMP_4			22
+# define LIGHT_ORANGE	23
+# define BORDER			24
+# define TEXT			25
 
-#define NORMAL TTF_STYLE_NORMAL
-#define BOLD TTF_STYLE_BOLD
-#define ITALIC TTF_STYLE_ITALIC
-#define UNDERLINE TTF_STYLE_UNDERLINE
-#define STRICK TTF_STYLE_STRIKETHROUGH
+# define NORMAL TTF_STYLE_NORMAL
+# define BOLD TTF_STYLE_BOLD
+# define ITALIC TTF_STYLE_ITALIC
+# define UNDERLINE TTF_STYLE_UNDERLINE
+# define STRICK TTF_STYLE_STRIKETHROUGH
 
 /*
 **	--------WINDOW FUNCTIONS----------------------------------------------------

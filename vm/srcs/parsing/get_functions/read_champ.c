@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_champ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/13 19:05:32 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/17 17:56:01 by tlandema         ###   ########.fr       */
+/*   Created: 2019/11/18 12:02:25 by brichard          #+#    #+#             */
+/*   Updated: 2019/11/19 13:06:13 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,48 +29,63 @@ int8_t	read_magic(t_parser *parser, int32_t fd)
 int8_t	read_name(t_parser *parser, int32_t fd)
 {
 	int32_t			ret;
-	uint8_t			chp_index;
+	uint8_t		i;
 
-	chp_index = 0;
-	while (parser->env.champs_data[chp_index].chp_num != 0)
-		++chp_index;
+	i = parser->cur_chp_index;
 	if (parser->chp_num == 0)
-		parser->chp_num = chp_index + 1;
-	if (chp_index < 4)
+		parser->chp_num = i + 1;
+	if (i < 4)
 	{
-		ret = read(fd, parser->env.champs_data[chp_index].champ_name, PROG_NAME_LENGTH);
+		ret = read(fd, parser->env.champ[i].name, PROG_NAME_LENGTH);
 		if (ret > 0 && ret == PROG_NAME_LENGTH)
 		{
-			parser->env.champs_data[chp_index].chp_num = parser->chp_num;
+			parser->env.champ[i].num = parser->chp_num;
 			parser->chp_num = 0;
 		}
 	}
-	lseek(fd, 8, SEEK_CUR);
 	return (parser->chp_num == 0 ? SUCCESS : FAILURE);
+}
+
+int8_t	read_size(t_parser *parser, int32_t fd)
+{
+	unsigned char	buff[SIZEOF_INT32];
+	int32_t			ret;
+
+	lseek(fd, 4, SEEK_CUR);
+	ret = read(fd, buff, SIZEOF_INT32);
+	if (ret > 0 && ret == SIZEOF_INT32)
+		parser->env.champ[parser->cur_chp_index].size = (buff[0] << 24
+							| buff[1] << 16
+							| buff[2] << 8 | buff[3]);
+	return (SUCCESS);
 }
 
 int8_t	read_comment(t_parser *parser, int32_t fd)
 {
-	unsigned char		buff[COMMENT_LENGTH + 1];
 	int32_t		ret;
+	uint8_t		i;
 
-	if ((ret = read(fd, buff, COMMENT_LENGTH)) == COMMENT_LENGTH)
-	{
-		buff[ret] = '\0';
-		ft_printf("comment = [%s]\n", buff);
-		parser->state = S_OPTION;
-	}
-	lseek(fd, 4, SEEK_CUR);
-	return (SUCCESS);
+	i = parser->cur_chp_index;
+	ret = read(fd, parser->env.champ[i].comment, COMMENT_LENGTH);
+		parser->env.champ[i].comment[ret] = '\0';
+	return (ret == COMMENT_LENGTH ? SUCCESS : FAILURE);
 }
 
 int8_t	read_code(t_parser *parser, int32_t fd)
 {
-	static uint8_t	nice = 0;
-	int				len;
+	int32_t			ret;
+	uint8_t			i;
+	uint8_t			error;
 
-	len = read(fd, &parser->env.mem[(MEM_SIZE / 4) * nice++], CHAMP_MAX_SIZE);
-	ft_memset((void *)&parser->env.mem_owner[(MEM_SIZE / 4) * (nice - 1)], nice, len);
-	parser->env.champ_number = nice;
-	return (SUCCESS);
+	i = parser->cur_chp_index;
+	error = 0;
+	ret = read(fd, &parser->env.mem[MEM_SIZE / 4 * i], CHAMP_MAX_SIZE + 4);
+	if (ret < 0)
+		error = 1;
+	else if (ret - 4 > CHAMP_MAX_SIZE)
+		error = 2;
+	else if (ret - 4 != (int32_t)parser->env.champ[i].size)
+		error = 3;//EN PREPA POUR LA _DEBUG, CEST DEGUEU CEST NORMAL
+	++parser->cur_chp_index;
+	return (error == 0 ? SUCCESS : FAILURE);
 }
