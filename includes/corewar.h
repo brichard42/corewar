@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/20 16:05:59 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/11/22 18:48:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define COREWAR_H
 
 # include "libft.h"
-// # include <SDL.h>
-// # include <SDL_image.h>
-// # include <SDL_ttf.h>
-// # include <SDL_mixer.h>
+# include <SDL.h>
+# include <SDL_image.h>
+# include <SDL_ttf.h>
+# include <SDL_mixer.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
@@ -105,21 +105,21 @@ int8_t				fill_arena(t_vm *env, uint8_t	champ_amount);
 /*
  **	-------COREWAR OP FUNCTIONS------------
  */
-void				live(t_vm *vm, t_process *process);
-void				ld(t_vm *vm, t_process *process);
-void				st(t_vm *vm, t_process *process);
-void				add(t_vm *vm, t_process *process);
-void				sub(t_vm *vm, t_process *process);
-void				and(t_vm *vm, t_process *process);
-void				or(t_vm *vm, t_process *process);
-void				xor(t_vm *vm, t_process *process);
-void				zjump(t_vm *vm, t_process *process);
-void				ldi(t_vm *vm, t_process *process);
-void				sti(t_vm *vm, t_process *process);
-void				fork(t_vm *vm, t_process *process);
-void				lld(t_vm *vm, t_process *process);
-void				lldi(t_vm *vm, t_process *process);
-void				lfork(t_vm *vm, t_process *process);
-void				aff(t_vm *vm, t_process *process);
+void				op_live(t_vm *vm, t_process *process);
+void				op_ld(t_vm *vm, t_process *process);
+void				op_st(t_vm *vm, t_process *process);
+void				op_add(t_vm *vm, t_process *process);
+void				op_sub(t_vm *vm, t_process *process);
+void				op_and(t_vm *vm, t_process *process);
+void				op_or(t_vm *vm, t_process *process);
+void				op_xor(t_vm *vm, t_process *process);
+void				op_zjump(t_vm *vm, t_process *process);
+void				op_ldi(t_vm *vm, t_process *process);
+void				op_sti(t_vm *vm, t_process *process);
+void				op_fork(t_vm *vm, t_process *process);
+void				op_lld(t_vm *vm, t_process *process);
+void				op_lldi(t_vm *vm, t_process *process);
+void				op_lfork(t_vm *vm, t_process *process);
+void				op_aff(t_vm *vm, t_process *process);
 
 #endif
