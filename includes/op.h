@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/11/18 16:20:11 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/20 16:06:11 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,17 @@ typedef struct		s_header
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
-typedef struct		s_op
-{
-	char				*name;
-	int					nb_param;
-	int					type_param[3];
-	int					op_code;
-	int					nb_cycle;
-	char				*comment;
-	bool				have_param_byte;
-	bool				is_int;
-}					t_op;
+// typedef struct		s_op
+// {
+// 	char				*name;
+// 	int					nb_param;
+// 	int					type_param[3];
+// 	int					op_code;
+// 	int					nb_cycle;
+// 	char				*comment;
+// 	bool				have_param_byte;
+// 	bool				is_int;
+// }					t_op;
 
 /*
 ** ===========
@@ -89,10 +89,10 @@ typedef struct		s_op
 ** ===========
 */
 
-/*
-** OP.C
-*/
-void				print_tab(void);
-void				get_op_tab(t_op *tab);
+// /*
+// ** OP.C
+// */
+// void				print_tab(void);
+// void				get_op_tab(t_op *tab);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/19 15:51:22 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/22 14:48:16 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,31 @@ typedef struct		s_image
 }					t_image;
 
 /*
+ **	-------TYPEDEF OP STRUCTURE-------------------------------------------------
+ */
+typedef struct s_op // new
+{
+	uint8_t				active;
+	int32_t				param[3];
+	int32_t				type_param[3];
+	int32_t				op_code;
+	int32_t				nb_cycle;
+	int32_t				pos_op_code;
+	unsigned char			ocp;
+}				t_op;
+
+/*
 **  -------TYPEDEF PROCESS STRUCTURE--------------------------------------------
 */
 typedef struct			s_process
 {
     struct s_process	*next;
     struct s_process	*prev;
+	t_op				op; // new , init pas ok
     int32_t				reg[REG_NUMBER];
     int32_t				pc;
     int32_t				cycles_left;
+	int32_t				last_live; // new, init ok
     uint8_t				carry;
 }						t_process;
 
@@ -94,6 +110,7 @@ typedef struct		s_champ
 	char			code[CHAMP_MAX_SIZE + 1];
 	uint32_t		size;
 	int32_t			num;
+	int32_t			life_signal; // new
 	int32_t			last_live_cycle;
 }					t_champ;
 
@@ -106,7 +123,10 @@ typedef struct		s_vm
 	t_champ				champ[MAX_PLAYERS + 1];
 	char				mem[MEM_SIZE];
 	uint8_t				mem_owner[MEM_SIZE];
+	uint32_t			lives_in_cycle; // new, init ok
 	uint32_t			current_cycle;
+	uint32_t			next_ctod; // new, init ok
+	uint32_t			ctod_nb; // new, init ok
 	uint32_t			cycles_to_die;
 	int32_t				cycles_to_dump;
 	uint8_t				champ_amount;
@@ -124,5 +144,23 @@ typedef struct		s_parser
 	int32_t			chp_num;
 	uint8_t			cur_chp_index;
 }					t_parser;
+
+/*
+ **	-------TYPEDEF OP_TAB FUNCTIONS-------
+ */
+typedef struct		s_op_tab
+{
+	char		*name;
+	void		(*func)(t_vm *vm, t_process *process);
+	uint32_t	nb_param;
+	int32_t		type_param[3];
+	int32_t		op_code;
+	int32_t		nb_cycle;
+	char		*com;
+	int32_t		jsp_encore; // pour savoir si on a besoin d'ocp ou pas
+	int32_t		direct_size;
+}					t_op_tab;
+
+extern t_op_tab		op_tab[];
 
 #endif
