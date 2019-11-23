@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:31:50 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/23 15:56:10 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static int8_t	draw_arena_structure(t_window *win, t_vm *env)
 		return (FAILURE);
 	if (draw_text(win, "ARENA", point, text) == FAILURE)
 		return (FAILURE);
+	if (draw_structure_sides(win) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }
 
@@ -70,7 +72,7 @@ static int8_t	draw_uninit_arena(t_window *win)
 	int			text[3];
 	int			count;
 
-	point = create_point(15, 195);
+	point = create_point(45, 225);
 	if (create_tab_int3(text, 17, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
 	count = 0;
@@ -78,11 +80,11 @@ static int8_t	draw_uninit_arena(t_window *win)
 	{
 		if (draw_text(win, "00", point, text) == FAILURE)
 			return (FAILURE);
-		point.x += 28;
+		point.x = (count % 2) ? point.x + 27 : point.x + 28;
 		if ((count + 1) % 64 == 0 && count != 0)
 		{
-			point.y += 17;
-			point.x = 15;
+			point.y = ((count + 1) / 64 % 2) ? point.y + 16 : point.y + 17;
+			point.x = 45;
 		}
 		count++;
 	}
@@ -100,7 +102,7 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 	SDL_Point	point;
 
 	count = 0;
-	point = create_point(15, 195);
+	point = create_point(45, 225);
 	while (count < MEM_SIZE)
 	{
 		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[count], BOLD)
@@ -110,11 +112,11 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 			return (FAILURE);
 		if (draw_text(win, (char *)str, point, text) == FAILURE)
 			return (FAILURE);
-		point.x += 28;
+		point.x = (count % 2) ? point.x + 27 : point.x + 28;
 		if ((count + 1) % 64 == 0 && count != 0)
 		{
-			point.y += 17;
-			point.x = 15;
+			point.y = ((count + 1) / 64 % 2) ? point.y + 16 : point.y + 17;
+			point.x = 45;
 		}
 		count++;
 	}
