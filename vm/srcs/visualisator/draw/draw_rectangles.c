@@ -6,11 +6,15 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:42:42 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/06 15:29:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:50:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+/*
+**	All the functions we are using to draw rectangles in the renderer.
+*/
 
 int8_t	draw_rectangle(t_window *win, SDL_Rect rect, SDL_Color color)
 {

@@ -6,11 +6,17 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:32:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/06 13:55:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:45:49 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+/*
+**	Draw image is mallocing a surface in a file and copied it in a t_image.
+**	It is mostly use for draw_text that recuperates the different letters or
+**	symbol using thee ttf library and resources.
+*/
 
 t_image	*malloc_t_image(t_window *win, SDL_Surface *p_surface)
 {

@@ -6,12 +6,15 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:35:29 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/12 15:41:14 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:43:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+/* 
+**	Draw infos about the command to use the visualisator.
+*/
 static int8_t	command_more_info(t_window *win, int *text)
 {
 	if (draw_text(win, "\'+\'       : Speed Up", create_point(520, 120),
@@ -26,6 +29,9 @@ static int8_t	command_more_info(t_window *win, int *text)
 	return (SUCCESS);
 }
 
+/*
+**	Draw infos about the command to use the visualisator.
+*/
 static int8_t	command_info(t_window *win, int i)
 {
 	SDL_Point	point;
@@ -55,6 +61,10 @@ static int8_t	command_info(t_window *win, int i)
 	return (SUCCESS);
 }
 
+/*
+**	Draw infos about the command to use the visualisator, it depends of the
+**	state of the machine.
+*/
 int8_t			draw_command_panel(t_window *win, int i)
 {
 	SDL_Rect	pos;

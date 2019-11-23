@@ -6,12 +6,16 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/19 16:02:13 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:31:50 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+/*
+**	Reads a char in the memory and changes it to the corresponding hexadecimal 
+**	value.
+*/
 static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 {
 	char *tmp;
@@ -33,6 +37,9 @@ static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 	return (SUCCESS);
 }
 
+/*
+**	Draws the header rectangle aswell as the arena rectangle.
+*/
 static int8_t	draw_arena_structure(t_window *win, t_vm *env)
 {
 	SDL_Rect	pos;
@@ -54,6 +61,9 @@ static int8_t	draw_arena_structure(t_window *win, t_vm *env)
 	return (SUCCESS);
 }
 
+/*
+**	Draws the Arena filled with 00 before we launched the cycle.
+*/
 static int8_t	draw_uninit_arena(t_window *win)
 {
 	SDL_Point	point;
@@ -79,6 +89,9 @@ static int8_t	draw_uninit_arena(t_window *win)
 	return (SUCCESS);
 }
 
+/*
+**	Draws the arena while the cycle have begun, whether it's stopped or running.
+*/
 static int8_t	draw_active_arena(t_window *win, t_vm *env)
 {
 	int			count;
@@ -108,16 +121,18 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 	return (SUCCESS);
 }
 
-int8_t			draw_arena(t_window *win, t_vm *env, int state)
+int8_t			draw_arena(t_window *win, t_vm *env, t_draw infos)
 {
 	if (draw_arena_structure(win, env) == FAILURE)
 		return (FAILURE);
-	if (state == TO_START)
+	if (infos.state == TO_START)
 	{
 		if (draw_uninit_arena(win) == FAILURE)
 			return (FAILURE);
 	}
 	else if (draw_active_arena(win, env) == FAILURE)
 		return (FAILURE);
+//	else if (underliner(win, env) == FAILURE)
+//		return (FAILURE)
 	return (SUCCESS);
 }

@@ -6,12 +6,17 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/19 12:58:38 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:29:55 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+/*
+**	Draw verifies that every drawing functions works properly and returns
+**	FAILURE if any of those fails. Each functions deals with a specific part
+**	of the renderer.
+*/
 int8_t	draw(t_window *win, t_vm *env, t_draw infos)
 {
 	int	count;
@@ -24,9 +29,9 @@ int8_t	draw(t_window *win, t_vm *env, t_draw infos)
 		return (FAILURE);
 	if (draw_infos(win, env, infos) == FAILURE)
 		return (FAILURE);
-	if (draw_arena(win, env, infos.state) == FAILURE)
+	if (draw_arena(win, env, infos) == FAILURE)
 		return (FAILURE);
-	if (draw_process_pannel(win, env, infos.champ_ind) == FAILURE)
+	if (draw_procs_pannel(win, env, infos) == FAILURE)
 		return (FAILURE);
 	while (count < env->champ_amount)
 	{
@@ -36,6 +41,14 @@ int8_t	draw(t_window *win, t_vm *env, t_draw infos)
 	return (SUCCESS);
 }
 
+/*
+**	"ESC" -> closes the window
+**	"Red cross top left of window" -> closes the window
+**	"Space" -> Launch/stop/restart
+**	"Left/Right arrows" -> Change the process list to the process list of
+**	another champ
+**	"+/-" -> accelerate/deccelerate the cycle speed //not done yet
+*/
 void	event_catcher(t_window *win, t_draw *infos)
 {
 	if (win->event.type == SDL_QUIT)
@@ -57,6 +70,13 @@ void	event_catcher(t_window *win, t_draw *infos)
 				? infos->champ_ind - 1 : infos->champ_number - 1;
 }
 
+/*
+**	This is the function that calls the fucntions that draws and collects the 
+**	different event used by the visualisator. Draw takes the infos and draws
+**	in the renderer while using those. PollEvent recuperates the different input
+**	the user enters on the keyboard. And event_catcher change some variables if
+**	the input recuperated is usefull to the visualisator.
+*/
 int8_t	drawer(t_window *win, t_vm *env)
 {
 	int		ret;

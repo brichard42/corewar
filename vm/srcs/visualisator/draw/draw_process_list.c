@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/19 11:15:21 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:50:00 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int8_t	draw_process_header(t_window *win, t_vm *env, int champ_num)
+static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;
@@ -37,17 +37,101 @@ int8_t	draw_process_header(t_window *win, t_vm *env, int champ_num)
 	ft_strdel(&str);
 	return (SUCCESS);
 }
+static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3], SDL_Point point)
+{
+	char	*str;
+	int		tmp;
 
-int8_t	draw_process_pannel(t_window *win, t_vm *env, int champ_num)
+	//if ((tmp = draw_text(win, proc->op.name, point, text)) == FAILURE)
+	//	return (FAILURE);
+	point.x += tmp;
+	if ((tmp = draw_text(win, "in : ", point, text)) == FAILURE)
+		return (FAILURE);
+	point.x += tmp;
+	if ((str = ft_lltoa(proc->op.nb_cycle)) == NULL)
+		return (FAILURE);
+	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
+		return (FAILURE);
+	ft_strdel(&str);
+	point.x += tmp + 60;
+	if ((tmp = draw_text(win, "cycles ", point, text)) == FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
+}
+
+static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3], SDL_Point point)
+{
+	char		*str;
+	int			tmp;
+
+	if ((str = ft_lltoa(proc->pc / 64 + 1)) == NULL)
+		return (FAILURE);
+	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
+		return (FAILURE);
+	ft_strdel(&str);
+	point.x += tmp;
+	if ((str = ft_lltoa(proc->pc % 64 + 1)) == NULL)
+		return (FAILURE);
+	if ((tmp = draw_text(win, "X", point, text)) == FAILURE)
+		return (FAILURE);
+	point.x += tmp;
+	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
+		return (FAILURE);
+	point.x += tmp + 35;
+	if ((tmp = draw_text(win, "Action : ", point, text)) == FAILURE)
+		return (FAILURE);
+	point.x += tmp;
+	if (draw_one_process2(win, proc, text, point) == FAILURE)
+		return (FAILURE);
+	return (SUCCESS);
+}
+
+static int8_t	draw_procs_list(t_window *win, t_vm	*env, t_draw infos,
+		int text[3])
+{
+	t_process	*proc_tmp;
+	SDL_Point	point;
+	int			list_size;
+	int			champ_num;
+
+	point = create_point(1825, 710);
+	list_size = 0;
+	proc_tmp = env->process_list;
+	champ_num = env->champ[infos.champ_ind].num;
+	while (proc_tmp && list_size < 20)
+	{
+		if (proc_tmp->reg[0] == champ_num)
+		{
+			if (draw_one_process(win, proc_tmp, text, point) == FAILURE)
+				return (FAILURE);
+			point.y += 29;
+			list_size++;
+		}
+		proc_tmp = proc_tmp->next;
+	}
+	return (SUCCESS);
+}
+
+/*
+**	Draws the process list with the action the process will launch and how many
+**	cycle it will take them to execute the action. It also prints the placement
+**	of the processus, coupled with the underlining (not done yet)
+**	in the arena we are able to see properly where every process is and acts.
+*/
+
+int8_t			draw_procs_pannel(t_window *win, t_vm *env, t_draw infos)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;
 	int			text[3];
 
-	if (draw_process_header(win, env, champ_num) == FAILURE)
+	if (draw_procs_header(win, env, infos.champ_ind) == FAILURE)
 		return (FAILURE);
+	create_tab_int3(text, 20, 19 + infos.champ_ind, BOLD);
 	pos = create_rect(1810, 705, 490, 585);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
+		return (FAILURE);
+	if (draw_procs_list(win, env, infos, text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

@@ -6,12 +6,16 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:47:14 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 09:22:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:51:52 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+/*
+**	All the functions used to print some text, aswell as the global that we use
+**	for the different text color, it should be moved in a .h file someday.
+*/
 SDL_Color g_color_tab[NB_COLOR] = {
 	{0, 0, 0, 255},
 	{240, 240, 240, 255},

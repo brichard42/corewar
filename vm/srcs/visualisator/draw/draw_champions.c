@@ -6,12 +6,15 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/19 11:14:38 by brichard         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:40:35 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
+/*
+**	creates generic object to specific functions.
+*/
 static SDL_Point	create_name_point(int champ_n)
 {
 	int	x;
@@ -72,7 +75,9 @@ int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
 	return (SUCCESS);
 }
 
-
+/*
+**	Draws the champions depending of how many of them there is.
+*/
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 {
 	SDL_Rect	pos;
