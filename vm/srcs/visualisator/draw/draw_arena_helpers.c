@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:42:06 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/23 16:22:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/26 08:09:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,28 @@ int8_t	draw_structure_sides(t_window *win)
 	return (SUCCESS);
 }
 
-/*int8_t	underliner(t_window *win, t_vm *env)
+int8_t	underliner(t_window *win, t_vm *env)
 {
 	SDL_Point	point;
 	int			text[3];
+	int			tmp_mod;
+	int			tmp_div;
+	t_process	*process_list;
 
-	point = create_point(15, 198);
-	if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[count], BOLD)
-			== FAILURE)
-		return (FAILURE);
+	point = create_point(45, 227);
+	process_list = env->process_list;
+	while (process_list)
+	{
+		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[process_list->pc], BOLD)
+				== FAILURE)
+			return (FAILURE);
+		tmp_mod = (process_list->pc % 64) % 2;
+		tmp_div = (process_list->pc / 64) % 2;
+		//point.x = ((process_list->pc % 64) * ) + 45;
+		//point.y = ((process_list->pc / 64) * ) + 225;
+		if (draw_text(win, "__", point, text) == FAILURE)
+			return (FAILURE);
+		process_list = process_list->next;
+	}
 	return (SUCCESS);
-}*/
+}

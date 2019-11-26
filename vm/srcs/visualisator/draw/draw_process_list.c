@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:50:00 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/26 06:06:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 	int			text[3];
 	char		*str;
 
-	point = create_point(1925, 665);
+	point = create_point(1905, 665);
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
 	pos = create_rect(1810, 650, 490, 50);

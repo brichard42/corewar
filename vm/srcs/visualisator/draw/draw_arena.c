@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/23 15:56:10 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/26 08:07:36 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ int8_t			draw_arena(t_window *win, t_vm *env, t_draw infos)
 	}
 	else if (draw_active_arena(win, env) == FAILURE)
 		return (FAILURE);
-//	else if (underliner(win, env) == FAILURE)
-//		return (FAILURE)
+	else if (underliner(win, env) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }
