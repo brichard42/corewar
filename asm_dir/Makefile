@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/07 11:25:06 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/27 16:43:45 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,7 +145,7 @@ COM_STRING   = "Compiling"
 #                                   COMMANDS                                   #
 #------------------------------------------------------------------------------#
 
-.PHONY: all $(NAME) $(OBJS) $(OBJS_PATH) $(LIBS) $(CLEAR) lc lfc clean fclean re
+.PHONY: all $(NAME) $(OBJS_PATH) $(CLEAR) lc lfc clean fclean re
 .SILENT:
 
 all: $(NAME)
@@ -153,7 +153,7 @@ all: $(NAME)
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
 	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(LDFLAGS) $(LDLIBS) -o $@)
 
-$(OBJS): $(OBJS_PATH)%.o : %.c $(INCS) Makefile
+$(OBJS_PATH)%.o : %.c $(INCS) Makefile
 	$(call run_and_test, $(CC) $(CFLAGS) -c $< -o $@)
 
 $(OBJS_PATH):

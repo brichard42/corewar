@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/19 16:29:25 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/27 16:40:18 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME = ../corewar
 
-OBJS = $(patsubst %.c, $(OBJS_PATH)%.o, $(SRCS))
+OBJS = $(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 
 LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
 
@@ -32,18 +32,18 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 #                                   SRCS_FILES                                 #
 #------------------------------------------------------------------------------#
 
-SRCS += window.c \
-		draw_text.c \
-		draw_infos.c \
-		draw_image.c \
-		draw_arena.c \
-		main_drawer.c \
-		draw_corewar.c \
-		draw_champions.c \
-		object_creation.c \
-		draw_rectangles.c \
-		draw_process_list.c \
-		draw_command_panel.c \
+SRCS += window.c
+SRCS += draw_text.c
+SRCS += draw_infos.c
+SRCS += draw_image.c
+SRCS +=	draw_arena.c
+SRCS +=	main_drawer.c
+SRCS +=	draw_corewar.c
+SRCS +=	draw_champions.c
+SRCS +=	object_creation.c
+SRCS +=	draw_rectangles.c
+SRCS +=	draw_process_list.c
+SRCS +=	draw_command_panel.c
 
 SRCS += main.c
 
@@ -100,7 +100,6 @@ LIB_PATH += ~/.brew/lib
 #                                     VPATH                                    #
 #------------------------------------------------------------------------------#
 
-vpath %.h $(INC_PATH)
 vpath %.c $(SRCS_PATH)
 
 #------------------------------------------------------------------------------#
@@ -177,7 +176,7 @@ COM_STRING   = "Compiling"
 #                                   COMMANDS                                   #
 #------------------------------------------------------------------------------#
 
-.PHONY: all $(NAME) $(OBJS) $(OBJS_PATH) $(LIBS) $(CLEAR) lc lfc clean fclean re
+.PHONY: all $(NAME) $(OBJS_PATH) $(CLEAR) lc lfc clean fclean re
 .SILENT:
 
 all: $(NAME)
@@ -185,7 +184,7 @@ all: $(NAME)
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
 	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@)
 
-$(OBJS): $(OBJS_PATH)%.o : %.c $(INCS) Makefile
+$(OBJS_PATH)%.o : %.c | Makefile
 	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@)
 
 $(OBJS_PATH):
@@ -202,6 +201,7 @@ show:
 	@echo "IFLAGS : \n$(IFLAGS)"
 	@echo "CFLAGS : \n$(CFLAGS)"
 	@echo "LDFLAGS : \n$(LDFLAGS)"
+	@echo "OBJS : \n$(OBJS)"
 
 install:
 	$(foreach lib, $(LIB_DWN), $(DWL) install $(lib); )
