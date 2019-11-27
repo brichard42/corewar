@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/26 05:55:46 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/27 18:05:50 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ SRCS += create_vm.c
 SRCS += delete_vm.c
 SRCS += free_vm.c
 
+SRCS += copy_process.c 
 SRCS += init_process.c
 SRCS += create_process.c
 SRCS += delete_process.c

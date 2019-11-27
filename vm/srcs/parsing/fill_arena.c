@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 14:00:51 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/21 17:10:10 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:33:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,12 @@ static void	charge_champ(t_vm *env, int charge_here, t_champ champ, int value)
 
 static int8_t charge_process(t_vm *env, int pc_address, t_champ champ, t_process **process)
 {
-	if (*process == NULL)
-	{
-		if (!(*process = (t_process *)ft_memalloc(sizeof(t_process))))
-			return (FAILURE);
-		ft_bzero((void *)*process, sizeof(t_process));
-		(*process)->pc = pc_address;
-		(*process)->reg[0] = champ.num;
-	}
-	else if (charge_process(env, pc_address, champ, &(*process)->next) == FAILURE)
+	t_process	*new;
+
+	if (!(new = create_process(champ.num, pc_address)))
 		return (FAILURE);
+	new->next = *process;
+	*process = new;
 	return (SUCCESS);
 }
 

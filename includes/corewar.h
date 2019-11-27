@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/22 18:48:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:05:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,10 @@ int8_t				fill_arena(t_vm *env, uint8_t	champ_amount);
 // void				op_lfork(t_vm *v, t_list *process);
 // void				op_aff(t_vm *v, t_list *process);
 
+/*
+**	-------TYPEDEF ARG_PARSER FUNCTIONS-------
+*/
+int8_t				copy_process(int pc_address, t_process **process);
 /*
  **	-------COREWAR OP FUNCTIONS------------
  */
