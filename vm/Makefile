@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/27 16:40:18 by brichard         ###   ########.fr        #
+#    Updated: 2019/11/27 18:15:31 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,12 @@ SRCS +=	draw_arena.c
 SRCS +=	main_drawer.c
 SRCS +=	draw_corewar.c
 SRCS +=	draw_champions.c
+SRCS +=	draw_champions2.c
 SRCS +=	object_creation.c
 SRCS +=	draw_rectangles.c
 SRCS +=	draw_process_list.c
 SRCS +=	draw_command_panel.c
+SRCS +=	draw_arena_helpers.c
 
 SRCS += main.c
 
@@ -63,6 +65,7 @@ SRCS += create_vm.c
 SRCS += delete_vm.c
 SRCS += free_vm.c
 
+SRCS += copy_process.c 
 SRCS += init_process.c
 SRCS += create_process.c
 SRCS += delete_process.c
@@ -120,7 +123,7 @@ LDLIBS = ft sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
 LDFLAGS = $(addprefix -L , $(LIB_PATH)) $(addprefix -l, $(LDLIBS))
 
-#CFLAGS += -Werror -Wall -Wextra
+CFLAGS += -Werror -Wall -Wextra
 
 #------------------------------------------------------------------------------#
 #                                   COMMANDS                                   #

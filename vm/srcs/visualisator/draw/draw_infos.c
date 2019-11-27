@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/16 16:32:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:18:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env, int space_counter)
 ** -CYCLE_DELTA.
 */
 
-static int8_t	check_infos_text(t_window *win, t_vm *env, int space_counter)
+static int8_t	check_infos_text(t_vm *env, int space_counter)
 {
 	static uint8_t	check_amount = 0;
 	static uint32_t	cycle_since_last_death = 0;
@@ -59,7 +59,6 @@ static int8_t	check_infos_text(t_window *win, t_vm *env, int space_counter)
 		{
 			cycle_since_last_death = 0;
 			check_amount++;
-			//ici la func
 		}
 		if (check_amount == MAX_CHECKS)
 		{
@@ -94,7 +93,7 @@ static int8_t	draw_infos_text2(t_window *win, t_vm *env)
 	return (SUCCESS);
 }
 
-static int8_t	draw_infos_text3(t_window *win, t_vm *env, int cycles_per_sec)
+static int8_t	draw_infos_text3(t_window *win, int cycles_per_sec)
 {
 	int			text[3];
 	char		*str;
@@ -131,11 +130,11 @@ int8_t			draw_infos(t_window *win, t_vm *env, t_draw infos)
 		return (FAILURE);
 	if (draw_infos_text(win, env, infos.state) == FAILURE)
 		return (FAILURE);
-	if ((ret = check_infos_text(win, env, infos.state)) && ret == THE_END)
+	if ((ret = check_infos_text(env, infos.state)) && ret == THE_END)
 		return (FAILURE);
 	if (draw_infos_text2(win, env) == FAILURE)
 		return (FAILURE);
-	if (draw_infos_text3(win, env, infos.cycles_per_sec) == FAILURE)
+	if (draw_infos_text3(win, infos.cycles_per_sec) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

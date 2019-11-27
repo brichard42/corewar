@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:47:14 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:51:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:16:22 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static t_image		*get_char(t_window *win, char c, int infos[3])
 
 	src[0] = c;
 	src[1] = '\0';
-	if (text_tab[infos[0]][infos[1]][infos[2]][c] == NULL)
+	if (text_tab[infos[0]][infos[1]][infos[2]][(int)c] == NULL)
 	{
 		if (!(tmp_font = get_font(infos[0])))
 			return (NULL);
@@ -75,11 +75,11 @@ static t_image		*get_char(t_window *win, char c, int infos[3])
 			color = g_color_tab[infos[1]];
 		else
 			color = g_color_tab[0];
-		if (!(text_tab[infos[0]][infos[1]][infos[2]][c] = malloc_t_image(win,
-				TTF_RenderText_Blended(tmp_font, src, color))))
+		if (!(text_tab[infos[0]][infos[1]][infos[2]][(int)c] =
+			malloc_t_image(win, TTF_RenderText_Blended(tmp_font, src, color))))
 			return (NULL);
 	}
-	return (text_tab[infos[0]][infos[1]][infos[2]][c]);
+	return (text_tab[infos[0]][infos[1]][infos[2]][(int)c]);
 }
 
 static int			calc_text_len(t_window *win, char *str, int infos[3])

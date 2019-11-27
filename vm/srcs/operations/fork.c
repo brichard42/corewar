@@ -9,5 +9,7 @@
 
 void    fork(t_vm *vm, t_process *process)
 {
-	return ;
+	if (copy_process(process->pc + (process->op.param[0] % IDX_MOD), &process) == FAILURE)
+		return ; //remplacer par un exit propre avec free des valurs interessees
+	process->pc = (process->pc + 3) % MEM_SIZE;
 }

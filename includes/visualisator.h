@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/23 14:00:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/26 08:08:16 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # define BLUE			3
 # define DARK_BLUE		4
 # define LIGHT_RED		5
-# define RED				6
+# define RED			6
 # define DARK_RED		7
-# define LIGHT_GREEN		8
+# define LIGHT_GREEN	8
 # define GREEN			9
 # define DARK_GREEN		10
 # define LIGHT_CYAN		11
@@ -94,9 +94,13 @@ int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
 */
 int8_t				draw_command_panel(t_window *win, int i);
 int8_t              draw_arena(t_window *win, t_vm *env, t_draw infos);
+int8_t              draw_structure_sides(t_window *win);
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);
+int8_t				draw_champion_name(t_window *win, char *name,
+					SDL_Point point, int test[3]);
 int8_t				draw_corewar(t_window *win);
 int8_t				draw_procs_pannel(t_window *win, t_vm *env, t_draw infos);
 int8_t				draw_infos(t_window *win, t_vm *env, t_draw infos);
+int8_t				underliner(t_window *win, t_vm *env);
 
 #endif

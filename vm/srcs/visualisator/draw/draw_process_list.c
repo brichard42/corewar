@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:50:00 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/27 18:20:17 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 	int			text[3];
 	char		*str;
 
-	point = create_point(1925, 665);
+	point = create_point(1905, 665);
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
 	pos = create_rect(1810, 650, 490, 50);
@@ -42,13 +42,14 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3], SDL
 	char	*str;
 	int		tmp;
 
+	tmp = 0; // pu ca mere enleve
 	//if ((tmp = draw_text(win, proc->op.name, point, text)) == FAILURE)
 	//	return (FAILURE);
 	point.x += tmp;
 	if ((tmp = draw_text(win, "in : ", point, text)) == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	if ((str = ft_lltoa(proc->op.nb_cycle)) == NULL)
+	if ((str = ft_lltoa(proc->cycles_left)) == NULL)
 		return (FAILURE);
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
@@ -122,7 +123,6 @@ static int8_t	draw_procs_list(t_window *win, t_vm	*env, t_draw infos,
 int8_t			draw_procs_pannel(t_window *win, t_vm *env, t_draw infos)
 {
 	SDL_Rect	pos;
-	SDL_Point	point;
 	int			text[3];
 
 	if (draw_procs_header(win, env, infos.champ_ind) == FAILURE)
