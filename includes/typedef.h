@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 14:48:16 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/11/28 14:03:54 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,19 +119,20 @@ typedef struct		s_champ
 */
 typedef struct		s_vm
 {
-	t_process			*process_list;
-	t_champ				champ[MAX_PLAYERS + 1];
-	char				mem[MEM_SIZE];
-	uint8_t				mem_owner[MEM_SIZE];
-	uint32_t			lives_in_cycle; // new, init ok
-	uint32_t			current_cycle;
-	uint32_t			next_ctod; // new, init ok
-	uint32_t			ctod_nb; // new, init ok
-	uint32_t			cycles_to_die;
-	int32_t				cycles_to_dump;
-	uint8_t				champ_amount;
-	uint8_t				visu;
-	uint8_t				verbose;
+	t_process		*process_list;
+	t_champ			champ[MAX_PLAYERS + 1];
+	char			mem[MEM_SIZE];
+	uint8_t			mem_owner[MEM_SIZE];
+	uint32_t		lives_in_cycle; // new, init ok
+	uint32_t		current_cycle;
+	uint32_t		next_ctod; // new, init ok
+	uint32_t		ctod_nb; // new, init ok
+	uint32_t		cycles_to_die;
+	int32_t			cycles_to_dump;
+	uint8_t			champ_amount;
+	uint8_t			visu;
+	uint8_t			last_live_champ_ind;
+	uint8_t			verbose;
 }					t_vm;
 
 /*
@@ -150,15 +151,15 @@ typedef struct		s_parser
  */
 typedef struct		s_op_tab
 {
-	char		*name;
-	void		(*func)(t_vm *vm, t_process *process);
-	uint32_t	nb_param;
-	int32_t		type_param[3];
-	int32_t		op_code;
-	int32_t		nb_cycle;
-	char		*com;
-	int32_t		jsp_encore; // pour savoir si on a besoin d'ocp ou pas
-	int32_t		direct_size;
+	char			*name;
+	void			(*func)(t_vm *vm, t_process *process);
+	uint32_t		nb_param;
+	int32_t			type_param[3];
+	int32_t			op_code;
+	int32_t			nb_cycle;
+	char			*com;
+	int32_t			jsp_encore; // pour savoir si on a besoin d'ocp ou pas
+	int32_t			direct_size;
 }					t_op_tab;
 
 extern t_op_tab		op_tab[];

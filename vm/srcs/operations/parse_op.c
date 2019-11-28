@@ -44,9 +44,9 @@ int     find_param(t_vm *vm, t_process *proc, int num, int pos)
 
 	type = proc->op.ocp;
 	mask = 0xC0; //1100 0000
-	mask = mask >> (2 * num); // on decale pour que ce soit en face les deux bits que l'on veut regarder
-	type = type & mask; // on mets tout les bits qui nous interresse pas a 0
-	type = type >> (6 - 2 * num); // on de decales deux bits au debut
+	mask >>= (2 * num); // on decale pour que ce soit en face les deux bits que l'on veut regarder
+	type &=  mask; // on mets tout les bits qui nous interresse pas a 0
+	type >>= (6 - 2 * num); // on de decales deux bits au debut
 	proc->op.type_param[num] = type;
 	if (type == REG_CODE)
 	{

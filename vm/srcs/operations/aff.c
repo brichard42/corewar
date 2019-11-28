@@ -2,5 +2,5 @@
 
 void    aff(t_vm *vm, t_process *process)
 {
-	return ;
+	ft_putchar(process.op.param[0] % 256);
 }
