@@ -7,9 +7,23 @@
  ** l'etat zero.
  */
 
-void	ld_T_IND(t_vm *vm, t_process *process, int reg_nb)
+void	put_ind_in_reg(t_vm *vm, t_process *process, int reg_nb)
 {
-	// recupération d'un indirecte
+	int		addr;
+
+	addr = process->op.param[0] % IDX_MOD;
+	process->reg[reg_nb] = 0;
+	process->reg[reg_nb] = (unsigned char)vm->mem[modulo(process->op.pos_op_code
+		+ addr, MEM_SIZE)];
+	process->reg[reg_nb] <<= 8;
+	process->reg[reg_nb] = (unsigned char)vm->mem[modulo(process->op.pos_op_code
+		+ addr + 1, MEM_SIZE)];
+	process->reg[reg_nb] <<= 8;
+	process->reg[reg_nb] = (unsigned char)vm->mem[modulo(process->op.pos_op_code
+		+ addr + 2, MEM_SIZE)];
+	process->reg[reg_nb] <<= 8;
+	process->reg[reg_nb] = (unsigned char)vm->mem[modulo(process->op.pos_op_code
+		+ addr + 3, MEM_SIZE)];
 }
 
 void    ld(t_vm *vm, t_process *process)

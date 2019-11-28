@@ -19,15 +19,15 @@ void    xor(t_vm *vm, t_process *process)
 	if (process->op.type_param[0] == REG_CODE)
 		param1 = process->reg[process->op.param[0]];
 	else if (process->op.type_param[0] == IND_CODE)
-		param1 = get_ind(); // recup un T_IND
+		param1 = get_indirecte(vm, &process->op, 0);
 	else
 		param1 = process->op.param[0];
 	if (process->op.type_param[1] == REG_CODE)
-		param1 = process->reg[process->op.param[1]];
+		param2 = process->reg[process->op.param[1]];
 	else if (process->op.type_param[1] == IND_CODE)
-		param1 = get_ind(); // recup un T_IND
+		param2 = get_indirecte(vm, &process->op, 1);
 	else
-		param1 = process->op.param[1];
+		param2 = process->op.param[1];
 	process->reg[process->op.param[2]] = param1 ^ param2;
 	process->carry = ((param1 ^ param2) ? 1 : 0);
 	if (vm->verbose)

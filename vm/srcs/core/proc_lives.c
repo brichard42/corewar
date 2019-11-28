@@ -9,22 +9,22 @@ void    reset_life_signal(t_vm *vm)
 		vm->champ[i++].life_signal = 0;
 }
 
-int     player_life(t_vm *vm)
-{
-	int     i;
-	int     j;
+// int     player_life(t_vm *vm)
+// {
+// 	int     i;
+// 	int     j;
 
-	i = 0;
-	j = 0;
-	while (i < 4)
-	{
-		if (vm->champ[i++].life_signal > 0)
-			j++;
-	}
-	if (j <= 1)
-		return (0);
-	return (1);
-}
+// 	i = 0;
+// 	j = 0;
+// 	while (i < 4)
+// 	{
+// 		if (vm->champ[i++].life_signal > 0)
+// 			j++;
+// 	}
+// 	if (j <= 1)
+// 		return (0);
+// 	return (1);
+// }
 
 void    set_ctod(t_vm *vm)
 {
@@ -62,7 +62,7 @@ int     proc_lives(t_vm *vm)
 				kill_proc(tmp_proc);// kill process
 			tmp_proc = tmp_proc->next;
 		}
-		if (vm->process_list == NULL || !player_life(vm))
+		if (vm->process_list == NULL)// || !player_life(vm)) supprmier car les cycles ne doivent s'arreter que quand il n'y a plus de process en vie et non de joueur directement en vie
 			return (0);
 	}
 	return (1);
