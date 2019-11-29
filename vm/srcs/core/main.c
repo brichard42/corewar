@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/27 18:10:30 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/29 11:41:07 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int			main(int ac, char **av)
 
 	if (ac < 2)
 		return (usage());
-		ft_putnbr(((1 >> ((3 * 2) & 0b11))));
 	ft_bzero((void *)&parser, sizeof(t_parser));
 	if (vm_arg_parser(&parser, ++av) == FAILURE)
 		return (usage());

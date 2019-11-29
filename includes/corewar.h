@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/27 18:05:13 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/29 12:25:19 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,30 +80,13 @@ int8_t				read_size(t_parser *parser, int32_t fd);
 int8_t				read_comment(t_parser *parser, int32_t fd);
 int8_t				read_code(t_parser *parser, int32_t fd);
 
+uint8_t				chp_num_is_attributed(t_parser *parser);
+void				attribute_next_chp_num(t_parser *parser);
+
 int8_t				fill_arena(t_vm *env, uint8_t	champ_amount);
 
-// /*
-// **	-------OPERATION FUNCTIONS--------------------------------------------------
-// */
-// void				op_live(t_vm *v, t_list *process);
-// void				op_ld(t_vm *v, t_list *process);
-// void				op_st(t_vm *v, t_list *process);
-// void				op_add(t_vm *v, t_list *process);
-// void				op_sub(t_vm *v, t_list *process);
-// void				op_and(t_vm *v, t_list *process);
-// void				op_or(t_vm *v, t_list *process);
-// void				op_xor(t_vm *v, t_list *process);
-// void				op_zjmp(t_vm *v, t_list *process);
-// void				op_ldi(t_vm *v, t_list *process);
-// void				op_sti(t_vm *v, t_list *process);
-// void				op_fork(t_vm *v, t_list *process);
-// void				op_lld(t_vm *v, t_list *process);
-// void				op_lldi(t_vm *v, t_list *process);
-// void				op_lfork(t_vm *v, t_list *process);
-// void				op_aff(t_vm *v, t_list *process);
-
 /*
-**	-------TYPEDEF ARG_PARSER FUNCTIONS-------
+**	-------COPY PROCESS-------
 */
 int8_t				copy_process(int pc_address, t_process **process);
 /*

@@ -6,14 +6,12 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/11/20 16:06:11 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/11/28 14:59:37 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
-
-# include <stdbool.h>
 
 /*
 ** Toutes les tailles sont en octets.
@@ -70,29 +68,5 @@ typedef struct		s_header
 	unsigned int		prog_size;
 	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
-
-// typedef struct		s_op
-// {
-// 	char				*name;
-// 	int					nb_param;
-// 	int					type_param[3];
-// 	int					op_code;
-// 	int					nb_cycle;
-// 	char				*comment;
-// 	bool				have_param_byte;
-// 	bool				is_int;
-// }					t_op;
-
-/*
-** ===========
-**  FUNCTIONS
-** ===========
-*/
-
-// /*
-// ** OP.C
-// */
-// void				print_tab(void);
-// void				get_op_tab(t_op *tab);
 
 #endif

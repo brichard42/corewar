@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:02:25 by brichard          #+#    #+#             */
-/*   Updated: 2019/11/19 16:25:00 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/29 12:25:27 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ int8_t	read_magic(t_parser *parser, int32_t fd)
 
 int8_t	read_name(t_parser *parser, int32_t fd)
 {
-	int32_t			ret;
+	int32_t		ret;
 	uint8_t		i;
 
-	i = parser->cur_chp_index;
 	if (parser->chp_num == 0)
-		parser->chp_num = i + 1;
+		attribute_next_chp_num(parser);
+	i = parser->cur_chp_index;
 	if (i < 4)
 	{
 		ret = read(fd, parser->env.champ[i].name, PROG_NAME_LENGTH);

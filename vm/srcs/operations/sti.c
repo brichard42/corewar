@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:43:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:45:41 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/11/29 11:38:16 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void    sti(t_vm *vm, t_process *process)
 
 	reg_nb = process->op.param[0]; // first param
 	address = ((process->op.param[1] + process->op.param[2]) % IDX_MOD) + 3;
-	if (address = 3)
-		process->carry = 1
+	if (address == 3)
+		process->carry = 1;
 	else
 		process->carry = 0;
 	i = 4;

@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/27 18:15:31 by tlandema         ###   ########.fr        #
+#    Updated: 2019/11/29 12:27:05 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRCS +=	draw_rectangles.c
 SRCS +=	draw_process_list.c
 SRCS +=	draw_command_panel.c
 SRCS +=	draw_arena_helpers.c
+
+SRCS += chp_num_utils.c
 
 SRCS += main.c
 
