@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_mem.c                                          :+:      :+:    :+:   */
+/*   load_memory.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 14:00:51 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:21:28 by tlandema         ###   ########.fr       */
+/*   Created: 2019/12/02 16:30:19 by brichard          #+#    #+#             */
+/*   Updated: 2019/12/02 18:58:01 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,27 @@ static int8_t charge_process(int pc_address, int champ_num, t_process **process)
 	return (SUCCESS);
 }
 
-int8_t		fill_arena(t_vm *env, uint8_t champ_amount)
+int8_t			load_memory(t_parser *parser)
 {
-	int	i;
+	t_champ	*champ;
+	uint8_t	champ_amount;
+	uint8_t	i;
 
-	i = -1;
-	while (++i < champ_amount)
-		charge_champ(env, ((MEM_SIZE / champ_amount) * i), env->champ[i], i);
-	i = -1;
-	while (++i < champ_amount)
-		if (charge_process(((MEM_SIZE / champ_amount) * i), env->champ[i].num,
-				&env->process_list) == FAILURE)
+	champ = parser->env.champ;
+	champ_amount = parser->cur_chp_index;
+	i = 0;
+	while (i < champ_amount)
+	{
+		charge_champ(&parser->env, ((MEM_SIZE / champ_amount) * i), champ[i], i);
+		++i;
+	}
+	i = 0;
+	while (i < champ_amount)
+	{
+		if (charge_process(((MEM_SIZE / champ_amount) * i), i + 1,
+				&parser->env.process_list) == FAILURE)
 			return (FAILURE);
+		++i;
+	}
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/29 12:25:19 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:57:55 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int8_t				read_code(t_parser *parser, int32_t fd);
 uint8_t				chp_num_is_attributed(t_parser *parser);
 void				attribute_next_chp_num(t_parser *parser);
 
-int8_t				fill_arena(t_vm *env, uint8_t	champ_amount);
+int8_t				load_memory(t_parser *parser);
 
 /*
 **	-------COPY PROCESS-------

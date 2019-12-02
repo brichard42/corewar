@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/29 11:41:07 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:58:16 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			main(int ac, char **av)
 	if (vm_arg_parser(&parser, ++av) == FAILURE)
 		return (usage());
 	print_champ(parser.env.champ);
-	if (fill_arena(&parser.env, parser.cur_chp_index) == FAILURE)
+	if (load_memory(&parser) == FAILURE)
 		return (usage());
 	if (parser.env.visu == ON)
 	{

@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/28 14:03:54 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/12/02 17:40:52 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ typedef struct		s_parser
 {
 	t_vm			env;
 	enum e_state	state;
-	int32_t			chp_num;
+	uint8_t			chp_num;
 	uint8_t			cur_chp_index;
 }					t_parser;
 
