@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_arg_parser.c                                    :+:      :+:    :+:   */
+/*   vm_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/02 18:55:07 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/03 11:21:21 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void		check_chp_num_validity(t_parser *parser)
 		parser->state = S_ERR;
 }
 
-int8_t		vm_arg_parser(t_parser *parser, char **av)
+int8_t		vm_parser(t_parser *parser, char **av)
 {
 	t_parser			d_parser;
 	static t_get_func	get_func[GET_F_NUM] = {get_opt, get_dump, get_chpnum

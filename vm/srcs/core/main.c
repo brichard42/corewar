@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/02 16:58:16 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/03 11:44:53 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			main(int ac, char **av)
 	if (ac < 2)
 		return (usage());
 	ft_bzero((void *)&parser, sizeof(t_parser));
-	if (vm_arg_parser(&parser, ++av) == FAILURE)
+	if (vm_parser(&parser, ++av) == FAILURE)
 		return (usage());
 	print_champ(parser.env.champ);
 	if (load_memory(&parser) == FAILURE)

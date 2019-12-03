@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/02 16:57:55 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/03 15:55:40 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define COREWAR_H
 
 # include "libft.h"
+# include "core_error.h"
 # include <SDL.h>
 # include <SDL_image.h>
 # include <SDL_ttf.h>
@@ -62,23 +63,23 @@ typedef void		(*t_get_func)(t_parser *, char **);
 **	-------TYPEDEF READ_CHAMP.C FUNCTIONS---------------------------------------
 */
 
-typedef int8_t		(*t_read_func)(t_parser *, int32_t);
+typedef void		(*t_read_func)(t_parser *, int32_t);
 
 /*
 **	-------PARSING	FUNCTIONS-------
 */
-int8_t				vm_arg_parser(t_parser *parser, char **av);
+int8_t				vm_parser(t_parser *parser, char **av);
 
 void				get_opt(t_parser *parser, char **av);
 void				get_chpnum(t_parser *parser, char **av);
 void				get_dump(t_parser *parser, char **av);
 void				get_champ(t_parser *parser, char **av);
 
-int8_t				read_magic(t_parser *parser, int32_t fd);
-int8_t				read_name(t_parser *parser, int32_t fd);
-int8_t				read_size(t_parser *parser, int32_t fd);
-int8_t				read_comment(t_parser *parser, int32_t fd);
-int8_t				read_code(t_parser *parser, int32_t fd);
+void				read_magic(t_parser *parser, int32_t fd);
+void				read_name(t_parser *parser, int32_t fd);
+void				read_size(t_parser *parser, int32_t fd);
+void				read_comment(t_parser *parser, int32_t fd);
+void				read_code(t_parser *parser, int32_t fd);
 
 uint8_t				chp_num_is_attributed(t_parser *parser);
 void				attribute_next_chp_num(t_parser *parser);
@@ -86,9 +87,15 @@ void				attribute_next_chp_num(t_parser *parser);
 int8_t				load_memory(t_parser *parser);
 
 /*
+**	-------PARSING_ERROR-------
+*/
+void				parsing_error(t_parser *parser, int32_t errer_code);
+
+/*
 **	-------COPY PROCESS-------
 */
 int8_t				copy_process(int pc_address, t_process **process);
+
 /*
  **	-------COREWAR OP FUNCTIONS------------
  */

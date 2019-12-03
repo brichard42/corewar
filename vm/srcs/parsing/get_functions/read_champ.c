@@ -6,27 +6,27 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:02:25 by brichard          #+#    #+#             */
-/*   Updated: 2019/11/29 12:25:27 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/03 16:30:01 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int8_t	read_magic(t_parser *parser, int32_t fd)
+void	read_magic(t_parser *parser, int32_t fd)
 {
 	unsigned char		buff[MAGIC_SIZE];
 	int32_t				ret;
 	int32_t				nb;
 
-	(void)parser;
 	nb = 0;
 	ret = read(fd, buff, MAGIC_SIZE);
 	if (ret > 0 && ret == (int32_t)MAGIC_SIZE)
 		nb = (buff[0] << 24 | buff[1] << 16 | buff[2] << 8 | buff[3]);
-	return (COREWAR_EXEC_MAGIC == nb ? SUCCESS : FAILURE);
+	if (COREWAR_EXEC_MAGIC != nb)
+		parsing_error(parser, ERR_MAGIC);
 }
 
-int8_t	read_name(t_parser *parser, int32_t fd)
+void	read_name(t_parser *parser, int32_t fd)
 {
 	int32_t		ret;
 	uint8_t		i;
@@ -43,24 +43,24 @@ int8_t	read_name(t_parser *parser, int32_t fd)
 			parser->chp_num = 0;
 		}
 	}
-	return (parser->chp_num == 0 ? SUCCESS : FAILURE);
+	if (parser->chp_num != 0)
+		parser->state = S_ERR;
 }
 
-int8_t	read_size(t_parser *parser, int32_t fd)
+void	read_size(t_parser *parser, int32_t fd)
 {
 	unsigned char	buff[SIZEOF_INT32];
 	int32_t			ret;
 
-	lseek(fd, 4, SEEK_CUR);
+	lseek(fd, 4, SEEK_CUR);//CHECKER LE PADDING
 	ret = read(fd, buff, SIZEOF_INT32);
 	if (ret > 0 && ret == SIZEOF_INT32)
 		parser->env.champ[parser->cur_chp_index].size = (buff[0] << 24
 							| buff[1] << 16
 							| buff[2] << 8 | buff[3]);
-	return (SUCCESS);
 }
 
-int8_t	read_comment(t_parser *parser, int32_t fd)
+void	read_comment(t_parser *parser, int32_t fd)
 {
 	int32_t		ret;
 	uint8_t		i;
@@ -69,10 +69,11 @@ int8_t	read_comment(t_parser *parser, int32_t fd)
 	ret = read(fd, parser->env.champ[i].comment, COMMENT_LENGTH);
 		parser->env.champ[i].comment[ret] = '\0';
 	lseek(fd, 4, SEEK_CUR);
-	return (ret == COMMENT_LENGTH ? SUCCESS : FAILURE);
+	if (ret != COMMENT_LENGTH)
+		parser->state = S_ERR;
 }
 
-int8_t	read_code(t_parser *parser, int32_t fd)
+void	read_code(t_parser *parser, int32_t fd)
 {
 	int32_t			ret;
 	uint8_t			i;
@@ -91,5 +92,6 @@ int8_t	read_code(t_parser *parser, int32_t fd)
 	if (read(fd, &buf, 1) > 0)
 		error = 4;
 	++parser->cur_chp_index;
-	return (error == 0 ? SUCCESS : FAILURE);
+	if (error != 0)
+		parser->state = S_ERR;
 }

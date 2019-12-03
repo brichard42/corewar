@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/02 16:59:16 by brichard         ###   ########.fr        #
+#    Updated: 2019/12/03 14:35:45 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ SRCS += chp_num_utils.c
 
 SRCS += main.c
 
-SRCS += vm_arg_parser.c
+SRCS += vm_parser.c
 
 SRCS += get_opt.c
 SRCS += get_dump.c
@@ -61,6 +61,8 @@ SRCS += get_champ.c
 SRCS += read_champ.c
 
 SRCS += load_memory.c
+
+SRCS += parsing_error.c
 
 SRCS += init_vm.c
 SRCS += create_vm.c
@@ -104,7 +106,7 @@ LIB_PATH += ~/.brew/lib
 #------------------------------------------------------------------------------#
 #                                     VPATH                                    #
 #------------------------------------------------------------------------------#
-
+vpath %.h $(INC_PATH)
 vpath %.c $(SRCS_PATH)
 
 #------------------------------------------------------------------------------#
@@ -181,7 +183,7 @@ COM_STRING   = "Compiling"
 #                                   COMMANDS                                   #
 #------------------------------------------------------------------------------#
 
-.PHONY: all $(NAME) $(OBJS_PATH) $(CLEAR) lc lfc clean fclean re
+.PHONY: all $(CLEAR) lc lfc clean fclean re install norme show
 .SILENT:
 
 all: $(NAME)
@@ -203,10 +205,11 @@ $(CLEAR):
 	$@
 
 show:
-	@echo "IFLAGS : \n$(IFLAGS)"
-	@echo "CFLAGS : \n$(CFLAGS)"
-	@echo "LDFLAGS : \n$(LDFLAGS)"
-	@echo "OBJS : \n$(OBJS)"
+	echo "IFLAGS : \n$(IFLAGS)"
+	echo "CFLAGS : \n$(CFLAGS)"
+	echo "LDFLAGS : \n$(LDFLAGS)"
+	echo "OBJS : \n$(OBJS)"
+	echo "INC_PATH : \n$(INC_PATH)"
 
 install:
 	$(foreach lib, $(LIB_DWN), $(DWL) install $(lib); )

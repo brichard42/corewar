@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:34:20 by brichard          #+#    #+#             */
-/*   Updated: 2019/11/19 11:18:32 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/03 15:39:21 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@
 /*
 **	TYPES SIZES
 */
-# define SIZEOF_INT32	sizeof(uint32_t)
+# define SIZEOF_INT32	sizeof(uint32_t)//MACRO ATTENTION
 
 #endif
