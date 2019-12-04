@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/03 14:35:45 by brichard         ###   ########.fr        #
+#    Updated: 2019/12/04 14:01:15 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,8 @@ SRCS += get_opt.c
 SRCS += get_dump.c
 SRCS += get_chpnum.c
 SRCS += get_champ.c
+
+SRCS += padding_is_good.c
 
 SRCS += read_champ.c
 
@@ -115,11 +117,14 @@ vpath %.c $(SRCS_PATH)
 
 CC = gcc
 
+DEBUG = 0
+
 DWL = brew
 
-DEBUG += $(CFLAGS)
-DEBUG += -fsanitize=address,undefined
-DEBUG += -g3
+ifeq ($(DEBUG), 1)
+	CFLAGS += -fsanitize=address,undefined
+	CFLAGS += -g3
+endif
 
 IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
 

@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:02:25 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/03 16:30:01 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:02:14 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,33 @@ void	read_name(t_parser *parser, int32_t fd)
 	if (i < 4)
 	{
 		ret = read(fd, parser->env.champ[i].name, PROG_NAME_LENGTH);
-		if (ret > 0 && ret == PROG_NAME_LENGTH)
+		if (ret <= 0 || ret != PROG_NAME_LENGTH)
+			parsing_error(parser, ERR_NAME_TOO_SHORT);
+		else
 		{
 			parser->env.champ[i].num = parser->chp_num;
 			parser->chp_num = 0;
 		}
 	}
-	if (parser->chp_num != 0)
-		parser->state = S_ERR;
 }
 
 void	read_size(t_parser *parser, int32_t fd)
 {
 	unsigned char	buff[SIZEOF_INT32];
 	int32_t			ret;
+	int32_t			size;
 
-	lseek(fd, 4, SEEK_CUR);//CHECKER LE PADDING
+	if (padding_is_good(fd, 4) == FALSE)
+		parsing_error(parser, ERR_PAD_BEFORE_SIZE);
 	ret = read(fd, buff, SIZEOF_INT32);
-	if (ret > 0 && ret == SIZEOF_INT32)
-		parser->env.champ[parser->cur_chp_index].size = (buff[0] << 24
-							| buff[1] << 16
-							| buff[2] << 8 | buff[3]);
+	if (ret <= 0)
+		parsing_error(parser, ERR_MISSING_SIZE);
+	else if (ret != SIZEOF_INT32)
+		parsing_error(parser, ERR_SIZE_FORMAT);
+	size = (buff[0] << 24 | buff[1] << 16 | buff[2] << 8 | buff[3]);
+	if (size < 0)
+		parsing_error(parser, ERR_SIZE_NEG);
+	parser->env.champ[parser->cur_chp_index].size = size;
 }
 
 void	read_comment(t_parser *parser, int32_t fd)
@@ -67,31 +73,26 @@ void	read_comment(t_parser *parser, int32_t fd)
 
 	i = parser->cur_chp_index;
 	ret = read(fd, parser->env.champ[i].comment, COMMENT_LENGTH);
-		parser->env.champ[i].comment[ret] = '\0';
-	lseek(fd, 4, SEEK_CUR);
-	if (ret != COMMENT_LENGTH)
-		parser->state = S_ERR;
+	parser->env.champ[i].comment[ret] = '\0';
+	if (padding_is_good(fd, 4) == FALSE)
+		parsing_error(parser, ERR_PAD_AFTER_COM);
+	if (ret <= 0 || ret != COMMENT_LENGTH)
+		parsing_error(parser, ERR_COMMENT_TOO_SHORT);
 }
 
 void	read_code(t_parser *parser, int32_t fd)
 {
 	int32_t			ret;
-	uint8_t			i;
-	uint8_t			error;
 	char			buf;
+	uint8_t			i;
 
-	error = 0;
 	i = parser->cur_chp_index;
 	ret = read(fd, parser->env.champ[i].code, parser->env.champ[i].size);
-	if (ret < 0)
-		error = 1;
+	if (ret <= 0)
+		parsing_error(parser, ERR_MISSING_CODE);
 	else if (ret > CHAMP_MAX_SIZE)
-		error = 2;
-	else if (ret != (int32_t)parser->env.champ[i].size)
-		error = 3;//EN PREPA POUR LA _DEBUG, CEST DEGUEU CEST NORMAL
-	if (read(fd, &buf, 1) > 0)
-		error = 4;
+		parsing_error(parser, ERR_CODE_TOO_LONG);
+	else if (ret != (int32_t)parser->env.champ[i].size || read(fd, &buf, 1) > 0)
+		parsing_error(parser, ERR_BINARY_CORRUPTED);
 	++parser->cur_chp_index;
-	if (error != 0)
-		parser->state = S_ERR;
 }

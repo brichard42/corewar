@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/03 11:21:21 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:40:31 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void		check_chp_num_validity(t_parser *parser)
 		++i;
 	}
 	if (highest_num > parser->cur_chp_index) 
-		parser->state = S_ERR;
+		parsing_error(parser, ERR_INVALID_CHAMP_NUM);
 }
 
 int8_t		vm_parser(t_parser *parser, char **av)

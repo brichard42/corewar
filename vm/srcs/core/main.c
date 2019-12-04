@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/03 11:44:53 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:51:01 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			main(int ac, char **av)
 	ft_bzero((void *)&parser, sizeof(t_parser));
 	if (vm_parser(&parser, ++av) == FAILURE)
 		return (usage());
-	print_champ(parser.env.champ);
+	print_champ(parser.env.champ);// TO TEJ
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
 	if (parser.env.visu == ON)

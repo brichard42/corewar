@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/03 15:55:40 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/04 13:59:32 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void				get_opt(t_parser *parser, char **av);
 void				get_chpnum(t_parser *parser, char **av);
 void				get_dump(t_parser *parser, char **av);
 void				get_champ(t_parser *parser, char **av);
+
+uint8_t				padding_is_good(int32_t fd, int32_t sizeofpad);
 
 void				read_magic(t_parser *parser, int32_t fd);
 void				read_name(t_parser *parser, int32_t fd);
