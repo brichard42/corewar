@@ -7,6 +7,18 @@
  ** carry passe a l'etat un, sinon a l'ettat zero.
  */
 
+int					check_params_ldi_lldi(t_process *process)
+{
+	if (process->op.type_param[0] == REG_CODE && (process->op.param[0] < 1 || process->op.param[0] > REG_NUMBER))
+		return (0);
+	else if (process->op.type_param[1] == REG_CODE && (process->op.param[1] < 1 || process->op.param[1] > REG_NUMBER))
+		return (0);
+	else if (process->op.type_param[2] == REG_CODE && (process->op.param[2] < 1 || process->op.param[2] > REG_NUMBER))
+		return (0);
+	else
+		return (1);
+}
+
 static unsigned int	get_value(t_vm *vm, unsigned int addr)
 {
 	unsigned int	value;
@@ -26,7 +38,8 @@ void    			ldi(t_vm *vm, t_process *process)
 {
 	unsigned int	addr;
 
-	// check params REG
+	if (!check_params_ldi_lldi(process))
+		return ;
 	if (process->op.type_param[0] == REG_CODE)
 		process->op.param[0] = process->reg[process->op.param[0]];
 	else if (process->op.type_param[0] == IND_CODE)
