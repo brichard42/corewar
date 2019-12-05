@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/11/29 12:25:19 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/01 16:10:00 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define COREWAR_H
 
 # include "libft.h"
-# include <SDL.h>
-# include <SDL_image.h>
-# include <SDL_ttf.h>
-# include <SDL_mixer.h>
+// # include <SDL.h>
+// # include <SDL_image.h>
+// # include <SDL_ttf.h>
+// # include <SDL_mixer.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
@@ -27,7 +27,14 @@
 # include "op.h"
 # include "typedef.h"
 # include "core_define.h"
-# include "visualisator.h"
+// # include "visualisator.h"
+
+/*
+**	-------OPERATION STRUCT FUNCTIONS-------
+*/
+void	            create_op(t_process *process, int op_code);
+void	            init_op(t_op *op);
+void	            delete_op(t_process *process);
 
 /*
 **	-------PROCESS STRUCT FUNCTIONS-------
@@ -89,24 +96,38 @@ int8_t				fill_arena(t_vm *env, uint8_t	champ_amount);
 **	-------COPY PROCESS-------
 */
 int8_t				copy_process(int pc_address, t_process **process);
+
 /*
  **	-------COREWAR OP FUNCTIONS------------
  */
-void				op_live(t_vm *vm, t_process *process);
-void				op_ld(t_vm *vm, t_process *process);
-void				op_st(t_vm *vm, t_process *process);
-void				op_add(t_vm *vm, t_process *process);
-void				op_sub(t_vm *vm, t_process *process);
-void				op_and(t_vm *vm, t_process *process);
-void				op_or(t_vm *vm, t_process *process);
-void				op_xor(t_vm *vm, t_process *process);
-void				op_zjump(t_vm *vm, t_process *process);
-void				op_ldi(t_vm *vm, t_process *process);
-void				op_sti(t_vm *vm, t_process *process);
+void				live(t_vm *vm, t_process *process);
+void				ld(t_vm *vm, t_process *process);
+void				st(t_vm *vm, t_process *process);
+void				add(t_vm *vm, t_process *process);
+void				sub(t_vm *vm, t_process *process);
+void				and(t_vm *vm, t_process *process);
+void				or(t_vm *vm, t_process *process);
+void				xor(t_vm *vm, t_process *process);
+void				zjump(t_vm *vm, t_process *process);
+void				ldi(t_vm *vm, t_process *process);
+void				sti(t_vm *vm, t_process *process);
 void				op_fork(t_vm *vm, t_process *process);
-void				op_lld(t_vm *vm, t_process *process);
-void				op_lldi(t_vm *vm, t_process *process);
-void				op_lfork(t_vm *vm, t_process *process);
-void				op_aff(t_vm *vm, t_process *process);
+void				lld(t_vm *vm, t_process *process);
+void				lldi(t_vm *vm, t_process *process);
+void				lfork(t_vm *vm, t_process *process);
+void				aff(t_vm *vm, t_process *process);
 
+/*
+ **	-------CYCLES FUNCTIONS------------
+ */
+void                cycle(t_vm *vm);
+int			        check_ocp(int ocp, int op_code);
+int                 modulo(int a, int b);
+int	                move_pc(t_process *process);
+int                 proc_lives(t_vm *vm);
+void		        reset_life_signal(t_vm *vm);
+int                 take_param_op(t_vm *vm, t_process *process);
+int                 get_indirecte(t_vm *vm, t_op *op, int nb_arg);
+void                show_op(t_process *process);
+int				    is_opcode(char data);
 #endif

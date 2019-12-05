@@ -1,6 +1,6 @@
 #include "corewar.h"
 
-void    get_indirecte(t_vm *vm, t_op *op, int nb_arg)
+int	    	get_indirecte(t_vm *vm, t_op *op, int nb_arg)
 {
 	int		value;
 	int		pos;
@@ -17,7 +17,7 @@ void    get_indirecte(t_vm *vm, t_op *op, int nb_arg)
 	return (value);
 }
 
-void    get_ind(t_vm *vm, t_process *proc, int num, int pos)
+static void	get_ind(t_vm *vm, t_process *proc, int num, int pos)
 {
 	unsigned int    value;
 
@@ -28,7 +28,7 @@ void    get_ind(t_vm *vm, t_process *proc, int num, int pos)
 	proc->op.param[num] = value;
 }
 
-void    get_dir(t_vm *vm, t_process *proc, int num, int pos)
+static void	get_dir(t_vm *vm, t_process *proc, int num, int pos)
 {
 	unsigned int    value;
 
@@ -46,7 +46,7 @@ void    get_dir(t_vm *vm, t_process *proc, int num, int pos)
 	proc->op.param[num] = value;
 }
 
-void    get_reg(t_vm *vm, t_process *proc, int num, int pos)
+static void	get_reg(t_vm *vm, t_process *proc, int num, int pos)
 {
 	unsigned char   value;
 
@@ -54,7 +54,7 @@ void    get_reg(t_vm *vm, t_process *proc, int num, int pos)
 	proc->op.param[num] = value;
 }
 
-int     find_param(t_vm *vm, t_process *proc, int num, int pos)
+static int	find_param(t_vm *vm, t_process *proc, int num, int pos)
 {
 	unsigned char   type;
 	unsigned char   mask;
@@ -80,11 +80,12 @@ int     find_param(t_vm *vm, t_process *proc, int num, int pos)
 		get_ind(vm, proc, num, pos);
 		return (IND_SIZE);
 	}
+	return (0);
 }
 
 int     take_param_op(t_vm *vm, t_process *process)
 {
-	int     i;
+	unsigned int     i;
 	int     pos;
 
 	i = 0;

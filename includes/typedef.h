@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/28 14:03:54 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/12/01 15:36:52 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,47 +29,47 @@ enum				e_state
 **	--------TYPEDEF DRAW STRUCTURE----------------------------------------------
 */
 
-typedef struct		s_draw
-{
-	int32_t			process_ind;
-	int32_t			cycles_per_sec;
-	uint8_t			state;
-	uint8_t			champ_ind;
-	uint8_t			champ_number;
-	uint8_t			play;
-}					t_draw;
+// typedef struct		s_draw
+// {
+// 	int32_t			process_ind;
+// 	int32_t			cycles_per_sec;
+// 	uint8_t			state;
+// 	uint8_t			champ_ind;
+// 	uint8_t			champ_number;
+// 	uint8_t			play;
+// }					t_draw;
 
-/*
-**	--------TYPEDEF BORDER RECT STRUCTURE---------------------------------------
-*/
+// /*
+// **	--------TYPEDEF BORDER RECT STRUCTURE---------------------------------------
+// */
 
-typedef struct		s_brect
-{
-    SDL_Rect		rect;
-    SDL_Color		c_front;
-    SDL_Color		c_back;
-}					t_brect;
+// typedef struct		s_brect
+// {
+//     SDL_Rect		rect;
+//     SDL_Color		c_front;
+//     SDL_Color		c_back;
+// }					t_brect;
 
-/*
-** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
-*/
-typedef struct		s_window
-{
-    int				x;
-    int				y;
-    SDL_Window		*window;
-    SDL_Renderer	*renderer;
-    SDL_Event		event;
-}					t_window;
+// /*
+// ** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
+// */
+// typedef struct		s_window
+// {
+//     int				x;
+//     int				y;
+//     SDL_Window		*window;
+//     SDL_Renderer	*renderer;
+//     SDL_Event		event;
+// }					t_window;
 
-/*
-** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
-*/
-typedef struct		s_image
-{
-    SDL_Surface		*surface;
-    SDL_Texture		*texture;
-}					t_image;
+// /*
+// ** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
+// */
+// typedef struct		s_image
+// {
+//     SDL_Surface		*surface;
+//     SDL_Texture		*texture;
+// }					t_image;
 
 /*
  **	-------TYPEDEF OP STRUCTURE-------------------------------------------------
@@ -128,7 +128,7 @@ typedef struct		s_vm
 	uint32_t		next_ctod; // new, init ok
 	uint32_t		ctod_nb; // new, init ok
 	uint32_t		cycles_to_die;
-	int32_t			cycles_to_dump;
+	uint32_t			cycles_to_dump;
 	uint8_t			champ_amount;
 	uint8_t			visu;
 	uint8_t			last_live_champ_ind;

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/11/29 12:27:05 by brichard         ###   ########.fr        #
+#    Updated: 2019/12/01 16:09:00 by paullaurent      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,20 +32,20 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 #                                   SRCS_FILES                                 #
 #------------------------------------------------------------------------------#
 
-SRCS += window.c
-SRCS += draw_text.c
-SRCS += draw_infos.c
-SRCS += draw_image.c
-SRCS +=	draw_arena.c
-SRCS +=	main_drawer.c
-SRCS +=	draw_corewar.c
-SRCS +=	draw_champions.c
-SRCS +=	draw_champions2.c
-SRCS +=	object_creation.c
-SRCS +=	draw_rectangles.c
-SRCS +=	draw_process_list.c
-SRCS +=	draw_command_panel.c
-SRCS +=	draw_arena_helpers.c
+# SRCS += window.c
+# SRCS += draw_text.c
+# SRCS += draw_infos.c
+# SRCS += draw_image.c
+# SRCS +=	draw_arena.c
+# SRCS +=	main_drawer.c
+# SRCS +=	draw_corewar.c
+# SRCS +=	draw_champions.c
+# SRCS +=	draw_champions2.c
+# SRCS +=	object_creation.c
+# SRCS +=	draw_rectangles.c
+# SRCS +=	draw_process_list.c
+# SRCS +=	draw_command_panel.c
+# SRCS +=	draw_arena_helpers.c
 
 SRCS += chp_num_utils.c
 
@@ -61,6 +61,33 @@ SRCS += get_champ.c
 SRCS += read_champ.c
 
 SRCS += fill_arena.c
+
+SRCS += check_ocp.c
+SRCS += move_pc.c
+SRCS += proc_lives.c
+
+SRCS += cycle.c
+
+SRCS += add.c
+SRCS += aff.c
+SRCS += and.c
+SRCS += fork.c
+SRCS += ld.c
+SRCS += ldi.c
+SRCS += lfork.c
+SRCS += live.c
+SRCS += lld.c
+SRCS += lldi.c
+SRCS += op.c
+SRCS += or.c
+SRCS += parse_op.c
+SRCS += show_op.c
+SRCS += st.c
+SRCS += sti.c
+SRCS += sub.c
+SRCS += xor.c
+SRCS += zjump.c
+SRCS += create_op.c
 
 SRCS += init_vm.c
 SRCS += create_vm.c

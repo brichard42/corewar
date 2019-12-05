@@ -6,7 +6,7 @@
  ** zero, alors le carry passe a l'etat un, sinon a l'etat zero.
  */
 
-void    add(t_vm *vm, t_process *process)
+void	add(t_vm *vm, t_process *process)
 {
 	int		add;
 
