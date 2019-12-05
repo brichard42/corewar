@@ -1,6 +1,6 @@
 #include "corewar.h"
 
-void    put_ind_in_reg(t_vm *vm, t_process *process, int reg_nb)
+static void put_ind_in_reg(t_vm *vm, t_process *process, int reg_nb)
 {
     int     addr;
 
@@ -19,7 +19,7 @@ void    put_ind_in_reg(t_vm *vm, t_process *process, int reg_nb)
         + addr + 3, MEM_SIZE)];
 }
 
-void    lld(t_vm *vm, t_process *process)
+void        lld(t_vm *vm, t_process *process)
 {
 	int     reg_nb;
 

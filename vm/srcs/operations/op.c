@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 11:40:03 by lpoinsot          #+#    #+#             */
-/*   Updated: 2019/11/20 15:48:15 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/12/01 16:05:50 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ t_op_tab    op_tab[17] =
 		"load index", 1, 1},
 	{"sti", &sti, 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
 		"store index", 1, 1},
-	{"fork", &fork, 1, {T_DIR}, 12, 800, "fork", 0, 1},
+	{"fork", &op_fork, 1, {T_DIR}, 12, 800, "fork", 0, 1},
 	{"lld", &lld, 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
 	{"lldi", &lldi, 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
 		"long load index", 1, 1},
 	{"lfork", &lfork, 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{"aff", &aff, 1, {T_REG}, 16, 2, "aff", 1, 0},
-	{0, 0, {0}, 0, 0, 0, 0, 0}
+	{0, 0, 0, {0}, 0, 0, 0, 0, 0}
 };
 
 // void	print_tab(void)

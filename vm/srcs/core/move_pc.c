@@ -1,6 +1,6 @@
 #include "corewar.h"
 
-int     modulo(int a, int b)
+int			modulo(int a, int b)
 {
 	if (a % b >= b)
 		return (a % b);
@@ -8,7 +8,7 @@ int     modulo(int a, int b)
 		return ((a % b) + b);
 }
 
-int     size_param(int ocp_chunk, t_op_tab *ref)
+static int	size_param(int ocp_chunk, t_op_tab *ref)
 {
 	if (ocp_chunk == 1)
 		return (1);
@@ -19,7 +19,7 @@ int     size_param(int ocp_chunk, t_op_tab *ref)
 	return (0);
 }
 
-int     move_pc(t_process *process)
+int			move_pc(t_process *process)
 {
 	int         move;
 	t_op_tab    *ref;

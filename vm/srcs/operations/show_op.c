@@ -2,7 +2,7 @@
 
 void    show_op(t_process *process)
 {
-    int     i;
+    unsigned int     i;
 
     i = 0;
     ft_printf("player %d do op: %s"

@@ -1,6 +1,6 @@
 #include "corewar.h"
 
-int     param_ok(int ocp_chunk, int op_code, int num_param)
+static int	param_ok(int ocp_chunk, int op_code, int num_param)
 {
 	if (ocp_chunk < 1 || ocp_chunk > 3)
 		return (0);
@@ -11,7 +11,7 @@ int     param_ok(int ocp_chunk, int op_code, int num_param)
 	return (0);
 }
 
-int     check_ocp(int ocp, int op_code)
+int			check_ocp(int ocp, int op_code)
 {
 	int     nb_param;
 

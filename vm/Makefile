@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
 #    Updated: 2019/12/04 14:01:15 by brichard         ###   ########.fr        #
@@ -65,6 +65,33 @@ SRCS += read_champ.c
 SRCS += load_memory.c
 
 SRCS += parsing_error.c
+
+SRCS += check_ocp.c
+SRCS += move_pc.c
+SRCS += proc_lives.c
+
+SRCS += cycle.c
+
+SRCS += add.c
+SRCS += aff.c
+SRCS += and.c
+SRCS += fork.c
+SRCS += ld.c
+SRCS += ldi.c
+SRCS += lfork.c
+SRCS += live.c
+SRCS += lld.c
+SRCS += lldi.c
+SRCS += op.c
+SRCS += or.c
+SRCS += parse_op.c
+SRCS += show_op.c
+SRCS += st.c
+SRCS += sti.c
+SRCS += sub.c
+SRCS += xor.c
+SRCS += zjump.c
+SRCS += create_op.c
 
 SRCS += init_vm.c
 SRCS += create_vm.c

@@ -72,8 +72,8 @@ typedef struct		s_image
 }					t_image;
 
 /*
- **	-------TYPEDEF OP STRUCTURE-------------------------------------------------
- */
+**	-------TYPEDEF OP STRUCTURE-------------------------------------------------
+*/
 typedef struct s_op // new
 {
 	uint8_t				active;
@@ -128,7 +128,7 @@ typedef struct		s_vm
 	uint32_t		next_ctod; // new, init ok
 	uint32_t		ctod_nb; // new, init ok
 	uint32_t		cycles_to_die;
-	int32_t			cycles_to_dump;
+	uint32_t			cycles_to_dump;
 	uint8_t			champ_amount;
 	uint8_t			visu;
 	uint8_t			last_live_champ_ind;
