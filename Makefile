@@ -2,13 +2,21 @@
 
 CLEAR = clear
 
+DEBUG = 0
+
+ifeq ($(DEBUG), 1)
+	CFLAGS = DEBUG=1
+else
+	CFLAGS =
+endif
+
 all: corewar_bin asm_bin
 
 corewar_bin:
-	make -C vm
+	make $(CFLAGS) -C vm
 
 asm_bin:
-	make -C asm_dir
+	make $(CFLAGS) -C asm_dir
 
 $(CLEAR):
 	@$@

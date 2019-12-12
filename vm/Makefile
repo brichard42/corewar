@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/12 12:39:46 by brichard         ###   ########.fr        #
+#    Updated: 2019/12/12 15:18:52 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRCS += init_process.c
 SRCS += create_process.c
 SRCS += delete_process.c
 SRCS += free_process.c
+SRCS += free_process_list.c
 SRCS += process_map.c
 #SRCS += copy_process.c 
 

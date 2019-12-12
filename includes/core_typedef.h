@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:16:54 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/12 12:36:28 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:54:46 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct		s_champ
 {
 	char			name[PROG_NAME_LENGTH + 1];
 	char			comment[COMMENT_LENGTH + 1];
-	char			code[CHAMP_MAX_SIZE + 1];
+	char			code[CHAMP_MAX_SIZE];
 	uint32_t		size;
 	int32_t			num;
 	int32_t			life_signal; // new
@@ -120,18 +120,20 @@ typedef struct		s_champ
 typedef struct		s_vm
 {
 	t_process		*process_list;
-	t_champ			champ[MAX_PLAYERS + 1];
+	t_champ			champ[MAX_PLAYERS];
 	char			mem[MEM_SIZE];
 	uint8_t			mem_owner[MEM_SIZE];
 	uint32_t		current_cycle;
-	uint32_t		lives_in_cycle; // new, init ok
-	uint32_t		ctod_nb; // new, init ok
 	int32_t			cycle_to_dump;
 	int32_t			cycle_to_die;
+	uint32_t		live_count;
+	uint32_t		live_check_count;
 	uint8_t			champ_amount;
 	uint8_t			visu;
-	uint8_t			last_live_champ_ind;
 	uint8_t			verbose;
+	//uint32_t		lives_in_cycle; // new, init ok
+	//uint32_t		ctod_nb; // new, init ok
+	//uint8_t			last_live_champ_ind;
 }					t_vm;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/04 15:51:01 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/12 17:18:09 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ static void	print_champ(t_champ champ[4])
 		++i;
 	}
 }
-
+#include <stdio.h>
 int			main(int ac, char **av)
 {
 	t_parser		parser;
-	 t_window		*win;
+	t_window		*win;
 
 	if (ac < 2)
 		return (usage());
@@ -41,6 +41,7 @@ int			main(int ac, char **av)
 	if (vm_parser(&parser, ++av) == FAILURE)
 		return (usage());
 	print_champ(parser.env.champ);// TO TEJ
+	(void)print_champ;
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
 	if (parser.env.visu == ON)
@@ -53,5 +54,6 @@ int			main(int ac, char **av)
 	}
 	else
 		cycle(&parser.env);
+	free_process_list(&parser.env.process_list);//NEED FAIRE CA PROPREMENT--Idee: Free toute la struct parser et son contenu step by step et ce pour CHAQUE RETURN DU MAIN.
 	return (EXIT_SUCCESS);
 }
