@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedef.h                                          :+:      :+:    :+:   */
+/*   core_typedef.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
+/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/03 15:55:01 by brichard         ###   ########.fr       */
+/*   Created: 2019/12/12 10:16:54 by brichard          #+#    #+#             */
+/*   Updated: 2019/12/12 12:36:28 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,12 +123,11 @@ typedef struct		s_vm
 	t_champ			champ[MAX_PLAYERS + 1];
 	char			mem[MEM_SIZE];
 	uint8_t			mem_owner[MEM_SIZE];
-	uint32_t		lives_in_cycle; // new, init ok
 	uint32_t		current_cycle;
-	uint32_t		next_ctod; // new, init ok
+	uint32_t		lives_in_cycle; // new, init ok
 	uint32_t		ctod_nb; // new, init ok
-	uint32_t		cycles_to_die;
-	uint32_t			cycles_to_dump;
+	int32_t			cycle_to_dump;
+	int32_t			cycle_to_die;
 	uint8_t			champ_amount;
 	uint8_t			visu;
 	uint8_t			last_live_champ_ind;
@@ -161,6 +160,22 @@ typedef struct		s_op_tab
 	int32_t			jsp_encore; // pour savoir si on a besoin d'ocp ou pas
 	int32_t			direct_size;
 }					t_op_tab;
+
+/*
+**	-------TYPEDEF PROCESS APPLY FUNC-------------------------------------------------
+*/
+typedef void		(*t_proc_apply)(t_process **);
+
+/*
+**	-------TYPEDEF ARG_PARSER FUNCTIONS-------
+*/
+typedef void		(*t_get_func)(t_parser *, char **);
+
+/*
+**	-------TYPEDEF READ_CHAMP.C FUNCTIONS---------------------------------------
+*/
+
+typedef void		(*t_read_func)(t_parser *, int32_t);
 
 extern t_op_tab		op_tab[];
 

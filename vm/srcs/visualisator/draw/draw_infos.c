@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:18:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/12/12 12:14:42 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,30 +42,30 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env, int space_counter)
 
 /*
 ** rajouter dans le deuxieme if la fonction qui regarde si tout les process ont
-** dit je suis alive si oui remettre check_amount a 0 of course et cycles_to_die
+** dit je suis alive si oui remettre check_amount a 0 of course et cycle_to_die
 ** -CYCLE_DELTA.
 */
 
 static int8_t	check_infos_text(t_vm *env, int space_counter)
 {
 	static uint8_t	check_amount = 0;
-	static uint32_t	cycle_since_last_death = 0;
+	static int32_t	cycle_since_last_death = 0;
 
-	if (env->cycles_to_die == 0)
-		env->cycles_to_die = CYCLE_TO_DIE;
+	if (env->cycle_to_die == 0)
+		env->cycle_to_die = CYCLE_TO_DIE;
 	if (space_counter == ACTIVE)
 	{
-		if (++cycle_since_last_death == env->cycles_to_die)
+		if (++cycle_since_last_death == env->cycle_to_die)
 		{
 			cycle_since_last_death = 0;
 			check_amount++;
 		}
 		if (check_amount == MAX_CHECKS)
 		{
-			if (env->cycles_to_die <= 50)
+			if (env->cycle_to_die <= 50)
 				return (THE_END);
 			check_amount = 0;
-			env->cycles_to_die -= 50;
+			env->cycle_to_die -= 50;
 		}
 	}
 	return (CONTINUE);
@@ -81,7 +81,7 @@ static int8_t	draw_infos_text2(t_window *win, t_vm *env)
 	point = create_point(1860, 70);
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
-	if ((str = ft_lltoa(env->cycles_to_die)) == NULL)
+	if ((str = ft_lltoa(env->cycle_to_die)) == NULL)
 		return (FAILURE);
 	if ((tmp = draw_text(win, "- Cycles to die : ", point, text))
 			&& tmp == FAILURE)

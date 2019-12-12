@@ -17,7 +17,7 @@ RESET					= \033[0m
 
 # NAMES
 NAME_VM					= corewar
-NAME_ASM				= asm
+NAME_ASM				= ../asm
 
 # COMPILER
 CC						= gcc

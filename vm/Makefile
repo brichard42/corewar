@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/04 14:01:15 by brichard         ###   ########.fr        #
+#    Updated: 2019/12/12 12:39:46 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,16 +66,23 @@ SRCS += load_memory.c
 
 SRCS += parsing_error.c
 
+SRCS += cycle.c
+SRCS += check_cycle_to_die.c
+#SRCS += check_ocp.c
+#SRCS += move_pc.c
+#SRCS += proc_lives.c
+
 SRCS += init_vm.c
 SRCS += create_vm.c
 SRCS += delete_vm.c
 SRCS += free_vm.c
 
-SRCS += copy_process.c 
 SRCS += init_process.c
 SRCS += create_process.c
 SRCS += delete_process.c
 SRCS += free_process.c
+SRCS += process_map.c
+#SRCS += copy_process.c 
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #
@@ -100,10 +107,12 @@ OBJS_PATH = $(OBJS_DIR)
 
 SRCS_PATH += $(SRCS_DIR)
 
-LIB_DWN_PATH = ~/.brew/lib
+LIB_DWN_PATH = /usr/include/SDL2/
+#LIB_DWN_PATH = ~/.brew/lib
 
 LIB_PATH += $(LIB_DIR)
-LIB_PATH += ~/.brew/lib
+LIB_PATH += /usr/include/SDL2/
+#LIB_PATH += ~/.brew/lib
 
 #------------------------------------------------------------------------------#
 #                                     VPATH                                    #
@@ -124,15 +133,17 @@ DWL = brew
 ifeq ($(DEBUG), 1)
 	CFLAGS += -fsanitize=address,undefined
 	CFLAGS += -g3
+else
+	CFLAGS += -Werror -Wall -Wextra
 endif
 
-IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
+#IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
+IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find /usr/include/SDL2/ -type d), -I$(dir))
 
-LDLIBS = ft sdl2 sdl2_image sdl2_mixer sdl2_ttf
+LDLIBS = ft# sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
 LDFLAGS = $(addprefix -L , $(LIB_PATH)) $(addprefix -l, $(LDLIBS))
 
-CFLAGS += -Werror -Wall -Wextra
 
 #------------------------------------------------------------------------------#
 #                                   COMMANDS                                   #
@@ -194,10 +205,10 @@ COM_STRING   = "Compiling"
 all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
-	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@)
+	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@ `sdl2-config --libs` -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer)
 
 $(OBJS_PATH)%.o : %.c | Makefile
-	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@)
+	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@ `sdl2-config --cflags`)
 
 $(OBJS_PATH):
 	$(MKDIR) $@

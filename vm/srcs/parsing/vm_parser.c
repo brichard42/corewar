@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-static void		sort_champ_tab(t_champ *champ, int chp_amount)
+static void		sort_champ_tab(t_champ *champ, int32_t chp_amount)
 {
 	t_champ	tmp;
 	uint8_t	i;

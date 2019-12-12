@@ -15,8 +15,6 @@
 static int	usage(void)
 {
 	ft_putendl(USG_MSG);
-	return (1);
-	ft_putendl("./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...");
 	return (EXIT_FAILURE);
 }
 
@@ -47,10 +45,13 @@ int			main(int ac, char **av)
 		return (usage());
 	if (parser.env.visu == ON)
 	{
-		 if (!(win = open_window("Test")))
-		 	return (0);
+		 win = open_window("Test");
+		 if (win == NULL)
+		 	return (EXIT_FAILURE);
 		 if (drawer(win, &parser.env) == FAILURE)
-		 	return (1);
+		 	return (EXIT_FAILURE);
 	}
+	else
+		cycle(&parser.env);
 	return (EXIT_SUCCESS);
 }

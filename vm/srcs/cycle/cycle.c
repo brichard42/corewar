@@ -1,23 +1,26 @@
 #include "corewar.h"
 
+/*
 int				is_opcode(char data)
 {
 	if (data > 0 && data < 17)
 		return (1);
 	return (0);
 }
+*/
 
-static int		dump(t_vm *vm)
+static uint8_t	must_dump(t_vm *vm)
 {
-	if (vm->current_cycle == vm->cycles_to_dump)
+	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
 	{
-		// afficher la memoire et quitter proprement
-		ft_printf("dump\n");
-		return (0);
+		// afficher la memoire, le winner et quitter proprement
+		ft_printf("Dump_time!!\n");
+		return (TRUE);
 	}
-	return (1);
+	return (FALSE);
 }
 
+/*
 static void		exec_process(t_vm *vm, t_process *process)
 {
 	if (process->op.active == 0)
@@ -50,19 +53,24 @@ static void		exec_proc_list(t_vm *vm, t_process *process)
 		process = process->next;
 	}
 }
+*/
 
-void			cycle(t_vm *vm)
+void			cycle(t_vm *env)
 {
-	t_process   *tmp_proc;
+	t_process   **d_process;
 
-	while (proc_lives(vm) && dump(vm)) // qd on dump on doit prendre celui qui a fait le dernier live comme winner ?
+	d_process = &env->process_list;
+	while (*d_process != NULL && must_dump(env) == FALSE)
 	{
-		if (!(vm->current_cycle % vm->cycles_to_die))
+		if (env->verbose == ON)
+			ft_printf("It is now cycle: %d\n", env->current_cycle);
+		check_cycle_to_die(env);
+		++env->current_cycle;
+		/*
+		proc_lives(vm);
+		if (!(vm->current_cycle % vm->cycle_to_die))
 			reset_life_signal(vm);
-		if (vm->verbose)
-			ft_printf("It is now cycle: %d\n", vm->current_cycle);
-		tmp_proc = vm->process_list;
-		exec_proc_list(vm, tmp_proc);
-		vm->current_cycle++;
+		exec_proc_list(vm, d_process);
+		*/
 	}
 }

@@ -16,8 +16,8 @@
 /*
 **	USAGE MSG
 */
-# define USG_MSG		"Usage: ./corewar [-dump n_cycles] \
-[(-n num) champ1.cor] --visual..."
+# define USG_MSG		"Usage: ./corewar --visual [-dump n_cycles] \
+[(-n num) champ1.cor] ..."
 
 /*
 **	TEST VALUE
