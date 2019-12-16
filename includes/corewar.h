@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/04 13:59:32 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/12 15:25:12 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "libft.h"
 # include "core_error.h"
-# include <SDL.h>
-# include <SDL_image.h>
-# include <SDL_ttf.h>
-# include <SDL_mixer.h>
+// # include <SDL.h>
+// # include <SDL_image.h>
+// # include <SDL_ttf.h>
+// # include <SDL_mixer.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
@@ -103,7 +103,7 @@ void				parsing_error(t_parser *parser, int32_t errer_code);
 /*
 **	-------COPY PROCESS-------
 */
-int8_t				copy_process(int pc_address, t_process **process);
+int8_t				copy_process(t_vm *vm, int pc_address, t_process *process);
 
 /*
  **	-------COREWAR OP FUNCTIONS------------
@@ -138,4 +138,6 @@ int                 take_param_op(t_vm *vm, t_process *process);
 int                 get_indirecte(t_vm *vm, t_op *op, int nb_arg);
 void                show_op(t_process *process);
 int				    is_opcode(char data);
+int					check_params_ldi_lldi(t_process *process);
+void                show_mem(t_vm *vm);
 #endif

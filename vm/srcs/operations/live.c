@@ -4,12 +4,17 @@ void    live(t_vm *vm, t_process *process)
 {
 	int     n;
 
-	vm->lives_in_cycle++;
+	// ft_printf("live\n");
+	vm->lives_in_cycle += 1;
 	process->last_live = vm->current_cycle;
-	n = process->reg[0];//numero du joueur
-	if (n >= 0 && n <= 4)
+	n = process->op.param[0] * -1;//numero du joueur
+	// si le numero est negatif il faut le mettre en positif d'apres le pdf russe
+	if (n >= 1 && n <= vm->champ_amount)
 	{
 		vm->champ[n].life_signal++;
 		vm->champ[n].last_live_cycle = vm->current_cycle;
+		// ft_printf("Player nb %d is said to be alive\n", n);
 	}
+	if (vm->verbose)
+			show_op(process);
 }

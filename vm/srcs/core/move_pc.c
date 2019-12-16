@@ -2,7 +2,7 @@
 
 int			modulo(int a, int b)
 {
-	if (a % b >= b)
+	if (a % b >= 0)
 		return (a % b);
 	else
 		return ((a % b) + b);
@@ -36,5 +36,5 @@ int			move_pc(t_process *process)
 		move += size_param((process->op.ocp & 0x30) >> 4, ref);
 	if (ref->nb_param >= 3)
 		move += size_param((process->op.ocp & 0xC) >> 2, ref);
-	return (move);
+	return (modulo(move, MEM_SIZE));
 }

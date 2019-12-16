@@ -29,8 +29,11 @@ void		reset_life_signal(t_vm *vm)
 static void	set_ctod(t_vm *vm)
 {
 	vm->ctod_nb++;
+	// ft_printf("set_ctod at cycle : %d and ctd = %d\n", vm->current_cycle, vm->cycles_to_die);
+	// ft_printf("nbr_live: %d, ctod nbr: %d", vm->lives_in_cycle, vm->ctod_nb);
 	if (vm->lives_in_cycle >= NBR_LIVE || vm->ctod_nb >= MAX_CHECKS)
 	{
+		// ft_printf("set at cycle: %d and cycles to dir == %d\n", vm->current_cycle, vm->cycles_to_die);
 		vm->cycles_to_die -= CYCLE_DELTA;
 		vm->ctod_nb = 0;
 	}
@@ -38,35 +41,46 @@ static void	set_ctod(t_vm *vm)
 	vm->next_ctod = vm->current_cycle + vm->cycles_to_die; // utile en fonction de la solution qu'on utilise pour cycle max
 }
 
-// static void	kill_proc(t_process *process)
-// {
-// 	// t_process   *tmp_process;
-// 	ft_printf("kill process\n");
-// 	free_process(&process);
-// 	// hesitation a soit avoir un marqueur pour savoir si il est actif ou pas our del apres
-// 	// ou d'avoir de pointeur avec un qui remonte au proc avant celui a del pour pouvoir raccrocher celui d'après
-// }
+static void	check_process(t_vm *vm)
+{
+	t_process	*tmp_process;
+	t_process	*tmp_next_process;
+
+	tmp_process = vm->process_list;
+	while (tmp_process != NULL)
+	{
+		if ((vm->current_cycle - tmp_process->last_live) >= vm->cycles_to_die) // proc mort
+			tmp_process->active = 0;
+		if (tmp_process->next && tmp_process->next->active == 0)
+		{
+			// ft_printf("kill proc num: %d\n", tmp_process->next->num);
+			tmp_next_process = tmp_process->next;
+			tmp_process->next = tmp_process->next->next;
+			free(tmp_next_process);
+		}
+		tmp_process = tmp_process->next;
+	}
+}
 
 int			proc_lives(t_vm *vm)
 {
 	int         i;
-	t_process   *tmp_proc;
-	t_process	*tmp_next_proc;
+	t_process   *tmp_process;
 
 	i = 0;
-	tmp_proc = vm->process_list;
+	tmp_process = vm->process_list;
 	if (vm->current_cycle >= vm->next_ctod)
 	{
+		check_process(vm);
 		set_ctod(vm);
-		while (tmp_proc != NULL)
+		while (tmp_process != NULL)
 		{
-			tmp_next_proc = tmp_proc->next;
-			if ((vm->current_cycle - tmp_proc->last_live) >= vm->cycles_to_die) // proc mort
-				delete_process(tmp_proc);// kill process
-			tmp_proc = tmp_next_proc;
+			if (tmp_process->active == 1)
+				return (1);
+			tmp_process = tmp_process->next;
 		}
-		if (vm->process_list == NULL)// || !player_life(vm)) supprmier car les cycles ne doivent s'arreter que quand il n'y a plus de process en vie et non de joueur directement en vie
-			return (0);
 	}
-	return (1);
+	else
+		return (1);
+	return (0);
 }

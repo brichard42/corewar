@@ -29,7 +29,7 @@ void    or(t_vm *vm, t_process *process)
 	else
 		param2 = process->op.param[1];
 	process->reg[process->op.param[2]] = param1 | param2;
-	process->carry = ((param1 | param2) ? 1 : 0);
+	process->carry = ((param1 | param2) == 0 ? 1 : 0);
 	if (vm->verbose)
 		show_op(process);
 }

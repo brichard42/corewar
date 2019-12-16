@@ -20,8 +20,6 @@ void	create_op(t_process *process, int op_code)
 	int		i;
 
 	i = 0;
-	if (!is_opcode(op_code))
-		return ;
 	init_op(&process->op);
 	process->op.active = 1;
 	process->op.op_code = op_code;

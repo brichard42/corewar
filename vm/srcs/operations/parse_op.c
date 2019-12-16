@@ -24,8 +24,10 @@ static void	get_ind(t_vm *vm, t_process *proc, int num, int pos)
 	value = 0;
 	value = value | (unsigned char)vm->mem[(pos + 1) % MEM_SIZE];
 	value = value << 8;
-	value = value | (unsigned char)vm->mem[(pos + 1) % MEM_SIZE];
+	value = value | (unsigned char)vm->mem[(pos + 2) % MEM_SIZE];
 	proc->op.param[num] = value;
+	if ((value & 0x8000) == 0x8000)
+		proc->op.param[num] = (value - USHRT_MAX) - 1;
 }
 
 static void	get_dir(t_vm *vm, t_process *proc, int num, int pos)
@@ -38,11 +40,15 @@ static void	get_dir(t_vm *vm, t_process *proc, int num, int pos)
 	value = value | (unsigned char)vm->mem[(pos + 2) % MEM_SIZE];
 	if (op_tab[proc->op.op_code - 1].direct_size == 1)
 	{
-		value = value << 8;
-		value = value | (unsigned char)vm->mem[(pos + 3) % MEM_SIZE];
-		value = value << 8;
-		value = value | (unsigned char)vm->mem[(pos + 4) % MEM_SIZE];
+		if ((value & 0x8000) == 0x8000)
+			value = (value - USHRT_MAX) - 1;
+		proc->op.param[num] = value;
+		return ;
 	}
+	value = value << 8;
+	value = value | (unsigned char)vm->mem[(pos + 3) % MEM_SIZE];
+	value = value << 8;
+	value = value | (unsigned char)vm->mem[(pos + 4) % MEM_SIZE];
 	proc->op.param[num] = value;
 }
 
@@ -50,7 +56,7 @@ static void	get_reg(t_vm *vm, t_process *proc, int num, int pos)
 {
 	unsigned char   value;
 
-	value = (unsigned char)vm->mem[(pos + 1)];
+	value = (unsigned char)vm->mem[(pos + 1) % MEM_SIZE];
 	proc->op.param[num] = value;
 }
 

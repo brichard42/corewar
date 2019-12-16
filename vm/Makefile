@@ -6,7 +6,7 @@
 #    By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/04 14:01:15 by brichard         ###   ########.fr        #
+#    Updated: 2019/12/05 17:03:06 by paullaurent      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,20 +32,20 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 #                                   SRCS_FILES                                 #
 #------------------------------------------------------------------------------#
 
-SRCS += window.c
-SRCS += draw_text.c
-SRCS += draw_infos.c
-SRCS += draw_image.c
-SRCS +=	draw_arena.c
-SRCS +=	main_drawer.c
-SRCS +=	draw_corewar.c
-SRCS +=	draw_champions.c
-SRCS +=	draw_champions2.c
-SRCS +=	object_creation.c
-SRCS +=	draw_rectangles.c
-SRCS +=	draw_process_list.c
-SRCS +=	draw_command_panel.c
-SRCS +=	draw_arena_helpers.c
+# SRCS += window.c
+# SRCS += draw_text.c
+# SRCS += draw_infos.c
+# SRCS += draw_image.c
+# SRCS +=	draw_arena.c
+# SRCS +=	main_drawer.c
+# SRCS +=	draw_corewar.c
+# SRCS +=	draw_champions.c
+# SRCS +=	draw_champions2.c
+# SRCS +=	object_creation.c
+# SRCS +=	draw_rectangles.c
+# SRCS +=	draw_process_list.c
+# SRCS +=	draw_command_panel.c
+# SRCS +=	draw_arena_helpers.c
 
 SRCS += chp_num_utils.c
 

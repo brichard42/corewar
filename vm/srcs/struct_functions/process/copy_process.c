@@ -3,30 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   copy_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:37:42 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:03:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:24:57 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int8_t	copy_process(int pc_address, t_process **process)
+int8_t	copy_process(t_vm *vm, int pc_address, t_process *process)
 {
 	t_process	*son;
 	int			i;
 
 	i = -1;
-	if (!(son = (t_process *)ft_memalloc(sizeof(t_process))))
+	if ((son = create_process(process->reg[0], process->pc)) == NULL)
 		return (FAILURE);
-	son->carry = (*process)->carry;
+	init_op(&son->op);
+	son->carry = process->carry;
 	son->pc = pc_address;
-	son->cycles_left = 0;
-	son->last_live = (*process)->last_live;
-	while (++i < REG_NUMBER)
-		son->reg[i] = (*process)->reg[i];
-	son->next = *process;
-	*process = son;
+	// son->cycles_left = 0;
+	son->last_live = process->last_live;
+	while (++i <= REG_NUMBER)
+		son->reg[i] = process->reg[i];
+	son->next = vm->process_list;
+	vm->process_list = son;
 	return (SUCCESS);
 }

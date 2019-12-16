@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/04 15:51:01 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:40:00 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	print_champ(t_champ champ[4])
 int			main(int ac, char **av)
 {
 	t_parser		parser;
-	 t_window		*win;
+	//  t_window		*win;
 
 	if (ac < 2)
 		return (usage());
@@ -45,12 +45,14 @@ int			main(int ac, char **av)
 	print_champ(parser.env.champ);// TO TEJ
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
-	if (parser.env.visu == ON)
-	{
-		 if (!(win = open_window("Test")))
-		 	return (0);
-		 if (drawer(win, &parser.env) == FAILURE)
-		 	return (1);
-	}
+	parser.env.verbose = 1;
+	cycle(&parser.env);
+	// if (parser.env.visu == ON)
+	// {
+	// 	//  if (!(win = open_window("Test")))
+	// 	//  	return (0);
+	// 	//  if (drawer(win, &parser.env) == FAILURE)
+	// 	//  	return (1);
+	// }
 	return (EXIT_SUCCESS);
 }
