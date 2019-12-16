@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 16:34:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/04 15:32:08 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:40:00 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		get_opt(t_parser *parser, char **av)
 		else if (ft_strequ(*av, O_CHP_NUM) == TRUE)
 			parser->state = S_CHP_NUM;
 		else if (ft_strequ(*av, O_VISU) == TRUE)
-			parser->env.visu = ON;
+			parser->visu = ON;
 		else if (ft_strequ(*av, O_VERBOSE) == TRUE)
 			parser->env.verbose = ON;
 		else

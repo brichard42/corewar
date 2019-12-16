@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/12 15:03:02 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:08:08 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_process			*create_process(int32_t reg_1, int32_t pc);
 void				delete_process(t_process *to_delete);
 void				free_process(t_process **to_delete);
 void				free_process_list(t_process **to_delete);
-void				process_map(t_process **process_list, t_proc_apply apply);
+void				process_map(t_vm *env, t_process **process_list, t_proc_apply apply);
 //int8_t				copy_process(int pc_address, t_process **process);
 
 /*

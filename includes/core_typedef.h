@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:16:54 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/12 17:54:46 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:06:00 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,13 +123,13 @@ typedef struct		s_vm
 	t_champ			champ[MAX_PLAYERS];
 	char			mem[MEM_SIZE];
 	uint8_t			mem_owner[MEM_SIZE];
-	uint32_t		current_cycle;
+	int32_t			current_cycle;
+	int32_t			current_sub_cycle;
 	int32_t			cycle_to_dump;
 	int32_t			cycle_to_die;
 	uint32_t		live_count;
 	uint32_t		live_check_count;
 	uint8_t			champ_amount;
-	uint8_t			visu;
 	uint8_t			verbose;
 	//uint32_t		lives_in_cycle; // new, init ok
 	//uint32_t		ctod_nb; // new, init ok
@@ -145,6 +145,7 @@ typedef struct		s_parser
 	enum e_state	state;
 	uint8_t			chp_num;
 	uint8_t			cur_chp_index;
+	uint8_t			visu;
 }					t_parser;
 
 /*
@@ -166,7 +167,7 @@ typedef struct		s_op_tab
 /*
 **	-------TYPEDEF PROCESS APPLY FUNC-------------------------------------------------
 */
-typedef void		(*t_proc_apply)(t_process **);
+typedef void		(*t_proc_apply)(t_vm*, t_process **);
 
 /*
 **	-------TYPEDEF ARG_PARSER FUNCTIONS-------

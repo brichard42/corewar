@@ -6,18 +6,18 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 12:31:04 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/12 12:35:49 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:09:39 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			process_map(t_process **process_list, t_proc_apply apply)
+void			process_map(t_vm *env, t_process **process_list, t_proc_apply apply)
 {
 
 	if (process_list == NULL || *process_list == NULL)
 		return ;
 	if (apply != NULL)
-		apply(process_list);
-	process_map(&(*process_list)->next, apply);
+		apply(env, process_list);
+	process_map(env, &(*process_list)->next, apply);
 }

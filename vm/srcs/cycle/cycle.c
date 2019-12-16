@@ -9,17 +9,6 @@ int				is_opcode(char data)
 }
 */
 
-static uint8_t	must_dump(t_vm *vm)
-{
-	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
-	{
-		// afficher la memoire, le winner et quitter proprement
-		ft_printf("Dump_time!!\n");
-		return (TRUE);
-	}
-	return (FALSE);
-}
-
 /*
 static void		exec_process(t_vm *vm, t_process *process)
 {
@@ -55,6 +44,17 @@ static void		exec_proc_list(t_vm *vm, t_process *process)
 }
 */
 
+static uint8_t	must_dump(t_vm *vm)
+{
+	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
+	{
+		// afficher la memoire, le winner et quitter proprement
+		ft_printf("Dump_time!!\n");
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
 void			cycle(t_vm *env)
 {
 	t_process   **d_process;
@@ -66,6 +66,7 @@ void			cycle(t_vm *env)
 			ft_printf("It is now cycle: %d\n", env->current_cycle);
 		check_cycle_to_die(env);
 		++env->current_cycle;
+		++env->current_sub_cycle;
 		/*
 		proc_lives(vm);
 		if (!(vm->current_cycle % vm->cycle_to_die))
