@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:16:54 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/16 16:06:00 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/17 12:06:29 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ typedef struct			s_process
 {
     struct s_process	*next;
     struct s_process	*prev;
-	t_op				op; // new , init pas ok
+	//t_op				op; // new , init pas ok
     int32_t				reg[REG_NUMBER];
     int32_t				pc;
     int32_t				cycles_left;
-	int32_t				last_live; // new, init ok
+	int32_t				last_live;
     uint8_t				carry;
 }						t_process;
 
@@ -110,7 +110,6 @@ typedef struct		s_champ
 	char			code[CHAMP_MAX_SIZE];
 	uint32_t		size;
 	int32_t			num;
-	int32_t			life_signal; // new
 	int32_t			last_live_cycle;
 }					t_champ;
 

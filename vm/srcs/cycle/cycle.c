@@ -68,9 +68,6 @@ void			cycle(t_vm *env)
 		++env->current_cycle;
 		++env->current_sub_cycle;
 		/*
-		proc_lives(vm);
-		if (!(vm->current_cycle % vm->cycle_to_die))
-			reset_life_signal(vm);
 		exec_proc_list(vm, d_process);
 		*/
 	}

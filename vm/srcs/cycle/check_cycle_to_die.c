@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:08:53 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/16 16:25:44 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/17 11:57:04 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static uint8_t	is_cycle_to_die(t_vm *env)
 			|| (env->current_sub_cycle - env->cycle_to_die) == 0);
 }
 
-void			check_last_live(t_vm *env, t_process **process_list)
+static void		delete_dead_processes(t_vm *env, t_process **process_list)
 {
 	if ((*process_list == NULL))
 		return ;
@@ -29,10 +29,10 @@ void			check_last_live(t_vm *env, t_process **process_list)
 		if (env->verbose == ON)
 			ft_printf("process with reg1 = %d is dead\n", (*process_list)->reg[0]);
 		free_process(process_list);
-		check_last_live(env, process_list);
+		delete_dead_processes(env, process_list);
 	}
 	else
-		check_last_live(env, &(*process_list)->next);
+		delete_dead_processes(env, &(*process_list)->next);
 }
 
 static void		set_new_cycle_to_die(t_vm *env)
@@ -58,7 +58,7 @@ void			check_cycle_to_die(t_vm *env)
 	if (is_cycle_to_die(env) == TRUE)
 	{
 		set_new_cycle_to_die(env);
-		check_last_live(env, &env->process_list);
+		delete_dead_processes(env, &env->process_list);
 		env->current_sub_cycle = 0;
 	}
 }
