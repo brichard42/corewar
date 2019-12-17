@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/16 16:40:00 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/12/17 20:04:08 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			main(int ac, char **av)
 	print_champ(parser.env.champ);// TO TEJ
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
-	parser.env.verbose = 1;
+	// parser.env.verbose = 1;
 	cycle(&parser.env);
 	// if (parser.env.visu == ON)
 	// {
@@ -54,5 +54,6 @@ int			main(int ac, char **av)
 	// 	//  if (drawer(win, &parser.env) == FAILURE)
 	// 	//  	return (1);
 	// }
+	delete_vm(&parser.env);
 	return (EXIT_SUCCESS);
 }

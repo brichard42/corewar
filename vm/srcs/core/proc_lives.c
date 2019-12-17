@@ -53,7 +53,7 @@ static void	check_process(t_vm *vm)
 			tmp_process->active = 0;
 		if (tmp_process->next && tmp_process->next->active == 0)
 		{
-			// ft_printf("kill proc num: %d\n", tmp_process->next->num);
+			// ft_printf("kill proc num: %d\n", tmp_process->num);
 			tmp_next_process = tmp_process->next;
 			tmp_process->next = tmp_process->next->next;
 			free(tmp_next_process);
@@ -71,6 +71,8 @@ int			proc_lives(t_vm *vm)
 	tmp_process = vm->process_list;
 	if (vm->current_cycle >= vm->next_ctod)
 	{
+		if (vm->cycles_to_die <= 0)
+			return (0);
 		check_process(vm);
 		set_ctod(vm);
 		while (tmp_process != NULL)

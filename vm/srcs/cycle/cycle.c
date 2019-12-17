@@ -36,7 +36,7 @@ static void		exec_process(t_vm *vm, t_process *process)
 				op_tab[process->op.op_code - 1].func(vm, process);
 			if (process->op.op_code != 9 || (process->op.op_code == 9 && !process->carry)) // pour le cas zjump ou le pc est deja déplacersauf quand carry
 				process->pc += move_pc(process); // deplacer le pc en fonction du nombre de param etc
-			process->pc = modulo(process->pc, MEM_SIZE);
+			// process->pc = modulo(process->pc, MEM_SIZE);
 			delete_op(process);
 		}
 	}
@@ -53,18 +53,36 @@ static void		exec_proc_list(t_vm *vm, t_process *process)
 	}
 }
 
-void			cycle(t_vm *vm)
+static void		winner(t_vm	*vm)
+{
+	int		i;
+	int		best;
+
+	i = 0;
+	best = 0;
+	while (i < MAX_PLAYERS)
+	{
+		if (vm->champ[i].last_live_cycle > vm->champ[best].last_live_cycle)
+			best = i;
+		i++;
+	}
+	ft_printf("champ nb %d, %s , has won !\n", best + 1,
+		vm->champ[best].name);
+}
+
+void			cycle(t_vm	*vm)
 {
 	t_process   *tmp_proc;
 
 	while (proc_lives(vm) && dump(vm)) // qd on dump on doit prendre celui qui a fait le dernier live comme winner ?
 	{
-		if (!(vm->current_cycle + 1 % vm->cycles_to_die))
+		if (!((vm->current_cycle + 1) % vm->cycles_to_die))
 			reset_life_signal(vm);
 		// if (vm->verbose)
-		// 	ft_printf("It is now cycle: %d\n", vm->current_cycle);
+			ft_printf("It is now cycle: %d\n", vm->current_cycle);
 		tmp_proc = vm->process_list;
 		exec_proc_list(vm, tmp_proc);
 		vm->current_cycle++;
 	}
+	winner(vm);
 }

@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/16 15:25:36 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/12/17 16:52:59 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,11 +126,11 @@ typedef struct		s_vm
 	char			mem[MEM_SIZE];
 	uint8_t			mem_owner[MEM_SIZE];
 	uint32_t		lives_in_cycle; // new, init ok
-	uint32_t		current_cycle;
-	uint32_t		next_ctod; // new, init ok
+	int32_t			current_cycle;
+	int32_t			next_ctod; // new, init ok
 	uint32_t		ctod_nb; // new, init ok
-	uint32_t		cycles_to_die;
-	uint32_t			cycles_to_dump;
+	int32_t			cycles_to_die;
+	int32_t			cycles_to_dump;
 	uint8_t			champ_amount;
 	uint8_t			visu;
 	uint8_t			last_live_champ_ind;
