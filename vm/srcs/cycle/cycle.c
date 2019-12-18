@@ -13,7 +13,7 @@ static void		winner(t_vm	*vm)
 	uint8_t	i;
 
 	i = vm->winner_index;
-	ft_printf("champ nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
+	ft_printf("contestant nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
 }
 
 static uint8_t	must_dump(t_vm *vm)

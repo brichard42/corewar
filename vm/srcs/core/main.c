@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/18 16:24:04 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/18 18:16:30 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int			main(int ac, char **av)
 		return (usage());
 	//print_champ(parser.env.champ);// TO TEJ
 	(void)print_champ;
+	parser.env.verbose = 1;
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
 	if (parser.visu == ON)

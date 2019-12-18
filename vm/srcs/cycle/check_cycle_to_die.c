@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cycle_to_die.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 10:08:53 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/17 11:57:04 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/18 18:18:00 by paullaurent      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static uint8_t	is_cycle_to_die(t_vm *env)
 
 static void		delete_dead_processes(t_vm *env, t_process **process_list)
 {
-	if ((*process_list == NULL))
+	if ((*process_list) == NULL)
 		return ;
 	if ((*process_list)->last_live <= env->current_cycle - env->cycle_to_die
 			|| env->cycle_to_die <= 0)
 		
 	{
-		if (env->verbose == ON)
-			ft_printf("process with reg1 = %d is dead\n", (*process_list)->reg[0]);
+		// if (env->verbose == ON)
+		// 	ft_printf("process with reg1 = %d is dead\n", (*process_list)->reg[0]);
 		free_process(process_list);
 		delete_dead_processes(env, process_list);
 	}
