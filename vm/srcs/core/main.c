@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/17 20:04:08 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/12/18 16:04:59 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 static int	usage(void)
 {
 	ft_putendl(USG_MSG);
-	return (1);
-	ft_putendl("./corewar [-dump nbr_cycles] [[-n number] champion1.cor] ...");
 	return (EXIT_FAILURE);
 }
 
@@ -43,6 +41,7 @@ int			main(int ac, char **av)
 	if (vm_parser(&parser, ++av) == FAILURE)
 		return (usage());
 	print_champ(parser.env.champ);// TO TEJ
+	(void)print_champ;
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
 	// parser.env.verbose = 1;

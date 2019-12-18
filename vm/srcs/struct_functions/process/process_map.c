@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   delete_vm.c                                        :+:      :+:    :+:   */
+/*   process_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/12 17:54:35 by brichard         ###   ########.fr       */
+/*   Created: 2019/12/12 12:31:04 by brichard          #+#    #+#             */
+/*   Updated: 2019/12/16 16:09:39 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	delete_vm(t_vm *to_delete)
+void			process_map(t_vm *env, t_process **process_list, t_proc_apply apply)
 {
-	if (to_delete != NULL)
-	{
-		free_process_list(&to_delete->process_list);
-		ft_bzero((void *)to_delete->champ, sizeof(t_champ) * MAX_PLAYERS);
-		ft_bzero((void *)to_delete->mem, sizeof(char) * MEM_SIZE);
-		ft_bzero((void *)to_delete->mem_owner, sizeof(uint8_t) * MEM_SIZE);
-	}
+
+	if (process_list == NULL || *process_list == NULL)
+		return ;
+	if (apply != NULL)
+		apply(env, process_list);
+	process_map(env, &(*process_list)->next, apply);
 }

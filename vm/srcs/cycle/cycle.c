@@ -8,17 +8,6 @@ int				is_opcode(char data)
 	return (0);
 }
 
-static int		dump(t_vm *vm)
-{
-	if (vm->current_cycle == vm->cycles_to_dump)
-	{
-		// afficher la memoire et quitter proprement
-		show_mem(vm);
-		return (0);
-	}
-	return (1);
-}
-
 static void		exec_process(t_vm *vm, t_process *process)
 {
 	if (process->op.active == 0)
@@ -53,6 +42,17 @@ static void		exec_proc_list(t_vm *vm, t_process *process)
 	}
 }
 
+static uint8_t	must_dump(t_vm *vm)
+{
+	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
+	{
+		// afficher la memoire, le winner et quitter proprement
+		ft_printf("Dump_time!!\n");
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
 static void		winner(t_vm	*vm)
 {
 	uint8_t	i;
@@ -61,19 +61,19 @@ static void		winner(t_vm	*vm)
 	ft_printf("champ nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
 }
 
-void			cycle(t_vm	*vm)
+void			cycle(t_vm *env)
 {
-	t_process   *tmp_proc;
+	t_process   **d_process;
 
-	while (proc_lives(vm) && dump(vm)) // qd on dump on doit prendre celui qui a fait le dernier live comme winner ?
+	d_process = &env->process_list;
+	while (*d_process != NULL && must_dump(env) == FALSE)
 	{
-		if (!((vm->current_cycle + 1) % vm->cycles_to_die))
-			reset_life_signal(vm);
-		// if (vm->verbose)
-			ft_printf("It is now cycle: %d\n", vm->current_cycle);
-		tmp_proc = vm->process_list;
-		exec_proc_list(vm, tmp_proc);
-		vm->current_cycle++;
+		if (env->verbose == ON)
+			ft_printf("It is now cycle: %d\n", env->current_cycle);
+		check_cycle_to_die(env);
+		exec_proc_list(env, (*d_process));
+		++env->current_cycle;
+		++env->current_sub_cycle;
 	}
-	winner(vm);
+	winner(env);
 }

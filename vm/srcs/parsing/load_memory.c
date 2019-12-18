@@ -22,7 +22,7 @@ static int8_t charge_process(int pc_address, int champ_num, t_process **process)
 {
 	t_process	*new;
 
-	if (!(new = create_process(champ_num, pc_address)))
+	if (!(new = create_process(-champ_num, pc_address)))
 		return (FAILURE);
 	new->next = *process;
 	*process = new;
@@ -32,11 +32,11 @@ static int8_t charge_process(int pc_address, int champ_num, t_process **process)
 int8_t			load_memory(t_parser *parser)
 {
 	t_champ	*champ;
-	uint8_t	champ_amount;
-	uint8_t	i;
+	int8_t	i;
+	int8_t	champ_amount;
 
 	champ = parser->env.champ;
-	champ_amount = parser->cur_chp_index;
+	champ_amount = (int8_t)parser->cur_chp_index;
 	i = 0;
 	while (i < champ_amount)
 	{

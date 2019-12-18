@@ -33,12 +33,16 @@ static void	set_ctod(t_vm *vm)
 	// ft_printf("nbr_live: %d, ctod nbr: %d", vm->lives_in_cycle, vm->ctod_nb);
 	if (vm->lives_in_cycle >= NBR_LIVE || vm->ctod_nb >= MAX_CHECKS)
 	{
+<<<<<<< HEAD:vm/srcs/core/proc_lives.c
 		// ft_printf("set at cycle: %d and cycles to dir == %d\n", vm->current_cycle, vm->cycles_to_die);
 		vm->cycles_to_die -= CYCLE_DELTA;
+=======
+		vm->cycle_to_die -= CYCLE_DELTA;
+>>>>>>> brichard_refonte:vm/srcs/cycle/proc_lives.c
 		vm->ctod_nb = 0;
 	}
 	vm->lives_in_cycle = 0;
-	vm->next_ctod = vm->current_cycle + vm->cycles_to_die; // utile en fonction de la solution qu'on utilise pour cycle max
+	vm->cycle_to_die = vm->current_cycle + vm->cycle_to_die; // utile en fonction de la solution qu'on utilise pour cycle max
 }
 
 static void	check_process(t_vm *vm)
@@ -64,10 +68,20 @@ static void	check_process(t_vm *vm)
 
 int			proc_lives(t_vm *vm)
 {
+<<<<<<< HEAD:vm/srcs/core/proc_lives.c
 	t_process   *tmp_process;
 
 	tmp_process = vm->process_list;
 	if (vm->current_cycle >= vm->next_ctod)
+=======
+	t_process	*tmp_proc;
+	t_process	*tmp_next_proc;
+	int32_t		i;
+
+	i = 0;
+	tmp_proc = vm->process_list;
+	if (vm->current_cycle >= vm->cycle_to_die)
+>>>>>>> brichard_refonte:vm/srcs/cycle/proc_lives.c
 	{
 		if (vm->cycles_to_die <= 0)
 			return (0);
@@ -75,10 +89,20 @@ int			proc_lives(t_vm *vm)
 		set_ctod(vm);
 		while (tmp_process != NULL)
 		{
+<<<<<<< HEAD:vm/srcs/core/proc_lives.c
 			if (tmp_process->active == 1)
 				return (1);
 			tmp_process = tmp_process->next;
 		}
+=======
+			tmp_next_proc = tmp_proc->next;
+			if ((vm->current_cycle - tmp_proc->last_live) >= vm->cycle_to_die) // proc mort
+				delete_process(tmp_proc);// kill process
+			tmp_proc = tmp_next_proc;
+		}
+		if (vm->process_list == NULL)
+			return (0);
+>>>>>>> brichard_refonte:vm/srcs/cycle/proc_lives.c
 	}
 	else
 		return (1);

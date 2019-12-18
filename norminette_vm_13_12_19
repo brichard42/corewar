@@ -1,0 +1,514 @@
+Norme: ./vm/auteur
+Warning: Not a valid file
+Norme: ./vm/Makefile
+Warning: Not a valid file
+Norme: ./vm/ressources/font/Tinos-Regular.ttf
+Warning: Not a valid file
+Norme: ./vm/srcs/core/main.c
+Error (line 21): bad spacing after print_champ
+Error (line 28): line has 167 characters
+Error (line 32): #include <stdio.h> should be before line 15
+Error (line 33): bad spacing before main
+Error (line 43): C++ comment
+Error (line 49): must begin only by tabulations
+Error (line 50): must begin only by tabulations
+Error (line 51): bad indentation
+Error (line 51): must begin only by tabulations
+Error (line 52): must begin only by tabulations
+Error (line 53): bad indentation
+Error (line 53): must begin only by tabulations
+Error (line 57): C++ comment
+Error (line 57): line has 172 characters
+Norme: ./vm/srcs/cycle/check_ocp.c
+Error: 42 header not at top of the file
+Error (line 8): C++ comment
+Error (line 16, col 4): bad spacing
+Error (line 19): C++ comment
+Error (line 19): line has 127 characters
+Error (line 22): bad indentation
+Error (line 22): C++ comment
+Error (line 22): line has 147 characters
+Error (line 25): bad indentation
+Error (line 25): C++ comment
+Error (line 25): line has 148 characters
+Norme: ./vm/srcs/cycle/cycle.c
+Error: 42 header not at top of the file
+Error (line 16): bad indentation
+Error (line 16): C++ comment
+Error (line 23): comment not well formatted
+Error (line 37): line has 103 characters
+Error (line 39): line has 155 characters
+Error (line 40): line has 102 characters
+Error (line 60, col 10): bad spacing
+Error (line 69): comment not well formatted
+Error (line 69): comment not well placed
+Error (line 75, col 1): no empty line before block
+Norme: ./vm/srcs/cycle/check_cycle_to_die.c
+Error (line 17): line has 111 characters
+Norme: ./vm/srcs/cycle/move_pc.c
+Error: 42 header not at top of the file
+Error (line 24, col 4): bad spacing
+Error (line 25, col 9): bad spacing
+Error (line 27): C++ comment
+Error (line 29): missing newline after if
+Error (line 29): C++ comment
+Error (line 31): C++ comment
+Error (line 33): missing newline after if
+Error (line 33): C++ comment
+Error (line 33): line has 87 characters
+Norme: ./vm/srcs/error_handling/parsing_error.c
+Error (line 18): bad indentation
+Error (line 25): line has 113 characters
+Norme: ./vm/srcs/operations/aff.c
+Norme: ./vm/srcs/operations/add.c
+Error: 42 header not at top of the file
+Error (line 17): line has 87 characters
+Norme: ./vm/srcs/operations/create_pointer_tab.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 3): C++ comment
+Error (line 4): C++ comment
+Error (line 5): C++ comment
+Error (line 7): C++ comment
+Error (line 8): C++ comment
+Error (line 9): C++ comment
+Error (line 10): C++ comment
+Error (line 11): C++ comment
+Error (line 12): C++ comment
+Error (line 13): C++ comment
+Error (line 14): C++ comment
+Error (line 15): C++ comment
+Error (line 16): C++ comment
+Error (line 17): C++ comment
+Error (line 18): C++ comment
+Error (line 19): C++ comment
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 22): C++ comment
+Error (line 23): C++ comment
+Error (line 24): C++ comment
+Error (line 25): C++ comment
+Error (line 26): C++ comment
+Error (line 27): C++ comment
+Error (line 28): C++ comment
+Norme: ./vm/srcs/cycle/proc_lives.c
+Error: 42 header not at top of the file
+Error (line 5, col 4): bad spacing
+Error (line 12): C++ comment
+Error (line 13): C++ comment
+Error (line 14): C++ comment
+Error (line 15): C++ comment
+Error (line 17): C++ comment
+Error (line 18): C++ comment
+Error (line 19): C++ comment
+Error (line 20): C++ comment
+Error (line 21): C++ comment
+Error (line 22): C++ comment
+Error (line 23): C++ comment
+Error (line 24): C++ comment
+Error (line 25): C++ comment
+Error (line 26): C++ comment
+Error (line 27): C++ comment
+Error (line 38): C++ comment
+Error (line 38): line has 126 characters
+Error (line 41): C++ comment
+Error (line 42): C++ comment
+Error (line 43): C++ comment
+Error (line 44): C++ comment
+Error (line 45): C++ comment
+Error (line 46): C++ comment
+Error (line 46): line has 92 characters
+Error (line 47): C++ comment
+Error (line 47): line has 114 characters
+Error (line 48): C++ comment
+Error (line 64): missing newline after if
+Error (line 64): C++ comment
+Error (line 64): line has 92 characters
+Error (line 65): C++ comment
+Norme: ./vm/srcs/operations/fork.c
+Error (line 15): comment not well formatted
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22, col 4): bad spacing
+Error (line 25): line has 91 characters
+Error (line 26): C++ comment
+Norme: ./vm/srcs/operations/create_op.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 5): bad indentation
+Error (line 5): must begin only by tabulations
+Error (line 41, col 0): no newline after block
+Norme: ./vm/srcs/operations/lfork.c
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15): Space before function name
+Error (line 15, col 4): bad spacing
+Error (line 17): bad indentation
+Error (line 17): must begin only by tabulations
+Error (line 18): bad indentation
+Error (line 18): must begin only by tabulations
+Error (line 19): bad indentation
+Error (line 19): must begin only by tabulations
+Error (line 19): C++ comment
+Error (line 20): bad indentation
+Error (line 20): must begin only by tabulations
+Norme: ./vm/srcs/operations/and.c
+Error: 42 header not at top of the file
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9, col 4): bad spacing
+Error (line 15): line has 85 characters
+Norme: ./vm/srcs/operations/live.c
+Error: 42 header not at top of the file
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3, col 4): bad spacing
+Error (line 5, col 4): bad spacing
+Error (line 9): C++ comment
+Norme: ./vm/srcs/operations/ld.c
+Error: 42 header not at top of the file
+Error (line 29): Space before function name
+Error (line 29): Space before function name
+Error (line 29): Space before function name
+Error (line 29): Space before function name
+Error (line 29, col 4): bad spacing
+Error (line 31, col 4): bad spacing
+Error (line 33): C++ comment
+Error (line 37): C++ comment
+Error (line 37): line has 89 characters
+Error (line 39): C++ comment
+Error (line 42): bad indentation
+Error (line 42): C++ comment
+Norme: ./vm/srcs/operations/lld.c
+Error: 42 header not at top of the file
+Error (line 3): Space before function name
+Error (line 5): bad indentation
+Error (line 5): must begin only by tabulations
+Error (line 5, col 7): bad spacing
+Error (line 7): bad indentation
+Error (line 7): must begin only by tabulations
+Error (line 8): bad indentation
+Error (line 8): must begin only by tabulations
+Error (line 9): bad indentation
+Error (line 9): must begin only by tabulations
+Error (line 10): must begin only by tabulations
+Error (line 11): bad indentation
+Error (line 11): must begin only by tabulations
+Error (line 12): bad indentation
+Error (line 12): must begin only by tabulations
+Error (line 13): must begin only by tabulations
+Error (line 14): bad indentation
+Error (line 14): must begin only by tabulations
+Error (line 15): bad indentation
+Error (line 15): must begin only by tabulations
+Error (line 16): must begin only by tabulations
+Error (line 17): bad indentation
+Error (line 17): must begin only by tabulations
+Error (line 18): bad indentation
+Error (line 18): must begin only by tabulations
+Error (line 19): must begin only by tabulations
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22, col 4): bad spacing
+Error (line 24, col 4): bad spacing
+Error (line 26): C++ comment
+Error (line 30): C++ comment
+Error (line 30): line has 89 characters
+Error (line 31): bad indentation
+Error (line 31): must begin only by tabulations
+Error (line 32): bad indentation
+Error (line 32): must begin only by tabulations
+Error (line 32): C++ comment
+Error (line 33): bad indentation
+Error (line 33): must begin only by tabulations
+Error (line 34): bad indentation
+Error (line 34): must begin only by tabulations
+Error (line 35): bad indentation
+Error (line 35): must begin only by tabulations
+Error (line 35): C++ comment
+Error (line 36): bad indentation
+Error (line 36): must begin only by tabulations
+Norme: ./vm/srcs/operations/lldi.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 18): Space before function name
+Error (line 18): Space before function name
+Error (line 18): Space before function name
+Error (line 18): Space before function name
+Error (line 18, col 4): bad spacing
+Error (line 22): C++ comment
+Error (line 34, col 0): no newline after block
+Norme: ./vm/srcs/operations/ldi.c
+Error: 42 header not at top of the file
+Error (line 12): line has 114 characters
+Error (line 14): line has 119 characters
+Error (line 16): line has 119 characters
+Error (line 37): Space before function name
+Error (line 37): Space before function name
+Error (line 37): Space before function name
+Error (line 37): Space before function name
+Error (line 37, col 4): bad spacing
+Norme: ./vm/srcs/operations/show_op.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3, col 4): bad spacing
+Error (line 5): bad indentation
+Error (line 5): must begin only by tabulations
+Error (line 5, col 16): bad spacing
+Error (line 7): bad indentation
+Error (line 7): must begin only by tabulations
+Error (line 8): bad indentation
+Error (line 8): must begin only by tabulations
+Error (line 9): must begin only by tabulations
+Error (line 9, col 8): space before ,
+Error (line 10): bad indentation
+Error (line 10): must begin only by tabulations
+Error (line 11): bad indentation
+Error (line 11): must begin only by tabulations
+Error (line 12): bad indentation
+Error (line 12): must begin only by tabulations
+Error (line 13): must begin only by tabulations
+Error (line 13, col 12): space before ,
+Error (line 14): bad indentation
+Error (line 14): must begin only by tabulations
+Error (line 15, col 0): no newline after block
+Norme: ./vm/srcs/operations/op.c
+Error (line 15, col 8): bad spacing
+Error (line 15, col 12): global named op_tab is not well prefixed
+Error (line 22): line has 82 characters
+Error (line 26): line has 82 characters
+Error (line 42): C++ comment
+Error (line 43): C++ comment
+Error (line 44): C++ comment
+Error (line 46): C++ comment
+Error (line 47): C++ comment
+Error (line 48): C++ comment
+Error (line 49): C++ comment
+Error (line 50): C++ comment
+Error (line 51): C++ comment
+Error (line 52): C++ comment
+Error (line 53): C++ comment
+Error (line 54): C++ comment
+Error (line 55): C++ comment
+Error (line 56): C++ comment
+Error (line 58): C++ comment
+Error (line 59): C++ comment
+Error (line 60): C++ comment
+Error (line 62): C++ comment
+Error (line 63): C++ comment
+Error (line 64): C++ comment
+Error (line 65): C++ comment
+Error (line 66): C++ comment
+Error (line 67): C++ comment
+Error (line 68): C++ comment
+Error (line 69): C++ comment
+Error (line 70): C++ comment
+Error (line 71): C++ comment
+Error (line 72): C++ comment
+Error (line 73): C++ comment
+Error (line 74): C++ comment
+Error (line 75): C++ comment
+Error (line 76): C++ comment
+Error (line 77): C++ comment
+Norme: ./vm/srcs/operations/or.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9, col 4): bad spacing
+Error (line 11): bad indentation
+Error (line 11): must begin only by tabulations
+Error (line 15): line has 85 characters
+Error (line 35, col 0): no newline after block
+Norme: ./vm/srcs/operations/sti.c
+Error (line 15): comment not well formatted
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22): Space before function name
+Error (line 22, col 4): bad spacing
+Error (line 29): C++ comment
+Error (line 41): C++ comment
+Error (line 41): line has 115 characters
+Error (line 42): C++ comment
+Error (line 43): C++ comment
+Error (line 43): spaces at the end of line
+Norme: ./vm/srcs/operations/sub.c
+Error: 42 header not at top of the file
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9, col 4): bad spacing
+Error (line 17): line has 87 characters
+Norme: ./vm/srcs/operations/zjump.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 11): Space before function name
+Error (line 11): Space before function name
+Error (line 11): Space before function name
+Error (line 11): Space before function name
+Error (line 11, col 4): bad spacing
+Error (line 26, col 0): no newline after block
+Norme: ./vm/srcs/operations/st.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 10): C++ comment
+Error (line 10): line has 83 characters
+Error (line 15): line has 83 characters
+Error (line 16): line has 87 characters
+Error (line 17): line has 86 characters
+Error (line 21): Space before function name
+Error (line 21): Space before function name
+Error (line 21): Space before function name
+Error (line 21): Space before function name
+Error (line 21, col 4): bad spacing
+Error (line 29): line has 89 characters
+Error (line 32): C++ comment
+Error (line 33): C++ comment
+Error (line 33): line has 98 characters
+Error (line 37, col 0): no newline after block
+Norme: ./vm/srcs/operations/xor.c
+Error: 42 header not at top of the file
+Error: file must end with a single empty line
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9): Space before function name
+Error (line 9, col 4): bad spacing
+Error (line 15): line has 85 characters
+Error (line 35, col 0): no newline after block
+Norme: ./vm/srcs/parsing/get_functions/get_chpnum.c
+Norme: ./vm/srcs/parsing/get_functions/get_dump.c
+Norme: ./vm/srcs/parsing/get_functions/get_champ.c
+Error (line 24): declarations in get_champ are bad aligned
+Error (line 35): spaces at the end of line
+Norme: ./vm/srcs/parsing/get_functions/get_opt.c
+Norme: ./vm/srcs/parsing/read_binary/padding_is_good.c
+Norme: ./vm/srcs/parsing/load_memory.c
+Error: global scope bad aligned
+Error (line 21): Space before function name
+Error (line 43): line has 82 characters
+Norme: ./vm/srcs/operations/parse_op.c
+Error: global scope bad aligned
+Error: 6 functions in the file
+Error: 42 header not at top of the file
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3): Space before function name
+Error (line 3, col 3): bad spacing
+Error (line 22, col 13): bad spacing
+Error (line 33, col 13): bad spacing
+Error (line 51, col 14): bad spacing
+Error (line 59, col 14): bad spacing
+Error (line 60, col 14): bad spacing
+Error (line 63): C++ comment
+Error (line 64): C++ comment
+Error (line 64): line has 99 characters
+Error (line 65): C++ comment
+Error (line 65, col 8): bad spacing
+Error (line 66): C++ comment
+Error (line 71): C++ comment
+Error (line 86): declarations in take_param_op are bad aligned
+Error (line 86): Space before function name
+Error (line 86): Space before function name
+Error (line 86): Space before function name
+Error (line 86): Space before function name
+Error (line 86): Space before function name
+Error (line 86, col 3): bad spacing
+Error (line 88, col 13): bad spacing
+Error (line 89, col 4): bad spacing
+Norme: ./vm/srcs/parsing/vm_parser.c
+Error: global scope bad aligned
+Error (line 47): missing newline after if
+Error (line 47): spaces at the end of line
+Norme: ./vm/srcs/struct_functions/process/create_process.c
+Norme: ./vm/srcs/struct_functions/process/copy_process.c
+Norme: ./vm/srcs/struct_functions/process/delete_process.c
+Norme: ./vm/srcs/parsing/chp_num_utils.c
+Norme: ./vm/srcs/struct_functions/process/free_process_list.c
+Norme: ./vm/srcs/struct_functions/process/process_map.c
+Error (line 17): Empty line
+Norme: ./vm/srcs/struct_functions/process/free_process.c
+Norme: ./vm/srcs/struct_functions/vm/create_vm.c
+Norme: ./vm/srcs/struct_functions/vm/free_vm.c
+Norme: ./vm/srcs/struct_functions/vm/delete_vm.c
+Norme: ./vm/srcs/struct_functions/vm/init_vm.c
+Error (line 29): C++ comment
+Error (line 30): C++ comment
+Error (line 31): C++ comment
+Norme: ./vm/srcs/parsing/read_binary/read_champ.c
+Norme: ./vm/srcs/struct_functions/process/init_process.c
+Norme: ./vm/srcs/visualisator/draw/draw_champions2.c
+Norme: ./vm/srcs/visualisator/draw/draw_command_panel.c
+Error (line 15): comment not well formatted
+Error (line 15): spaces at the end of line
+Error (line 18): bad spacing before command_more_info
+Error (line 35): bad spacing before command_info
+Error (line 68): bad spacing before draw_command_panel
+Norme: ./vm/srcs/visualisator/draw/draw_arena_helpers.c
+Error (line 15): function draw_structure_sides has 32 lines
+Error (line 60): missing newline after if
+Error (line 60): spaces at the end of line
+Error (line 79): line has 86 characters
+Norme: ./vm/srcs/visualisator/draw/draw_corewar.c
+Error (line 19): bad spacing before draw_corewar
+Norme: ./vm/srcs/visualisator/draw/draw_champions.c
+Error (line 18): bad spacing before create_name_point
+Error (line 57): line has 84 characters
+Error (line 63): bad indentation
+Error (line 63): If is not on the same line that else
+Error (line 64): bad indentation
+Error (line 67): line has 84 characters
+Error (line 73): bad indentation
+Error (line 73): If is not on the same line that else
+Error (line 74): bad indentation
+Error (line 81): bad spacing before draw_champions
+Norme: ./vm/srcs/visualisator/draw/draw_arena.c
+Error (line 16): spaces at the end of line
+Error (line 19): bad spacing before change_char_to_hexa
+Error (line 43): bad spacing before draw_arena_structure
+Error (line 69): bad spacing before draw_uninit_arena
+Error (line 97): bad spacing before draw_active_arena
+Norme: ./vm/srcs/visualisator/draw/draw_image.c
+Norme: ./vm/srcs/visualisator/draw/draw_rectangles.c
+Norme: ./vm/srcs/visualisator/draw/draw_infos.c
+Error (line 96): bad spacing after draw_infos_text3
+Error (line 108, col 22): Spacing after call to draw_text
+Norme: ./vm/srcs/visualisator/draw/main_drawer.c
+Error (line 20): bad spacing before draw
+Error (line 52): bad spacing before event_catcher
+Error (line 74): spaces at the end of line
+Error (line 80): bad spacing before drawer
+Norme: ./vm/srcs/visualisator/object/object_creation.c
+Norme: ./vm/srcs/visualisator/window/window.c
+Norme: ./vm/srcs/visualisator/draw/draw_process_list.c
+Error (line 15): bad spacing after draw_procs_header
+Error (line 40): bad spacing before draw_one_process2
+Error (line 40): line has 96 characters
+Error (line 45): C++ comment
+Error (line 46): C++ comment
+Error (line 47): C++ comment
+Error (line 63): line has 95 characters
+Error (line 90): Bad spacing for argument env
+Norme: ./vm/srcs/visualisator/draw/draw_text.c

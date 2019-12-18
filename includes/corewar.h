@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/12 15:25:12 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/12/18 16:09:04 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # include <sys/types.h>
 # include <unistd.h>
 # include "op.h"
-# include "typedef.h"
+# include "core_typedef.h"
 # include "core_define.h"
-// # include "visualisator.h"
+//# include "visualisator.h"
 
 /*
 **	-------OPERATION STRUCT FUNCTIONS-------
@@ -44,6 +44,9 @@ t_process			init_process(int32_t reg_1, int32_t pc);
 t_process			*create_process(int32_t reg_1, int32_t pc);
 void				delete_process(t_process *to_delete);
 void				free_process(t_process **to_delete);
+void				free_process_list(t_process **to_delete);
+void				process_map(t_vm *env, t_process **process_list, t_proc_apply apply);
+//int8_t				copy_process(int pc_address, t_process **process);
 
 /*
 **	-------COREWAR STRUCT FUNCTIONS---------------------------------------------
@@ -52,25 +55,6 @@ t_vm    			*create_vm(void);
 t_vm    			init_vm(void);
 void    			delete_vm(t_vm *to_delete);
 void				free_vm(t_vm **to_free);
-
-/*
-**	-------TYPEDEF ARG_PARSER FUNCTIONS-----------------------------------------
-*/
-t_vm				*create_vm(void);
-t_vm				init_vm(void);
-void				delete_vm(t_vm *to_delete);
-void				free_vm(t_vm **to_free);
-
-/*
-**	-------TYPEDEF ARG_PARSER FUNCTIONS-------
-*/
-typedef void		(*t_get_func)(t_parser *, char **);
-
-/*
-**	-------TYPEDEF READ_CHAMP.C FUNCTIONS---------------------------------------
-*/
-
-typedef void		(*t_read_func)(t_parser *, int32_t);
 
 /*
 **	-------PARSING	FUNCTIONS-------
@@ -101,38 +85,16 @@ int8_t				load_memory(t_parser *parser);
 void				parsing_error(t_parser *parser, int32_t errer_code);
 
 /*
-**	-------COPY PROCESS-------
+**	-------CYCLES FUNCTIONS------------
 */
-int8_t				copy_process(t_vm *vm, int pc_address, t_process *process);
+void                cycle(t_vm *vm);
+void				check_cycle_to_die(t_vm *env);
 
-/*
- **	-------COREWAR OP FUNCTIONS------------
- */
-void				live(t_vm *vm, t_process *process);
-void				ld(t_vm *vm, t_process *process);
-void				st(t_vm *vm, t_process *process);
-void				add(t_vm *vm, t_process *process);
-void				sub(t_vm *vm, t_process *process);
-void				and(t_vm *vm, t_process *process);
-void				or(t_vm *vm, t_process *process);
-void				xor(t_vm *vm, t_process *process);
-void				zjump(t_vm *vm, t_process *process);
-void				ldi(t_vm *vm, t_process *process);
-void				sti(t_vm *vm, t_process *process);
-void				op_fork(t_vm *vm, t_process *process);
-void				lld(t_vm *vm, t_process *process);
-void				lldi(t_vm *vm, t_process *process);
-void				lfork(t_vm *vm, t_process *process);
-void				aff(t_vm *vm, t_process *process);
 
-/*
- **	-------CYCLES FUNCTIONS------------
- */
 void                cycle(t_vm *vm);
 int			        check_ocp(int ocp, int op_code);
 int                 modulo(int a, int b);
 int	                move_pc(t_process *process);
-int                 proc_lives(t_vm *vm);
 void		        reset_life_signal(t_vm *vm);
 int                 take_param_op(t_vm *vm, t_process *process);
 int                 get_indirecte(t_vm *vm, t_op *op, int nb_arg);
@@ -140,4 +102,5 @@ void                show_op(t_process *process);
 int				    is_opcode(char data);
 int					check_params_ldi_lldi(t_process *process);
 void                show_mem(t_vm *vm);
+
 #endif

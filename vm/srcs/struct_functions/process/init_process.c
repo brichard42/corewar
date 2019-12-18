@@ -23,7 +23,7 @@ t_process	init_process(int32_t reg_1, int32_t pc)
 	new_process.reg[1] = reg_1 * -1;
 	new_process.pc = pc;
 	new_process.cycles_left = 0;
-	new_process.carry = 0;
+	new_process.carry = FALSE;
 	new_process.last_live = 0;
 	new_process.num = 1;
 	return (new_process);
