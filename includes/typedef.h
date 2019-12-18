@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/17 16:52:59 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/12/18 14:49:29 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct		s_vm
 	uint8_t			visu;
 	uint8_t			last_live_champ_ind;
 	uint8_t			verbose;
+	uint8_t			winner_index;
 }					t_vm;
 
 /*

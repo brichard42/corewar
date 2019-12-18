@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/17 16:14:26 by paullaurent      ###   ########.fr       */
+/*   Updated: 2019/12/18 14:50:51 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ t_vm	init_vm(void)
 	new_vm.ctod_nb = 0;
 	new_vm.visu = OFF;
 	new_vm.verbose = OFF;
+	new_vm.winner_index = 0;
 	return (new_vm);
 }

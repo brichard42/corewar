@@ -6,7 +6,7 @@
 #    By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/05 17:03:06 by paullaurent      ###   ########.fr        #
+#    Updated: 2019/12/18 14:57:27 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,7 +155,7 @@ endif
 
 IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
 
-LDLIBS = ft sdl2 sdl2_image sdl2_mixer sdl2_ttf
+LDLIBS = ft# sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
 LDFLAGS = $(addprefix -L , $(LIB_PATH)) $(addprefix -l, $(LDLIBS))
 

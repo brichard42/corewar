@@ -13,6 +13,7 @@ void    live(t_vm *vm, t_process *process)
 	{
 		vm->champ[n - 1].life_signal++;
 		vm->champ[n - 1].last_live_cycle = vm->current_cycle;
+		vm->winner_index = n - 1;
 		// ft_printf("Player nb %d is said to be alive\n", n);
 	}
 	if (vm->verbose)

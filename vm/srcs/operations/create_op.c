@@ -17,9 +17,6 @@ void	init_op(t_op *op)
 
 void	create_op(t_process *process, int op_code)
 {
-	int		i;
-
-	i = 0;
 	init_op(&process->op);
 	process->op.active = 1;
 	process->op.op_code = op_code;

@@ -44,7 +44,7 @@ void    show_mem(t_vm *vm)
         ft_printf("%02x ", (unsigned char)vm->mem[i]);
         if (i / 64 != (i + 1) / 64)
             ft_printf("\n");
-            i++;
+		i++;
     }
     ft_printf("\n\n");
 }

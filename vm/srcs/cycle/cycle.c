@@ -55,19 +55,10 @@ static void		exec_proc_list(t_vm *vm, t_process *process)
 
 static void		winner(t_vm	*vm)
 {
-	int		i;
-	int		best;
+	uint8_t	i;
 
-	i = 0;
-	best = 0;
-	while (i < MAX_PLAYERS)
-	{
-		if (vm->champ[i].last_live_cycle > vm->champ[best].last_live_cycle)
-			best = i;
-		i++;
-	}
-	ft_printf("champ nb %d, %s , has won !\n", best + 1,
-		vm->champ[best].name);
+	i = vm->winner_index;
+	ft_printf("champ nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
 }
 
 void			cycle(t_vm	*vm)

@@ -64,10 +64,8 @@ static void	check_process(t_vm *vm)
 
 int			proc_lives(t_vm *vm)
 {
-	int         i;
 	t_process   *tmp_process;
 
-	i = 0;
 	tmp_process = vm->process_list;
 	if (vm->current_cycle >= vm->next_ctod)
 	{
