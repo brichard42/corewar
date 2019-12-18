@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/18 16:09:04 by brichard         ###   ########.fr       */
+/*   Updated: 2019/12/18 16:17:20 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void				delete_process(t_process *to_delete);
 void				free_process(t_process **to_delete);
 void				free_process_list(t_process **to_delete);
 void				process_map(t_vm *env, t_process **process_list, t_proc_apply apply);
-//int8_t				copy_process(int pc_address, t_process **process);
+int8_t				copy_process(t_vm *vm, int pc_address, t_process *process);
 
 /*
 **	-------COREWAR STRUCT FUNCTIONS---------------------------------------------
@@ -102,5 +102,25 @@ void                show_op(t_process *process);
 int				    is_opcode(char data);
 int					check_params_ldi_lldi(t_process *process);
 void                show_mem(t_vm *vm);
+
+/*
+ **	-------COREWAR OP FUNCTIONS------------
+ */
+void				live(t_vm *vm, t_process *process);
+void				ld(t_vm *vm, t_process *process);
+void				st(t_vm *vm, t_process *process);
+void				add(t_vm *vm, t_process *process);
+void				sub(t_vm *vm, t_process *process);
+void				and(t_vm *vm, t_process *process);
+void				or(t_vm *vm, t_process *process);
+void				xor(t_vm *vm, t_process *process);
+void				zjump(t_vm *vm, t_process *process);
+void				ldi(t_vm *vm, t_process *process);
+void				sti(t_vm *vm, t_process *process);
+void				op_fork(t_vm *vm, t_process *process);
+void				lld(t_vm *vm, t_process *process);
+void				lldi(t_vm *vm, t_process *process);
+void				lfork(t_vm *vm, t_process *process);
+void				aff(t_vm *vm, t_process *process);
 
 #endif

@@ -8,6 +8,25 @@ int				is_opcode(char data)
 	return (0);
 }
 
+static void		winner(t_vm	*vm)
+{
+	uint8_t	i;
+
+	i = vm->winner_index;
+	ft_printf("champ nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
+}
+
+static uint8_t	must_dump(t_vm *vm)
+{
+	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
+	{
+		// afficher la memoire, le winner et quitter proprement
+		show_mem(vm);
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
 static void		exec_process(t_vm *vm, t_process *process)
 {
 	if (process->op.active == 0)
@@ -40,25 +59,6 @@ static void		exec_proc_list(t_vm *vm, t_process *process)
 			exec_process(vm, process);
 		process = process->next;
 	}
-}
-
-static uint8_t	must_dump(t_vm *vm)
-{
-	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
-	{
-		// afficher la memoire, le winner et quitter proprement
-		ft_printf("Dump_time!!\n");
-		return (TRUE);
-	}
-	return (FALSE);
-}
-
-static void		winner(t_vm	*vm)
-{
-	uint8_t	i;
-
-	i = vm->winner_index;
-	ft_printf("champ nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
 }
 
 void			cycle(t_vm *env)

@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/18 16:03:45 by brichard         ###   ########.fr        #
+#    Updated: 2019/12/18 16:15:45 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,6 @@ SRCS += cycle.c
 SRCS += check_cycle_to_die.c
 SRCS += check_ocp.c
 SRCS += move_pc.c
-SRCS += proc_lives.c
 
 SRCS += op.c
 
@@ -105,7 +104,7 @@ SRCS += delete_process.c
 SRCS += free_process.c
 SRCS += free_process_list.c
 SRCS += process_map.c
-#SRCS += copy_process.c 
+SRCS += copy_process.c 
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #
