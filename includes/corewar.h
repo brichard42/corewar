@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/18 16:17:20 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/07 09:43:00 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "libft.h"
 # include "core_error.h"
-// # include <SDL.h>
-// # include <SDL_image.h>
-// # include <SDL_ttf.h>
-// # include <SDL_mixer.h>
+# include <SDL.h>
+# include <SDL_image.h>
+# include <SDL_ttf.h>
+# include <SDL_mixer.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
@@ -28,7 +28,7 @@
 # include "op.h"
 # include "core_typedef.h"
 # include "core_define.h"
-//# include "visualisator.h"
+# include "visualisator.h"
 
 /*
 **	-------OPERATION STRUCT FUNCTIONS-------

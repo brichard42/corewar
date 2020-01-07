@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/18 16:00:48 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/07 09:42:11 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,47 +29,46 @@ enum				e_state
 **	--------TYPEDEF DRAW STRUCTURE----------------------------------------------
 */
 
-// typedef struct		s_draw
-// {
-// 	int32_t			process_ind;
-// 	int32_t			cycles_per_sec;
-// 	uint8_t			state;
-// 	uint8_t			champ_ind;
-// 	uint8_t			champ_number;
-// 	uint8_t			play;
-// }					t_draw;
+typedef struct		s_draw
+{
+	int32_t			process_ind;
+	int32_t			cycles_per_sec;
+	uint8_t			state;
+	uint8_t			champ_ind;
+	uint8_t			champ_number;
+	uint8_t			play;
+}					t_draw;
 
 /*
 **	--------TYPEDEF BORDER RECT STRUCTURE---------------------------------------
 */
 
-// typedef struct		s_brect
-// {
-//     SDL_Rect		rect;
-//     SDL_Color		c_front;
-//     SDL_Color		c_back;
-// }					t_brect;
+typedef struct		s_brect
+{
+	SDL_Rect		rect;
+	SDL_Color		c_front;
+	SDL_Color		c_back;
+}					t_brect;
 
-// /*
-// ** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
-// */
-// typedef struct		s_window
-// {
-//     int				x;
-//     int				y;
-//     SDL_Window		*window;
-//     SDL_Renderer	*renderer;
-//     SDL_Event		event;
-// }					t_window;
-
-// /*
-// ** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
-// */
-// typedef struct		s_image
-// {
-//     SDL_Surface		*surface;
-//     SDL_Texture		*texture;
-// }					t_image;
+/*
+** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
+*/
+typedef struct		s_window
+{
+	int				x;
+	int				y;
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Event		event;
+}					t_window;
+/*
+** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
+*/
+typedef struct		s_image
+{
+	SDL_Surface		*surface;	
+	SDL_Texture		*texture;
+}					t_image;
 
 /*
 **	-------TYPEDEF OP STRUCTURE-------------------------------------------------

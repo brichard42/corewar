@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2019/12/18 16:15:45 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/07 09:39:32 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,20 +32,20 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 #                                   SRCS_FILES                                 #
 #------------------------------------------------------------------------------#
 
-# SRCS += window.c
-# SRCS += draw_text.c
-# SRCS += draw_infos.c
-# SRCS += draw_image.c
-# SRCS +=	draw_arena.c
-# SRCS +=	main_drawer.c
-# SRCS +=	draw_corewar.c
-# SRCS +=	draw_champions.c
-# SRCS +=	draw_champions2.c
-# SRCS +=	object_creation.c
-# SRCS +=	draw_rectangles.c
-# SRCS +=	draw_process_list.c
-# SRCS +=	draw_command_panel.c
-# SRCS +=	draw_arena_helpers.c
+SRCS += window.c
+SRCS += draw_text.c
+SRCS += draw_infos.c
+SRCS += draw_image.c
+SRCS +=	draw_arena.c
+SRCS +=	main_drawer.c
+SRCS +=	draw_corewar.c
+SRCS +=	draw_champions.c
+SRCS +=	draw_champions2.c
+SRCS +=	object_creation.c
+SRCS +=	draw_rectangles.c
+SRCS +=	draw_process_list.c
+SRCS +=	draw_command_panel.c
+SRCS +=	draw_arena_helpers.c
 
 SRCS += chp_num_utils.c
 
@@ -129,12 +129,10 @@ OBJS_PATH = $(OBJS_DIR)
 
 SRCS_PATH += $(SRCS_DIR)
 
-LIB_DWN_PATH = /usr/include/SDL2/
-#LIB_DWN_PATH = ~/.brew/lib
+LIB_DWN_PATH = ~/.brew/lib
 
 LIB_PATH += $(LIB_DIR)
-LIB_PATH += /usr/include/SDL2/
-#LIB_PATH += ~/.brew/lib
+LIB_PATH += ~/.brew/lib
 
 #------------------------------------------------------------------------------#
 #                                     VPATH                                    #
@@ -159,10 +157,9 @@ else
 	CFLAGS += -Werror -Wall -Wextra
 endif
 
-#IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
-IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find /usr/include/SDL2/ -type d), -I$(dir))
+IFLAGS += $(addprefix -I, $(INC_PATH)) $(foreach dir, $(shell find ~/.brew/include -type d), -I$(dir))
 
-LDLIBS = ft# sdl2 sdl2_image sdl2_mixer sdl2_ttf
+LDLIBS = ft sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
 LDFLAGS = $(addprefix -L , $(LIB_PATH)) $(addprefix -l, $(LDLIBS))
 
@@ -227,10 +224,10 @@ COM_STRING   = "Compiling"
 all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
-	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@ `sdl2-config --libs` -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer)
+	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@)
 
 $(OBJS_PATH)%.o : %.c | Makefile
-	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@ `sdl2-config --cflags`)
+	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@)
 
 $(OBJS_PATH):
 	$(MKDIR) $@

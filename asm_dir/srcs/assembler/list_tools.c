@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:30:42 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 15:41:54 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/07 09:43:50 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	clear_list(t_cmd *list)
 	t_cmd 	*cur;
 	int		i;
 
+	i = 0;
 	while (list)
 	{
 		cur = list;
