@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/26 13:22:26 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/07 13:47:57 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 	if (draw_champion_face(win, env, champ_n, point) == FAILURE)
 		return (FAILURE);
 	point = create_alive_point(champ_n);
-	if ((tmp = draw_text(win, "Last time alive : ", point, text))
-			&& tmp == FAILURE)
+	point.x += (tmp = draw_text(win, "Last time alive : ", point, text));
+	if (tmp == FAILURE)
 		return (FAILURE);
-	point.x += tmp;
-	if (draw_text(win, "0", point, text) == FAILURE)
+	if (draw_last_live(win, env->champ[champ_n].last_live_cycle,
+		point, text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

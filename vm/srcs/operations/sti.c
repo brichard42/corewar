@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:43:03 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/13 15:27:39 by paullaurent      ###   ########.fr       */
+/*   Updated: 2020/01/07 13:14:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ static void		store_index(t_vm *vm, t_process *process)
 	addr = (process->op.param[1] + process->op.param[2]) % IDX_MOD;
 	addr = process->op.pos_op_code + addr;
 	vm->mem[modulo(addr, MEM_SIZE)] = process->reg[process->op.param[0]] >> 24;
+	vm->mem_owner[modulo(addr, MEM_SIZE)] = -process->reg[0];
 	vm->mem[modulo(addr + 1, MEM_SIZE)] = process->reg[process->op.param[0]] >> 16;
+	vm->mem_owner[modulo(addr + 1, MEM_SIZE)] = -process->reg[0];
 	vm->mem[modulo(addr + 2, MEM_SIZE)] = process->reg[process->op.param[0]] >> 8;
+	vm->mem_owner[modulo(addr + 2, MEM_SIZE)] = -process->reg[0];
 	vm->mem[modulo(addr + 3, MEM_SIZE)] = process->reg[process->op.param[0]];
+	vm->mem_owner[modulo(addr + 3, MEM_SIZE)] = -process->reg[0];
 }
 
 void    		sti(t_vm *vm, t_process *process)

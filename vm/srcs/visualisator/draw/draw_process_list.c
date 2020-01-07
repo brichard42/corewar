@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:20:17 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:52:42 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,22 @@ static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3], SDL_
 }
 
 static int8_t	draw_procs_list(t_window *win, t_vm	*env, t_draw infos,
-		int text[3])
+				t_process *process_list)
 {
 	t_process	*proc_tmp;
 	SDL_Point	point;
 	int			list_size;
 	int			champ_num;
+	int			text[3];
 
 	point = create_point(1825, 710);
 	list_size = 0;
-	proc_tmp = env->process_list;
+	proc_tmp = process_list;
 	champ_num = env->champ[infos.champ_ind].num;
+	create_tab_int3(text, 20, 19 + infos.champ_ind, BOLD);
 	while (proc_tmp && list_size < 20)
 	{
-		if (proc_tmp->reg[0] == champ_num)
+		if (proc_tmp->reg[0] == -champ_num)
 		{
 			if (draw_one_process(win, proc_tmp, text, point) == FAILURE)
 				return (FAILURE);
@@ -120,18 +122,17 @@ static int8_t	draw_procs_list(t_window *win, t_vm	*env, t_draw infos,
 **	in the arena we are able to see properly where every process is and acts.
 */
 
-int8_t			draw_procs_pannel(t_window *win, t_vm *env, t_draw infos)
+int8_t			draw_procs_pannel(t_window *win, t_vm *env, t_draw infos,
+				t_process *process_list)
 {
 	SDL_Rect	pos;
-	int			text[3];
 
 	if (draw_procs_header(win, env, infos.champ_ind) == FAILURE)
 		return (FAILURE);
-	create_tab_int3(text, 20, 19 + infos.champ_ind, BOLD);
 	pos = create_rect(1810, 705, 490, 585);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
 		return (FAILURE);
-	if (draw_procs_list(win, env, infos, text) == FAILURE)
+	if (draw_procs_list(win, env, infos, process_list) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2019/12/18 18:16:30 by paullaurent      ###   ########.fr       */
+/*   Updated: 2020/01/07 10:21:58 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static void	print_champ(t_champ champ[4])
 
 int			main(int ac, char **av)
 {
-	t_parser		parser;
-	//  t_window		*win;
+	t_parser	parser;
+	//t_window	*win;
 
 	if (ac < 2)
 		return (usage());
@@ -47,10 +47,12 @@ int			main(int ac, char **av)
 		return (usage());
 	if (parser.visu == ON)
 	{
-	// 	//  if (!(win = open_window("Test")))
-	// 	//  	return (0);
-	// 	//  if (drawer(win, &parser.env) == FAILURE)
-	// 	//  	return (1);
+		//if (!(win = open_window("Test")))
+		//	return (1);
+		if (main_visu(&parser.env) == FAILURE)
+			return (1);
+		//if (drawer(win, &parser.env) == FAILURE)
+		//	return (1);
 	}
 	else
 		cycle(&parser.env);

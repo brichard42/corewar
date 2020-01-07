@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:29:55 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:51:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **	FAILURE if any of those fails. Each functions deals with a specific part
 **	of the renderer.
 */
-int8_t	draw(t_window *win, t_vm *env, t_draw infos)
+int8_t	draw(t_window *win, t_vm *env, t_draw infos, t_process *process_list)
 {
 	int	count;
 
@@ -31,7 +31,7 @@ int8_t	draw(t_window *win, t_vm *env, t_draw infos)
 		return (FAILURE);
 	if (draw_arena(win, env, infos) == FAILURE)
 		return (FAILURE);
-	if (draw_procs_pannel(win, env, infos) == FAILURE)
+	if (draw_procs_pannel(win, env, infos, process_list) == FAILURE)
 		return (FAILURE);
 	while (count < env->champ_amount)
 	{
@@ -79,21 +79,25 @@ void	event_catcher(t_window *win, t_draw *infos)
 */
 int8_t	drawer(t_window *win, t_vm *env)
 {
-	int		ret;
-	t_draw	infos;
+	int			ret;
+	t_draw		infos;
+	t_process	**d_process;
 
 	ft_bzero((void *)&infos, sizeof(t_draw));
 	infos.play = 1;
 	infos.cycles_per_sec = 32;
 	infos.champ_number = env->champ_amount;
-	while (infos.play)
+	d_process = &env->process_list;
+	while (infos.play && *d_process != NULL && must_dump(env) == FALSE)
 	{
-		if (draw(win, env, infos) == FAILURE)
+		if (draw(win, env, infos, (*d_process)) == FAILURE)
 			return (FAILURE);
 		ret = SDL_PollEvent(&(win->event));
 		if (ret != 0)
 			event_catcher(win, &infos);
 		SDL_RenderPresent(win->renderer);
+		if (infos.state == ACTIVE)
+			cycle_actualisator(env, (*d_process));
 	}
 	return (SUCCESS);
 }

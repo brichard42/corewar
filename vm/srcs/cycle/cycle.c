@@ -8,7 +8,7 @@ int				is_opcode(char data)
 	return (0);
 }
 
-static void		winner(t_vm	*vm)
+void		winner(t_vm	*vm)
 {
 	uint8_t	i;
 
@@ -16,7 +16,7 @@ static void		winner(t_vm	*vm)
 	ft_printf("contestant nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
 }
 
-static uint8_t	must_dump(t_vm *vm)
+uint8_t		must_dump(t_vm *vm)
 {
 	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
 	{
@@ -27,7 +27,7 @@ static uint8_t	must_dump(t_vm *vm)
 	return (FALSE);
 }
 
-static void		exec_process(t_vm *vm, t_process *process)
+void		exec_process(t_vm *vm, t_process *process)
 {
 	if (process->op.active == 0)
 	{
@@ -51,7 +51,7 @@ static void		exec_process(t_vm *vm, t_process *process)
 
 }
 
-static void		exec_proc_list(t_vm *vm, t_process *process)
+void		exec_proc_list(t_vm *vm, t_process *process)
 {
 	while (process != NULL)
 	{

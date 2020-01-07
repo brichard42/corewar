@@ -11,9 +11,13 @@ void	func(t_vm *vm, t_process *process) // j'ai des doutes, a teste précisement
 
 	addr = process->op.pos_op_code + (process->op.param[1] % IDX_MOD);
 	vm->mem[modulo(addr, MEM_SIZE)] = (char)(process->reg[process->op.param[0]] >> 24);
+	vm->mem_owner[modulo(addr, MEM_SIZE)] = -process->reg[0];
 	vm->mem[modulo(addr + 1, MEM_SIZE)] = (char)(process->reg[process->op.param[0]] >> 16);
+	vm->mem_owner[modulo(addr + 1, MEM_SIZE)] = -process->reg[0];
 	vm->mem[modulo(addr + 2, MEM_SIZE)] = (char)(process->reg[process->op.param[0]] >> 8);
+	vm->mem_owner[modulo(addr + 2, MEM_SIZE)] = -process->reg[0];
 	vm->mem[modulo(addr + 3, MEM_SIZE)] = (char)process->reg[process->op.param[0]];
+	vm->mem_owner[modulo(addr + 3, MEM_SIZE)] = -process->reg[0];
 }
 
 void    st(t_vm *vm, t_process *process)

@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/07 09:39:32 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/07 12:46:27 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 #------------------------------------------------------------------------------#
 
 SRCS += window.c
+SRCS += main_visu.c
 SRCS += draw_text.c
 SRCS += draw_infos.c
 SRCS += draw_image.c

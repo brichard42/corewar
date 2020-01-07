@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/26 08:08:16 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:49:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_image				load_t_image_from_file(t_window *win, char *path);
 /*
 **	--------GENERIC DRAWING FUNCTIONS-------------------------------------------
 */
+int8_t				main_visu(t_vm	*env);
 int8_t				draw_image(t_window *win, t_image *image, SDL_Rect dest);
 int8_t				draw_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
 int8_t				draw_centred_rectangle(t_window *win, SDL_Rect rect, SDL_Color color);
@@ -96,10 +97,13 @@ int8_t				draw_command_panel(t_window *win, int i);
 int8_t              draw_arena(t_window *win, t_vm *env, t_draw infos);
 int8_t              draw_structure_sides(t_window *win);
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);
+int8_t				draw_last_live(t_window *win, int last_live,
+					SDL_Point point, int text[3]);
 int8_t				draw_champion_name(t_window *win, char *name,
 					SDL_Point point, int test[3]);
 int8_t				draw_corewar(t_window *win);
-int8_t				draw_procs_pannel(t_window *win, t_vm *env, t_draw infos);
+int8_t				draw_procs_pannel(t_window *win, t_vm *env, t_draw infos,
+					t_process *process_list);
 int8_t				draw_infos(t_window *win, t_vm *env, t_draw infos);
 int8_t				underliner(t_window *win, t_vm *env);
 
