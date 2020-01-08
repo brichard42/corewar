@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:47:14 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:16:22 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 15:21:05 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int					draw_text(t_window *win, char *str, SDL_Point pos,
 	int			len;
 	int			i;
 
-	len = strlen(str);
+	len = ft_strlen(str);
 	i = 0;
 	delta = 0;
 	while (i < len)

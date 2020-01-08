@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/07 09:42:11 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 16:05:55 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct		s_draw
 {
 	int32_t			process_ind;
 	int32_t			cycles_per_sec;
+	int32_t			time;
 	uint8_t			state;
 	uint8_t			champ_ind;
 	uint8_t			champ_number;

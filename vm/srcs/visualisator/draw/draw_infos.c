@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/12 12:14:42 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/08 16:17:58 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static int8_t	draw_infos_text(t_window *win, t_vm *env, int space_counter)
+static int8_t	draw_infos_text(t_window *win, t_vm *env)
 {
 	SDL_Point	point;
 	int			text[3];
@@ -32,8 +32,6 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env, int space_counter)
 	point.x += tmp;
 	if ((str_tmp = ft_lltoa(env->current_cycle)) == NULL)
 		return (FAILURE);
-	if (space_counter == ACTIVE)
-		env->current_cycle++;
 	if (draw_text(win, str_tmp, point, text) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str_tmp);
@@ -128,7 +126,7 @@ int8_t			draw_infos(t_window *win, t_vm *env, t_draw infos)
 	pos = create_rect(1810, 5, 490, 145);
 	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)))
 		return (FAILURE);
-	if (draw_infos_text(win, env, infos.state) == FAILURE)
+	if (draw_infos_text(win, env) == FAILURE)
 		return (FAILURE);
 	if ((ret = check_infos_text(env, infos.state)) && ret == THE_END)
 		return (FAILURE);

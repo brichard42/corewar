@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 09:16:02 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 16:19:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ void	event_catcher(t_window *win, t_draw *infos)
 			&& win->event.key.keysym.sym == SDLK_LEFT))
 		infos->champ_ind = (infos->champ_ind > 0)
 				? infos->champ_ind - 1 : infos->champ_number - 1;
+	if ((win->event.type == SDL_KEYUP
+			&& win->event.key.keysym.sym == SDLK_KP_PLUS))
+		time_dealer(infos, 0);
+	if ((win->event.type == SDL_KEYUP
+			&& win->event.key.keysym.sym == SDLK_KP_MINUS))
+		time_dealer(infos, 1);
 }
 
 /*
@@ -85,7 +91,8 @@ int8_t	drawer(t_window *win, t_vm *env)
 
 	ft_bzero((void *)&infos, sizeof(t_draw));
 	infos.play = 1;
-	infos.cycles_per_sec = 32;
+	infos.cycles_per_sec = 64;
+	infos.time = 7812;
 	infos.champ_number = env->champ_amount;
 	d_process = &env->process_list;
 	while (infos.play && *d_process != NULL && must_dump(env) == FALSE)
@@ -98,7 +105,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 		SDL_RenderPresent(win->renderer);
 		if (infos.state == ACTIVE)
 			cycle_actualisator(env, (*d_process));
-		usleep(100000);
+		usleep(infos.time);
 	}
 	return (SUCCESS);
 }
