@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 09:53:59 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/07 12:47:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:23:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int8_t main_visu(t_vm *env)
+int8_t	main_visu(t_vm *env)
 {
 	t_window	*win;
 	t_draw		infos;
@@ -32,9 +32,9 @@ int8_t main_visu(t_vm *env)
 void	cycle_actualisator(t_vm *env, t_process *process)
 {
 	if (env->verbose == ON)
-        ft_printf("It is now cycle: %d\n", env->current_cycle);
-    check_cycle_to_die(env);
-    exec_proc_list(env, process);
-    ++env->current_cycle;
-    ++env->current_sub_cycle;
+		ft_printf("It is now cycle: %d\n", env->current_cycle);
+	check_cycle_to_die(env);
+	exec_proc_list(env, process);
+	++env->current_cycle;
+	++env->current_sub_cycle;
 }

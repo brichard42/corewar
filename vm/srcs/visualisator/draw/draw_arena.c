@@ -6,16 +6,17 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:19:23 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:07:24 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-**	Reads a char in the memory and changes it to the corresponding hexadecimal 
+**	Reads a char in the memory and changes it to the corresponding hexadecimal
 **	value.
 */
+
 static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 {
 	char *tmp;
@@ -40,6 +41,7 @@ static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 /*
 **	Draws the header rectangle aswell as the arena rectangle.
 */
+
 static int8_t	draw_arena_structure(t_window *win)
 {
 	SDL_Rect	pos;
@@ -66,6 +68,7 @@ static int8_t	draw_arena_structure(t_window *win)
 /*
 **	Draws the Arena filled with 00 before we launched the cycle.
 */
+
 static int8_t	draw_uninit_arena(t_window *win)
 {
 	SDL_Point	point;
@@ -94,6 +97,7 @@ static int8_t	draw_uninit_arena(t_window *win)
 /*
 **	Draws the arena while the cycle have begun, whether it's stopped or running.
 */
+
 static int8_t	draw_active_arena(t_window *win, t_vm *env)
 {
 	int			count;

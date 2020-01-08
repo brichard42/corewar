@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 05:33:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/07 13:50:36 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 16:50:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ int8_t	draw_champion_name(t_window *win, char *name, SDL_Point point,
 	char	tmp[27];
 
 	j = 0;
-	if ((i = ft_strlen(name)) > 26)
+	if ((i = ft_strlen(name)) && i > 26)
 	{
 		while (j < i)
 		{
 			ft_strncpy(tmp, &name[j], 26);
+			tmp[26] = '\0';
 			if (draw_text(win, tmp, point, text) == FAILURE)
 				return (FAILURE);
 			point.y += 11;

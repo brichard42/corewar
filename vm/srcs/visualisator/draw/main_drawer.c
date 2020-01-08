@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 16:19:18 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:04:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 **	FAILURE if any of those fails. Each functions deals with a specific part
 **	of the renderer.
 */
+
 int8_t	draw(t_window *win, t_vm *env, t_draw infos, t_process *process_list)
 {
 	int	count;
@@ -49,6 +50,7 @@ int8_t	draw(t_window *win, t_vm *env, t_draw infos, t_process *process_list)
 **	another champ
 **	"+/-" -> accelerate/deccelerate the cycle speed //not done yet
 */
+
 void	event_catcher(t_window *win, t_draw *infos)
 {
 	if (win->event.type == SDL_QUIT)
@@ -77,12 +79,13 @@ void	event_catcher(t_window *win, t_draw *infos)
 }
 
 /*
-**	This is the function that calls the fucntions that draws and collects the 
+**	This is the function that calls the fucntions that draws and collects the
 **	different event used by the visualisator. Draw takes the infos and draws
 **	in the renderer while using those. PollEvent recuperates the different input
 **	the user enters on the keyboard. And event_catcher change some variables if
 **	the input recuperated is usefull to the visualisator.
 */
+
 int8_t	drawer(t_window *win, t_vm *env)
 {
 	int			ret;
@@ -92,7 +95,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 	ft_bzero((void *)&infos, sizeof(t_draw));
 	infos.play = 1;
 	infos.cycles_per_sec = 64;
-	infos.time = 7812;
+	infos.time = 15624;
 	infos.champ_number = env->champ_amount;
 	d_process = &env->process_list;
 	while (infos.play && *d_process != NULL && must_dump(env) == FALSE)

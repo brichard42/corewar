@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 16:17:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:06:36 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static int8_t	draw_infos_text3(t_window *win, int cycles_per_sec)
 		return (FAILURE);
 	if ((str = ft_lltoa(cycles_per_sec)) == NULL)
 		return (FAILURE);
-	if ((tmp = draw_text (win, "- Cycles per sec : ", point, text))
+	if ((tmp = draw_text(win, "- Cycles per sec : ", point, text))
 			&& tmp == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
@@ -112,6 +112,7 @@ static int8_t	draw_infos_text3(t_window *win, int cycles_per_sec)
 	ft_strdel(&str);
 	return (SUCCESS);
 }
+
 /*
 ** ici if ret == the_end on renvoie failure en realite c'est simplement la fin
 ** du programme il faut donc check qui est le dernier a avoir dit qu'il etait en

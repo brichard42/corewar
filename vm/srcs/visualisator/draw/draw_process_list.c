@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 15:50:36 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:02:40 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 	ft_strdel(&str);
 	return (SUCCESS);
 }
-static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3], SDL_Point point)
+
+static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
+				SDL_Point point)
 {
 	char	*str;
 	int		tmp;
@@ -48,9 +50,9 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3], SDL
 				== FAILURE)
 			return (FAILURE);
 	}
-	else
-		if ((tmp = draw_text(win, action_name(proc->op.op_code), point, text)) == FAILURE)
-			return (FAILURE);
+	if ((tmp = draw_text(win, action_name(proc->op.op_code), point, text))
+			== FAILURE)
+		return (FAILURE);
 	point.x += tmp;
 	if ((tmp = draw_text(win, " in : ", point, text)) == FAILURE)
 		return (FAILURE);
@@ -66,7 +68,8 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3], SDL
 	return (SUCCESS);
 }
 
-static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3], SDL_Point point)
+static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3],
+				SDL_Point point)
 {
 	char		*str;
 	int			tmp;
@@ -93,7 +96,7 @@ static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3], SDL_
 	return (SUCCESS);
 }
 
-static int8_t	draw_procs_list(t_window *win, t_vm	*env, t_draw infos,
+static int8_t	draw_procs_list(t_window *win, t_vm *env, t_draw infos,
 				t_process *process_list)
 {
 	t_process	*proc_tmp;

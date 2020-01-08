@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:37:42 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/16 15:24:57 by paullaurent      ###   ########.fr       */
+/*   Updated: 2020/01/08 17:30:14 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int8_t	copy_process(t_vm *vm, int pc_address, t_process *process)
 	init_op(&son->op);
 	son->carry = process->carry;
 	son->pc = pc_address;
-	// son->cycles_left = 0;
+	son->cycles_left = 0;
 	son->last_live = process->last_live;
 	while (++i <= REG_NUMBER)
 		son->reg[i] = process->reg[i];

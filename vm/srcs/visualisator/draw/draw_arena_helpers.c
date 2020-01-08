@@ -6,13 +6,33 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:42:06 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 09:19:12 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:21:50 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int8_t	draw_structure_sides(t_window *win)
+static int8_t	draw_structure_sides2(t_window *win, int text[3])
+{
+	SDL_Point	point;
+	char		*str;
+	int			i;
+
+	i = 0;
+	point = create_point(15, 227);
+	while (++i <= 64)
+	{
+		if (!(str = ft_lltoa(i)))
+			return (FAILURE);
+		if (draw_text(win, str, point, text) == FAILURE)
+			return (FAILURE);
+		ft_strdel(&str);
+		point.y = (i % 2) ? point.y + 16 : point.y + 17;
+	}
+	return (SUCCESS);
+}
+
+int8_t			draw_structure_sides(t_window *win)
 {
 	SDL_Point	point;
 	int			text[3];
@@ -33,22 +53,13 @@ int8_t	draw_structure_sides(t_window *win)
 		ft_strdel(&str);
 		point.x = (i % 2) ? point.x + 27 : point.x + 28;
 	}
-	point.x = 15;
-	point.y = 227;
-	i = 0;
-	while (++i <= 64)
-	{
-		if (!(str = ft_lltoa(i)))
-			return (FAILURE);
-		if (draw_text(win, str, point, text) == FAILURE)
-			return (FAILURE);
-		ft_strdel(&str);
-		point.y = (i % 2) ? point.y + 16 : point.y + 17;
-	}
+	if (draw_structure_sides2(win, text) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }
 
-int8_t	underliner_helper(t_window *win, SDL_Point point, int text[3], int ok)
+int8_t			underliner_helper(t_window *win, SDL_Point point, int text[3],
+				int ok)
 {
 	if (ok)
 		if (draw_text(win, "|    |", point, text) == FAILURE)
@@ -57,7 +68,7 @@ int8_t	underliner_helper(t_window *win, SDL_Point point, int text[3], int ok)
 	if (draw_text(win, "__", point, text) == FAILURE)
 		return (FAILURE);
 	point.x += 3;
-	if (draw_text(win, "_", point, text) == FAILURE)	
+	if (draw_text(win, "_", point, text) == FAILURE)
 		return (FAILURE);
 	point.x += 12;
 	if (draw_text(win, "_", point, text) == FAILURE)
@@ -65,7 +76,7 @@ int8_t	underliner_helper(t_window *win, SDL_Point point, int text[3], int ok)
 	return (SUCCESS);
 }
 
-int8_t	underliner(t_window *win, t_vm *env)
+int8_t			underliner(t_window *win, t_vm *env)
 {
 	SDL_Point	point;
 	int			text[3];
@@ -76,8 +87,8 @@ int8_t	underliner(t_window *win, t_vm *env)
 	process_list = env->process_list;
 	while (process_list)
 	{
-		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[process_list->pc], BOLD)
-				== FAILURE)
+		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[process_list->pc],
+				BOLD) == FAILURE)
 			return (FAILURE);
 		tmp_mod = (process_list->pc % 64);
 		tmp_div = (process_list->pc / 64);

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:21:10 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:44:22 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:11:14 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 **	Draw the Header with the name of the project and the name of the people who
 **	did the project.
 */
+
 int8_t	draw_corewar(t_window *win)
 {
 	SDL_Rect	pos;
