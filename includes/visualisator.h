@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/07 14:49:45 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 07:18:43 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
 **	--------SPECIFIC DRAWING FUNCTIONS------------------------------------------
 */
 int8_t				draw_command_panel(t_window *win, int i);
+char				*action_name(int op_code);
 int8_t              draw_arena(t_window *win, t_vm *env, t_draw infos);
 int8_t              draw_structure_sides(t_window *win);
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);

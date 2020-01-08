@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/07 14:52:42 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 07:21:38 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3], SDL
 	int		tmp;
 
 	tmp = 0; // pu ca mere enleve
-	//if ((tmp = draw_text(win, proc->op.name, point, text)) == FAILURE)
-	//	return (FAILURE);
-	point.x += tmp;
-	if ((tmp = draw_text(win, "in : ", point, text)) == FAILURE)
+	if ((tmp = draw_text(win, action_name(proc->op.op_code), point, text)) == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	if ((str = ft_lltoa(proc->cycles_left)) == NULL)
+	if ((tmp = draw_text(win, " in : ", point, text)) == FAILURE)
+		return (FAILURE);
+	point.x += tmp;
+	if ((str = ft_lltoa(proc->op.nb_cycle)) == NULL)
 		return (FAILURE);
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);

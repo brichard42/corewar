@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:42:06 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/27 18:13:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 09:19:12 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int8_t	underliner(t_window *win, t_vm *env)
 		tmp_mod = (process_list->pc % 64);
 		tmp_div = (process_list->pc / 64);
 		point.x = tmp_mod / 2 * 55 + tmp_mod % 2 * 27 + 42;
-		point.y = tmp_div / 2 * 33 + tmp_mod % 2 * 16 + 224;
+		point.y = tmp_div / 2 * 33 + tmp_div % 2 * 16 + 224;
 		underliner_helper(win, point, text, 1);
 		point.y -= 15;
 		underliner_helper(win, point, text, 0);

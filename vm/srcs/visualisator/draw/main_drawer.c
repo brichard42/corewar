@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/07 14:51:23 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 09:16:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 		SDL_RenderPresent(win->renderer);
 		if (infos.state == ACTIVE)
 			cycle_actualisator(env, (*d_process));
+		usleep(100000);
 	}
 	return (SUCCESS);
 }
