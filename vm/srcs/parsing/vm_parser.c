@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/04 15:40:31 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:51:50 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ static void		check_chp_num_validity(t_parser *parser)
 			highest_num = parser->env.champ[i].num;
 		++i;
 	}
-	if (highest_num > parser->cur_chp_index) 
+	if (highest_num > parser->cur_chp_index)
 		parsing_error(parser, ERR_INVALID_CHAMP_NUM);
 }
 
-int8_t		vm_parser(t_parser *parser, char **av)
+int8_t			vm_parser(t_parser *parser, char **av)
 {
 	t_parser			d_parser;
 	static t_get_func	get_func[GET_F_NUM] = {get_opt, get_dump, get_chpnum

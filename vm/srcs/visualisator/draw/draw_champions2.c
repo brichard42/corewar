@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 05:33:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 16:50:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 09:44:59 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int8_t	draw_last_live(t_window *win, int last_live, SDL_Point point,
 		return (FAILURE);
 	if (draw_text(win, str, point, text) == FAILURE)
 		return (FAILURE);
+	ft_strdel(&str);
 	return (SUCCESS);
 }

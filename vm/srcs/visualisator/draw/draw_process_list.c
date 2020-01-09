@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:02:40 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 09:47:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3],
 	point.x += tmp;
 	if ((str = ft_lltoa(proc->pc % 64 + 1)) == NULL)
 		return (FAILURE);
+	ft_strdel(&str);
 	if ((tmp = draw_text(win, "X", point, text)) == FAILURE)
 		return (FAILURE);
 	point.x += tmp;

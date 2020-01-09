@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 09:53:59 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:23:06 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 09:42:54 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int8_t	main_visu(t_vm *env)
 		return (FAILURE);
 	if (drawer(win, env) == FAILURE)
 		return (FAILURE);
+	SDL_DestroyWindow(win->window);
+	SDL_DestroyRenderer(win->renderer);
+	system("leaks corewar");
 	winner(env);
 	return (SUCCESS);
 }

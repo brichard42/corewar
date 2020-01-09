@@ -6,19 +6,21 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:30:19 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/07 13:13:14 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/08 17:52:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void	charge_champ(t_vm *env, int charge_here, t_champ champ, int value)
+static void		charge_champ(t_vm *env, int charge_here, t_champ champ,
+				int value)
 {
 	ft_memcpy(&env->mem[charge_here], champ.code, champ.size);
 	ft_memset((void *)&env->mem_owner[charge_here], value + 1, champ.size);
 }
 
-static int8_t charge_process(int pc_address, int champ_num, t_process **process)
+static int8_t	charge_process(int pc_address, int champ_num,
+				t_process **process)
 {
 	t_process	*new;
 
@@ -40,7 +42,8 @@ int8_t			load_memory(t_parser *parser)
 	i = 0;
 	while (i < champ_amount)
 	{
-		charge_champ(&parser->env, ((MEM_SIZE / champ_amount) * i), champ[i], i);
+		charge_champ(&parser->env, ((MEM_SIZE / champ_amount) * i),
+				champ[i], i);
 		++i;
 	}
 	i = 0;
