@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   live.c                                             :+:      :+:    :+:   */
+/*   get_verb.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 15:02:53 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 12:59:43 by tlandema         ###   ########.fr       */
+/*   Created: 2020/01/09 10:57:38 by tlandema          #+#    #+#             */
+/*   Updated: 2020/01/09 11:14:22 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void    live(t_vm *vm, t_process *process)
+void	get_verb(t_parser	*parser, char **av)
 {
-	int     n;
-
-	++vm->live_count;
-	process->last_live = vm->current_cycle;
-	n = -process->reg[0];
-	if (n >= 1 && n <= vm->champ_amount)
+	if (ft_strcheck(*av, ft_isdigit) == TRUE)
 	{
-		vm->champ[n - 1].last_live_cycle = vm->current_cycle;
-
-		vm->winner_index = n - 1;
-		if (vm->verbose & F_VERBOSE_LIVE)
-			ft_printf("Player %d (%s) is said to be alive\n", n,
-					vm->champ[n - 1].name);
+		parser->env.verbose = ft_atol(*av);
+		if (parser->env.verbose > 0 && parser->env.verbose <= 64)
+			parser->state = S_OPTION;
+		else
+			parsing_error(parser, ERR_INVALID_VERB_NUM);
 	}
-	if (vm->verbose)
-			show_op(process);
+	else
+		parsing_error(parser, ERR_INVALID_VERB_NUM);
 }

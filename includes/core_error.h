@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:55:15 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/18 17:20:59 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/09 13:31:42 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@
 # define ERR_MISSING_CODE			15
 # define ERR_CODE_TOO_LONG			16
 # define ERR_BINARY_CORRUPTED		17
+# define ERR_INVALID_VERB_NUM		18
+# define ERR_FILE_NOT_OPEN			19
 
-# define ERR_MSG0					"Error: File is missing.\n"
+# define ERR_MSG0					"Error: No champion found.\n"
 # define ERR_MSG1					"Error: Invalid file extension. (.cor)\n"
 # define ERR_MSG2					"Error: Invalid argument.\n"
 # define ERR_MSG3					"Error: Invalid following number after -n argument. [1 - 4]\n"
@@ -63,8 +65,10 @@
 # define ERR_MSG15					"Error: Binary is incomplete -> missing %s champion's code.\n"
 # define ERR_MSG16					"Error: Code in %s champion's binary is too long.\n"
 # define ERR_MSG17					"Error: Binary corrupted. (%s champion)\n"
+# define ERR_MSG18					"Error: Invalid following number after -v argument. [1 - 64]\n"
+# define ERR_MSG19					"Error: Error while opening file / file might not exist.\n"
 
-# define ERR_MSG_NUM				18
+# define ERR_MSG_NUM				20
 # define MAX_ERR_MSG_SIZE			75
 
 #endif

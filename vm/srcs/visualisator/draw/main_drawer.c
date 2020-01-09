@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:04:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 10:42:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 	infos.time = 15624;
 	infos.champ_number = env->champ_amount;
 	d_process = &env->process_list;
-	while (infos.play && *d_process != NULL && must_dump(env) == FALSE)
+	while (infos.play/* && *d_process != NULL && must_dump(env) == FALSE*/)
 	{
 		if (draw(win, env, infos, (*d_process)) == FAILURE)
 			return (FAILURE);

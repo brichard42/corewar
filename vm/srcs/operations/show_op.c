@@ -14,21 +14,21 @@ void    show_op(t_process *process)
     //         , process->op.type_param[i], process->op.param[i]);
     //     i++;
     // }
-    ft_printf("P    %d | %s", process->num, op_tab[process->op.op_code - 1].name);
+//    ft_printf("P    %d | %s", process->num, op_tab[process->op.op_code - 1].name);
     if (process->op.op_code == 11)
     {
-        ft_printf(" %d + %d\n", process->op.param[1] % IDX_MOD, process->op.param[2] % IDX_MOD);
+  //      ft_printf(" %d + %d\n", process->op.param[1] % IDX_MOD, process->op.param[2] % IDX_MOD);
     }
     else
     {
     while (i < op_tab[process->op.op_code - 1].nb_param)
     {
-        ft_printf(" %d"
-            , process->op.param[i]);
+//        ft_printf(" %d"
+    //        , process->op.param[i]);
         i++;
     }
     }
-    ft_printf("\n");
+    //ft_printf("\n");
 }
 
 void    show_mem(t_vm *vm)
@@ -36,6 +36,7 @@ void    show_mem(t_vm *vm)
     int     i;
 
     i = 0;
+    (void)vm;
     ft_printf("0x0000 : ");
     while (i < MEM_SIZE)
     {
@@ -46,5 +47,4 @@ void    show_mem(t_vm *vm)
             ft_printf("\n");
 		i++;
     }
-    ft_printf("\n\n");
 }

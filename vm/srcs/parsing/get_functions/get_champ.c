@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:27:22 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/08 17:50:36 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 13:31:56 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ void			get_champ(t_parser *parser, char **av)
 	{
 		fd = open(*av, O_RDONLY);
 		if (fd > 0)
+		{
 			while (i < RD_F_NUM && parser->state != S_ERR)
 				read_func_tab[i++](parser, fd);
+		}
+		else
+			parsing_error(parser, ERR_FILE_NOT_OPEN);
 		++parser->env.champ_amount;
 	}
 	else

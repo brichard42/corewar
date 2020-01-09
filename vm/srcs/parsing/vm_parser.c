@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/08 17:51:50 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:13:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ static void		check_chp_num_validity(t_parser *parser)
 int8_t			vm_parser(t_parser *parser, char **av)
 {
 	t_parser			d_parser;
-	static t_get_func	get_func[GET_F_NUM] = {get_opt, get_dump, get_chpnum
-																, get_champ};
-
+	static t_get_func	get_func[GET_F_NUM] = {get_opt, get_dump, get_chpnum,
+														get_champ, get_verb};
 	parser->env = init_vm();
 	d_parser = *parser;
 	while (d_parser.state != S_ERR && *av != NULL)
@@ -64,5 +63,7 @@ int8_t			vm_parser(t_parser *parser, char **av)
 	*parser = d_parser;
 	check_chp_num_validity(parser);
 	sort_champ_tab(parser->env.champ, parser->cur_chp_index - 1);
+	//if (parser->env.champ[0].
+	//	parsing_error(parser, );
 	return (parser->state != S_ERR ? SUCCESS : FAILURE);
 }

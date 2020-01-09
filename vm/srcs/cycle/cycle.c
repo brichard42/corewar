@@ -68,12 +68,13 @@ void			cycle(t_vm *env)
 	d_process = &env->process_list;
 	while (*d_process != NULL && must_dump(env) == FALSE)
 	{
-		if (env->verbose == ON)
-			ft_printf("It is now cycle: %d\n", env->current_cycle);
+//		if (env->verbose == ON)
+//			ft_printf("It is now cycle: %d\n", env->current_cycle);
 		check_cycle_to_die(env);
 		exec_proc_list(env, (*d_process));
 		++env->current_cycle;
 		++env->current_sub_cycle;
 	}
-	winner(env);
+	if (env->cycle_to_dump == OFF)
+		winner(env);
 }

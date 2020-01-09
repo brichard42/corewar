@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:10:03 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 11:12:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,12 @@ int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
 		return (FAILURE);
 	point.x += 30;
 	point.y += 70;
-	if (env->champ[champ_n].last_live_cycle == FAILURE
-			|| env->current_cycle > 200)
-	{
-		if (draw_text(win, "X       X", point, text) == FAILURE)
-			return (FAILURE);
-	}
-	else if (draw_text(win, "0       0", point, text) == FAILURE)
+	//if (champ_n != env->winner_index && )
+	//{
+	//	if (draw_text(win, "X       X", point, text) == FAILURE)
+	//		return (FAILURE);
+	//}
+	/*else */if (draw_text(win, "0       0", point, text) == FAILURE)
 		return (FAILURE);
 	point.y += 70;
 	point.x -= 10;

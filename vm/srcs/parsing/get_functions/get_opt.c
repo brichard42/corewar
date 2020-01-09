@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/19 16:34:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/12/16 14:40:00 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/09 11:17:53 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		get_opt(t_parser *parser, char **av)
 		else if (ft_strequ(*av, O_VISU) == TRUE)
 			parser->visu = ON;
 		else if (ft_strequ(*av, O_VERBOSE) == TRUE)
-			parser->env.verbose = ON;
+			parser->state = S_VERB;
 		else
 			parsing_error(parser, ERR_WRONG_ARG);
 	}

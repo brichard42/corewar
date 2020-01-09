@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 09:53:59 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 09:42:54 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 13:02:48 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,12 @@ int8_t	main_visu(t_vm *env)
 		return (FAILURE);
 	SDL_DestroyWindow(win->window);
 	SDL_DestroyRenderer(win->renderer);
-	system("leaks corewar");
 	winner(env);
 	return (SUCCESS);
 }
 
 void	cycle_actualisator(t_vm *env, t_process *process)
 {
-	if (env->verbose == ON)
-		ft_printf("It is now cycle: %d\n", env->current_cycle);
 	check_cycle_to_die(env);
 	exec_proc_list(env, process);
 	++env->current_cycle;

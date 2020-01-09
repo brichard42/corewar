@@ -18,9 +18,9 @@ void    zjump(t_vm *vm, t_process *process)
 	if (vm->verbose)
 	{
 		show_op(process);
-		if (process->carry == 1)
-			ft_printf("OK\n");
-		else
-			ft_printf("FAILED\n");
+//		if (process->carry == 1)
+//			ft_printf("OK\n");
+//		else
+//			ft_printf("FAILED\n");
 	}
 }

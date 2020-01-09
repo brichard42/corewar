@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/08 17:53:46 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 11:43:03 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int			main(int ac, char **av)
 	ft_bzero((void *)&parser, sizeof(t_parser));
 	if (vm_parser(&parser, ++av) == FAILURE)
 		return (usage());
-	parser.env.verbose = 1;
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
 	if (parser.visu == ON)

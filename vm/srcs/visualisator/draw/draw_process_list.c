@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 09:47:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 10:03:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 				== FAILURE)
 			return (FAILURE);
 	}
-	if ((tmp = draw_text(win, action_name(proc->op.op_code), point, text))
+	else if ((tmp = draw_text(win, action_name(proc->op.op_code), point, text))
 			== FAILURE)
 		return (FAILURE);
 	point.x += tmp;

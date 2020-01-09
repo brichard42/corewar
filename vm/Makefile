@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/08 16:04:43 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/09 11:14:12 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRCS += get_opt.c
 SRCS += get_dump.c
 SRCS += get_chpnum.c
 SRCS += get_champ.c
+SRCS += get_verb.c
 
 SRCS += padding_is_good.c
 
