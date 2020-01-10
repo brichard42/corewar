@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:30:19 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/09 11:27:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:55:50 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ int8_t			load_memory(t_parser *parser)
 {
 	t_champ	*champ;
 	int8_t	i;
-	int8_t	champ_amount;
+	uint8_t	champ_amount;
 
 	champ = parser->env.champ;
-	champ_amount = (int8_t)parser->cur_chp_index;
-	if (champ_amount == 0)
-		return (FAILURE);
+	champ_amount = (uint8_t)parser->env.champ_amount;
 	i = 0;
 	while (i < champ_amount)
 	{

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cycle.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
+/*   Updated: 2020/01/10 14:56:07 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 int				is_opcode(char data)
@@ -13,7 +25,7 @@ void		winner(t_vm	*vm)
 	uint8_t	i;
 
 	i = vm->winner_index;
-	ft_printf("contestant nb %d, %s , has won !\n", i + 1, vm->champ[i].name);
+	ft_printf("Contestant %d, \"%s\", has won !\n", vm->champ[i].num, vm->champ[i].name);
 }
 
 uint8_t		must_dump(t_vm *vm)
@@ -44,19 +56,17 @@ void		exec_process(t_vm *vm, t_process *process)
 				op_tab[process->op.op_code - 1].func(vm, process);
 			if (process->op.op_code != 9 || (process->op.op_code == 9 && !process->carry)) // pour le cas zjump ou le pc est deja déplacersauf quand carry
 				process->pc += move_pc(process); // deplacer le pc en fonction du nombre de param etc
-			// process->pc = modulo(process->pc, MEM_SIZE);
+			 process->pc = modulo(process->pc, MEM_SIZE);
 			delete_op(process);
 		}
 	}
-
 }
 
 void		exec_proc_list(t_vm *vm, t_process *process)
 {
 	while (process != NULL)
 	{
-		if (process->active == 1)
-			exec_process(vm, process);
+		exec_process(vm, process);
 		process = process->next;
 	}
 }
@@ -75,6 +85,6 @@ void			cycle(t_vm *env)
 		++env->current_cycle;
 		++env->current_sub_cycle;
 	}
-	if (env->cycle_to_dump == OFF)
+	if (env->cycle_to_dump != ON)
 		winner(env);
 }

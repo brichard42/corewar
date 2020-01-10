@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 14:16:37 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/01 16:00:04 by paullaurent      ###   ########.fr       */
+/*   Updated: 2020/01/10 14:35:14 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	aff(t_vm *vm, t_process *process)
 {
-	vm->current_cycle = vm->current_cycle;
+	(void)vm;
 	ft_putchar(process->op.param[0] % 256);
 }

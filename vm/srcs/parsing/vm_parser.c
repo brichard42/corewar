@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/09 14:13:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:57:48 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int8_t			vm_parser(t_parser *parser, char **av)
 	*parser = d_parser;
 	check_chp_num_validity(parser);
 	sort_champ_tab(parser->env.champ, parser->cur_chp_index - 1);
-	//if (parser->env.champ[0].
-	//	parsing_error(parser, );
+	if (parser->env.champ[0].num == 0) 
+		parsing_error(parser, ERR_NO_CHAMP);
 	return (parser->state != S_ERR ? SUCCESS : FAILURE);
 }

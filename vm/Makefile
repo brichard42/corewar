@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/09 11:14:12 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/09 15:09:03 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRCS += padding_is_good.c
 SRCS += read_champ.c
 
 SRCS += load_memory.c
+SRCS += caller.c
 
 SRCS += parsing_error.c
 

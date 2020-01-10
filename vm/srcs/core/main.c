@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/09 11:43:03 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/10 14:20:28 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			main(int ac, char **av)
 		return (usage());
 	if (load_memory(&parser) == FAILURE)
 		return (usage());
+	player_caller(parser.env.champ_amount, parser.env.champ);
 	if (parser.visu == ON)
 	{
 		if (main_visu(&parser.env) == FAILURE)

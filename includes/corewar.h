@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/09 11:12:28 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 15:09:53 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ uint8_t				chp_num_is_attributed(t_parser *parser);
 void				attribute_next_chp_num(t_parser *parser);
 
 int8_t				load_memory(t_parser *parser);
+void				player_caller(uint8_t nb_champ, t_champ champ[MAX_PLAYERS]);
 
 /*
 **	-------PARSING_ERROR-------

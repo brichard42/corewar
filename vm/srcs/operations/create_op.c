@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:09:54 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/08 07:10:14 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/10 16:04:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_op(t_op *op)
 	op->type_param[2] = 0;
 	op->nb_cycle = 0;
 	op->pos_op_code = 0;
+	ft_bzero((void *)op, sizeof(t_op));
 }
 
 void	create_op(t_process *process, int op_code)

@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:55:15 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/09 13:31:42 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/09 14:58:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **	DEFINE PARSING ERROR_CODE
 */
 
-# define ERR_FILE_MISSING			0
+# define ERR_NO_CHAMP				0
 # define ERR_FILE_NOT_COR			1
 # define ERR_WRONG_ARG				2
 # define ERR_INVALID_CHAMP_NUM		3
@@ -42,7 +42,7 @@
 # define ERR_INVALID_VERB_NUM		18
 # define ERR_FILE_NOT_OPEN			19
 
-# define ERR_MSG0					"Error: No champion found.\n"
+# define ERR_MSG0					"Error: No champion given.\n"
 # define ERR_MSG1					"Error: Invalid file extension. (.cor)\n"
 # define ERR_MSG2					"Error: Invalid argument.\n"
 # define ERR_MSG3					"Error: Invalid following number after -n argument. [1 - 4]\n"

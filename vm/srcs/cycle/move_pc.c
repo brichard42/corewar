@@ -26,7 +26,7 @@ int			move_pc(t_process *process)
 
 	move = 1; // passer l'op_code
 	ref = &op_tab[process->op.op_code - 1];
-	if (!ref->jsp_encore) // on a forcement un T_DIR sans ocp
+	if (!ref->bytecode) // on a forcement un T_DIR sans ocp
 		return ((ref->direct_size) ? move + 2 : move + 4);
 	else // sinon on passe l'ocp
 		move++;

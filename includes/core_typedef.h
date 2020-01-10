@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 11:04:00 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/10 16:32:35 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ typedef struct		s_op_tab
 	int32_t			op_code;
 	int32_t			nb_cycle;
 	char			*com;
-	int32_t			jsp_encore; // pour savoir si on a besoin d'ocp ou pas
+	int32_t			bytecode; // pour savoir si on a besoin d'ocp ou pas
 	int32_t			direct_size;
 }					t_op_tab;
 
@@ -180,6 +180,6 @@ typedef void		(*t_get_func)(t_parser *, char **);
 
 typedef void		(*t_read_func)(t_parser *, int32_t);
 
-extern t_op_tab		op_tab[];
+extern t_op_tab		g_op_tab[17];
 
 #endif

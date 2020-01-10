@@ -57,6 +57,7 @@ static void	get_reg(t_vm *vm, t_process *proc, int num, int pos)
 	unsigned char   value;
 
 	value = (unsigned char)vm->mem[(pos + 1) % MEM_SIZE];
+	//ft_printf("(%d) %d <- reg | %d \n", proc->reg[0], value, vm->current_cycle);
 	proc->op.param[num] = value;
 }
 
@@ -76,12 +77,12 @@ static int	find_param(t_vm *vm, t_process *proc, int num, int pos)
 		get_reg(vm, proc, num, pos);
 		return (1); // REG_SIZE
 	}
-	if (type == DIR_CODE)
+	else if (type == DIR_CODE)
 	{
 		get_dir(vm, proc, num, pos);
 		return ((op_tab[proc->op.op_code - 1].direct_size ? 2 : 4));
 	}
-	if (type == IND_CODE)
+	else if (type == IND_CODE)
 	{
 		get_ind(vm, proc, num, pos);
 		return (IND_SIZE);
@@ -96,7 +97,8 @@ int     take_param_op(t_vm *vm, t_process *process)
 
 	i = 0;
 	pos = process->pc;
-	if (op_tab[process->op.op_code - 1].jsp_encore)
+	//ft_printf("%d\n", op_tab[process->op.op_code - 1].bytecode);
+	if (op_tab[process->op.op_code - 1].bytecode)
 	{
 		pos++;
 		process->op.ocp = (unsigned char)vm->mem[pos % MEM_SIZE];
