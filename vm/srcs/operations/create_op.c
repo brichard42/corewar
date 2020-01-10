@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:09:54 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/10 16:04:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/10 17:49:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	create_op(t_process *process, int op_code)
 	init_op(&process->op);
 	process->op.active = 1;
 	process->op.op_code = op_code;
-	process->op.nb_cycle = op_tab[op_code - 1].nb_cycle - 1;
+	process->op.nb_cycle = g_op_tab[op_code - 1].nb_cycle - 1;
 	process->op.pos_op_code = process->pc;
 }
 

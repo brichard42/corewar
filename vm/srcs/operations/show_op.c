@@ -21,7 +21,7 @@ void    show_op(t_process *process)
     }
     else
     {
-    while (i < op_tab[process->op.op_code - 1].nb_param)
+    while (i < g_op_tab[process->op.op_code - 1].nb_param)
     {
 //        ft_printf(" %d"
     //        , process->op.param[i]);

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/10 14:56:07 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/10 19:13:38 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ uint8_t		must_dump(t_vm *vm)
 {
 	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
 	{
-		// afficher la memoire, le winner et quitter proprement
 		show_mem(vm);
 		return (TRUE);
 	}
@@ -53,7 +52,7 @@ void		exec_process(t_vm *vm, t_process *process)
 		if (--process->op.nb_cycle <= 0)
 		{
 			if (take_param_op(vm, process))// remplir l'op avec les params et les checks en meme temps
-				op_tab[process->op.op_code - 1].func(vm, process);
+				g_op_tab[process->op.op_code - 1].func(vm, process);
 			if (process->op.op_code != 9 || (process->op.op_code == 9 && !process->carry)) // pour le cas zjump ou le pc est deja déplacersauf quand carry
 				process->pc += move_pc(process); // deplacer le pc en fonction du nombre de param etc
 			 process->pc = modulo(process->pc, MEM_SIZE);
@@ -85,6 +84,6 @@ void			cycle(t_vm *env)
 		++env->current_cycle;
 		++env->current_sub_cycle;
 	}
-	if (env->cycle_to_dump != ON)
+	if (env->cycle_to_dump == OFF)
 		winner(env);
 }

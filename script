@@ -1,0 +1,1 @@
+./corewar -dump 100 resources/champs/Gagnant.cor resources/champs/maxidef.cor > test ; ./resources/corewar -d 100 resources/champs/Gagnant.cor resources/champs/maxidef.cor > test2 ; diff test test2 > truc

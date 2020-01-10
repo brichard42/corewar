@@ -30,7 +30,7 @@ void	    ld(t_vm *vm, t_process *process)
 {
 	int     reg_nb;
 
-	reg_nb = process->op.param[1];
+	reg_nb = process->op.param[1] - 1;
 	if (process->op.type_param[0] == IND_CODE)
 		put_ind_in_reg(vm, process, reg_nb); // cas ou le premier param est un T_IND
 	else

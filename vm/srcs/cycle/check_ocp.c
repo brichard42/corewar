@@ -6,7 +6,7 @@ static int	param_ok(int ocp_chunk, int op_code, int num_param)
 		return (0);
 	if (ocp_chunk == 3)
 		ocp_chunk += 1; // car t_reg = 1 et t_dir = 2 mais t_ind = 4 et non 3
-	if (ocp_chunk & op_tab[op_code - 1].type_param[num_param])
+	if (ocp_chunk & g_op_tab[op_code - 1].type_param[num_param])
 		return (1);
 	return (0);
 }
@@ -15,7 +15,7 @@ int			check_ocp(int ocp, int op_code)
 {
 	int     nb_param;
 
-	nb_param = op_tab[op_code - 1].nb_param;
+	nb_param = g_op_tab[op_code - 1].nb_param;
 	//  on regarde le premier param && on envoie a param_ok le deux bits que l'on veut regarder cad les deux dernier 1100 0000
 	if (nb_param >= 1 && !param_ok((ocp & 0xC0) >> 6, op_code, 0))
 		return (0);
