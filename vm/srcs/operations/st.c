@@ -10,7 +10,6 @@ void	func(t_vm *vm, t_process *process) // j'ai des doutes, a teste précisement
 	unsigned int	addr;
 
 	addr = process->op.pos_op_code + (process->op.param[1] % IDX_MOD);
-	//ft_printf("%d seg", process->op.param[0]);
 	vm->mem[modulo(addr, MEM_SIZE)] = (char)(process->reg[process->op.param[0] - 1] >> 24);
 	vm->mem_owner[modulo(addr, MEM_SIZE)] = -process->reg[0];
 	vm->mem[modulo(addr + 1, MEM_SIZE)] = (char)(process->reg[process->op.param[0] - 1] >> 16);

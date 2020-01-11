@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/10 19:13:38 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/11 18:32:26 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		winner(t_vm	*vm)
 
 uint8_t		must_dump(t_vm *vm)
 {
-	if ((int32_t)vm->current_cycle == vm->cycle_to_dump)
+	if ((int32_t)vm->current_cycle == vm->cycle_to_dump + 1)
 	{
 		show_mem(vm);
 		return (TRUE);
@@ -77,13 +77,11 @@ void			cycle(t_vm *env)
 	d_process = &env->process_list;
 	while (*d_process != NULL && must_dump(env) == FALSE)
 	{
-//		if (env->verbose == ON)
-//			ft_printf("It is now cycle: %d\n", env->current_cycle);
-		check_cycle_to_die(env);
 		exec_proc_list(env, (*d_process));
+		check_cycle_to_die(env);
 		++env->current_cycle;
 		++env->current_sub_cycle;
 	}
-	if (env->cycle_to_dump == OFF)
+	if (env->cycle_to_dump < 0 || env->current_cycle < env->cycle_to_dump)
 		winner(env);
 }

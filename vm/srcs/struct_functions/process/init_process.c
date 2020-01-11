@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/10 20:13:26 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/11 18:24:04 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_process	init_process(int32_t reg_1, int32_t pc)
 	new_process.reg[0] = -reg_1;
 	new_process.pc = pc;
 	new_process.cycles_left = 0;
-	new_process.carry = TRUE;
+	new_process.carry = FALSE;
 	new_process.last_live = 0;
 	new_process.num = 1;
 	return (new_process);

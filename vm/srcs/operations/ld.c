@@ -35,7 +35,7 @@ void	    ld(t_vm *vm, t_process *process)
 		put_ind_in_reg(vm, process, reg_nb); // cas ou le premier param est un T_IND
 	else
 		process->reg[reg_nb] = process->op.param[0]; // cas où T_DIR
-	process->carry = ((process->reg[reg_nb] == 0) ? 1 : 0);
+	process->carry = (process->op.param[0] ? 0 : 1);
 	if (vm->verbose)
 		show_op(process); // fonction d'affichage generique pour les 16 op
 }

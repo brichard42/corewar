@@ -10,14 +10,11 @@
 
 void    zjump(t_vm *vm, t_process *process)
 {
-ft_putnbr(process->carry);
 	if (process->carry == 1)
 	{
 		process->pc = modulo(process->op.pos_op_code
 			+ (process->op.param[0] % IDX_MOD), MEM_SIZE);
 	}
-	//ft_putnbr(process->op.param[0]);
-//	exit(0);
 	if (vm->verbose)
 	{
 		show_op(process);

@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/09 15:09:53 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/11 16:17:02 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void				parsing_error(t_parser *parser, int32_t errer_code);
 */
 void                cycle(t_vm *vm);
 void				check_cycle_to_die(t_vm *env);
+void				kill_processes(t_vm *env);
 void				exec_proc_list(t_vm *vm, t_process *process);
 void				exec_process(t_vm *vm, t_process *process);
 uint8_t				must_dump(t_vm *vm);

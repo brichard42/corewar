@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:07:24 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/11 17:00:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,12 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 	char		str[3];
 	SDL_Point	point;
 
-	count = 0;
+	count = -1;
 	point = create_point(45, 225);
-	while (count < MEM_SIZE)
+	while (++count < MEM_SIZE)
 	{
-		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[count], BOLD)
-				== FAILURE)
+		if (create_tab_int3(text, 17, TEXT2 + (env->mem_owner[count] < 4
+				? env->mem_owner[count] : 0), BOLD) == FAILURE)
 			return (FAILURE);
 		if (change_char_to_hexa(str, env->mem[count]) == FAILURE)
 			return (FAILURE);
@@ -122,7 +122,6 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 			point.y = ((count + 1) / 64 % 2) ? point.y + 16 : point.y + 17;
 			point.x = 45;
 		}
-		count++;
 	}
 	return (SUCCESS);
 }
