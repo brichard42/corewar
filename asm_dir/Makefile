@@ -10,131 +10,187 @@
 #                                                                              #
 # **************************************************************************** #
 
-# COLORS
-GREEN					= \033[0;32m
-RED						= \033[0;31m
-RESET					= \033[0m
+#------------------------------------------------------------------------------#
+#                                 BUILD TARGETS                                #
+#------------------------------------------------------------------------------#
 
-# NAMES
-NAME_VM					= corewar
-NAME_ASM				= asm
+NAME = ../asm
 
-# COMPILER
-CC						= gcc
-CFLAGS					= -Wall -Wextra -Werror
+OBJS = $(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 
-# LIBS
-LIBFT_DIR				= ./ft_printf/
-LIBFT_HEAD				= $(LIBFT_DIR)includes/
-LIBFT					= $(LIBFT_DIR)libftprintf.a
+LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
 
-# HEADERS
-HEADERS_DIR				= ./includes/
-HEADERS_MUTUAL_LST		= op.h \
-						  error.h
-HEADERS_MUTUAL			= $(addprefix $(HEADERS_DIR), $(HEADERS_MUTUAL_LST))
+#------------------------------------------------------------------------------#
+#                                   LIB_FILES                                  #
+#------------------------------------------------------------------------------#
 
-HEADERS_VM_DIR			= $(HEADERS_DIR)virtual_machine/
-HEADERS_VM_LST			= corewar.h
-HEADERS_VM				= $(addprefix $(HEADERS_VM_DIR), $(HEADERS_VM_LST))
+LIB_FILES += libftprintf.a
 
-HEADERS_ASM_DIR			= $(HEADERS_DIR)assembler/
-HEADERS_ASM_LST			= assembler.h
-HEADERS_ASM				= $(addprefix $(HEADERS_ASM_DIR), $(HEADERS_ASM_LST))
+#------------------------------------------------------------------------------#
+#                                   SRCS_FILES                                 #
+#------------------------------------------------------------------------------#
 
-# INCLUDES
-INCLUDES				= -I$(HEADERS_DIR) -I$(HEADERS_VM_DIR) -I$(HEADERS_ASM_DIR) -I$(LIBFT_HEAD)
-LIBRARIES				= -L$(LIBFT_DIR) -lftprintf
+SRCS += main.c
+SRCS += op.c
+SRCS += error.c
+SRCS += list_tools.c
+SRCS += read_file.c
+SRCS += get_header.c
+SRCS += get_label.c
+SRCS += get_op.c
+SRCS += get_params.c
+SRCS += check_labels.c
+SRCS += check_params.c
+SRCS += check_types.c
+SRCS += write_file.c
 
-# SOURCES
-SOURCES_DIR				= ./srcs/
-SOURCES_MUTUAL_LST		= error.c \
-						  op.c
-SOURCES_MUTUAL			= $(addprefix $(SOURCES_DIR), $(SOURCES_MUTUAL_LST))
+#------------------------------------------------------------------------------#
+#                                  DIRECTORIES                                 #
+#------------------------------------------------------------------------------#
 
-SOURCES_VM_DIR			= $(SOURCES_DIR)virtual_machine/
-SOURCES_VM_LST			= main.c \
-						  init_vm.c
-SOURCES_VM				= $(addprefix $(SOURCES_VM_DIR), $(SOURCES_VM_LST))
+INC_DIR += includes/
 
-SOURCES_ASM_DIR			= $(SOURCES_DIR)assembler/
-SOURCES_ASM_LST			= main.c \
-						  list_tools.c \
-						  read_file.c \
-						  get_header.c \
-						  get_label.c \
-						  get_op.c \
-						  get_params.c \
-						  check_params.c \
-						  check_types.c \
-						  check_labels.c
-SOURCES_ASM				= $(addprefix $(SOURCES_ASM_DIR), $(SOURCES_ASM_LST))
+OBJS_DIR += bin/
 
-# OBJECTS
-OBJECTS_DIR				= ./bin/
-OBJECTS_MUTUAL_LST		= $(patsubst %.c, %.o, $(SOURCES_MUTUAL_LST))
-OBJECTS_MUTUAL			= $(addprefix $(OBJECTS_DIR), $(OBJECTS_MUTUAL_LST))
+SRCS_DIR += $(shell find srcs -type d)
 
-OBJECTS_VM_DIR			= $(OBJECTS_DIR)virtual_machine/
-OBJECTS_VM_LST			= $(patsubst %.c, %.o, $(SOURCES_VM_LST))
-OBJECTS_VM				= $(addprefix $(OBJECTS_VM_DIR), $(OBJECTS_VM_LST))
+LIB_DIR += ft_printf
 
-OBJECTS_ASM_DIR			= $(OBJECTS_DIR)assembler/
-OBJECTS_ASM_LST			= $(patsubst %.c, %.o, $(SOURCES_ASM_LST))
-OBJECTS_ASM				= $(addprefix $(OBJECTS_ASM_DIR), $(OBJECTS_ASM_LST))
+#------------------------------------------------------------------------------#
+#                                     PATHS                                    #
+#------------------------------------------------------------------------------#
 
-# RULES
-.PHONY: all, clean, fclean, re
+INC_PATH += ./$(INC_DIR)
+INC_PATH += $(addsuffix $(INC_DIR), $(LIB_DIR)/)
 
-all:					$(NAME_ASM) $(NAME_VM)
+OBJS_PATH = $(OBJS_DIR)
 
-$(NAME_VM):				$(LIBFT) $(OBJECTS_VM_DIR) $(OBJECTS_MUTUAL) $(OBJECTS_VM)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS_MUTUAL) $(OBJECTS_VM) $(LIBRARIES) -o $@
-	@echo "$(NAME_VM): $(GREEN)$(NAME_VM)		compiled.$(RESET)"
+SRCS_PATH += $(SRCS_DIR)
 
-$(NAME_ASM):			$(LIBFT) $(OBJECTS_ASM_DIR) $(OBJECTS_MUTUAL) $(OBJECTS_ASM)
-	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS_MUTUAL) $(OBJECTS_ASM) $(LIBRARIES) -o $@
-	@echo "$(NAME_ASM): $(GREEN)$(NAME_ASM)		compiled.$(RESET)"
+LIB_PATH += $(LIB_DIR)
 
-$(LIBFT):				FORCE
-	@echo "$(NAME_VM): $(GREEN)Checking $(LIBFT)...$(RESET)"
-	@make -sC $(LIBFT_DIR)
+#------------------------------------------------------------------------------#
+#                                     VPATH                                    #
+#------------------------------------------------------------------------------#
+vpath %.h $(INC_PATH)
+vpath %.c $(SRCS_PATH)
 
-FORCE:
+#------------------------------------------------------------------------------#
+#                                  COMPILATION                                 #
+#------------------------------------------------------------------------------#
 
-$(OBJECTS_ASM_DIR):		$(OBJECTS_DIR)
-	@mkdir -p $(OBJECTS_ASM_DIR)
-	@echo "$(NAME_ASM): $(GREEN)$(OBJECTS_ASM_DIR)		created.$(RESET)"
+CC = gcc
 
-$(OBJECTS_VM_DIR):		$(OBJECTS_DIR)
-	@mkdir -p $(OBJECTS_VM_DIR)
-	@echo "$(NAME_VM): $(GREEN)$(OBJECTS_VM_DIR)		created.$(RESET)"
+DEBUG = 0
 
-$(OBJECTS_DIR):
-	@mkdir -p $(OBJECTS_DIR)
-	@echo "$(NAME_VM): $(GREEN)$(OBJECTS_DIR)		created.$(RESET)"
+ifeq ($(DEBUG), 1)
+	CFLAGS += -fsanitize=address,undefined
+	CFLAGS += -g3
+endif
 
-$(OBJECTS_DIR)%.o:		$(SOURCES_DIR)%.c $(HEADERS_MUTUAL)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "$(NAME_VM): $(GREEN)$@	compiled.$(RESET)"
+IFLAGS += $(addprefix -I, $(INC_PATH))
 
-$(OBJECTS_VM_DIR)%.o:	$(SOURCES_VM_DIR)%.c $(HEADERS_MUTUAL) $(HEADERS_VM)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "$(NAME_VM): $(GREEN)$@	compiled.$(RESET)"
+LDLIBS = ftprintf
 
-$(OBJECTS_ASM_DIR)%.o:	$(SOURCES_ASM_DIR)%.c $(HEADERS_MUTUAL) $(HEADERS_ASM)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "$(NAME_ASM): $(GREEN)$@	compiled.$(RESET)"
+LDFLAGS = $(addprefix -L , $(LIB_PATH)) $(addprefix -l, $(LDLIBS))
 
-clean:
-	@make clean -sC $(LIBFT_DIR)
-	@rm -rf $(OBJECTS_DIR)
-	@echo "$(NAME_VM): $(RED)binary files	deleted.$(RESET)"
-	@echo "$(NAME_VM): $(RED)$(OBJECTS_DIR)		deleted.$(RESET)"
+CFLAGS += -Werror -Wall -Wextra
 
-fclean:					clean
-	@make fclean -sC $(LIBFT_DIR)
-	@rm -f $(NAME_VM) $(NAME_ASM)
-	@echo "$(NAME_VM): $(RED)$(NAME_VM) and $(NAME_ASM)	deleted.$(RESET)"
+#------------------------------------------------------------------------------#
+#                                   COMMANDS                                   #
+#------------------------------------------------------------------------------#
 
-re:						fclean all
+CLEAR = clear
+
+MKDIR = mkdir -p
+
+RM = rm -rf
+
+#------------------------------------------------------------------------------#
+#                                    CLEAN                                     #
+#------------------------------------------------------------------------------#
+
+CLEAN_LIB += $(addprefix make clean -C , $(LIB_PATH))
+
+FCLEAN_LIB += $(addprefix make fclean -C , $(LIB_PATH))
+
+#------------------------------------------------------------------------------#
+#                                    OUTPUT                                    #
+#------------------------------------------------------------------------------#
+
+COM_COLOR   = \033[0;34m
+OBJ_COLOR   = \033[0;36m
+OK_COLOR    = \033[0;32m
+ERROR_COLOR = \033[0;31m
+WARN_COLOR  = \033[0;33m
+NO_COLOR    = \033[m
+
+define run_and_test
+printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
+	$(1) 2> $@.log; \
+	RESULT=$$?; \
+	if [ $$RESULT -ne 0 ]; then \
+		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"   ; \
+	elif [ -s $@.log ]; then \
+		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(WARN_COLOR)$(WARN_STRING)$(NO_COLOR)\n"   ; \
+	else  \
+		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"   ; \
+	fi; \
+	cat $@.log; \
+	rm -f $@.log 2> /dev/null; \
+	exit $$RESULT
+endef
+
+OK_STRING    = "[OK]"
+ERROR_STRING = "[ERROR]"
+WARN_STRING  = "[WARNING]"
+COM_STRING   = "Compiling"
+
+#------------------------------------------------------------------------------#
+#                                   COMMANDS                                   #
+#------------------------------------------------------------------------------#
+
+.PHONY: all $(CLEAR) lc lfc clean fclean re install norme show
+.SILENT:
+
+all: $(NAME)
+
+$(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
+	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@)
+
+$(OBJS_PATH)%.o : %.c | Makefile
+	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@)
+
+$(OBJS_PATH):
+	$(MKDIR) $@
+
+$(LIBS):
+	echo "$(COM_COLOR)Compiling $(OBJ_COLOR)Libraries$(NO_COLOR)"
+	make -C $(LIB_DIR)
+
+$(CLEAR):
+	$@
+
+show:
+	echo "IFLAGS : \n$(IFLAGS)"
+	echo "CFLAGS : \n$(CFLAGS)"
+	echo "LDFLAGS : \n$(LDFLAGS)"
+	echo "OBJS : \n$(OBJS)"
+	echo "INC_PATH : \n$(INC_PATH)"
+
+norme:
+	norminette $(SRCS_PATH) $(INC_PATH) | grep -v 'Warning: Not a valid file' | grep -B 1 -e 'Error' -e 'Warning'
+
+lc:
+	$(call run_and_test, $(RM) $(OBJS_PATH) && $(CLEAN_LIB))
+
+lfc:
+	$(call run_and_test, $(RM) $(OBJS_PATH) && $(RM) $(NAME) && $(FCLEAN_LIB))
+
+clean: $(CLEAR)
+	$(call run_and_test, $(RM) $(OBJS_PATH))
+
+fclean: $(CLEAR) clean
+	$(call run_and_test, $(RM) $(NAME))
+
+re: fclean all

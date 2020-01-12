@@ -10,89 +10,127 @@
 #                                                                              #
 # **************************************************************************** #
 
-# COLORS
-GREEN		= \033[0;32m
-RED			= \033[0;31m
-RESET		= \033[0m
+################################################################################
+#                                   VARIABLES                                  #
+################################################################################
 
-NAME		= libftprintf.a
+NAME = libftprintf.a
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CC = gcc
 
-HEADERS_DIR	= ./includes/
-HEADERS_LST	= printf.h \
-			  libft.h \
-			  get_next_line.h
-HEADERS		= $(addprefix $(HEADERS_DIR), $(HEADERS_LST))
+CFLAGS = -Wall -Wextra -Werror
 
-INCLUDES	= -I$(HEADERS_DIR)
+INC = includes
 
-SOURCES_DIR	= ./srcs/
-SOURCES_LST	= ft_memset.c		ft_bzero.c			ft_memcpy.c \
-			  ft_memccpy.c		ft_memmove.c		ft_memchr.c \
-			  ft_memcmp.c		ft_strlen.c			ft_strdup.c \
-			  ft_strcpy.c		ft_strncpy.c		ft_strcat.c \
-			  ft_strncat.c		ft_strlcat.c		ft_strchr.c \
-			  ft_strrchr.c		ft_strstr.c			ft_strnstr.c \
-			  ft_strcmp.c		ft_strncmp.c		ft_atoi.c \
-			  ft_isalpha.c		ft_isdigit.c		ft_isalnum.c \
-			  ft_isascii.c		ft_isprint.c		ft_toupper.c \
-			  ft_tolower.c		ft_memalloc.c		ft_memdel.c \
-			  ft_strnew.c		ft_strdel.c			ft_strclr.c \
-			  ft_striter.c		ft_striteri.c		ft_strmap.c \
-			  ft_strmapi.c		ft_strequ.c			ft_strnequ.c \
-			  ft_strsub.c		ft_strjoin.c		ft_strtrim.c \
-			  ft_strsplit.c		ft_itoa.c			ft_putchar.c \
-			  ft_putstr.c		ft_putendl.c		ft_putnbr.c \
-			  ft_putchar_fd.c	ft_putstr_fd.c		ft_putendl_fd.c \
-			  ft_putnbr_fd.c	ft_lstnew.c			ft_lstdelone.c \
-			  ft_lstdel.c		ft_lstadd.c			ft_lstiter.c \
-			  ft_lstmap.c		ft_isspace.c		ft_str_is_uppercase.c \
-			  ft_islower.c		ft_isupper.c		ft_str_is_lowercase.c \
-			  ft_lstpushback.c	ft_strupcase.c		ft_str_is_alpha.c \
-			  ft_strlowcase.c	ft_tabiter_int.c 	ft_print_tab_int.c \
-			  ft_itoa_base.c	ft_strcapitalize.c	ft_strndup.c \
-			  ft_sqrt.c			ft_str_addi_back.c	ft_str_addi_front.c \
-			  ft_ntoa_base.c	get_next_line.c		ft_imin.c \
-			  ft_iabs.c			ft_dtoa.c			ft_atol.c \
-			  parse.c			conversion.c		handle_mod.c \
-			  printf.c			print_chars.c		print_sdeci.c \
-			  print_udeci.c		print_oct.c			print_hex.c \
-			  print_pointer.c	print_float.c		ft_imax.c \
-			  ft_freetabsplit.c ft_str_contains.c 	ft_str_is_numeric.c \
-			  ft_splitwhite.c
-SOURCES		= $(addprefix $(SOURCES_DIR), $(SOURCES_LST))
+SRCS_PATH = srcs
+PRINTF_SRCS_PATH = srcs/ft_printf
 
-OBJECTS_DIR	= ./bin/
-OBJECTS_LST = $(patsubst %.c, %.o, $(SOURCES_LST))
-OBJECTS		= $(addprefix $(OBJECTS_DIR), $(OBJECTS_LST))
+OBJS_PATH = bin
+PRINTF_OBJS_PATH = $(OBJS_PATH)
 
-.PHONY: all, clean, fclean, re
+OBJS = $(SRCS:.c=.o)
+PRINTF_OBJS = $(PRINTF_SRCS:.c=.o)
 
-all:				$(NAME)
+D_OBJS = $(addprefix $(OBJS_PATH)/, $(OBJS))
+D_PRINTF_OBJS = $(addprefix $(PRINTF_OBJS_PATH)/, $(PRINTF_OBJS))
 
-$(NAME):			$(OBJECTS_DIR) $(OBJECTS)
-	@ar rc $(NAME) $(OBJECTS)
+################################################################################
+#                                    SOURCES                                   #
+################################################################################
+
+SRCS =	ft_memset.c			ft_bzero.c			ft_memcpy.c \
+		ft_memccpy.c		ft_memmove.c		ft_memchr.c \
+		ft_memcmp.c			ft_strlen.c			ft_strdup.c \
+		ft_strcpy.c			ft_strncpy.c		ft_strcat.c \
+		ft_strncat.c		ft_strlcat.c		ft_strchr.c \
+		ft_strrchr.c		ft_strstr.c			ft_strnstr.c \
+		ft_strcmp.c			ft_strncmp.c		ft_atoi.c \
+		ft_isalpha.c		ft_isdigit.c		ft_isalnum.c \
+		ft_isascii.c		ft_isprint.c		ft_toupper.c \
+		ft_tolower.c		ft_memalloc.c		ft_memdel.c \
+		ft_strnew.c			ft_strdel.c			ft_strclr.c \
+		ft_striter.c		ft_striteri.c		ft_strmap.c \
+		ft_strmapi.c		ft_strequ.c			ft_strnequ.c \
+		ft_strsub.c			ft_strjoin.c		ft_strtrim.c \
+		ft_strsplit.c		ft_itoa.c			ft_putchar.c \
+		ft_putstr.c			ft_putendl.c		ft_putnbr.c \
+		ft_putchar_fd.c		ft_putstr_fd.c		ft_putendl_fd.c \
+		ft_putnbr_fd.c		ft_lstnew.c			ft_lstdelone.c \
+		ft_lstdel.c			ft_lstadd.c			ft_lstiter.c \
+		ft_lstmap.c			ft_isspace.c		ft_str_is_uppercase.c \
+		ft_islower.c		ft_isupper.c		ft_str_is_lowercase.c \
+		ft_lstpushback.c	ft_strupcase.c		ft_str_is_alpha.c \
+		ft_strlowcase.c		ft_tabiter_int.c 	ft_print_tab_int.c \
+		ft_itoa_base.c		ft_strcapitalize.c	ft_strndup.c \
+		ft_sqrt.c			ft_str_addi_back.c	ft_str_addi_front.c \
+		ft_ntoa_base.c		get_next_line.c		ft_imin.c \
+		ft_iabs.c			ft_dtoa.c			ft_atol.c \
+		parse.c				conversion.c		handle_mod.c \
+		printf.c			print_chars.c		print_sdeci.c \
+		print_udeci.c		print_oct.c			print_hex.c \
+		print_pointer.c		print_float.c		ft_imax.c \
+		ft_freetabsplit.c 	ft_str_contains.c 	ft_str_is_numeric.c \
+		ft_splitwhite.c
+
+################################################################################
+#                                    COlORS                                    #
+################################################################################
+
+COM_COLOR   = \033[0;35m
+OBJ_COLOR   = \033[0;36m
+OK_COLOR    = \033[0;32m
+ERROR_COLOR = \033[0;31m
+WARN_COLOR  = \033[0;33m
+NO_COLOR    = \033[m
+
+define run_and_test
+printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
+	$(1) 2> $@.log; \
+	RESULT=$$?; \
+	if [ $$RESULT -ne 0 ]; then \
+		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"   ; \
+	elif [ -s $@.log ]; then \
+		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(WARN_COLOR)$(WARN_STRING)$(NO_COLOR)\n"   ; \
+	else  \
+		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"   ; \
+	fi; \
+	cat $@.log; \
+	rm -f $@.log; \
+	exit $$RESULT
+endef
+
+OK_STRING    = "[OK]"
+ERROR_STRING = "[ERROR]"
+WARN_STRING  = "[WARNING]"
+COM_STRING   = "Lib_Compiling"
+
+################################################################################
+#                                   COMMANDS                                   #
+################################################################################
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+	@echo > /dev/null
+
+$(NAME): $(OBJS_PATH) $(INC) $(D_PRINTF_OBJS) $(D_OBJS)
+	@$(call run_and_test, ar -rc $(NAME) $(D_OBJS) $(D_PRINTF_OBJS) $@)
 	@ranlib $(NAME)
-	@echo "\n$(NAME): $(GREEN)binary files	compiled !$(RESET)"
-	@echo "$(NAME): $(GREEN)$(NAME)	compiled !$(RESET)"
+	clear
 
-$(OBJECTS_DIR):
-	@mkdir -p $(OBJECTS_DIR)
-	@echo "$(NAME): $(GREEN)$(OBJECTS_DIR)		created !$(RESET)"
+$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
+	@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $< -I$(INC))
 
-$(OBJECTS_DIR)%.o:	$(SOURCES_DIR)%.c $(HEADERS)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "$(GREEN).$(RESET)\c"
+$(PRINTF_OBJS_PATH)/%.o: $(PRINTF_SRCS_PATH)/%.c
+	@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $< -I$(INC))
+
+$(OBJS_PATH):
+	@mkdir -p $@
 
 clean:
-	@rm -rf $(OBJECTS_DIR)
-	@echo "$(NAME): $(RED)$(OBJECTS_DIR)		deleted.$(RESET)"
-	@echo "$(NAME): $(RED)binary files	deleted.$(RESET)"
+	@rm -f $(D_OBJS) && rm -rf $(OBJS_PATH)
 
-fclean:				clean
+fclean: clean
 	@rm -f $(NAME)
-	@echo "$(NAME): $(RED)$(NAME)	deleted.$(RESET)"
 
-re:					fclean all
+re: fclean all

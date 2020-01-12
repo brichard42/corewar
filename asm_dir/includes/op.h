@@ -13,7 +13,7 @@
 #ifndef OP_H
 # define OP_H
 
-# include "../ft_printf/includes/printf.h"
+# include "printf.h"
 
 /*
 ** Toutes les tailles sont en octets.

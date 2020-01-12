@@ -1,6 +1,7 @@
 .name "Canaries des Iles 
 		Volant gaiement 
 		Voila"
+
 .comment "Plantation Iroquoise 
 		Canne à sucre 
 		Et Pomme de Terre !"
@@ -16,5 +17,6 @@ test_inline_label: zjmp %:live
 	zjmp %:live
 	zjmp %:test_inline_label
 	add	r6,r6,r11
+
 #test_label_alone:
 	#c vide!
