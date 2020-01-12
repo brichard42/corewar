@@ -10,7 +10,6 @@
 static void	put_ind_in_reg(t_vm *vm, t_process *process, int reg_nb)
 {
 	int		addr;
-	static int i = 0;
 
 	addr = process->op.param[0] % IDX_MOD;
 	process->reg[reg_nb] = 0;

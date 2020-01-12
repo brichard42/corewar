@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/12 18:15:11 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:20:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void				kill_processes(t_vm *env);
 void				exec_proc_list(t_vm *vm, t_process *process);
 void				exec_process(t_vm *vm, t_process *process);
 uint8_t				must_dump(t_vm *vm);
-void				winner(t_vm *vm);
+void				winner(t_vm *vm, uint8_t winner);
 void				cycle_actualisator(t_vm *vm, t_process *process);
 int			        check_ocp(int ocp, int op_code);
 int                 modulo(int a, int b);

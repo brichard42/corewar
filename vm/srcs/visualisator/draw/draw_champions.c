@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 11:12:02 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:03:40 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ static SDL_Rect		create_champ_rect(int champ_n)
 	return (create_rect(x, y, 242, 242));
 }
 
+/*
+**	Faire la tete des champions morts ici a la fin du visualisator
+*/
+
 int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
 					SDL_Point point)
 {
@@ -55,12 +59,7 @@ int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
 		return (FAILURE);
 	point.x += 30;
 	point.y += 70;
-	//if (champ_n != env->winner_index && )
-	//{
-	//	if (draw_text(win, "X       X", point, text) == FAILURE)
-	//		return (FAILURE);
-	//}
-	/*else */if (draw_text(win, "0       0", point, text) == FAILURE)
+	if (draw_text(win, "0       0", point, text) == FAILURE)
 		return (FAILURE);
 	point.y += 70;
 	point.x -= 10;

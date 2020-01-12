@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/11 18:32:26 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:21:04 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,12 @@
 
 int				is_opcode(char data)
 {
-	// ft_printf("teste op_code: %d\n", data);
 	if (data > 0 && data < 17)
 		return (1);
 	return (0);
 }
 
-void		winner(t_vm	*vm)
-{
-	uint8_t	i;
-
-	i = vm->winner_index;
-	ft_printf("Contestant %d, \"%s\", has won !\n", vm->champ[i].num, vm->champ[i].name);
-}
-
-uint8_t		must_dump(t_vm *vm)
+uint8_t			must_dump(t_vm *vm)
 {
 	if ((int32_t)vm->current_cycle == vm->cycle_to_dump + 1)
 	{
@@ -38,7 +29,13 @@ uint8_t		must_dump(t_vm *vm)
 	return (FALSE);
 }
 
-void		exec_process(t_vm *vm, t_process *process)
+/*
+**	take_op_param recup et check les params
+**	L62 : on check que zjump c'est pas deja move le pc
+**	L63 : on move le pc en fonction du nombre de param
+*/
+
+void			exec_process(t_vm *vm, t_process *process)
 {
 	if (process->op.active == 0)
 	{
@@ -51,17 +48,18 @@ void		exec_process(t_vm *vm, t_process *process)
 	{
 		if (--process->op.nb_cycle <= 0)
 		{
-			if (take_param_op(vm, process))// remplir l'op avec les params et les checks en meme temps
+			if (take_param_op(vm, process))
 				g_op_tab[process->op.op_code - 1].func(vm, process);
-			if (process->op.op_code != 9 || (process->op.op_code == 9 && !process->carry)) // pour le cas zjump ou le pc est deja déplacersauf quand carry
-				process->pc += move_pc(process); // deplacer le pc en fonction du nombre de param etc
-			 process->pc = modulo(process->pc, MEM_SIZE);
+			if (process->op.op_code != 9 || (process->op.op_code == 9
+					&& !process->carry))
+				process->pc += move_pc(process);
+			process->pc = modulo(process->pc, MEM_SIZE);
 			delete_op(process);
 		}
 	}
 }
 
-void		exec_proc_list(t_vm *vm, t_process *process)
+void			exec_proc_list(t_vm *vm, t_process *process)
 {
 	while (process != NULL)
 	{
@@ -72,7 +70,7 @@ void		exec_proc_list(t_vm *vm, t_process *process)
 
 void			cycle(t_vm *env)
 {
-	t_process   **d_process;
+	t_process	**d_process;
 
 	d_process = &env->process_list;
 	while (*d_process != NULL && must_dump(env) == FALSE)
@@ -83,5 +81,5 @@ void			cycle(t_vm *env)
 		++env->current_sub_cycle;
 	}
 	if (env->cycle_to_dump < 0 || env->current_cycle < env->cycle_to_dump)
-		winner(env);
+		winner(env, env->winner_index);
 }

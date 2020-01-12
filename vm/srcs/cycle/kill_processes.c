@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:02:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 19:27:16 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:23:48 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_process	*kill_first_process(t_vm *env, t_process *process)
+static t_process	*kill_first_process(t_vm *env, t_process *process)
 {
 	env->process_list = env->process_list->next;
 	free_process(&process);
@@ -20,7 +20,8 @@ t_process	*kill_first_process(t_vm *env, t_process *process)
 	return (process);
 }
 
-t_process	*kill_one_process(t_vm *env, t_process *process, t_process **prev)
+static t_process	*kill_one_process(t_vm *env, t_process *process,
+					t_process **prev)
 {
 	(void)env;
 	process = process->next;
@@ -29,7 +30,7 @@ t_process	*kill_one_process(t_vm *env, t_process *process, t_process **prev)
 	return (process);
 }
 
-void	kill_processes(t_vm *env)
+void				kill_processes(t_vm *env)
 {
 	t_process	*process;
 	t_process	*prev;

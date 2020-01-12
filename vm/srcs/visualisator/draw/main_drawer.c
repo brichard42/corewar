@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 10:42:27 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:05:03 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	event_catcher(t_window *win, t_draw *infos)
 **	in the renderer while using those. PollEvent recuperates the different input
 **	the user enters on the keyboard. And event_catcher change some variables if
 **	the input recuperated is usefull to the visualisator.
+**	RESTE A FAIRE L'ECRAN DE FIN AAAAAAAAAAAAAAHHHHHHHHHHHH
 */
 
 int8_t	drawer(t_window *win, t_vm *env)
@@ -98,7 +99,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 	infos.time = 15624;
 	infos.champ_number = env->champ_amount;
 	d_process = &env->process_list;
-	while (infos.play/* && *d_process != NULL && must_dump(env) == FALSE*/)
+	while (infos.play)
 	{
 		if (draw(win, env, infos, (*d_process)) == FAILURE)
 			return (FAILURE);

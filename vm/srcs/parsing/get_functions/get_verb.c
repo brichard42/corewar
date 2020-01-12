@@ -6,13 +6,13 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 10:57:38 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 11:14:22 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:00:54 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	get_verb(t_parser	*parser, char **av)
+void	get_verb(t_parser *parser, char **av)
 {
 	if (ft_strcheck(*av, ft_isdigit) == TRUE)
 	{

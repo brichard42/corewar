@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/11 16:17:28 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/12 22:21:33 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCS += caller.c
 SRCS += parsing_error.c
 
 SRCS += cycle.c
+SRCS += winner.c
 SRCS += check_cycle_to_die.c
 SRCS += kill_processes.c
 SRCS += check_ocp.c
