@@ -52,6 +52,7 @@ void    			ldi(t_vm *vm, t_process *process)
 	addr = ((process->op.param[0] + process->op.param[1]) % IDX_MOD)
 		+ process->op.pos_op_code;
 	process->reg[process->op.param[2] - 1] = get_value(vm, addr);
+	process->carry = (process->op.param[0] + process->op.param[1]) ? 0 : 1;
 	if (vm->verbose)
 		show_op(process);
 }

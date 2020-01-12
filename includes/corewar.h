@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/11 16:17:02 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 18:15:11 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	            delete_op(t_process *process);
 /*
 **	-------PROCESS STRUCT FUNCTIONS-------
 */
-t_process			init_process(int32_t reg_1, int32_t pc);
-t_process			*create_process(int32_t reg_1, int32_t pc);
+t_process			init_process(int32_t reg_1, int32_t pc, uint8_t num);
+t_process			*create_process(int32_t reg_1, int32_t pc, uint8_t num);
 void				delete_process(t_process *to_delete);
 void				free_process(t_process **to_delete);
 void				free_process_list(t_process **to_delete);

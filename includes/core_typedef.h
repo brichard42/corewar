@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/10 16:32:35 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/11 22:12:58 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ typedef struct		s_image
 */
 typedef struct s_op // new
 {
-	uint8_t				active;
 	int32_t				param[3];
 	int32_t				type_param[3];
 	int32_t				op_code;
 	int32_t				nb_cycle;
 	int32_t				pos_op_code;
-	unsigned char			ocp;
+	uint8_t				active;
+	unsigned char		ocp;
 }				t_op;
 
 /*
@@ -98,9 +98,9 @@ typedef struct			s_process
     int32_t				pc;
     int32_t				cycles_left;
 	int32_t				last_live;
+	int32_t				num;
     uint8_t				carry;
 	uint8_t				active;
-	int32_t				num;
 }						t_process;
 
 /*

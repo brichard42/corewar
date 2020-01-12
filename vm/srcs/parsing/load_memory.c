@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 16:30:19 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/11 16:29:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 18:19:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int8_t	charge_process(int pc_address, int champ_num,
 {
 	t_process	*new;
 
-	if (!(new = create_process(champ_num, pc_address)))
+	if (!(new = create_process(champ_num, pc_address, champ_num)))
 		return (FAILURE);
 	if (*process != NULL)
 		(*process)->prev = new;

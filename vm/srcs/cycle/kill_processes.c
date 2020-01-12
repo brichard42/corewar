@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:02:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/11 16:19:45 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 19:27:16 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_process	*kill_first_process(t_vm *env, t_process *process)
 {
-	env->process_list = process->next;
+	env->process_list = env->process_list->next;
 	free_process(&process);
 	process = env->process_list;
 	return (process);
