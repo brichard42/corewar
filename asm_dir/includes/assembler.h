@@ -70,4 +70,9 @@ void				check_labels(t_asm *asmr);
 */
 void				write_file(t_asm *asmr, char *title);
 
+/*
+** WRITE_TOOLS.c
+*/
+void				write_nb_4(t_asm *asmr, int32_t fd, int32_t nb);
+
 #endif

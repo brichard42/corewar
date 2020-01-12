@@ -30,14 +30,12 @@ void		read_file(char *file, t_asm *asmr)
 	int		ret;
 	char	*line;
 
-	if ((fd = open(file, O_RDONLY)) < 0) {
+	if ((fd = open(file, O_RDONLY)) < 0)
 		exit_msg(ERROR_FILE, file, NULL, asmr);
-	}
 	while ((ret = get_next_line(fd, &line)))
 	{
-		if (ret == -1) {
+		if (ret == -1)
 			exit_msg(ERROR_FILE, file, NULL, asmr);
-		}
 		asmr->nb_line++;
 		handle_line(line, asmr);
 		free(line);

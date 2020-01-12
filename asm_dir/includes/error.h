@@ -35,6 +35,8 @@
 # define ERROR_LABEL_UNKNOW		"The following label doesn't exist: %s (line %lu).\n"
 # define ERROR_LABEL_CMD		"The following label refer to his own command: %s (line %lu).\n"
 # define ERROR_FILE_NAME		"The input file must end with '.s'.\n"
+# define ERROR_FILE_OPEN		"Error creating the binary file : %s.\n"
+# define ERROR_FILE_WRITE		"Error writing in the binary file.\n"
 
 typedef struct	s_asm t_asm;
 typedef struct	s_cmd t_cmd;
