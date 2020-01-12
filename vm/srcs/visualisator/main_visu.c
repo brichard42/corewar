@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 09:53:59 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 19:29:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:56:01 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int8_t	main_visu(t_vm *env)
 		return (FAILURE);
 	SDL_DestroyWindow(win->window);
 	SDL_DestroyRenderer(win->renderer);
-	winner(env);
 	return (SUCCESS);
 }
 

@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ldi.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/12 22:47:05 by tlandema          #+#    #+#             */
+/*   Updated: 2020/01/12 22:47:24 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 /*
- ** Transfert indirect RAM > Registre. Charge la valeur a l'adresse
- ** resultante de l'addition des deux premiers paramametres, dans le
- ** registre passé en troisieme parametre. Si cette valeur est nulle, alors le
- ** carry passe a l'etat un, sinon a l'ettat zero.
- */
+** Transfert indirect RAM > Registre. Charge la valeur a l'adresse
+** resultante de l'addition des deux premiers paramametres, dans le
+** registre passé en troisieme parametre. Si cette valeur est nulle, alors le
+** carry passe a l'etat un, sinon a l'ettat zero.
+*/
 
 int					check_params_ldi_lldi(t_process *process)
 {
@@ -37,7 +49,7 @@ static unsigned int	get_value(t_vm *vm, unsigned int addr)
 	return (value);
 }
 
-void    			ldi(t_vm *vm, t_process *process)
+void				ldi(t_vm *vm, t_process *process)
 {
 	unsigned int	addr;
 

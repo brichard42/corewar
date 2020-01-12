@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   st.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/12 23:13:27 by tlandema          #+#    #+#             */
+/*   Updated: 2020/01/12 23:16:37 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 /*
- ** Transfert direct Registre > RAM / Registre. Charge le contenu du
- ** registre passé en premier parametre dans le second parametre.
- */
+** Transfert direct Registre > RAM / Registre. Charge le contenu du
+** registre passé en premier parametre dans le second parametre.
+*/
 
 void	func(t_vm *vm, t_process *process) // j'ai des doutes, a teste précisement
 {
@@ -20,14 +32,14 @@ void	func(t_vm *vm, t_process *process) // j'ai des doutes, a teste précisement
 	vm->mem_owner[modulo(addr + 3, MEM_SIZE)] = process->num;
 }
 
-void    st(t_vm *vm, t_process *process)
+void	st(t_vm *vm, t_process *process)
 {
 	if ((process->op.type_param[0] == REG_CODE && (process->op.param[0] < 1
 		|| process->op.param[0] > REG_NUMBER)) || (process->op.type_param[1] == REG_CODE
 		&& (process->op.param[1] < 1 || process->op.param[1] > REG_NUMBER)))
 		return ;
 	if (process->op.type_param[1] == REG_CODE)
-		process->reg[process->op.param[1]] = process->reg[process->op.param[0] - 1];
+		process->reg[process->op.param[1] - 1] = process->reg[process->op.param[0] - 1];
 	else
 		func(vm, process);// le deuxieme param est un T_IND
 	if (vm->verbose)

@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   and.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/12 22:39:25 by tlandema          #+#    #+#             */
+/*   Updated: 2020/01/12 22:39:36 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 /*
- ** Effectue un AND logique entre les deux premiers paramametres et
- ** stock le resultat dans le troisieme paramametre. Si la valeur resultante
- ** est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
- */
+** Effectue un AND logique entre les deux premiers paramametres et
+** stock le resultat dans le troisieme paramametre. Si la valeur resultante
+** est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
+*/
 
-void    and(t_vm *vm, t_process *process)
+void	and(t_vm *vm, t_process *process)
 {
 	int		param1;
 	int		param2;

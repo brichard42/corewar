@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lldi.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/12 22:58:12 by tlandema          #+#    #+#             */
+/*   Updated: 2020/01/12 22:58:34 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 static unsigned int	get_value(t_vm *vm, unsigned int addr)
@@ -15,7 +27,7 @@ static unsigned int	get_value(t_vm *vm, unsigned int addr)
 	return (value);
 }
 
-void    			lldi(t_vm *vm, t_process *process)
+void				lldi(t_vm *vm, t_process *process)
 {
 	unsigned int	addr;
 

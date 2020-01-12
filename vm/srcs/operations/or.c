@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   or.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/12 23:02:58 by tlandema          #+#    #+#             */
+/*   Updated: 2020/01/12 23:08:16 by tlandema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 /*
@@ -6,15 +18,16 @@
 ** est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
 */
 
-void    or(t_vm *vm, t_process *process)
+void	or(t_vm *vm, t_process *process)
 {
-    int		param1;
-	int		param2;
+	int	param1;
+	int	param2;
 
 	if ((process->op.type_param[0] = T_REG && (process->op.param[0] < 1
-		|| process->op.param[0] > REG_NUMBER)) || (process->op.type_param[1] = T_REG
-		&& (process->op.param[1] < 1 || process->op.param[1] > REG_NUMBER))
-		|| (process->op.param[2] < 1 || process->op.param[2] > REG_NUMBER))
+		|| process->op.param[0] > REG_NUMBER)) || (process->op.type_param[1] =
+		T_REG && (process->op.param[1] < 1
+		|| process->op.param[1] > REG_NUMBER)) || (process->op.param[2] < 1
+		|| process->op.param[2] > REG_NUMBER))
 		return ;
 	if (process->op.type_param[0] == REG_CODE)
 		param1 = process->reg[process->op.param[0] - 1];

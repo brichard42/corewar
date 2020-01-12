@@ -6,7 +6,7 @@
 /*   By: plaurent <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:09:54 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/10 17:49:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/12 22:40:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_op(t_op *op)
 {
-    op->active = 0;
+	op->active = 0;
 	op->op_code = 0;
 	op->ocp = 0;
 	op->param[0] = 0;
