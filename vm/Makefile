@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/12 22:21:33 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/13 14:38:21 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,8 @@ SRCS += move_pc.c
 
 SRCS += op.c
 
+SRCS += parse_op.c
+SRCS += get_indirecte.c
 SRCS += add.c
 SRCS += aff.c
 SRCS += and.c
@@ -91,7 +93,6 @@ SRCS += live.c
 SRCS += lld.c
 SRCS += lldi.c
 SRCS += or.c
-SRCS += parse_op.c
 SRCS += show_op.c
 SRCS += st.c
 SRCS += sti.c
