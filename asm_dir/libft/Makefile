@@ -14,7 +14,7 @@
 #                                   VARIABLES                                  #
 ################################################################################
 
-NAME = libftprintf.a
+NAME = libft.a
 
 CC = gcc
 
@@ -37,6 +37,11 @@ D_PRINTF_OBJS = $(addprefix $(PRINTF_OBJS_PATH)/, $(PRINTF_OBJS))
 ################################################################################
 #                                    SOURCES                                   #
 ################################################################################
+
+PRINTF_SRCS =	conversion.c 	handle_mod.c 	parse.c \
+				print_chars.c 	print_float.c 	print_hex.c \
+				print_oct.c 	print_pointer.c print_sdeci.c \
+				print_udeci.c 	printf.c
 
 SRCS =	ft_memset.c			ft_bzero.c			ft_memcpy.c \
 		ft_memccpy.c		ft_memmove.c		ft_memchr.c \
@@ -65,12 +70,8 @@ SRCS =	ft_memset.c			ft_bzero.c			ft_memcpy.c \
 		ft_sqrt.c			ft_str_addi_back.c	ft_str_addi_front.c \
 		ft_ntoa_base.c		get_next_line.c		ft_imin.c \
 		ft_iabs.c			ft_dtoa.c			ft_atol.c \
-		parse.c				conversion.c		handle_mod.c \
-		printf.c			print_chars.c		print_sdeci.c \
-		print_udeci.c		print_oct.c			print_hex.c \
-		print_pointer.c		print_float.c		ft_imax.c \
-		ft_freetabsplit.c 	ft_str_contains.c 	ft_str_is_numeric.c \
-		ft_splitwhite.c
+		ft_imax.c 			ft_freetabsplit.c 	ft_str_contains.c \
+		ft_str_is_numeric.c ft_splitwhite.c
 
 ################################################################################
 #                                    COlORS                                    #

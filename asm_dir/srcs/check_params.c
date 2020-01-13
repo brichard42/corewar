@@ -56,13 +56,12 @@ static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 	while (i < cmd->nb_param)
 	{
 		if (cmd->params[i].type == REG_CODE)
-			res++;
-		else if (cmd->params[i].type == IND_CODE)
-			res += 2;
-		else if (asmr->op_tab[cmd->op_code - 1].is_half_int)
-			res += 2;
+			res += REG_SIZE;
+		else if (cmd->params[i].type == IND_CODE
+				|| asmr->op_tab[cmd->op_code - 1].is_half_int)
+			res += IND_SIZE;
 		else
-			res += 4;
+			res += DIR_SIZE;
 		i++;
 	}
 	return (res);

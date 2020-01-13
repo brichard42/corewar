@@ -73,6 +73,9 @@ void				write_file(t_asm *asmr, char *title);
 /*
 ** WRITE_TOOLS.c
 */
+void				write_nb_1(t_asm *asmr, int32_t fd, int nb);
 void				write_nb_4(t_asm *asmr, int32_t fd, int32_t nb);
+void				write_param_byte(t_asm *asmr, int32_t fd, t_cmd *cmd);
+void				write_param(t_asm *asmr, int32_t fd, t_param *param, int opcode);
 
 #endif

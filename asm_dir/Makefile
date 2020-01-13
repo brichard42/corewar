@@ -24,7 +24,7 @@ LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
 #                                   LIB_FILES                                  #
 #------------------------------------------------------------------------------#
 
-LIB_FILES += libftprintf.a
+LIB_FILES += libtf.a
 
 #------------------------------------------------------------------------------#
 #                                   SRCS_FILES                                 #
@@ -55,7 +55,7 @@ OBJS_DIR += bin/
 
 SRCS_DIR += $(shell find srcs -type d)
 
-LIB_DIR += ft_printf
+LIB_DIR += libft
 
 #------------------------------------------------------------------------------#
 #                                     PATHS                                    #
@@ -91,7 +91,7 @@ endif
 
 IFLAGS += $(addprefix -I, $(INC_PATH))
 
-LDLIBS = ftprintf
+LDLIBS = ft
 
 LDFLAGS = $(addprefix -L , $(LIB_PATH)) $(addprefix -l, $(LDLIBS))
 

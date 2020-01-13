@@ -36,39 +36,39 @@ void	init_asm(t_asm *asmr)
 }
 
 // DEBUG FUNCTION
-static void		print_list(t_cmd *list)
-{
-	int 	i;
-	int 	j;
-	char 	*type;
+// static void		print_list(t_cmd *list)
+// {
+// 	int 	i;
+// 	int 	j;
+// 	char 	*type;
 
-	i = 1;
-	while (list)
-	{
-		ft_printf("Instruction n°%d (line: %lu):\n", i++, list->nb_line);
-		if (list->label)
-			ft_printf("\tLabel: %s\n", list->label);
-		ft_printf("\tOp Code: %d\n", list->op_code);
-		j = 0;
-		while (j < list->nb_param)
-		{
-			if (list->params[j].type == REG_CODE)
-				type = "REG";
-			else if (list->params[j].type == DIR_CODE)
-				type = "DIR";
-			else
-				type = "IND";
-			ft_printf(
-				"\tParam %d:\n\t\tstr: %s\n\t\ttype: %s\n\t\tvalue: %d\n\t\ttemp: %s\n",
-				j + 1, list->params[j].str, type,
-				list->params[j].value, list->params[j].temp);
-			j++;
-		}
-		ft_printf("\tSize: %d\n", list->size);
-		ft_putchar('\n');
-		list = list->next;
-	}
-}
+// 	i = 1;
+// 	while (list)
+// 	{
+// 		ft_printf("Instruction n°%d (line: %lu):\n", i++, list->nb_line);
+// 		if (list->label)
+// 			ft_printf("\tLabel: %s\n", list->label);
+// 		ft_printf("\tOp Code: %d\n", list->op_code);
+// 		j = 0;
+// 		while (j < list->nb_param)
+// 		{
+// 			if (list->params[j].type == REG_CODE)
+// 				type = "REG";
+// 			else if (list->params[j].type == DIR_CODE)
+// 				type = "DIR";
+// 			else
+// 				type = "IND";
+// 			ft_printf(
+// 				"\tParam %d:\n\t\tstr: %s\n\t\ttype: %s\n\t\tvalue: %d\n\t\ttemp: %s\n",
+// 				j + 1, list->params[j].str, type,
+// 				list->params[j].value, list->params[j].temp);
+// 			j++;
+// 		}
+// 		ft_printf("\tSize: %d\n", list->size);
+// 		ft_putchar('\n');
+// 		list = list->next;
+// 	}
+// }
 
 static unsigned int 	get_prog_size(t_cmd *list, t_asm *asmr)
 {
@@ -89,10 +89,10 @@ int		main(int ac, char **av)
 {
 	t_asm	asmr;
 
-	if (ac != 2)
+	if (ac < 2)
 		exit_msg(USAGE_ASM, NULL, NULL, NULL);
 	init_asm(&asmr);
-	read_file(av[1], &asmr);
+	read_file(av[ac - 1], &asmr);
 	check_params(&asmr);
 	check_types(&asmr);
 	check_labels(&asmr);
@@ -101,8 +101,8 @@ int		main(int ac, char **av)
 	// START DEBUG
 	ft_printf("Name = %s\n", asmr.header.prog_name);
 	ft_printf("Comment = %s\n", asmr.header.comment);
-	ft_printf("Prog_Size = %u\n\n", asmr.header.prog_size);
-	print_list(asmr.list);
+	ft_printf("Prog_Size = %u\n", asmr.header.prog_size);
+	//print_list(asmr.list);
 	//print_tab();
 	// END DEBUG
 	clear_list(asmr.list);

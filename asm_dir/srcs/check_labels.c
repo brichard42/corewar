@@ -52,14 +52,14 @@ static int		get_label_value(t_cmd *cmd, t_cmd *cmd_label, t_asm *asmr)
 	{
 		if (cmd == cmd_label)
 			return (res_forward);
-		if (list == cmd_label)
-			start = TRUE;
-		else if (list == temp)
-			return (res_backward);
 		if (cmd)
 			res_forward += cmd->size;
+		if (list == temp && start)
+			return (res_backward);
+		if (list == cmd_label)
+			start = TRUE;
 		if (list && start)
-			res_backward -= list->size;
+			res_backward -= (int)list->size;
 		list = list ? list->next : NULL;
 		cmd = cmd ? cmd->next : NULL;
 	}
@@ -78,7 +78,7 @@ static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 		cmd_label = label_exist(param, cmd, asmr);
 		param->value = get_label_value(cmd, cmd_label, asmr);
 		if (param->value < 0)
-			param->value = MEM_SIZE + param->value;
+			param->value = 0xFFFF + 1 + param->value;
 	}
 }
 
