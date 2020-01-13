@@ -13,7 +13,7 @@
 #ifndef OP_H
 # define OP_H
 
-# include "../ft_printf/includes/printf.h"
+# include "printf.h"
 
 /*
 ** Toutes les tailles sont en octets.
@@ -21,8 +21,8 @@
 */
 
 # define IND_SIZE				2
-# define REG_SIZE				4
-# define DIR_SIZE				REG_SIZE
+# define REG_SIZE				1
+# define DIR_SIZE				4
 
 
 # define REG_CODE				1
@@ -34,7 +34,7 @@
 # define MAX_PLAYERS			4
 # define MEM_SIZE				(4 * 1024)
 # define IDX_MOD				(MEM_SIZE / 8)
-# define CHAMP_MAX_SIZE			(MEM_SIZE / 6)
+# define CHAMP_MAX_SIZE			(MEM_SIZE / 4)
 
 
 # define COMMENT_CHAR			'#'
@@ -72,6 +72,7 @@ typedef char		t_arg_type;
 # define PROG_NAME_LENGTH		128
 # define COMMENT_LENGTH			2048
 # define COREWAR_EXEC_MAGIC		0xea83f3
+# define MAGIC_SIZE				sizeof(COREWAR_EXEC_MAGIC)
 
 /*
 **

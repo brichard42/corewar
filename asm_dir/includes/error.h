@@ -13,24 +13,33 @@
 #ifndef ERROR_H
 # define ERROR_H
 
-# define ERROR_MALLOC			"Could not perform malloc"
-# define USAGE_ASM 				"Usage ./asm <sourcefile.s>"
-# define ERROR_FILE				"Can't read source file "
-# define ERROR_AT 				" at line "
-# define ERROR_SYNTAX			"Syntax error"
-# define ERROR_UNEXPECTED		"Unexpected symbol"
-# define ERROR_LABEL_CHAR		"Wrong label's char"
-# define ERROR_OP_NAME			"Instruction name unknown"
-# define ERROR_ARGS_NUMBER		"Too many arguments"
-# define ERROR_NAME_LENGTH		"Champion's name is too long"
-# define ERROR_COMMENT_LENGTH	"Comment is too long"
-# define ERROR_CHAMP_SIZE		"Champion's size is too big"
-# define ERROR_PARAM_VAL		"Wrong argument's value"
-# define ERROR_PARAM_TYPE		"Wrong argument's type"
-# define ERROR_LABEL_DUPLICATE	"The following label already exist: "
-# define ERROR_LABEL_ALONE		"The following label doesn't have an associate cmd: "
-# define ERROR_LABEL_UNKNOW		"The following label doesn't exist: "
-# define ERROR_LABEL_CMD		"The following label refer to his own command: "
+# include <stddef.h>
+
+# include "typedef.h"
+
+# define ERROR_MALLOC			"Could not perform malloc.\n"
+# define USAGE_ASM 				"Usage ./asm <sourcefile.s>\n"
+# define ERROR_FILE				"Can't read source file %s.\n"
+# define ERROR_SYNTAX			"Syntax error at line %lu.\n"
+# define ERROR_UNEXPECTED		"Unexpected symbol at line %lu.\n"
+# define ERROR_LABEL_CHAR		"Wrong label's char at line %lu.\n"
+# define ERROR_OP_NAME			"Instruction name unknown at line %lu.\n"
+# define ERROR_ARGS_NUMBER		"Too many arguments at line %lu.\n"
+# define ERROR_NAME_LENGTH		"Champion's name is too long.\n"
+# define ERROR_COMMENT_LENGTH	"Comment is too long.\n"
+# define ERROR_CHAMP_SIZE		"Champion's size is too big.\n"
+# define ERROR_PARAM_VAL		"Wrong argument's value at line %lu.\n"
+# define ERROR_PARAM_TYPE		"Wrong argument's type at line %lu.\n"
+# define ERROR_LABEL_DUPLICATE	"The following label already exist: %s (line %lu).\n"
+# define ERROR_LABEL_ALONE		"The following label doesn't have an associate cmd: %s (line %lu).\n"
+# define ERROR_LABEL_UNKNOW		"The following label doesn't exist: %s (line %lu).\n"
+# define ERROR_LABEL_CMD		"The following label refer to his own command: %s (line %lu).\n"
+# define ERROR_FILE_NAME		"The input file must end with '.s'.\n"
+# define ERROR_FILE_OPEN		"Error creating the binary file : %s.\n"
+# define ERROR_FILE_WRITE		"Error writing in the binary file.\n"
+
+typedef struct	s_asm t_asm;
+typedef struct	s_cmd t_cmd;
 
 /*
 ** ===========
@@ -39,8 +48,16 @@
 */
 
 /*
+** LIST_TOOLS.C
+*/
+t_cmd	*new_elem(t_asm *asmr);
+t_cmd	*add_elem(t_cmd *list, t_cmd *elem);
+void	clear_list(t_cmd *list);
+
+/*
 ** ERROR.C
 */
-void	exit_msg(char *error_msg);
+void	free_asm(t_asm *asmr);
+void	exit_msg(char *error_msg, char *str, size_t *nb, t_asm *asmr);
 
 #endif

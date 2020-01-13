@@ -10,11 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf/includes/printf.h"
-#include "../includes/error.h"
+#include "printf.h"
+#include "error.h"
 
-void			exit_msg(char *error_msg)
+void	free_asm(t_asm *asmr)
 {
-	ft_putendl(error_msg);
+	if (asmr->label)
+		free(asmr->label);
+	clear_list(asmr->list);
+}
+
+void	exit_msg(char *error_msg, char *str, size_t *nb, t_asm *asmr)
+{
+	if (str && nb)
+		ft_printf(error_msg, str, *nb);
+	else if (str) {
+		ft_printf(error_msg, str);
+	}
+	else if (nb)
+		ft_printf(error_msg, *nb);
+	else
+		ft_printf(error_msg);
+	if (asmr)
+		free_asm(asmr);
 	exit(1);
 }
