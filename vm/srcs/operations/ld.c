@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:43:21 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/13 18:41:02 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/14 11:40:53 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		ld(t_vm *vm, t_process *process)
 		put_ind_in_reg(vm, process, reg_nb);
 	else
 		process->reg[reg_nb] = process->op.param[0];
-	process->carry = (process->reg[0] == 0 ? 1 : 0);
+	process->carry = (process->reg[reg_nb] == 0 ? 1 : 0);
 	if (vm->verbose)
 		show_op(process);
 }

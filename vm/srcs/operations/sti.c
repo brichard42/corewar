@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:43:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/13 16:32:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/14 11:47:46 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void			sti(t_vm *vm, t_process *process)
 {
 	if (!check_params_sti(process))
 		return ;
-	if (vm->current_cycle == 3612 || vm->current_cycle == 3613)
-		ft_printf("reg1 : [%d] && reg3 : [%d]", process->reg[0], process->reg[2]);
 	if (process->op.type_param[1] == REG_CODE)
 	{
 		process->op.param[1] = process->reg[process->op.param[1] - 1];

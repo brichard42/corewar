@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/13 17:57:29 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:06:32 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ uint8_t			must_dump(t_vm *vm)
 
 void			exec_process(t_vm *vm, t_process *process)
 {
-	ft_printf("%d <- wait action: %d\n", process->op.nb_cycle,process->op.op_code);
 	if (process->op.active == 0)
 	{
 		if (is_opcode(vm->mem[process->pc % MEM_SIZE]))
@@ -67,8 +66,6 @@ void			exec_proc_list(t_vm *vm, t_process *process)
 		exec_process(vm, process);
 		process = process->next;
 	}
-	ft_putchar('\n');
-	ft_printf("this was the cycle number : %d\n", vm->current_cycle);
 }
 
 void			cycle(t_vm *env)
