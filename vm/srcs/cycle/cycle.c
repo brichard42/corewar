@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 22:21:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/14 16:06:32 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int				is_opcode(char data)
 
 uint8_t			must_dump(t_vm *vm)
 {
-	if ((int32_t)vm->current_cycle == vm->cycle_to_dump + 1)
+	if ((int32_t)vm->current_cycle == vm->cycle_to_dump + 1 && vm->cycle_to_dump != -1)
 	{
 		show_mem(vm);
 		return (TRUE);

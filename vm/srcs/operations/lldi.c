@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:58:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 23:21:16 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/14 12:35:40 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void				lldi(t_vm *vm, t_process *process)
 	addr = (process->op.param[0] + process->op.param[1])
 		+ process->op.pos_op_code;
 	process->reg[process->op.param[2]] = get_value(vm, addr);
+	process->carry = process->reg[process->op.param[2]] == 0 ? 1 : 0;
 	if (vm->verbose)
 		show_op(process);
 }

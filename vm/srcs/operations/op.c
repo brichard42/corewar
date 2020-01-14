@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 11:40:03 by lpoinsot          #+#    #+#             */
-/*   Updated: 2020/01/12 23:01:09 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/14 12:54:27 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,3 @@ t_op_tab	g_op_tab[17] =
 	{"aff", &aff, 1, {T_REG}, 16, 2, "aff", 1, 0},
 	{0, 0, 0, {0}, 0, 0, 0, 0, 0}
 };
-
-/*
-**void	print_tab(void)
-**{
-**	size_t	i;
-**
-**	i = 0;
-**	while (i < 16)
-**	{
-**		ft_printf("%s, %d, [%d, %d, %d], %d, %d, %s, %d, %d\n",
-**				op_tab[i].name, op_tab[i].nb_param, op_tab[i].type_param[0],
-**				op_tab[i].type_param[1], op_tab[i].type_param[2],
-**				op_tab[i].op_code, op_tab[i].nb_cycle, op_tab[i].comment,
-**				op_tab[i].have_param_byte, op_tab[i].is_int);
-**		i++;
-**	}
-**}
-**
-**void	get_op_tab(t_op *tab)
-**{
-**	int i;
-**
-**	i = 0;
-**	while (i < 16)
-**	{
-**		tab[i].name = op_tab[i].name;
-**		tab[i].nb_param = op_tab[i].nb_param;
-**		tab[i].type_param[0] = op_tab[i].type_param[0];
-**		tab[i].type_param[1] = op_tab[i].type_param[1];
-**		tab[i].type_param[2] = op_tab[i].type_param[2];
-**		tab[i].op_code = op_tab[i].op_code;
-**		tab[i].nb_cycle = op_tab[i].nb_cycle;
-**		tab[i].comment = op_tab[i].comment;
-**		tab[i].have_param_byte = op_tab[i].have_param_byte;
-**		tab[i].is_int = op_tab[i].is_int;
-**		i++;
-**	}
-**}
-*/

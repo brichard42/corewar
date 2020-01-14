@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:45:29 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/13 11:59:15 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/14 12:46:12 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sub(t_vm *vm, t_process *process)
 		sub = process->reg[process->op.param[0] - 1]
 				- process->reg[process->op.param[1] - 1];
 		process->reg[process->op.param[2] - 1] = sub;
-		process->carry = ((sub == 0) ? 1 : 0);
+		process->carry = sub == 0 ? 1 : 0;
 		if (vm->verbose)
 			show_op(process);
 	}
