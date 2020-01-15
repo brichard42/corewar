@@ -6,16 +6,22 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 14:54:14 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/12 15:01:42 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/14 17:41:10 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	free_process_list(t_process **to_free)
+void	free_process_list(t_process *to_free)
 {
-	if (to_free == NULL || *to_free == NULL)
+	t_process	*tmp;
+
+	if (to_free == NULL)
 		return ;
-	free_process_list(&(*to_free)->next);
-	free_process(to_free);
+	while (to_free != NULL)
+	{
+		tmp = to_free->next;
+		free_process(&to_free);
+		to_free = tmp;
+	}
 }

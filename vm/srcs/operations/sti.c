@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:43:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/14 11:47:46 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/14 22:29:51 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,11 @@ void			sti(t_vm *vm, t_process *process)
 	if (!check_params_sti(process))
 		return ;
 	if (process->op.type_param[1] == REG_CODE)
-	{
 		process->op.param[1] = process->reg[process->op.param[1] - 1];
-	}
 	else if (process->op.type_param[1] == IND_CODE)
 		process->op.param[1] = get_indirecte(vm, &process->op, 1);
 	if (process->op.type_param[2] == REG_CODE)
-	{
 		process->op.param[2] = process->reg[process->op.param[2] - 1];
-	}
 	store_index(vm, process);
 	if (vm->verbose)
 		show_op(process);
