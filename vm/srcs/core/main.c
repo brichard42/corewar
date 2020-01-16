@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/12 21:59:14 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 04:17:51 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static int	usage(void)
 {
-	ft_putendl(USG_MSG);
+	ft_putendl(USG_MSG1);
+	ft_putendl(USG_MSG2);
+	ft_putendl(USG_MSG3);
+	ft_putendl(USG_MSG4);
 	return (EXIT_FAILURE);
 }
 

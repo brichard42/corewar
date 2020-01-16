@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 16:02:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 22:23:48 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 08:52:36 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void				kill_processes(t_vm *env)
 		if (process->last_live <= (env->current_cycle - env->cycle_to_die)
 				|| env->cycle_to_die < 0)
 		{
+			if (env->verbose & F_VERBOSE_DEAD)
+				ft_printf("Process %d hasn't lived for %d cycles (CTD %d)\n",
+						process->num, (env->current_cycle - process->last_live),
+						env->cycle_to_die);
 			if (process == env->process_list)
 				process = kill_first_process(env, process);
 			else

@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:34:20 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/09 11:13:23 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 04:18:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 /*
 **	USAGE MSG
 */
-# define USG_MSG			"Usage: ./corewar --visual [-dump n_cycles] \
+# define USG_MSG1			"Usage: ./corewar --visual [-dump n_cycles] \
 [(-n num) champ1.cor] ..."
+# define USG_MSG2			"	-v : Verbose"
+# define USG_MSG3			"	  - 1: Show lives"
+# define USG_MSG4			"	  - 4: Show op"
 
 /*
 **	TEST VALUE

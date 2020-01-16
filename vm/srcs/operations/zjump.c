@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:55:14 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/16 01:37:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 05:32:29 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	zjump(t_vm *vm, t_process *process)
 		process->pc = modulo(process->op.pos_op_code
 				+ (process->op.param[0] % IDX_MOD), MEM_SIZE);
 	}
-	if (vm->verbose)
+	if (vm->verbose & F_VERBOSE_OP)
 		show_op(process);
 }

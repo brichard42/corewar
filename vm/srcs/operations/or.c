@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 23:02:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 02:51:48 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 05:31:04 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	or(t_vm *vm, t_process *process)
 		param2 = process->op.param[1];
 	process->reg[process->op.param[2] - 1] = param1 | param2;
 	process->carry = ((param1 | param2) == 0 ? 1 : 0);
-	if (vm->verbose)
+	if (vm->verbose & F_VERBOSE_OP)
 		show_op(process);
 }

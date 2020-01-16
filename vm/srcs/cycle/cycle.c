@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/14 16:06:32 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/16 08:10:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ void			exec_process(t_vm *vm, t_process *process)
 		if (--process->op.nb_cycle <= 0)
 		{
 			if (take_param_op(vm, process))
+			{
 				g_op_tab[process->op.op_code - 1].func(vm, process);
+			}
 			if (process->op.op_code != 9 || (process->op.op_code == 9
 					&& !process->carry))
 				process->pc += move_pc(process);
@@ -75,6 +77,8 @@ void			cycle(t_vm *env)
 	d_process = &env->process_list;
 	while (*d_process != NULL && must_dump(env) == FALSE)
 	{
+		if (env->verbose & F_VERBOSE_CYCLE)
+			ft_printf("It is now cycle %d\n", env->current_cycle);
 		exec_proc_list(env, (*d_process));
 		check_cycle_to_die(env);
 		++env->current_cycle;

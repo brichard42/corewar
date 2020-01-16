@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 18:27:24 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 04:04:57 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static int8_t	draw_procs_list(t_window *win, t_vm *env, t_draw infos,
 	create_tab_int3(text, 20, 19 + infos.champ_ind, BOLD);
 	while (proc_tmp && list_size < 20)
 	{
-		if (proc_tmp->num == champ_num)
+		if (proc_tmp->visu_num == champ_num)
 		{
 			if (draw_one_process(win, proc_tmp, text, point) == FAILURE)
 				return (FAILURE);

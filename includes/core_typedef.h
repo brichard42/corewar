@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/13 11:54:53 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/16 04:06:04 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ typedef struct s_op // new
 typedef struct			s_process
 {
     struct s_process	*next;
-    struct s_process	*prev;
 	t_op				op; // new , init pas ok
     int32_t				reg[REG_NUMBER + 1];
     int32_t				pc;
     int32_t				cycles_left;
 	int32_t				last_live;
+	int32_t				visu_num;
 	int32_t				num;
     uint8_t				carry;
 	uint8_t				active;

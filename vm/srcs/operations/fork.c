@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:42:54 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 01:49:10 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 05:29:36 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@
 
 void	op_fork(t_vm *vm, t_process *process)
 {
-	if (copy_process(vm, modulo(process->pc + (process->op.param[0] % IDX_MOD),
+	int32_t	param1;
+
+	param1 = process->op.param[0];
+	if (copy_process(vm, modulo(process->pc + (param1 % IDX_MOD),
 												MEM_SIZE), process) == FAILURE)
 		return ;
-	if (vm->verbose)
+	if (vm->verbose & F_VERBOSE_OP)
 		show_op(process);
 }

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:39:25 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 02:51:57 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 05:29:08 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 void	and(t_vm *vm, t_process *process)
 {
-	int		param1;
-	int		param2;
+	int32_t	param1;
+	int32_t	param2;
 
 	if ((process->op.type_param[0] == REG_CODE && (process->op.param[0] < 1
 		|| process->op.param[0] > REG_NUMBER))
@@ -43,6 +43,6 @@ void	and(t_vm *vm, t_process *process)
 		param2 = process->op.param[1];
 	process->reg[process->op.param[2] - 1] = param1 & param2;
 	process->carry = ((param1 & param2) == 0 ? 1 : 0);
-	if (vm->verbose)
+	if (vm->verbose & F_VERBOSE_OP)
 		show_op(process);
 }

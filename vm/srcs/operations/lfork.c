@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:42:49 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 01:57:19 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 05:30:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@
 
 void	lfork(t_vm *vm, t_process *process)
 {
-	vm->current_cycle = vm->current_cycle;
-	if (copy_process(vm, modulo(process->pc + (process->op.param[0]), MEM_SIZE),
+	int32_t	param1;
+
+	param1 = process->op.param[0];
+	if (copy_process(vm, modulo(process->pc + param1, MEM_SIZE),
 			process) == FAILURE)
 		return ;
+	if (vm->verbose & F_VERBOSE_OP)
+		show_op(process);
 }
