@@ -6,17 +6,15 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:43:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/14 22:29:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 01:46:49 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Transfert indirect Registre > RAM. Charge la valeur contenu dans le
-** registre passé en premier parametre a l'adresse resultante de
-** l'addition des deux derniers paramametres. Si cette valeur est nulle,
-** alors le carry passe a l'etat un, sinon a l'etat zero.
+**	This operation writes the value of the first parameter (T_REG) at the
+**	address (addr = (ARG2 (T_REG/T_DIR/T_IND) + ARG3 (T_REG/T_DIR)) % IDX_MOD).
 */
 
 int32_t			check_params_sti(t_process *process)

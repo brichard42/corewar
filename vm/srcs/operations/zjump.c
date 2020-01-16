@@ -6,18 +6,15 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:55:14 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/13 17:57:17 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 01:37:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Saute a l'adresse passé en parametre si le carry est a l'etat un.
-** L'adresse devient alors celle de la prochaine instruction. Si le carry est
-** a l'etat zero, rien ne se passe et le flot continue normalement jusqu'a
-** l'instruction suivante. Rien ne precise si l'instruction consomme la
-** totalité de ces cycles dans ce cas, a vous d'en decider.
+**	If carry = 1 then PC = CUR_POS + (ARG1 (T_DIR) % IDX_MOD) 
+**	else if carr = 0 nothing is done.
 */
 
 void	zjump(t_vm *vm, t_process *process)

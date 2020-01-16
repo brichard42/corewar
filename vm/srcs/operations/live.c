@@ -6,11 +6,17 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:02:53 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 22:49:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 00:46:51 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+/*
+**	The live function looks at the only parameter (T_DIR), if it is the number
+**	of a player it will then ping the vm that the player last_live_cycle =
+**	current_cycle.
+*/
 
 void	live(t_vm *vm, t_process *process)
 {

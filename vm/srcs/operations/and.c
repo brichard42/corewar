@@ -6,16 +6,16 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:39:25 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/14 12:43:53 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/16 01:30:39 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Effectue un AND logique entre les deux premiers paramametres et
-** stock le resultat dans le troisieme paramametre. Si la valeur resultante
-** est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
+**	Performs a bitwise AND operation for the values of the first two
+**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third 
+**	argument. (T_REG)
 */
 
 void	and(t_vm *vm, t_process *process)
@@ -23,9 +23,9 @@ void	and(t_vm *vm, t_process *process)
 	int		param1;
 	int		param2;
 
-	if ((process->op.type_param[0] = T_REG && (process->op.param[0] < 1
+	if ((process->op.type_param[0] == REG_CODE && (process->op.param[0] < 1
 		|| process->op.param[0] > REG_NUMBER))
-		|| (process->op.type_param[1] = T_REG
+		|| (process->op.type_param[1] == REG_CODE
 		&& (process->op.param[1] < 1 || process->op.param[1] > REG_NUMBER))
 		|| (process->op.param[2] < 1 || process->op.param[2] > REG_NUMBER))
 		return ;

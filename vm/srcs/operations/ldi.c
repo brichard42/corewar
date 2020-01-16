@@ -6,17 +6,15 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:47:05 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/13 18:41:17 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 01:42:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Transfert indirect RAM > Registre. Charge la valeur a l'adresse
-** resultante de l'addition des deux premiers paramametres, dans le
-** registre passé en troisieme parametre. Si cette valeur est nulle, alors le
-** carry passe a l'etat un, sinon a l'ettat zero.
+**	Loads the value (value = ARG1 (T_DIR/T_REG/T_IND) + ARG2 (T_REG/T_DIR))
+**	of the first two arguments inside the third one (T_REG).
 */
 
 int					check_params_ldi_lldi(t_process *process)

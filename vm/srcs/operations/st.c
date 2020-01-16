@@ -6,34 +6,34 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 23:13:27 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/14 22:22:33 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 01:07:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Transfert direct Registre > RAM / Registre. Charge le contenu du
-** registre passé en premier parametre dans le second parametre.
+**	Takes the value in the first parameter (T_REG) and passes it either on a 
+**	register or in the memory (T_REG/T_IND).
 */
 
 void	func(t_vm *vm, t_process *process)
 {
 	unsigned int	addr;
-	int32_t			first_param;
+	int32_t			reg_nb;
 
-	first_param = process->op.param[0];
+	reg_nb = process->op.param[0] - 1;
 	addr = process->op.pos_op_code + (process->op.param[1] % IDX_MOD);
 	vm->mem[modulo(addr, MEM_SIZE)] =
-									(char)(process->reg[first_param - 1] >> 24);
+									(char)(process->reg[reg_nb] >> 24);
 	vm->mem_owner[modulo(addr, MEM_SIZE)] = process->num;
 	vm->mem[modulo(addr + 1, MEM_SIZE)] =
-									(char)(process->reg[first_param - 1] >> 16);
+									(char)(process->reg[reg_nb] >> 16);
 	vm->mem_owner[modulo(addr + 1, MEM_SIZE)] = process->num;
 	vm->mem[modulo(addr + 2, MEM_SIZE)] =
-									(char)(process->reg[first_param - 1] >> 8);
+									(char)(process->reg[reg_nb] >> 8);
 	vm->mem_owner[modulo(addr + 2, MEM_SIZE)] = process->num;
-	vm->mem[modulo(addr + 3, MEM_SIZE)] = (char)process->reg[first_param - 1];
+	vm->mem[modulo(addr + 3, MEM_SIZE)] = (char)process->reg[reg_nb];
 	vm->mem_owner[modulo(addr + 3, MEM_SIZE)] = process->num;
 }
 

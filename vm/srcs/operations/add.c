@@ -6,16 +6,17 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:38:08 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/14 12:43:42 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/16 01:31:33 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Ajoute le second parametre au premier parametre, et stock le
-** resultat dans le troisieme parametre. Si la valeur resultante est egale a
-** zero, alors le carry passe a l'etat un, sinon a l'etat zero.
+**	Adds the value of the first and the second parameter (T_REG), and stock the
+**	result in the third parameter (T_REG). If the result = 0 then 
+**	carry = 1 else carry = 0.
+**	if the result of the operation = 0 then carry = 0 else carry = 1.
 */
 
 void	add(t_vm *vm, t_process *process)

@@ -6,17 +6,16 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:43:21 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/14 11:40:53 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/16 00:59:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Transfert direct RAM > Registre. Charge le premier parametre dans le
-** registre passé en second parametre. Si la valeur du premier
-** registery est egale a zero, alors le carry passe a l'etat un, sinon a
-** l'etat zero.
+**	Loads the value passed in the first parameter (T_DIR/T_IND) inside of the 
+**	second argument (T_REG). If the value passed in the register was equal to
+**	zero then the carry = 1, if it wasn't null then carry = 0.
 */
 
 static void	put_ind_in_reg(t_vm *vm, t_process *process, int reg_n)
@@ -37,11 +36,6 @@ static void	put_ind_in_reg(t_vm *vm, t_process *process, int reg_n)
 	process->reg[reg_n] |= (unsigned char)vm->mem[modulo(process->op.pos_op_code
 		+ addr + 3, MEM_SIZE)];
 }
-
-/*
-**	L52 : cas ou type_param[0] = T_IND
-**	L54 : cas ou type_param[0] = T_DIR
-*/
 
 void		ld(t_vm *vm, t_process *process)
 {

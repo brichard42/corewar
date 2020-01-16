@@ -6,16 +6,17 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:59:49 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/14 16:04:55 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/16 01:33:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Effectue un XOR logique entre les deux premiers paramametres et
-** stock le resultat dans le troisieme paramametre. Si la valeur resultante
-** est egale a zero, alors le carry passe a l'etat un, sinon a l'etat zero.
+**	Performs a bitwise XOR operation for the values of the first two
+**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third 
+**	argument. (T_REG)
+**	if the result of the operation = 0 then carry = 0 else carry = 1.
 */
 
 static void	get_param(t_vm *env, t_process *process,
