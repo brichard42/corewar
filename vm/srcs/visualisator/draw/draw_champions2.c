@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 05:33:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/09 09:44:59 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:36:45 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int8_t	draw_champion_name(t_window *win, char *name, SDL_Point point,
 			tmp[26] = '\0';
 			if (draw_text(win, tmp, point, text) == FAILURE)
 				return (FAILURE);
-			point.y += 11;
+			point.y += 12;
 			j += 26;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 22:03:40 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:56:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int8_t				draw_champions(t_window *win, t_vm *env, int champ_n)
 		return (FAILURE);
 	point = create_name_point(champ_n);
 	pos = create_champ_rect(champ_n);
-	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
+	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)) == FAILURE)
 		return (FAILURE);
 	if (draw_champion_name(win, (char *)env->champ[champ_n].name, point,
 			text) == FAILURE)

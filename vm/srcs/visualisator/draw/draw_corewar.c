@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:21:10 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:11:14 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:59:01 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int8_t	draw_corewar(t_window *win)
 		return (FAILURE);
 	pos = create_rect(5, 5, 500, 100);
 	pos2 = create_rect(5, 110, 500, 40);
-	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE
-		|| draw_rectangle(win, pos2, create_color(50, 50, 44, 255)) == FAILURE
+	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)) == FAILURE
+		|| draw_rectangle(win, pos2, create_color(10, 9, 8, 255)) == FAILURE
 			|| draw_text(win, "COREWAR", create_point(pos.x + 70, pos.y + 18),
 			cor_text) == FAILURE
 			|| draw_text(win, "By: Armoulin, Brichard, Plaurent, Tlandema",

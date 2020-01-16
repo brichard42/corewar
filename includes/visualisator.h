@@ -6,20 +6,20 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 16:04:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:54:41 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_H
 # define TEST_H
 
-# define THE_END			3
+# define THE_END		3
 # define CONTINUE		1
 # define TO_START		0
 # define PAUSED			1
 # define ACTIVE			2
 # define FONT_PATH 		"vm/ressources/font/Tinos-Regular.ttf"
-# define NB_SIZE			150
+# define NB_SIZE		150
 # define NB_COLOR		26
 # define NB_STYLE		5
 # define BLACK			0
@@ -41,10 +41,10 @@
 # define DARK_GREY		16
 # define ORANGE			17
 # define TEXT2			18
-# define CHAMP_1			19
-# define CHAMP_2			20
-# define CHAMP_3			21
-# define CHAMP_4			22
+# define CHAMP_1		19
+# define CHAMP_2		20
+# define CHAMP_3		21
+# define CHAMP_4		22
 # define LIGHT_ORANGE	23
 # define BORDER			24
 # define TEXT			25

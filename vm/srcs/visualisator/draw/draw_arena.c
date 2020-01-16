@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/11 17:00:45 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:02:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static int8_t	draw_arena_structure(t_window *win)
 		return (FAILURE);
 	pos = create_rect(5, 190, 1800, 1100);
 	pos2 = create_rect(5, 155, 1800, 30);
-	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
+	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)) == FAILURE)
 		return (FAILURE);
-	if (draw_rectangle(win, pos2, create_color(50, 50, 44, 255)) == FAILURE)
+	if (draw_rectangle(win, pos2, create_color(10, 9, 8, 255)) == FAILURE)
 		return (FAILURE);
 	if (draw_text(win, "ARENA", point, text) == FAILURE)
 		return (FAILURE);
@@ -109,7 +109,7 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 	point = create_point(45, 225);
 	while (++count < MEM_SIZE)
 	{
-		if (create_tab_int3(text, 17, TEXT2 + (env->mem_owner[count] < 4
+		if (create_tab_int3(text, 17, TEXT2 + (env->mem_owner[count] <= 4
 				? env->mem_owner[count] : 0), BOLD) == FAILURE)
 			return (FAILURE);
 		if (change_char_to_hexa(str, env->mem[count]) == FAILURE)

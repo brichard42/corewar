@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 04:04:57 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:28:21 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
 	pos = create_rect(1810, 650, 490, 50);
-	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
+	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)) == FAILURE)
 		return (FAILURE);
 	if ((tmp = draw_text(win, "Process List of champ Num ", point, text))
 			&& tmp == FAILURE)
@@ -46,14 +46,15 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 
 	if (proc->op.op_code == 0)
 	{
-		if ((tmp = draw_text(win, "none", point, text))
+		if ((tmp = draw_text(win, "searching for instruction", point, text))
 				== FAILURE)
 			return (FAILURE);
+		return (SUCCESS);
 	}
 	else if ((tmp = draw_text(win, action_name(proc->op.op_code), point, text))
 			== FAILURE)
 		return (FAILURE);
-	point.x += tmp;
+	point.x += 50;
 	if ((tmp = draw_text(win, " in : ", point, text)) == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
@@ -62,7 +63,7 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str);
-	point.x += tmp + 60;
+	point.x += 120;
 	if ((tmp = draw_text(win, "cycles ", point, text)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
@@ -79,19 +80,19 @@ static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3],
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str);
-	point.x += tmp;
+	point.x += 20;
 	if ((str = ft_lltoa(proc->pc % 64 + 1)) == NULL)
 		return (FAILURE);
 	if ((tmp = draw_text(win, "X", point, text)) == FAILURE)
 		return (FAILURE);
-	point.x += tmp;
+	point.x += 12;
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str);
-	point.x += tmp + 35;
+	point.x += 45;
 	if ((tmp = draw_text(win, "Action : ", point, text)) == FAILURE)
 		return (FAILURE);
-	point.x += tmp;
+	point.x += 100;
 	if (draw_one_process2(win, proc, text, point) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
@@ -110,14 +111,14 @@ static int8_t	draw_procs_list(t_window *win, t_vm *env, t_draw infos,
 	list_size = 0;
 	proc_tmp = process_list;
 	champ_num = env->champ[infos.champ_ind].num;
-	create_tab_int3(text, 20, 19 + infos.champ_ind, BOLD);
+	create_tab_int3(text, 17, 19 + infos.champ_ind, BOLD);
 	while (proc_tmp && list_size < 20)
 	{
 		if (proc_tmp->visu_num == champ_num)
 		{
 			if (draw_one_process(win, proc_tmp, text, point) == FAILURE)
 				return (FAILURE);
-			point.y += 29;
+			point.y += 25;
 			list_size++;
 		}
 		proc_tmp = proc_tmp->next;
@@ -140,7 +141,7 @@ int8_t			draw_procs_pannel(t_window *win, t_vm *env, t_draw infos,
 	if (draw_procs_header(win, env, infos.champ_ind) == FAILURE)
 		return (FAILURE);
 	pos = create_rect(1810, 705, 490, 585);
-	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
+	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)) == FAILURE)
 		return (FAILURE);
 	if (draw_procs_list(win, env, infos, process_list) == FAILURE)
 		return (FAILURE);

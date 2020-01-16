@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:06:36 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:59:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int8_t			draw_infos(t_window *win, t_vm *env, t_draw infos)
 	int8_t		ret;
 
 	pos = create_rect(1810, 5, 490, 145);
-	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)))
+	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)))
 		return (FAILURE);
 	if (draw_infos_text(win, env) == FAILURE)
 		return (FAILURE);

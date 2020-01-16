@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:35:29 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/08 17:12:01 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 11:59:20 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int8_t			draw_command_panel(t_window *win, int i)
 	if (create_tab_int3(command_text, 30, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
 	pos = create_rect(510, 5, 1295, 145);
-	if (draw_rectangle(win, pos, create_color(50, 50, 44, 255)) == FAILURE)
+	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)) == FAILURE)
 		return (FAILURE);
 	if (draw_text(win, "COMMANDS :", point, command_text) == FAILURE)
 		return (FAILURE);
