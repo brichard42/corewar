@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:02:25 by brichard          #+#    #+#             */
-/*   Updated: 2019/12/04 15:02:14 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/15 15:58:44 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ void	read_name(t_parser *parser, int32_t fd)
 
 void	read_size(t_parser *parser, int32_t fd)
 {
-	unsigned char	buff[SIZEOF_INT32];
+	unsigned char	buff[sizeof(int32_t)];
 	int32_t			ret;
 	int32_t			size;
 
 	if (padding_is_good(fd, 4) == FALSE)
 		parsing_error(parser, ERR_PAD_BEFORE_SIZE);
-	ret = read(fd, buff, SIZEOF_INT32);
+	ret = read(fd, buff, sizeof(int32_t));
 	if (ret <= 0)
 		parsing_error(parser, ERR_MISSING_SIZE);
-	else if (ret != SIZEOF_INT32)
+	else if (ret != sizeof(int32_t))
 		parsing_error(parser, ERR_SIZE_FORMAT);
 	size = (buff[0] << 24 | buff[1] << 16 | buff[2] << 8 | buff[3]);
 	if (size < 0)

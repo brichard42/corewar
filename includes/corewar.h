@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/14 17:15:53 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:39:55 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void				kill_processes(t_vm *env);
 void				exec_proc_list(t_vm *vm, t_process *process);
 void				exec_process(t_vm *vm, t_process *process);
 uint8_t				must_dump(t_vm *vm);
+void                show_mem(t_vm *vm);
+void                show_op(t_process *process);
 void				winner(t_vm *vm, uint8_t winner);
 void				cycle_actualisator(t_vm *vm, t_process *process);
 int			        check_ocp(int ocp, int op_code);
@@ -103,10 +105,8 @@ int	                move_pc(t_process *process);
 void		        reset_life_signal(t_vm *vm);
 int                 take_param_op(t_vm *vm, t_process *process);
 int                 get_indirecte(t_vm *vm, t_op *op, int nb_arg);
-void                show_op(t_process *process);
 int				    is_opcode(char data);
 int					check_params_ldi_lldi(t_process *process);
-void                show_mem(t_vm *vm);
 
 /*
  **	-------COREWAR OP FUNCTIONS------------

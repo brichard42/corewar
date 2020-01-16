@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zjump.c                                            :+:      :+:    :+:   */
+/*   show_mem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 11:55:14 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/16 15:38:57 by brichard         ###   ########.fr       */
+/*   Created: 2020/01/15 16:28:56 by brichard          #+#    #+#             */
+/*   Updated: 2020/01/15 16:29:15 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/*
-**	If carry = 1 then PC = CUR_POS + (ARG1 (T_DIR) % IDX_MOD)
-**	else if carr = 0 nothing is done.
-*/
-
-void	zjump(t_vm *vm, t_process *process)
+void	show_mem(t_vm *vm)
 {
-	if (process->carry == 1)
+	int	i;
+
+	i = 0;
+	ft_printf("0x0000 : ");
+	while (i < MEM_SIZE)
 	{
-		process->pc = modulo(process->op.pos_op_code
-				+ (process->op.param[0] % IDX_MOD), MEM_SIZE);
+		if (!(i % 64) && i)
+			ft_printf("%#.4x : ", i);
+		ft_printf("%02x ", (unsigned char)vm->mem[i]);
+		if (i / 64 != (i + 1) / 64)
+			ft_printf("\n");
+		i++;
 	}
-	if (vm->verbose & F_VERBOSE_OP)
-		show_op(process);
 }

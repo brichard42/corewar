@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:34:20 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/16 04:18:18 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:37:47 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@
 # define O_CHP_NUM			"-n"
 # define O_VERBOSE			"-v"
 # define O_VISU				"--visual"
-# define F_VERBOSE_LIVE		1
-# define F_VERBOSE_CYCLE	2
-# define F_VERBOSE_OP		4
-# define F_VERBOSE_DEAD		8
-# define F_VERBOSE_PCMOVE	16
-# define F_VERBOSE_AFF		32
+# define F_VERBOSE_LIVE		0x01
+# define F_VERBOSE_CYCLE	0x02
+# define F_VERBOSE_OP		0x04
+# define F_VERBOSE_DEAD		0x08
+# define F_VERBOSE_PCMOVE	0x10
+# define F_VERBOSE_AFF		0x20
 
 /*
 **	FILE EXTENSION
@@ -64,10 +64,5 @@
 */
 # define RD_F_NUM			5
 # define GET_F_NUM			5
-
-/*
-**	TYPES SIZES
-*/
-# define SIZEOF_INT32		sizeof(uint32_t)//MACRO ATTENTION
 
 #endif
