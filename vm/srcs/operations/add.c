@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:38:08 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 05:28:54 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:13:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 **	Adds the value of the first and the second parameter (T_REG), and stock the
-**	result in the third parameter (T_REG). If the result = 0 then 
+**	result in the third parameter (T_REG). If the result = 0 then
 **	carry = 1 else carry = 0.
 **	if the result of the operation = 0 then carry = 0 else carry = 1.
 */

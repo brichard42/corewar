@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:39:25 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 05:29:08 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:13:40 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 **	Performs a bitwise AND operation for the values of the first two
-**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third 
+**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third
 **	argument. (T_REG)
 */
 

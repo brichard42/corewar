@@ -6,14 +6,14 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 22:43:21 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 05:30:00 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:11:16 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-**	Loads the value passed in the first parameter (T_DIR/T_IND) inside of the 
+**	Loads the value passed in the first parameter (T_DIR/T_IND) inside of the
 **	second argument (T_REG). If the value passed in the register was equal to
 **	zero then the carry = 1, if it wasn't null then carry = 0.
 */

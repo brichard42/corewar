@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 23:02:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 05:31:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:10:41 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 **	Performs a bitwise OR operation for the values of the first two
-**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third 
+**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third
 **	argument. (T_REG)
 **	if the result of the operation = 0 then carry = 0 else carry = 1.
 */

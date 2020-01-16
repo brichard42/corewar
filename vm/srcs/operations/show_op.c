@@ -6,23 +6,22 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 23:12:40 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 07:36:11 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:12:49 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-// yes
-
-void	show_st(t_process	*process)
+void	show_st(t_process *process)
 {
 	if (process->op.type_param[1] == REG_CODE)
-		ft_printf("P %4d | st r%d %d\n", process->num, process->op.param[0], process->op.param[1]);
+		ft_printf("P %4d | st r%d %d\n", process->num, process->op.param[0],
+				process->op.param[1]);
 }
 
 void	show_op(t_process *process)
 {
-	unsigned int	 i;
+	uint8_t	i;
 
 	i = 0;
 	if (process->op.op_code == 3 && process->op.type_param[1] == REG_CODE)
@@ -47,7 +46,6 @@ void	show_op(t_process *process)
 		ft_printf(" (%d)", process->pc + process->op.param[0]);
 	ft_putchar('\n');
 }
-
 
 void	show_mem(t_vm *vm)
 {

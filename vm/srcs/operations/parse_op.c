@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 14:37:42 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/16 07:23:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:07:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,5 @@ int				take_param_op(t_vm *vm, t_process *process)
 	}
 	else
 		get_dir(vm, process, 0, pos);
-	//if (process->num == 29 && process->op.op_code == 3)
-	//	ft_putnbr_base(process->op.ocp, "01");
-	//	ft_printf("type_param[1] = %d", process->op.type_param[1]);
 	return (1);
 }

@@ -6,14 +6,14 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/12 23:13:27 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 07:04:05 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:13:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-**	Takes the value in the first parameter (T_REG) and passes it either on a 
+**	Takes the value in the first parameter (T_REG) and passes it either on a
 **	register or in the memory (T_REG/T_IND).
 */
 
@@ -45,8 +45,6 @@ void	st(t_vm *vm, t_process *process)
 					&& (process->op.param[1] < 1
 					|| process->op.param[1] > REG_NUMBER)))
 		return ;
-	//if (process->num == 29 || process->num == 30)
-	//	ft_printf("type_param[1] = %d", process->op.type_param[1]);
 	if (process->op.type_param[1] == REG_CODE)
 		process->reg[process->op.param[1] - 1] =
 										process->reg[process->op.param[0] - 1];

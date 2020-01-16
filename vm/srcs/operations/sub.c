@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:45:29 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/16 05:33:06 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:10:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 **	Substract the value of the second to the first parameter (T_REG), and stock
-**	the result int he third parameter (T_REG). If the result = 0 then 
+**	the result int he third parameter (T_REG). If the result = 0 then
 **	carry = 1 else carry = 0.
 */
 

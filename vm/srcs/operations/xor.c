@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 11:59:49 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/16 05:34:22 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 10:08:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 **	Performs a bitwise XOR operation for the values of the first two
-**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third 
+**	arguments (T_DIR/T_REG/T_IND) and writes the result to the third
 **	argument. (T_REG)
 **	if the result of the operation = 0 then carry = 0 else carry = 1.
 */
