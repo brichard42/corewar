@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 10:54:41 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 14:38:09 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,10 @@ int8_t				draw_champion_name(t_window *win, char *name,
 int8_t				draw_corewar(t_window *win);
 int8_t				draw_procs_pannel(t_window *win, t_vm *env, t_draw infos,
 					t_process *process_list);
+int32_t				draw_process_pos(t_window *win, t_process *proc,
+					int text[3], SDL_Point point);
+int32_t				draw_process_num(t_window *win, t_process *proc,
+					int text[3], SDL_Point point);
 int8_t				draw_infos(t_window *win, t_vm *env, t_draw infos);
 int8_t				underliner(t_window *win, t_vm *env);
 

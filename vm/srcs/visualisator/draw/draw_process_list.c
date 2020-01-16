@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 11:28:21 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:05:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str);
-	point.x += 120;
+	point.x += 80;
 	if ((tmp = draw_text(win, "cycles ", point, text)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
@@ -72,25 +72,13 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3],
 				SDL_Point point)
 {
-	char		*str;
-	int			tmp;
-
-	if ((str = ft_lltoa(proc->pc / 64 + 1)) == NULL)
+	if ((point.x = draw_process_num(win, proc, text, point))
+			&& point.x == FAILURE)
 		return (FAILURE);
-	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
+	if ((point.x = draw_process_pos(win, proc, text, point))
+			&& point.x == FAILURE)
 		return (FAILURE);
-	ft_strdel(&str);
-	point.x += 20;
-	if ((str = ft_lltoa(proc->pc % 64 + 1)) == NULL)
-		return (FAILURE);
-	if ((tmp = draw_text(win, "X", point, text)) == FAILURE)
-		return (FAILURE);
-	point.x += 12;
-	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
-		return (FAILURE);
-	ft_strdel(&str);
-	point.x += 45;
-	if ((tmp = draw_text(win, "Action : ", point, text)) == FAILURE)
+	if (draw_text(win, "Action : ", point, text) == FAILURE)
 		return (FAILURE);
 	point.x += 100;
 	if (draw_one_process2(win, proc, text, point) == FAILURE)
