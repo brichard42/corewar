@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 11:59:37 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/17 15:20:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env)
 	SDL_Point	point;
 	int			text[3];
 	int			tmp;
-	char		*str_tmp;
 
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
@@ -30,11 +29,8 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env)
 			&& tmp == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	if ((str_tmp = ft_lltoa(env->current_cycle)) == NULL)
+	if (draw_infos_cycle(win, env, point, text) == FAILURE)
 		return (FAILURE);
-	if (draw_text(win, str_tmp, point, text) == FAILURE)
-		return (FAILURE);
-	ft_strdel(&str_tmp);
 	return (SUCCESS);
 }
 
@@ -91,25 +87,21 @@ static int8_t	draw_infos_text2(t_window *win, t_vm *env)
 	return (SUCCESS);
 }
 
-static int8_t	draw_infos_text3(t_window *win, int cycles_per_sec)
+static int8_t	draw_infos_text3(t_window *win, int speed_cursor)
 {
 	int			text[3];
-	char		*str;
 	SDL_Point	point;
 	int			tmp;
 
-	point = create_point(1860, 105);
+	point = create_point(1820, 115);
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
-	if ((str = ft_lltoa(cycles_per_sec)) == NULL)
-		return (FAILURE);
-	if ((tmp = draw_text(win, "- Cycles per sec : ", point, text))
+	if ((tmp = draw_text(win, "Speed :", point, text))
 			&& tmp == FAILURE)
 		return (FAILURE);
-	point.x += tmp;
-	if (draw_text(win, str, point, text) == FAILURE)
+	if (draw_speed_cursor(win, speed_cursor) == FAILURE)
 		return (FAILURE);
-	ft_strdel(&str);
+	point.x += tmp;
 	return (SUCCESS);
 }
 

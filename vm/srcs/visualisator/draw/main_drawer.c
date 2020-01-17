@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 22:05:03 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/17 13:09:41 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int8_t	drawer(t_window *win, t_vm *env)
 		if (ret != 0)
 			event_catcher(win, &infos);
 		SDL_RenderPresent(win->renderer);
-		if (infos.state == ACTIVE)
+		if (infos.state == ACTIVE && *d_process != NULL)
 			cycle_actualisator(env, (*d_process));
 		usleep(infos.time);
 	}

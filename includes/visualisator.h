@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 14:38:09 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/17 17:13:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
 int8_t				draw_command_panel(t_window *win, int i);
 char				*action_name(int op_code);
 int8_t              draw_arena(t_window *win, t_vm *env, t_draw infos);
+int8_t				draw_arena_winner(t_window *win, t_champ champion);
 int8_t              draw_structure_sides(t_window *win);
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);
 int8_t				draw_last_live(t_window *win, int last_live,
@@ -106,6 +107,10 @@ int8_t				draw_champion_name(t_window *win, char *name,
 int8_t				draw_corewar(t_window *win);
 int8_t				draw_procs_pannel(t_window *win, t_vm *env, t_draw infos,
 					t_process *process_list);
+int8_t				draw_infos_cycle(t_window *win, t_vm *env, SDL_Point point,
+					int text[3]);
+int8_t				draw_speed_cursor(t_window *win, int speed_cursor);
+int8_t				draw_process_header(t_window *win, int text[3]);
 int32_t				draw_process_pos(t_window *win, t_process *proc,
 					int text[3], SDL_Point point);
 int32_t				draw_process_num(t_window *win, t_process *proc,

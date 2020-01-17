@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/13 14:38:21 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/17 13:28:55 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,11 @@ SRCS += timer.c
 SRCS += window.c
 SRCS += main_visu.c
 SRCS += draw_text.c
-SRCS += draw_infos.c
 SRCS += draw_image.c
 SRCS +=	draw_arena.c
 SRCS +=	main_drawer.c
+SRCS += draw_infos.c
+SRCS += draw_infos2.c
 SRCS +=	draw_corewar.c
 SRCS +=	draw_champions.c
 SRCS +=	draw_champions2.c

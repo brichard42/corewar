@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 11:02:32 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/17 17:26:01 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,12 @@ int8_t			draw_arena(t_window *win, t_vm *env, t_draw infos)
 {
 	if (draw_arena_structure(win) == FAILURE)
 		return (FAILURE);
-	if (infos.state == TO_START)
+	if (env->process_list == NULL)
+	{
+		if (draw_arena_winner(win, env->champ[env->winner_index]) == FAILURE)
+			return (FAILURE);
+	}
+	else if (infos.state == TO_START)
 	{
 		if (draw_uninit_arena(win) == FAILURE)
 			return (FAILURE);
