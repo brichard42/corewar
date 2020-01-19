@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/17 13:28:55 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/19 14:54:09 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ SRCS += draw_process_helper.c
 SRCS += chp_num_utils.c
 
 SRCS += main.c
+SRCS += show_mem.c
 
 SRCS += vm_parser.c
 
@@ -81,8 +82,11 @@ SRCS += move_pc.c
 
 SRCS += op.c
 
+SRCS += create_op.c
 SRCS += parse_op.c
 SRCS += get_indirecte.c
+SRCS += show_op.c
+
 SRCS += add.c
 SRCS += aff.c
 SRCS += and.c
@@ -94,13 +98,11 @@ SRCS += live.c
 SRCS += lld.c
 SRCS += lldi.c
 SRCS += or.c
-SRCS += show_op.c
 SRCS += st.c
 SRCS += sti.c
 SRCS += sub.c
 SRCS += xor.c
 SRCS += zjump.c
-SRCS += create_op.c
 
 SRCS += init_vm.c
 SRCS += create_vm.c

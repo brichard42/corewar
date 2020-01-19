@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/12 22:01:25 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/16 15:46:34 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,22 @@ static void		check_chp_num_validity(t_parser *parser)
 		parsing_error(parser, ERR_INVALID_CHAMP_NUM);
 }
 
+static void		end_of_arg_line(t_parser *parser)
+{
+	if (parser->state == S_DUMP)
+		parsing_error(parser, ERR_INVALID_DUMP_NUM);
+	else if (parser->state == S_CHP_NUM)
+		parsing_error(parser, ERR_INVALID_CHAMP_NUM);
+	else if (parser->state == S_VERB)
+		parsing_error(parser, ERR_INVALID_VERB_NUM);
+	else if (parser->state == S_VERB)
+		parsing_error(parser, ERR_INVALID_VERB_NUM);
+	else if (parser->state == S_CHAMP)
+		parsing_error(parser, ERR_NO_CHP_AFTER_NUM);
+	else if (parser->env.champ[0].num == 0)
+		parsing_error(parser, ERR_NO_CHAMP);
+}
+
 int8_t			vm_parser(t_parser *parser, char **av)
 {
 	t_parser			d_parser;
@@ -56,15 +72,18 @@ int8_t			vm_parser(t_parser *parser, char **av)
 
 	parser->env = init_vm();
 	d_parser = *parser;
-	while (d_parser.state != S_ERR && *av != NULL)
+	while (d_parser.state != S_ERR)
 	{
+		if (*av == NULL)
+		{
+			end_of_arg_line(&d_parser);
+			break ;
+		}
 		get_func[d_parser.state](&d_parser, av);
 		++av;
 	}
 	*parser = d_parser;
 	check_chp_num_validity(parser);
 	sort_champ_tab(parser->env.champ, parser->cur_chp_index - 1);
-	if (parser->env.champ[0].num == 0)
-		parsing_error(parser, ERR_NO_CHAMP);
-	return (parser->state != S_ERR ? SUCCESS : FAILURE);
+	return (parser->state == S_OPTION ? SUCCESS : FAILURE);
 }
