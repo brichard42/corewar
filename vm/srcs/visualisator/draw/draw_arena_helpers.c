@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:42:06 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/17 17:13:18 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/19 11:49:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,15 @@ int8_t			draw_arena_winner(t_window *win, t_champ champion)
 	SDL_Point	point;
 	int			text[3];
 
-	(void)champion;
-	point = create_point(15, 250);
+	point = create_point(250, 250);
 	if (create_tab_int3(text, 100, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
 	if (draw_text(win, "AND THE WINNER IS :", point, text) == FAILURE)
+		return (FAILURE);
+	point.y += 300;
+	point.x -= 150;
+	text[1] += champion.num;
+	if (draw_text(win, champion.name, point, text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/17 17:26:01 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/19 12:03:30 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int8_t	change_char_to_hexa(char str[4], unsigned char c)
 **	Draws the header rectangle aswell as the arena rectangle.
 */
 
-static int8_t	draw_arena_structure(t_window *win)
+static int8_t	draw_arena_structure(t_window *win, t_process *list)
 {
 	SDL_Rect	pos;
 	SDL_Point	point;
@@ -60,8 +60,9 @@ static int8_t	draw_arena_structure(t_window *win)
 		return (FAILURE);
 	if (draw_text(win, "ARENA", point, text) == FAILURE)
 		return (FAILURE);
-	if (draw_structure_sides(win) == FAILURE)
-		return (FAILURE);
+	if (list != NULL)
+		if (draw_structure_sides(win) == FAILURE)
+			return (FAILURE);
 	return (SUCCESS);
 }
 
@@ -128,7 +129,7 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 
 int8_t			draw_arena(t_window *win, t_vm *env, t_draw infos)
 {
-	if (draw_arena_structure(win) == FAILURE)
+	if (draw_arena_structure(win, env->process_list) == FAILURE)
 		return (FAILURE);
 	if (env->process_list == NULL)
 	{
