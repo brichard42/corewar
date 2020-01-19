@@ -1,3 +1,4 @@
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
@@ -15,9 +16,14 @@
 #include "op.h"
 
 /*
-** =======================
-**  INSTRUCTION STRUCTURE
-** =======================
+** =====================
+**  PARAMETER STRUCTURE
+** =====================
+**
+** - str:	Full string of the parameter.
+** - type:	Type, stored with '***_CODE' defines.
+** - value:	Computed value to be translated in hex code.
+** - temp:	If it's a label, stores label's name.
 */
 typedef struct 		s_param
 {
@@ -31,6 +37,14 @@ typedef struct 		s_param
 ** =======================
 **  INSTRUCTION STRUCTURE
 ** =======================
+**
+** - op_code:	Op code of the instruction.
+** - label:		If instructionis labeled, label's name.
+** - params:	Array of parameters.
+** - nb_param:	Number of parameters.
+** - size:		Computed size of the hex code.
+** - nb_line:	Line in the '.s' file.
+** - next:		Linked-list --> link to the next element.
 */
 typedef struct		s_cmd t_cmd;
 typedef struct		s_cmd
@@ -48,7 +62,23 @@ typedef struct		s_cmd
 ** =====================
 **  ASSEMBLER STRUCTURE
 ** =====================
+**
+** - op_tab:	  Array of all the possible instructions defined in 'op.c'.
+** - header:	  See 'op.h' structure.
+** - is_name:	  If the name is written in several lines
+**				  (to remember we are reading the name).
+** - i_name:	  Keek track of the current index of the name.
+** - got_name:	  Whether the name is fully acquired or not.
+** - is_comment:  If the comment is written in several lines
+**				  (to remember we are reading the comment).
+** - i_comment:	  Keek track of the current index of the comment.
+** - got_comment: Whether the comment is fully acquired or not.
+** - label:		  Last label seen.
+** - label_size:  Label's size.
+** - nb_line:	  Number of line of the file.
+** - list:		  Linked list of instructions.
 */
+
 typedef struct		s_asm
 {
 	t_op			op_tab[16];

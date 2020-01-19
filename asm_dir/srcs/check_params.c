@@ -12,16 +12,9 @@
 
 #include "assembler.h"
 
-static int 		get_type(char *str)
-{
-	if (str[0] == 'r')
-		return (REG_CODE);
-	else if (str[0] == DIRECT_CHAR)
-		return (DIR_CODE);
-	else
-		return (IND_CODE);
-}
-
+/*
+** Check if the value match the type.
+*/
 static void		check_value(t_cmd *cmd, int type, char *str, t_asm *asmr)
 {
 	if (type == REG_CODE || type == DIR_CODE)
@@ -32,6 +25,9 @@ static void		check_value(t_cmd *cmd, int type, char *str, t_asm *asmr)
 		exit_msg(ERROR_SYNTAX, NULL, &(cmd->nb_line), asmr);
 }
 
+/*
+** If its a label stores it for further computing, else simple atoi.
+*/
 static int	 	get_value(t_param *param, int type, char *str)
 {
 	if (type == REG_CODE || type == DIR_CODE)
@@ -44,14 +40,20 @@ static int	 	get_value(t_param *param, int type, char *str)
 	return ft_atoi(str);
 }
 
+/*
+** We have all the data to compute the size now.
+** Start at 1 for the op code.
+** If instruction got a param byte, add 1.
+** Add the size of each param depending of their type.
+*/
 static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 {
 	size_t	res;
 	int 	i;
 
-	res = 1; // 1 octet OP Code
+	res = 1;
 	if (asmr->op_tab[cmd->op_code - 1].have_param_byte)
-		res++; // 1 octet Codage des Paramètres
+		res++;
 	i = 0;
 	while (i < cmd->nb_param)
 	{
@@ -67,6 +69,13 @@ static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 	return (res);
 }
 
+/*
+** Check the number of parameters.
+** For each parameter:
+** 	Get the type from the string.
+**	Check and get the value from the string.
+** 	Compute the size of hex code. 
+*/
 static void		check_param(t_cmd *cmd, t_asm *asmr)
 {
 	int i;
@@ -85,6 +94,9 @@ static void		check_param(t_cmd *cmd, t_asm *asmr)
 	cmd->size = compute_size(cmd, asmr);
 }
 
+/*
+** Check params instruction by instruction.
+*/
 void			check_params(t_asm *asmr)
 {
 	t_cmd 	*list;

@@ -12,6 +12,10 @@
 
 #include "assembler.h"
 
+/*
+** Stop at SEPARATOR_CHAR or COMMENT_CHAR.
+** Stores the parameter only as its string for now.
+*/
 static char	*get_param(char *str, int *i, t_asm *asmr)
 {
 	size_t 	size;
@@ -30,6 +34,9 @@ static char	*get_param(char *str, int *i, t_asm *asmr)
 	return (param);
 }
 
+/*
+** Check max param number, get param one by one.
+*/
 void		get_params(char *params, t_cmd *new, t_asm *asmr)
 {
 	int i_params;

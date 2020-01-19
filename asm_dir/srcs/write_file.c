@@ -115,7 +115,9 @@ static void		write_cmd(t_asm *asmr, int32_t fd, t_cmd *cmd)
 	while (i < cmd->nb_param)
 		write_param(asmr, fd, &(cmd->params[i++]), cmd->op_code);
 }
-
+/*
+** Open / Create the file then write all the binary
+*/
 void			write_file(t_asm *asmr, char *title)
 {
 	int32_t	fd;
@@ -130,4 +132,5 @@ void			write_file(t_asm *asmr, char *title)
 		write_cmd(asmr, fd, list);
 		list = list->next;
 	}
+	close(fd);
 }

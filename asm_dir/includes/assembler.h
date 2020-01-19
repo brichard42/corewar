@@ -56,6 +56,11 @@ void				get_params(char *params, t_cmd *new, t_asm *asmr);
 void				check_params(t_asm *asmr);
 
 /*
+** CHECK_PARAMS_2.C
+*/
+int					get_type(char *str);
+
+/*
 ** CHECK_TYPES.C
 */
 void				check_types(t_asm *asmr);

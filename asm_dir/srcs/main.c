@@ -10,15 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-	Reste à faire:
-		- Écrire tout en binaire.
-		- Faire mass tests pour vérifier tous les cas possibles
-		  (segfault, erreurs non détectées, binaire incorrect).
-*/
-
 #include "assembler.h"
 
+/*
+** Initializes assembler structure's values.
+*/
 void	init_asm(t_asm *asmr)
 {
 	get_op_tab(asmr->op_tab);
@@ -35,7 +31,7 @@ void	init_asm(t_asm *asmr)
 	asmr->list = NULL;
 }
 
-// DEBUG FUNCTION
+//				DEBUG FUNCTION TO PRINT THE LIST OF INSTRUCTIONS
 // static void		print_list(t_cmd *list)
 // {
 // 	int 	i;
@@ -70,6 +66,9 @@ void	init_asm(t_asm *asmr)
 // 	}
 // }
 
+/*
+** Compute the chamion's size by adding all computed sizes of instructions list.
+*/
 static unsigned int 	get_prog_size(t_cmd *list, t_asm *asmr)
 {
 	unsigned int 	res;
@@ -85,6 +84,15 @@ static unsigned int 	get_prog_size(t_cmd *list, t_asm *asmr)
 	return (res);
 }
 
+/*
+** Entry point. Steps:
+** 	Read and store all data of the '.s' file with first verifications.
+**		(init_asm & read_file)
+**	End all verifications and compute size.
+**		(check_params & check_types & check_labels & get_prog_size)
+**	Write the binary result and free malloced memory.
+**		(write_file & free_asm)
+*/
 int		main(int ac, char **av)
 {
 	t_asm	asmr;
@@ -97,14 +105,14 @@ int		main(int ac, char **av)
 	check_types(&asmr);
 	check_labels(&asmr);
 	asmr.header.prog_size = get_prog_size(asmr.list, &asmr);
-	write_file(&asmr, av[1]);
-	// START DEBUG
-	ft_printf("Name = %s\n", asmr.header.prog_name);
-	ft_printf("Comment = %s\n", asmr.header.comment);
-	ft_printf("Prog_Size = %u\n", asmr.header.prog_size);
-	//print_list(asmr.list);
-	//print_tab();
-	// END DEBUG
-	clear_list(asmr.list);
+	write_file(&asmr, av[ac - 1]);
+	//							START DEBUG
+	// ft_printf("Name = %s\n", asmr.header.prog_name);
+	// ft_printf("Comment = %s\n", asmr.header.comment);
+	// ft_printf("Prog_Size = %u\n", asmr.header.prog_size);
+	// print_list(asmr.list);
+	// print_tab();
+	//							END DEBUG
+	free_asm(&asmr);
 	return (0);
 }

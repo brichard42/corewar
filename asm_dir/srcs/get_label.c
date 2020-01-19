@@ -12,6 +12,9 @@
 
 #include "assembler.h"
 
+/*
+** Check all characters of the label's string.
+*/
 static t_bool	is_label_char(char c)
 {
 	int i;
@@ -24,6 +27,12 @@ static t_bool	is_label_char(char c)
 	return (FALSE);
 }
 
+/*
+** Check if it's a label (LABEL_CHAR present).
+** Check it contains only valid characters.
+** Stores its size.
+** Check if it doesn't appear earlier.
+*/
 t_bool			check_label(char *str, t_asm *asmr)
 {
 	size_t	i;
@@ -50,6 +59,9 @@ t_bool			check_label(char *str, t_asm *asmr)
 	return (TRUE);
 }
 
+/*
+** Stores the label using the size computed earlier.
+*/
 void			get_label(char *label, t_asm *asmr)
 {
 	if (!(asmr->label = ft_strnew(asmr->label_size)))

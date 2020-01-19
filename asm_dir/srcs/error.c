@@ -13,6 +13,9 @@
 #include "printf.h"
 #include "error.h"
 
+/*
+** Free label if any and all the linked list.
+*/
 void	free_asm(t_asm *asmr)
 {
 	if (asmr->label)
@@ -20,6 +23,11 @@ void	free_asm(t_asm *asmr)
 	clear_list(asmr->list);
 }
 
+/*
+** Display error message and exit cleanly.
+** Several configurations of parameter depending on the error message.
+**	(error_msg & asmr are mendatory)
+*/
 void	exit_msg(char *error_msg, char *str, size_t *nb, t_asm *asmr)
 {
 	if (str && nb)

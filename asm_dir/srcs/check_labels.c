@@ -12,6 +12,9 @@
 
 #include "assembler.h"
 
+/*
+** Check if the label exist and doesn't reference its own instruction.
+*/
 static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 {
 	t_cmd 	*list;
@@ -34,44 +37,53 @@ static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 	return (NULL);
 }
 
+/*
+** 
+*/
 static int		get_label_value(t_cmd *cmd, t_cmd *cmd_label, t_asm *asmr)
 {
 	int		res_forward;
 	int		res_backward;
 	t_bool	start;
-	t_cmd	*list;
-	t_cmd	*temp;
+	t_cmd	*backward;
+	t_cmd	*forward;
 
-	temp = cmd;
-	start = FALSE;
-	res_forward = cmd->size;
+	forward = cmd;
+	res_forward = forward->size;
+	forward = forward->next;
+	backward = asmr->list;
 	res_backward = 0;
-	list = asmr->list;
-	cmd = cmd->next;
-	while (list || cmd)
+	start = FALSE;
+	while (backward || forward)
 	{
-		if (cmd == cmd_label)
+		if (forward == cmd_label)
 			return (res_forward);
-		if (cmd)
-			res_forward += cmd->size;
-		if (list == temp && start)
+		if (forward)
+			res_forward += forward->size;
+		if (backward == cmd && start)
 			return (res_backward);
-		if (list == cmd_label)
+		if (backward == cmd_label)
 			start = TRUE;
-		if (list && start)
-			res_backward -= (int)list->size;
-		list = list ? list->next : NULL;
-		cmd = cmd ? cmd->next : NULL;
+		if (backward && start)
+			res_backward -= (int)backward->size;
+		backward = backward ? backward->next : NULL;
+		forward = forward ? forward->next : NULL;
 	}
 	return (0);
 }
 
+/*
+** Check if the type is REG and its value is between 1 and REG_NUMBER.
+** If there if a label, check if it exist then get its value.
+** If returned value is neativ, replace it.
+** 	(0xFFFF: max of 2 bytes)
+*/
 static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 {
 	t_cmd *cmd_label;
 
-	if (param->type == REG_CODE
-		&& (param->temp || param->value < 1 || param->value > REG_NUMBER))
+	if (param->type == REG_CODE &&
+		(param->temp || param->value < 1 || param->value > REG_NUMBER))
 		exit_msg(ERROR_PARAM_VAL, NULL, &(cmd->nb_line), asmr);
 	else if (param->temp)
 	{
@@ -82,6 +94,9 @@ static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 	}
 }
 
+/*
+** Check each params value and get the value of each label referenced in params.
+*/
 void			check_labels(t_asm *asmr)
 {
 	t_cmd 	*list;

@@ -19,5 +19,6 @@ test_inline_label: zjmp %:live
 	add	r6,r6,r11
 	fork %42
 
+
 #test_label_alone:
 	#c vide!

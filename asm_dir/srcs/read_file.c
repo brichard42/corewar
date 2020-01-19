@@ -12,6 +12,11 @@
 
 #include "assembler.h"
 
+/*
+** Skip all withspaces.
+** Get the header (name + comment).
+** Get instructions.
+*/
 static void	handle_line(char *line, t_asm *asmr)
 {
 	while (*line && ft_isspace(*line))
@@ -24,6 +29,9 @@ static void	handle_line(char *line, t_asm *asmr)
 		get_op(line, asmr);
 }
 
+/*
+** Open the file and handle line one by one.
+*/
 void		read_file(char *file, t_asm *asmr)
 {
 	int		fd;
@@ -40,7 +48,7 @@ void		read_file(char *file, t_asm *asmr)
 		handle_line(line, asmr);
 		free(line);
 	}
+	close(fd);
 	if (asmr->label)
 		exit_msg(ERROR_LABEL_ALONE, asmr->label, &(asmr->nb_line), asmr);
-	close(fd);
 }

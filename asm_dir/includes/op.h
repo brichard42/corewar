@@ -21,7 +21,7 @@
 */
 
 # define IND_SIZE				2
-# define REG_SIZE				1
+# define REG_SIZE				1  // Changed from original value (4) to fit with supposed real value.
 # define DIR_SIZE				4
 
 
@@ -75,9 +75,15 @@ typedef char		t_arg_type;
 # define MAGIC_SIZE				sizeof(COREWAR_EXEC_MAGIC)
 
 /*
+** ==================
+**  HEADER STRUCTURE
+** ==================
 **
+** - magic:		Magic number.
+** - prog_name:	String of the champion's name.
+** - prog_size:	Computed hex code size of all the instructions.
+** - comment:	String of the comment.
 */
-
 typedef struct		s_header
 {
   unsigned int		magic;
@@ -86,6 +92,14 @@ typedef struct		s_header
   char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
+/*
+** ==============
+**  OP STRUCTURE
+** ==============
+**
+** Stores all the characteristics of an instruction.
+** See 'op.c'.
+*/
 typedef struct		s_op
 {
 	char			*name;

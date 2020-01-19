@@ -12,6 +12,9 @@
 
 #include "assembler.h"
 
+/*
+** Check if the instruction name exist and transform it in op_code.
+*/
 static int		get_op_code(char *str, t_asm *asmr)
 {
 	int i;
@@ -27,6 +30,10 @@ static int		get_op_code(char *str, t_asm *asmr)
 	return (-1);
 }
 
+/*
+** Transform the remaining array cells (only the parameters at this point)
+** in one unique string.
+*/
 static char		*one_str(char **tab, int i, t_asm *asmr)
 {
 	size_t	size;
@@ -44,6 +51,10 @@ static char		*one_str(char **tab, int i, t_asm *asmr)
 	return (res);
 }
 
+/*
+** Create a new instruction, get and stores: label, line, op_code, parameters.
+** Add the new instruction in asmr list.
+*/
 static void		get_all_op(char **tab, int i, t_asm *asmr)
 {
 	t_cmd	*new;
@@ -64,6 +75,10 @@ static void		get_all_op(char **tab, int i, t_asm *asmr)
 	free(params);
 }
 
+/*
+** Split the string at whitespaces, check if there is a label and get it,
+** get the instruction.
+*/
 void			get_op(char *line, t_asm *asmr)
 {
 	char 	**tab;

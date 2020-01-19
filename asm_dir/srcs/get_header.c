@@ -12,6 +12,9 @@
 
 #include "assembler.h"
 
+/*
+** Stores each characters of the name, stop at '"'.
+*/
 static void	get_name(char *line, t_asm *asmr)
 {
 	while (*line && *line != '"')
@@ -32,6 +35,9 @@ static void	get_name(char *line, t_asm *asmr)
 		exit_msg(ERROR_SYNTAX, NULL, &(asmr->nb_line), asmr);
 }
 
+/*
+** Same as for name.
+*/
 static void	get_comment(char *line, t_asm *asmr)
 {
 	while (*line && *line != '"')
@@ -52,6 +58,10 @@ static void	get_comment(char *line, t_asm *asmr)
 		exit_msg(ERROR_SYNTAX, NULL, &(asmr->nb_line), asmr);
 }
 
+/*
+** Beginning of reading name, skip cmd string and whitespaces, set "is_name".
+** 
+*/
 static void	handle_name(char *line, t_asm *asmr)
 {
 	line += ft_strlen(NAME_CMD_STRING);
@@ -64,6 +74,9 @@ static void	handle_name(char *line, t_asm *asmr)
 	get_name(line, asmr);
 }
 
+/*
+** Same as for name.
+*/
 static void	handle_comment(char *line, t_asm *asmr)
 {
 	line += ft_strlen(COMMENT_CMD_STRING);
@@ -76,6 +89,10 @@ static void	handle_comment(char *line, t_asm *asmr)
 	get_comment(line, asmr);
 }
 
+/*
+** Use 'is_***' to read name and comment on muliple lines.
+** Get name then get comment.
+*/
 void	get_header(char *line, t_asm *asmr)
 {
 	if (asmr->is_name)

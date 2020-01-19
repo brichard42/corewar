@@ -1,0 +1,5 @@
+../asm
+*.cor
+bin/
+libft/libft.a
+libft/bin/

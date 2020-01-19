@@ -12,6 +12,9 @@
 
 #include "assembler.h"
 
+/*
+** Create and initialize a new instruction.
+*/
 t_cmd	*new_elem(t_asm *asmr)
 {
 	t_cmd	*elem;
@@ -36,6 +39,9 @@ t_cmd	*new_elem(t_asm *asmr)
 	return (elem);
 }
 
+/*
+** Add an instruction at the end of the linked lise.
+*/
 t_cmd	*add_elem(t_cmd *list, t_cmd *elem)
 {
 	t_cmd	*cur;
@@ -49,6 +55,9 @@ t_cmd	*add_elem(t_cmd *list, t_cmd *elem)
 	return (list);
 }
 
+/*
+** Free all malloced memory in the linked list.
+*/
 void	clear_list(t_cmd *list)
 {
 	t_cmd 	*cur;
