@@ -6,28 +6,34 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/17 13:54:01 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/20 14:01:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void		sort_champ_tab(t_champ *champ, int32_t chp_amount)
+static void		sort_champ_tab(t_champ champ[4], int32_t chp_amount)
 {
 	t_champ	tmp;
 	uint8_t	i;
+	uint8_t	j;
 
 	i = 0;
-	while (i < chp_amount)
+	j = chp_amount;
+	while (j >= 1)
 	{
-		if (champ[i].num > champ[i + 1].num)
+		while (i < j)
 		{
-			tmp = champ[i];
-			champ[i] = champ[i + 1];
-			champ[i + 1] = tmp;
-			i = 0;
+			if (champ[i].num > champ[i + 1].num)
+			{
+				tmp = champ[i];
+				champ[i] = champ[i + 1];
+				champ[i + 1] = tmp;
+			}
+			++i;
 		}
-		++i;
+		i = 0;
+		--j;
 	}
 }
 
