@@ -1,4 +1,5 @@
 .PHONY: clean fclean lfc $(CLEAR) asm_bin corewar_bin
+.SILENT:
 
 CLEAR = clear
 
@@ -19,7 +20,7 @@ asm_bin:
 	make $(CFLAGS) -C asm_dir
 
 $(CLEAR):
-	@$@
+	$@
 
 clean:
 	make clean -C vm ; make clean -C asm_dir
@@ -30,4 +31,4 @@ fclean:
 lfc:
 	make fclean -C libft
 
-re: fclean all
+re: $(CLEAR) fclean all
