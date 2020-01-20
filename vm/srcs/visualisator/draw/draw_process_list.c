@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/17 16:41:24 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/19 15:11:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 
 	if (proc->op.op_code == 0)
 	{
-		if ((tmp = draw_text(win, "SEARCHING   FOR   INSTRUCTION", point, text))
-				== FAILURE)
+		if (draw_text(win, "SEARCHING FOR INSTRUCTION", point, text) == FAILURE)
 			return (FAILURE);
 		return (SUCCESS);
 	}
-	else if ((tmp = draw_text(win, action_name(proc->op.op_code), point, text))
+	else if (draw_text(win, action_name(proc->op.op_code), point, text)
 			== FAILURE)
 		return (FAILURE);
 	point.x += 100;
@@ -63,7 +62,7 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
 		return (FAILURE);
 	ft_strdel(&str);
-	point.x += 98;
+	point.x += 73;
 	if ((tmp = draw_text(win, "CYCLES", point, text)) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
@@ -80,7 +79,6 @@ static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3],
 		return (FAILURE);
 	if (draw_text(win, "", point, text) == FAILURE)
 		return (FAILURE);
-	//point.x += 50;
 	if (draw_one_process2(win, proc, text, point) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);

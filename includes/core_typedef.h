@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 04:06:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:21:15 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ enum				e_state
 
 typedef struct		s_draw
 {
-	int32_t			process_ind;
 	int32_t			cycles_per_sec;
 	int32_t			time;
+	int32_t			cycle_per_frame;
 	uint8_t			state;
 	uint8_t			champ_ind;
 	uint8_t			champ_number;

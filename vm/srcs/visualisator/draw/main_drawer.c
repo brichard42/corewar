@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/17 13:09:41 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/19 18:16:49 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,16 @@ int8_t	draw(t_window *win, t_vm *env, t_draw infos, t_process *process_list)
 **	"+/-" -> accelerate/deccelerate the cycle speed //not done yet
 */
 
+static void	event_catcher2(t_window *win, t_draw *infos)
+{
+	if ((win->event.type == SDL_KEYUP
+			&& win->event.key.keysym.sym == SDLK_p))
+		time_dealer(infos, 0);
+	if ((win->event.type == SDL_KEYUP
+			&& win->event.key.keysym.sym == SDLK_o))
+		time_dealer(infos, 1);
+}
+
 void	event_catcher(t_window *win, t_draw *infos)
 {
 	if (win->event.type == SDL_QUIT)
@@ -70,12 +80,7 @@ void	event_catcher(t_window *win, t_draw *infos)
 			&& win->event.key.keysym.sym == SDLK_LEFT))
 		infos->champ_ind = (infos->champ_ind > 0)
 				? infos->champ_ind - 1 : infos->champ_number - 1;
-	if ((win->event.type == SDL_KEYUP
-			&& win->event.key.keysym.sym == SDLK_KP_PLUS))
-		time_dealer(infos, 0);
-	if ((win->event.type == SDL_KEYUP
-			&& win->event.key.keysym.sym == SDLK_KP_MINUS))
-		time_dealer(infos, 1);
+	event_catcher2(win, infos);
 }
 
 /*
@@ -84,8 +89,17 @@ void	event_catcher(t_window *win, t_draw *infos)
 **	in the renderer while using those. PollEvent recuperates the different input
 **	the user enters on the keyboard. And event_catcher change some variables if
 **	the input recuperated is usefull to the visualisator.
-**	RESTE A FAIRE L'ECRAN DE FIN AAAAAAAAAAAAAAHHHHHHHHHHHH
 */
+
+static void informations_initializer(t_draw *infos, uint8_t champ_amount)
+{
+	ft_bzero((void *)infos, sizeof(t_draw));
+	infos->play = 1;
+	infos->cycles_per_sec = 64;
+	infos->time = 15624;
+	infos->champ_number = champ_amount;
+	infos->cycle_per_frame = 1;
+}
 
 int8_t	drawer(t_window *win, t_vm *env)
 {
@@ -93,13 +107,9 @@ int8_t	drawer(t_window *win, t_vm *env)
 	t_draw		infos;
 	t_process	**d_process;
 
-	ft_bzero((void *)&infos, sizeof(t_draw));
-	infos.play = 1;
-	infos.cycles_per_sec = 64;
-	infos.time = 15624;
-	infos.champ_number = env->champ_amount;
 	d_process = &env->process_list;
-	while (infos.play)
+	informations_initializer(&infos, env->champ_amount);
+	while (infos.play == ON)
 	{
 		if (draw(win, env, infos, (*d_process)) == FAILURE)
 			return (FAILURE);
