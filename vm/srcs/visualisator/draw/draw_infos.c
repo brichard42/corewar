@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/19 16:38:33 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:21:41 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 static int8_t	draw_infos_text(t_window *win, t_vm *env)
 {
@@ -33,7 +34,11 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env)
 	if ((str = ft_lltoa(env->current_cycle)) && str == NULL)
 		return (FAILURE);
 	if (draw_text(win, str, point, text) == FAILURE)
+	{
+		ft_strdel(&str);
 		return (FAILURE);
+	}
+	ft_strdel(&str);
 	return (SUCCESS);
 }
 
@@ -46,24 +51,18 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env)
 static int8_t	draw_infos_text2(t_window *win, t_vm *env)
 {
 	int				text[3];
-	//char			*str;
 	SDL_Point		point;
 	int				tmp;
 
 	point = create_point(1860, 70);
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
-	/*if ((str = ft_lltoa(env->cycle_to_die)) == NULL)
-		return (FAILURE);*/
 	if ((tmp = draw_text(win, "- Cycles to die : ", point, text))
 			&& tmp == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	/*if (draw_text(win, str, point, text) == FAILURE)
-		return (FAILURE);*/
 	if (draw_infos_cycle(win, env, point, text) == FAILURE)
 		return (FAILURE);
-	//ft_strdel(&str);
 	return (SUCCESS);
 }
 

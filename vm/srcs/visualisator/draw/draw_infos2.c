@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:08 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/19 16:35:09 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:06:57 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 int8_t	draw_infos_cycle(t_window *win, t_vm *env, SDL_Point point, int text[3])
 {
@@ -26,7 +27,10 @@ int8_t	draw_infos_cycle(t_window *win, t_vm *env, SDL_Point point, int text[3])
 		if ((str = ft_lltoa(env->cycle_to_die)) && str == NULL)
 			return (FAILURE);
 		if (draw_text(win, str, point, text) == FAILURE)
+		{
+			ft_strdel(&str);
 			return (FAILURE);
+		}
 		ft_strdel(&str);
 	}
 	return (SUCCESS);

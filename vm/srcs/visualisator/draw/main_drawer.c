@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/19 18:16:49 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:25:13 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	Draw verifies that every drawing functions works properly and returns
@@ -18,12 +19,14 @@
 **	of the renderer.
 */
 
-int8_t	draw(t_window *win, t_vm *env, t_draw infos, t_process *process_list)
+int8_t		draw(t_window *win, t_vm *env, t_draw infos,
+			t_process *process_list)
 {
 	int	count;
 
 	count = 0;
-	clear(win);
+	SDL_SetRenderDrawColor(win->renderer, 76, 96, 133, 0);
+	SDL_RenderClear(win->renderer);
 	if (draw_corewar(win) == FAILURE)
 		return (FAILURE);
 	if (draw_command_panel(win, infos.state))
@@ -61,7 +64,7 @@ static void	event_catcher2(t_window *win, t_draw *infos)
 		time_dealer(infos, 1);
 }
 
-void	event_catcher(t_window *win, t_draw *infos)
+void		event_catcher(t_window *win, t_draw *infos)
 {
 	if (win->event.type == SDL_QUIT)
 		infos->play = 0;
@@ -91,7 +94,7 @@ void	event_catcher(t_window *win, t_draw *infos)
 **	the input recuperated is usefull to the visualisator.
 */
 
-static void informations_initializer(t_draw *infos, uint8_t champ_amount)
+static void	informations_initializer(t_draw *infos, uint8_t champ_amount)
 {
 	ft_bzero((void *)infos, sizeof(t_draw));
 	infos->play = 1;
@@ -101,7 +104,7 @@ static void informations_initializer(t_draw *infos, uint8_t champ_amount)
 	infos->cycle_per_frame = 1;
 }
 
-int8_t	drawer(t_window *win, t_vm *env)
+int8_t		drawer(t_window *win, t_vm *env)
 {
 	int			ret;
 	t_draw		infos;

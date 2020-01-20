@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:42:42 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:50:45 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:07:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	All the functions we are using to draw rectangles in the renderer.

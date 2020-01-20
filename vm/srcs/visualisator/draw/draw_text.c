@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 15:47:14 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 15:39:24 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:07:33 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	All the functions used to print some text, aswell as the global that we use
