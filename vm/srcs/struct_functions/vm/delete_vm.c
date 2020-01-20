@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/14 17:14:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:53:32 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@ void	delete_vm(t_vm *to_delete)
 {
 	if (to_delete != NULL)
 	{
-		free_process_list(to_delete->process_list);
+		free_process_list(&to_delete->process_list);
+		if (to_delete->win != NULL)
+		{
+			SDL_DestroyWindow(to_delete->win->window);
+			SDL_DestroyRenderer(to_delete->win->renderer);
+		}
+		ft_memdel((void **)&to_delete->win);
 		ft_bzero((void *)to_delete->champ, sizeof(t_champ) * MAX_PLAYERS);
 		ft_bzero((void *)to_delete->mem, sizeof(char) * MEM_SIZE);
 		ft_bzero((void *)to_delete->mem_owner, sizeof(uint8_t) * MEM_SIZE);

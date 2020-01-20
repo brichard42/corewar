@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 04:06:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/17 15:45:54 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct		s_image
 /*
 **	-------TYPEDEF OP STRUCTURE-------------------------------------------------
 */
-typedef struct s_op // new
+typedef struct s_op
 {
 	int32_t				param[3];
 	int32_t				type_param[3];
@@ -92,7 +92,7 @@ typedef struct s_op // new
 typedef struct			s_process
 {
     struct s_process	*next;
-	t_op				op; // new , init pas ok
+	t_op				op;
     int32_t				reg[REG_NUMBER + 1];
     int32_t				pc;
     int32_t				cycles_left;
@@ -123,6 +123,7 @@ typedef struct		s_vm
 {
 	t_process		*process_list;
 	t_champ			champ[MAX_PLAYERS];
+	t_window		*win;
 	char			mem[MEM_SIZE];
 	uint8_t			mem_owner[MEM_SIZE];
 	int32_t			current_cycle;
@@ -142,6 +143,7 @@ typedef struct		s_vm
 typedef struct		s_parser
 {
 	t_vm			env;
+	uint8_t			flag_n[4];
 	enum e_state	state;
 	uint8_t			chp_num;
 	uint8_t			cur_chp_index;
@@ -160,7 +162,7 @@ typedef struct		s_op_tab
 	int32_t			op_code;
 	int32_t			nb_cycle;
 	char			*com;
-	int32_t			bytecode; // pour savoir si on a besoin d'ocp ou pas
+	int32_t			bytecode;
 	int32_t			direct_size;
 }					t_op_tab;
 

@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/13 17:14:52 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/17 15:48:49 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_vm	init_vm(void)
 	ft_bzero((void *)new_vm.champ, sizeof(t_champ) * MAX_PLAYERS);
 	ft_bzero((void *)new_vm.mem, sizeof(char) * MEM_SIZE);
 	ft_bzero((void *)new_vm.mem_owner, sizeof(uint8_t) * MEM_SIZE);
+	new_vm.win = NULL;
 	new_vm.current_cycle = 1;
 	new_vm.current_sub_cycle = 1;
 	new_vm.cycle_to_die = CYCLE_TO_DIE;
