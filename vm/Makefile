@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/20 13:11:46 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/20 19:05:39 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 #                                 BUILD TARGETS                                #
 #------------------------------------------------------------------------------#
 
-NAME = ../corewar
+NAME = ../$(BINARY)
+BINARY = corewar
 
 OBJS = $(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 
@@ -24,7 +25,7 @@ LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
 #                                   LIB_FILES                                  #
 #------------------------------------------------------------------------------#
 
-LIB_FILES += libft.a
+LIB_FILES +=
 
 LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
@@ -195,65 +196,40 @@ FCLEAN_LIB += $(addprefix make fclean -C , $(LIB_PATH))
 #                                    OUTPUT                                    #
 #------------------------------------------------------------------------------#
 
-COM_COLOR   = \033[0;34m
-OBJ_COLOR   = \033[0;36m
-OK_COLOR    = \033[0;32m
-ERROR_COLOR = \033[0;31m
-WARN_COLOR  = \033[0;33m
-NO_COLOR    = \033[m
+# COLORS
+GREEN					= \033[0;32m
+RED						= \033[0;31m
+RESET					= \033[0m
 
-define run_and_test
-printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
-	$(1) 2> $@.log; \
-	RESULT=$$?; \
-	if [ $$RESULT -ne 0 ]; then \
-		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"   ; \
-	elif [ -s $@.log ]; then \
-		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(WARN_COLOR)$(WARN_STRING)$(NO_COLOR)\n"   ; \
-	else  \
-		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"   ; \
-	fi; \
-	cat $@.log; \
-	rm -f $@.log 2> /dev/null; \
-	exit $$RESULT
-endef
-
-OK_STRING    = "[OK]"
-ERROR_STRING = "[ERROR]"
-WARN_STRING  = "[WARNING]"
-COM_STRING   = "Compiling"
+#STRINGS
+BIN_STRING = Binary
+DEL_STRING = Deleted.
+CREA_STRING = Created.
+COM_STRING = Compiled.
 
 #------------------------------------------------------------------------------#
 #                                   COMMANDS                                   #
 #------------------------------------------------------------------------------#
 
-.PHONY: all $(CLEAR) lc lfc clean fclean re install norme show
+.PHONY: all fclean re install norme show
 .SILENT:
 
 all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
-	$(call run_and_test, $(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@)
+	$(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@
+	printf "%-60b%b" "$(BINARY): $(GREEN)$(BIN_STRING)" "$(COM_STRING)$(RESET)\n"
 
 $(OBJS_PATH)%.o : %.c | Makefile
-	$(call run_and_test, $(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@)
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	printf "%-60b%b" "$(BINARY): $(GREEN)$@" "$(CREA_STRING)$(RESET)\r"
 
 $(OBJS_PATH):
 	$(MKDIR) $@
-
-$(LIBS):
-	echo "$(COM_COLOR)Compiling $(OBJ_COLOR)Libraries$(NO_COLOR)"
-	make -C $(LIB_DIR)
+	printf "%-60b%b" "$(BINARY): $(GREEN)$(OBJS_PATH)" "$(CREA_STRING)$(RESET)\n"
 
 $(CLEAR):
 	$@
-
-show:
-	echo "IFLAGS : \n$(IFLAGS)"
-	echo "CFLAGS : \n$(CFLAGS)"
-	echo "LDFLAGS : \n$(LDFLAGS)"
-	echo "OBJS : \n$(OBJS)"
-	echo "INC_PATH : \n$(INC_PATH)"
 
 install:
 	$(foreach lib, $(LIB_DWN), $(DWL) install $(lib); )
@@ -261,16 +237,12 @@ install:
 norme:
 	norminette $(SRCS_PATH) $(INC_PATH) | grep -v 'Warning: Not a valid file' | grep -B 1 -e 'Error' -e 'Warning'
 
-lc:
-	$(call run_and_test, $(RM) $(OBJS_PATH) && $(CLEAN_LIB))
+clean: 
+	$(RM) $(OBJS_PATH)
+	printf "%-60b%b" "$(BINARY): $(RED)$(OBJS_PATH)" "$(DEL_STRING)$(RESET)\n"
 
-lfc:
-	$(call run_and_test, $(RM) $(OBJS_PATH) && $(RM) $(NAME) && $(FCLEAN_LIB))
-
-clean: $(CLEAR)
-	$(call run_and_test, $(RM) $(OBJS_PATH))
-
-fclean: $(CLEAR) clean
-	$(call run_and_test, $(RM) $(NAME))
+fclean: clean
+	$(RM) $(NAME)
+	printf "%-60b%b" "$(BINARY): $(RED)$(BIN_STRING)" "$(DEL_STRING)$(RESET)\n"
 
 re: fclean all
