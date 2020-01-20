@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/17 15:20:25 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:38:33 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env)
 	SDL_Point	point;
 	int			text[3];
 	int			tmp;
+	char		*str;
 
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
@@ -29,7 +30,9 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env)
 			&& tmp == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	if (draw_infos_cycle(win, env, point, text) == FAILURE)
+	if ((str = ft_lltoa(env->current_cycle)) && str == NULL)
+		return (FAILURE);
+	if (draw_text(win, str, point, text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -40,50 +43,27 @@ static int8_t	draw_infos_text(t_window *win, t_vm *env)
 ** -CYCLE_DELTA.
 */
 
-static int8_t	check_infos_text(t_vm *env, int space_counter)
-{
-	static uint8_t	check_amount = 0;
-	static int32_t	cycle_since_last_death = 0;
-
-	if (env->cycle_to_die == 0)
-		env->cycle_to_die = CYCLE_TO_DIE;
-	if (space_counter == ACTIVE)
-	{
-		if (++cycle_since_last_death == env->cycle_to_die)
-		{
-			cycle_since_last_death = 0;
-			check_amount++;
-		}
-		if (check_amount == MAX_CHECKS)
-		{
-			if (env->cycle_to_die <= 50)
-				return (THE_END);
-			check_amount = 0;
-			env->cycle_to_die -= 50;
-		}
-	}
-	return (CONTINUE);
-}
-
 static int8_t	draw_infos_text2(t_window *win, t_vm *env)
 {
 	int				text[3];
-	char			*str;
+	//char			*str;
 	SDL_Point		point;
 	int				tmp;
 
 	point = create_point(1860, 70);
 	if (create_tab_int3(text, 20, TEXT2, BOLD) == FAILURE)
 		return (FAILURE);
-	if ((str = ft_lltoa(env->cycle_to_die)) == NULL)
-		return (FAILURE);
+	/*if ((str = ft_lltoa(env->cycle_to_die)) == NULL)
+		return (FAILURE);*/
 	if ((tmp = draw_text(win, "- Cycles to die : ", point, text))
 			&& tmp == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
-	if (draw_text(win, str, point, text) == FAILURE)
+	/*if (draw_text(win, str, point, text) == FAILURE)
+		return (FAILURE);*/
+	if (draw_infos_cycle(win, env, point, text) == FAILURE)
 		return (FAILURE);
-	ft_strdel(&str);
+	//ft_strdel(&str);
 	return (SUCCESS);
 }
 
@@ -114,14 +94,11 @@ static int8_t	draw_infos_text3(t_window *win, int speed_cursor)
 int8_t			draw_infos(t_window *win, t_vm *env, t_draw infos)
 {
 	SDL_Rect	pos;
-	int8_t		ret;
 
 	pos = create_rect(1810, 5, 490, 145);
 	if (draw_rectangle(win, pos, create_color(10, 9, 8, 255)))
 		return (FAILURE);
 	if (draw_infos_text(win, env) == FAILURE)
-		return (FAILURE);
-	if ((ret = check_infos_text(env, infos.state)) && ret == THE_END)
 		return (FAILURE);
 	if (draw_infos_text2(win, env) == FAILURE)
 		return (FAILURE);
