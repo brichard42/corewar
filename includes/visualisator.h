@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:25:06 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:46:25 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,8 @@ int8_t				draw_procs_pannel(t_window *win, t_vm *env, t_draw infos,
 					t_process *process_list);
 int8_t				draw_infos_cycle(t_window *win, t_vm *env, SDL_Point point,
 					int text[3]);
-int8_t				draw_speed_cursor(t_window *win, int speed_cursor);
+int8_t				draw_speed_cursor(t_window *win, int speed_cursor,
+					int c_p_f);
 int8_t				draw_process_header(t_window *win, int text[3]);
 int32_t				draw_process_pos(t_window *win, t_process *proc,
 					int text[3], SDL_Point point);

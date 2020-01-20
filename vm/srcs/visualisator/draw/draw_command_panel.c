@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:35:29 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:06:22 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:40:28 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,20 @@
 
 static int8_t	command_more_info(t_window *win, int *text)
 {
-	if (draw_text(win, "\'P\'       : Speed Up", create_point(520, 120),
+	if (draw_text(win, "\'Left/Right\' : Move in process list", create_point(520, 120),
 			text) == FAILURE)
 		return (FAILURE);
 	if (draw_text(win, "\'O\'                       : Speed Down",
-			create_point(1200, 50), text) == FAILURE)
+			create_point(900, 50), text) == FAILURE)
 		return (FAILURE);
-	if (draw_text(win, "\'Arrow Left/Right\' : Move in process list",
-			create_point(1200, 120), text) == FAILURE)
+	if (draw_text(win, "\'P\'                       : Speed Up",
+			create_point(900, 120), text) == FAILURE)
+		return (FAILURE);
+	if (draw_text(win, "\'K\' : Cycle Per Frame Down",
+			create_point(1500, 50), text) == FAILURE)
+		return (FAILURE);
+	if (draw_text(win, "\'L\' : Cycle Per Frame UP",
+			create_point(1500, 120), text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

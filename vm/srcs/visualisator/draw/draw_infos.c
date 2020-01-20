@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 14:08:22 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:21:41 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:42:32 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int8_t	draw_infos_text2(t_window *win, t_vm *env)
 	return (SUCCESS);
 }
 
-static int8_t	draw_infos_text3(t_window *win, int speed_cursor)
+static int8_t	draw_infos_text3(t_window *win, int speed_cursor, int c_p_f)
 {
 	int			text[3];
 	SDL_Point	point;
@@ -78,7 +78,7 @@ static int8_t	draw_infos_text3(t_window *win, int speed_cursor)
 	if ((tmp = draw_text(win, "Speed :", point, text))
 			&& tmp == FAILURE)
 		return (FAILURE);
-	if (draw_speed_cursor(win, speed_cursor) == FAILURE)
+	if (draw_speed_cursor(win, speed_cursor, c_p_f) == FAILURE)
 		return (FAILURE);
 	point.x += tmp;
 	return (SUCCESS);
@@ -101,7 +101,8 @@ int8_t			draw_infos(t_window *win, t_vm *env, t_draw infos)
 		return (FAILURE);
 	if (draw_infos_text2(win, env) == FAILURE)
 		return (FAILURE);
-	if (draw_infos_text3(win, infos.cycles_per_sec) == FAILURE)
+	if (draw_infos_text3(win, infos.cycles_per_sec, infos.cycle_per_frame)
+			== FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

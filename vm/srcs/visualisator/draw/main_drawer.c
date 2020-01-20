@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:25:13 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:29:56 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,14 @@ static void	event_catcher2(t_window *win, t_draw *infos)
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_o))
 		time_dealer(infos, 1);
+	if ((win->event.type == SDL_KEYUP
+			&& win->event.key.keysym.sym == SDLK_l))
+		infos->cycle_per_frame = infos->cycle_per_frame == 32 ?
+				32 : infos->cycle_per_frame * 2;
+	if ((win->event.type == SDL_KEYUP
+			&& win->event.key.keysym.sym == SDLK_k))
+		infos->cycle_per_frame = infos->cycle_per_frame == 1 ?
+				1 : infos->cycle_per_frame / 2;
 }
 
 void		event_catcher(t_window *win, t_draw *infos)
@@ -109,20 +117,25 @@ int8_t		drawer(t_window *win, t_vm *env)
 	int			ret;
 	t_draw		infos;
 	t_process	**d_process;
+	static int	tmp_cpf = 0;
 
 	d_process = &env->process_list;
 	informations_initializer(&infos, env->champ_amount);
 	while (infos.play == ON)
 	{
-		if (draw(win, env, infos, (*d_process)) == FAILURE)
-			return (FAILURE);
-		ret = SDL_PollEvent(&(win->event));
-		if (ret != 0)
-			event_catcher(win, &infos);
-		SDL_RenderPresent(win->renderer);
+		if (infos.cycle_per_frame == ++tmp_cpf)
+		{
+			if (draw(win, env, infos, (*d_process)) == FAILURE)
+				return (FAILURE);
+			ret = SDL_PollEvent(&(win->event));
+			if (ret != 0)
+				event_catcher(win, &infos);
+			SDL_RenderPresent(win->renderer);
+			tmp_cpf = 0;
+		usleep(infos.time);
+		}
 		if (infos.state == ACTIVE && *d_process != NULL)
 			cycle_actualisator(env, (*d_process));
-		usleep(infos.time);
 	}
 	return (SUCCESS);
 }

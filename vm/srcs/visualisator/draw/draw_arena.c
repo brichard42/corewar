@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:05:34 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 17:06:58 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,7 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 	point = create_point(45, 225);
 	while (++count < MEM_SIZE)
 	{
-		if (create_tab_int3(text, 17, TEXT2 + (env->mem_owner[count] <= 4
-				? env->mem_owner[count] : 0), BOLD) == FAILURE)
+		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[count], BOLD) == FAILURE)
 			return (FAILURE);
 		if (change_char_to_hexa(str, env->mem[count]) == FAILURE)
 			return (FAILURE);
