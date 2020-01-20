@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:36:26 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/12 13:57:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:08:51 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 int8_t		create_tab_int3(int *dest, int size, int color, int style)
 {

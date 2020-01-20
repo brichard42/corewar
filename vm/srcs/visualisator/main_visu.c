@@ -6,27 +6,22 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 09:53:59 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/12 22:56:01 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:08:38 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 int8_t	main_visu(t_vm *env)
 {
-	t_window	*win;
-	t_draw		infos;
+	t_window	win;
 
-	ft_bzero((void *)&infos, sizeof(t_draw));
-	infos.play = 1;
-	infos.cycles_per_sec = 32;
-	infos.champ_number = env->champ_amount;
-	if (!(win = open_window("Test")))
+	if (open_window("Test", &win) == FAILURE)
 		return (FAILURE);
-	if (drawer(win, env) == FAILURE)
+	env->win = (void *)&win;
+	if (drawer((t_window *)env->win, env) == FAILURE)
 		return (FAILURE);
-	SDL_DestroyWindow(win->window);
-	SDL_DestroyRenderer(win->renderer);
 	return (SUCCESS);
 }
 

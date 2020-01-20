@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:21:10 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 11:59:01 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:06:29 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	Draw the Header with the name of the project and the name of the people who

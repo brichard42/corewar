@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 10:32:49 by tlandema          #+#    #+#             */
-/*   Updated: 2019/11/22 17:45:49 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:06:37 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	Draw image is mallocing a surface in a file and copied it in a t_image.

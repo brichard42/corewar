@@ -6,12 +6,17 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/17 17:13:25 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:25:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TEST_H
 # define TEST_H
+
+# include <SDL.h>
+# include <SDL_image.h>
+# include <SDL_ttf.h>
+# include <SDL_mixer.h>
 
 # define THE_END		3
 # define CONTINUE		1
@@ -56,10 +61,40 @@
 # define STRICK TTF_STYLE_STRIKETHROUGH
 
 /*
+**	--------TYPEDEF BORDER RECT STRUCTURE---------------------------------------
+*/
+
+typedef struct		s_brect
+{
+	SDL_Rect		rect;
+	SDL_Color		c_front;
+	SDL_Color		c_back;
+}					t_brect;
+
+/*
+** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
+*/
+typedef struct		s_window
+{
+	int				x;
+	int				y;
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Event		event;
+}					t_window;
+/*
+** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
+*/
+typedef struct		s_image
+{
+	SDL_Surface		*surface;	
+	SDL_Texture		*texture;
+}					t_image;
+
+/*
 **	--------WINDOW FUNCTIONS----------------------------------------------------
 */
-t_window 			*open_window(char *name);
-void 				clear(t_window *win);
+int8_t				open_window(char *name, t_window *win);
 void				render(t_window *win);
 int8_t				drawer(t_window *win, t_vm *env);
 void				time_dealer(t_draw *infos, uint8_t plus_minus);

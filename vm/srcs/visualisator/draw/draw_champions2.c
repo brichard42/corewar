@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 05:33:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 10:36:45 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:06:15 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 int8_t	draw_champion_name(t_window *win, char *name, SDL_Point point,
 		int text[3])
@@ -46,7 +47,10 @@ int8_t	draw_last_live(t_window *win, int last_live, SDL_Point point,
 	if (!(str = ft_lltoa(last_live)))
 		return (FAILURE);
 	if (draw_text(win, str, point, text) == FAILURE)
+	{
+		ft_strdel(&str);
 		return (FAILURE);
+	}
 	ft_strdel(&str);
 	return (SUCCESS);
 }

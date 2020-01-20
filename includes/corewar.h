@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/20 11:53:26 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:11:47 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include "libft.h"
 # include "core_error.h"
-# include <SDL.h>
-# include <SDL_image.h>
-# include <SDL_ttf.h>
-# include <SDL_mixer.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <fcntl.h>
@@ -28,7 +24,6 @@
 # include "op.h"
 # include "core_typedef.h"
 # include "core_define.h"
-# include "visualisator.h"
 
 /*
 **	-------OPERATION STRUCT FUNCTIONS-------
@@ -89,6 +84,7 @@ void				parsing_error(t_parser *parser, int32_t errer_code);
 */
 void                cycle(t_vm *vm);
 void				check_cycle_to_die(t_vm *env);
+int8_t				main_visu(t_vm  *env);
 void				kill_processes(t_vm *env);
 void				exec_proc_list(t_vm *vm, t_process *process);
 void				exec_process(t_vm *vm, t_process *process);

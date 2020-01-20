@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:30:02 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 13:24:15 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:12:54 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,6 @@ typedef struct		s_draw
 	uint8_t			play;
 }					t_draw;
 
-/*
-**	--------TYPEDEF BORDER RECT STRUCTURE---------------------------------------
-*/
-
-typedef struct		s_brect
-{
-	SDL_Rect		rect;
-	SDL_Color		c_front;
-	SDL_Color		c_back;
-}					t_brect;
-
-/*
-** -------TYPEDEF WINDOW_STRUCTURE----------------------------------------------
-*/
-typedef struct		s_window
-{
-	int				x;
-	int				y;
-	SDL_Window		*window;
-	SDL_Renderer	*renderer;
-	SDL_Event		event;
-}					t_window;
-/*
-** --------TYPEDEF IMAGE STRUCTURE----------------------------------------------
-*/
-typedef struct		s_image
-{
-	SDL_Surface		*surface;	
-	SDL_Texture		*texture;
-}					t_image;
 
 /*
 **	-------TYPEDEF OP STRUCTURE-------------------------------------------------
@@ -123,7 +93,7 @@ typedef struct		s_vm
 {
 	t_process		*process_list;
 	t_champ			champ[MAX_PLAYERS];
-	t_window		*win;
+	void			*win;
 	char			mem[MEM_SIZE];
 	uint8_t			mem_owner[MEM_SIZE];
 	int32_t			current_cycle;

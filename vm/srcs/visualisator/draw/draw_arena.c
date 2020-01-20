@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/19 12:03:30 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:05:34 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	Reads a char in the memory and changes it to the corresponding hexadecimal

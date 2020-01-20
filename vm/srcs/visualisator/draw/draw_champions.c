@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 10:56:25 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:05:57 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	creates generic object to specific functions.

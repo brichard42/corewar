@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/19 15:11:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:07:12 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 {
@@ -33,7 +34,10 @@ static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 	if ((str = ft_lltoa(env->champ[champ_num].num)) == NULL)
 		return (FAILURE);
 	if ((draw_text(win, str, point, text)) == FAILURE)
+	{
+		ft_strdel(&str);
 		return (FAILURE);
+	}
 	ft_strdel(&str);
 	return (SUCCESS);
 }
@@ -77,8 +81,6 @@ static int8_t	draw_one_process(t_window *win, t_process *proc, int text[3],
 	if ((point.x = draw_process_pos(win, proc, text, point))
 			&& point.x == FAILURE)
 		return (FAILURE);
-	if (draw_text(win, "", point, text) == FAILURE)
-		return (FAILURE);
 	if (draw_one_process2(win, proc, text, point) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
@@ -98,7 +100,8 @@ static int8_t	draw_procs_list(t_window *win, t_vm *env, t_draw infos,
 	proc_tmp = process_list;
 	champ_num = env->champ[infos.champ_ind].num;
 	create_tab_int3(text, 18, 19 + infos.champ_ind, BOLD);
-	draw_process_header(win, text);
+	if (draw_process_header(win, text) == FAILURE)
+		return (FAILURE);
 	while (proc_tmp && list_size < 20)
 	{
 		if (proc_tmp->visu_num == champ_num)

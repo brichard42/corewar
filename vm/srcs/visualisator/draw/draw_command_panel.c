@@ -6,11 +6,12 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:35:29 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/19 16:48:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 16:06:22 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "visualisator.h"
 
 /*
 **	Draw infos about the command to use the visualisator.
