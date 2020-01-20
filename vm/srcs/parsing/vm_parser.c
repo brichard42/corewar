@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/16 15:46:34 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/17 13:54:01 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,12 @@ int8_t			vm_parser(t_parser *parser, char **av)
 
 	parser->env = init_vm();
 	d_parser = *parser;
-	while (d_parser.state != S_ERR)
+	while (d_parser.state != S_ERR && *av != NULL)
 	{
-		if (*av == NULL)
-		{
-			end_of_arg_line(&d_parser);
-			break ;
-		}
 		get_func[d_parser.state](&d_parser, av);
 		++av;
 	}
+	end_of_arg_line(&d_parser);
 	*parser = d_parser;
 	check_chp_num_validity(parser);
 	sort_champ_tab(parser->env.champ, parser->cur_chp_index - 1);

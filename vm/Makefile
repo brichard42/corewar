@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/19 14:54:09 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/20 13:11:46 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,14 +107,12 @@ SRCS += zjump.c
 SRCS += init_vm.c
 SRCS += create_vm.c
 SRCS += delete_vm.c
-SRCS += free_vm.c
 
 SRCS += init_process.c
 SRCS += create_process.c
 SRCS += delete_process.c
 SRCS += free_process.c
 SRCS += free_process_list.c
-SRCS += process_map.c
 SRCS += copy_process.c 
 
 #------------------------------------------------------------------------------#

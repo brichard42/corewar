@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/16 04:17:51 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/20 12:02:41 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,20 @@ int			main(int ac, char **av)
 	if (ac < 2)
 		return (usage());
 	ft_bzero((void *)&parser, sizeof(t_parser));
+	ft_memset((void *)&parser.flag_n, '5', 4 * sizeof(uint8_t));
 	if (vm_parser(&parser, ++av) == FAILURE)
-		return (usage());
-	if (load_memory(&parser) == FAILURE)
-		return (usage());
-	player_caller(parser.env.champ_amount, parser.env.champ);
-	if (parser.visu == ON)
 	{
-		if (main_visu(&parser.env) == FAILURE)
-			return (1);
+		delete_vm(&parser.env);
+		return (usage());
 	}
-	else
-		cycle(&parser.env);
+	if (load_memory(&parser) == SUCCESS)
+	{
+		player_caller(parser.env.champ_amount, parser.env.champ);
+		if (parser.visu == ON)
+			main_visu(&parser.env);
+		else
+			cycle(&parser.env);
+	}
 	delete_vm(&parser.env);
 	return (EXIT_SUCCESS);
 }

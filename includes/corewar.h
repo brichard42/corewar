@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/16 15:39:55 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/20 11:53:26 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ t_process			init_process(int32_t reg_1, int32_t pc, uint8_t num);
 t_process			*create_process(int32_t reg_1, int32_t pc, uint8_t num);
 void				delete_process(t_process *to_delete);
 void				free_process(t_process **to_delete);
-void				free_process_list(t_process *to_delete);
-void				process_map(t_vm *env, t_process **process_list, t_proc_apply apply);
+void				free_process_list(t_process **to_delete);
 int8_t				copy_process(t_vm *vm, int pc_address, t_process *process);
 
 /*
@@ -54,7 +53,6 @@ int8_t				copy_process(t_vm *vm, int pc_address, t_process *process);
 t_vm    			*create_vm(void);
 t_vm    			init_vm(void);
 void    			delete_vm(t_vm *to_delete);
-void				free_vm(t_vm **to_free);
 
 /*
 **	-------PARSING	FUNCTIONS-------
