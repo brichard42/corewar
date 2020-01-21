@@ -6,14 +6,14 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2019/10/11 14:14:31 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/21 16:06:03 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
 
-# include "printf.h"
+# include "libft.h"
 
 /*
 ** Toutes les tailles sont en octets.

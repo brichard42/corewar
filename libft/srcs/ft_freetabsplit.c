@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_freetabsplit.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 02:18:02 by armoulin          #+#    #+#             */
-/*   Updated: 2018/11/21 02:24:26 by armoulin         ###   ########.fr       */
+/*   Created: 2019/10/07 10:42:00 by armoulin          #+#    #+#             */
+/*   Updated: 2020/01/21 16:04:42 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strndup(const char *str, size_t n)
+void	ft_freetabsplit(char **tab)
 {
-	char	*res;
-	size_t	len;
+	int i;
 
-	len = ft_strlen(str);
-	len = len > n ? n : len;
-	if (!(res = ft_strnew(len)))
-		return (NULL);
-	return (ft_strncpy(res, str, n));
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 }

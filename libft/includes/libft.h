@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:04:57 by brichard          #+#    #+#             */
-/*   Updated: 2019/09/12 11:09:33 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/21 16:13:02 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,12 @@
 
 # define SUCCESS	0
 # define FAILURE	-1
-# define TRUE		1
-# define FALSE		0
+
+typedef enum		e_bool
+{
+	FALSE = 0,
+	TRUE = 1
+}					t_bool;
 
 # define GNL_CLEAR		-42
 /*
@@ -175,4 +179,8 @@ void			ft_exit_malloc(void);
 
 int				ft_strcheck(char *s, int (*check)(int));
 
+char 			**ft_splitwhite(char const *s);
+t_bool			ft_isspace(int c);
+void			ft_freetabsplit(char **tab);
+t_bool			ft_str_is_numeric(const char *s);
 #endif

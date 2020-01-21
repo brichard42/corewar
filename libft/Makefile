@@ -6,7 +6,7 @@
 #    By: brichard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by brichard          #+#    #+#              #
-#    Updated: 2020/01/21 14:24:59 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/21 16:14:34 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -147,7 +147,11 @@ SRCS =			ft_strlen.c \
 				ft_del_cont.c \
 				ft_quicksort.c\
 \
-				ft_strcheck.c
+				ft_strcheck.c\
+				ft_isspace.c\
+				ft_splitwhite.c\
+				ft_freetabsplit.c\
+				ft_str_is_numeric.c
 
 ################################################################################
 #                                    COlORS                                    #

@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 16:43:25 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/21 16:06:53 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <inttypes.h>
 # include <fcntl.h>
+# include <stdlib.h>
+# include <unistd.h>
 # include "typedef.h"
 # include "error.h"
 

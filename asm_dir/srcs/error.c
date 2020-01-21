@@ -6,12 +6,13 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:59:19 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 15:20:03 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/21 16:08:09 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "libft.h"
 #include "error.h"
+#include <stdlib.h>
 
 /*
 ** Free label if any and all the linked list.
