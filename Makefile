@@ -11,13 +11,24 @@ else
 	CFLAGS =
 endif
 
+LIB_FILES += libft.a
+
+LIB_DIR += $(basename $(LIB_FILES))
+
+LIB_PATH += $(LIB_DIR)
+
+LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
+
 all: corewar_bin asm_bin
 
-corewar_bin:
+corewar_bin: $(LIBS)
 	make $(CFLAGS) -C vm
 
-asm_bin:
+asm_bin: $(LIBS)
 	make $(CFLAGS) -C asm_dir
+
+$(LIBS):
+	make -C $(LIB_PATH)
 
 $(CLEAR):
 	$@
