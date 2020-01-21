@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 09:59:58 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 17:06:58 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:04:18 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,8 @@ static int8_t	draw_active_arena(t_window *win, t_vm *env)
 	point = create_point(45, 225);
 	while (++count < MEM_SIZE)
 	{
-		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[count], BOLD) == FAILURE)
+		if (create_tab_int3(text, 17, TEXT2 + env->mem_owner[count], BOLD)
+				== FAILURE)
 			return (FAILURE);
 		if (change_char_to_hexa(str, env->mem[count]) == FAILURE)
 			return (FAILURE);
@@ -133,7 +134,7 @@ int8_t			draw_arena(t_window *win, t_vm *env, t_draw infos)
 		return (FAILURE);
 	if (env->process_list == NULL)
 	{
-		if (draw_arena_winner(win, env->champ[env->winner_index]) == FAILURE)
+		if (draw_arena_final(win, env) == FAILURE)
 			return (FAILURE);
 	}
 	else if (infos.state == TO_START)

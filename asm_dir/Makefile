@@ -6,7 +6,7 @@
 #    By: armoulin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/28 13:51:05 by armoulin          #+#    #+#              #
-#    Updated: 2020/01/20 19:05:31 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/21 12:53:16 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
 #                                   LIB_FILES                                  #
 #------------------------------------------------------------------------------#
 
-LIB_FILES +=
+LIB_FILES += libft.a
 
 #------------------------------------------------------------------------------#
 #                                   SRCS_FILES                                 #
@@ -155,6 +155,9 @@ $(OBJS_PATH):
 
 $(CLEAR):
 	$@
+
+$(LIBS):
+	make -C $(LIB_DIR)
 
 norme:
 	norminette $(SRCS_PATH) $(INC_PATH) | grep -v 'Warning: Not a valid file' | grep -B 1 -e 'Error' -e 'Warning'

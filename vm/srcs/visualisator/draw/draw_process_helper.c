@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/08 07:13:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:07:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:18:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ int32_t	draw_process_pos(t_window *win, t_process *proc, int text[3],
 	if ((str = ft_lltoa(proc->pc / 64 + 1)) == NULL)
 		return (FAILURE);
 	if ((draw_text(win, str, point, text)) == FAILURE)
-		return (FAILURE);
+		return (strdel_ret_fail(str));
 	ft_strdel(&str);
 	point.x += 20;
 	if ((str = ft_lltoa(proc->pc % 64 + 1)) == NULL)
 		return (FAILURE);
 	if (draw_text(win, "X", point, text) == FAILURE)
-		return (FAILURE);
+		return (strdel_ret_fail(str));
 	point.x += 12;
 	if (draw_text(win, str, point, text) == FAILURE)
-		return (FAILURE);
+		return (strdel_ret_fail(str));
 	ft_strdel(&str);
 	point.x += 45;
 	return (point.x);
@@ -83,10 +83,7 @@ int32_t	draw_process_num(t_window *win, t_process *proc, int text[3],
 		return (FAILURE);
 	point.x -= 5;
 	if ((tmp = draw_text(win, str, point, text)) && tmp == FAILURE)
-	{
-		ft_strdel(&str);
-		return (FAILURE);
-	}
+		return (strdel_ret_fail(str));
 	ft_strdel(&str);
 	point.x += 52;
 	return (point.x + 20);

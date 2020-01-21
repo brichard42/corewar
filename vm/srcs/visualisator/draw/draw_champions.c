@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/09 11:38:03 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:05:57 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 13:36:04 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,18 @@ int8_t				draw_champion_face(t_window *win, t_vm *env, int champ_n,
 
 	if (create_tab_int3(text, 25, 19 + champ_n, BOLD) == FAILURE)
 		return (FAILURE);
+	if (env->process_list == NULL)
+	{
+		return (draw_champion_last_face(win, point, text,
+				(champ_n == env->winner_index)));
+	}
 	point.x += 30;
 	point.y += 70;
-	if (draw_text(win, "0       0", point, text) == FAILURE)
+	if (draw_text(win, " 0       0", point, text) == FAILURE)
 		return (FAILURE);
 	point.y += 70;
-	point.x -= 10;
-	if (env->champ[champ_n].last_live_cycle == FAILURE
-			|| env->current_cycle > 200)
-	{
-		if (draw_text(win, "/----------\\", point, text) == FAILURE)
-			return (FAILURE);
-	}
-	else if (draw_text(win, "\\----------/", point, text) == FAILURE)
+	point.x -= 5;
+	if (draw_text(win, "\\----------/", point, text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }

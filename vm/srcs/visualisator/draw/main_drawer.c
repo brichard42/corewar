@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 17:29:56 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 13:36:31 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int8_t		drawer(t_window *win, t_vm *env)
 				event_catcher(win, &infos);
 			SDL_RenderPresent(win->renderer);
 			tmp_cpf = 0;
-		usleep(infos.time);
+			usleep(infos.time);
 		}
 		if (infos.state == ACTIVE && *d_process != NULL)
 			cycle_actualisator(env, (*d_process));

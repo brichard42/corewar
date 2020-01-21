@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 05:33:11 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:06:15 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:14:56 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,31 @@ int8_t	draw_last_live(t_window *win, int last_live, SDL_Point point,
 	if (!(str = ft_lltoa(last_live)))
 		return (FAILURE);
 	if (draw_text(win, str, point, text) == FAILURE)
-	{
-		ft_strdel(&str);
-		return (FAILURE);
-	}
+		return (strdel_ret_fail(str));
 	ft_strdel(&str);
+	return (SUCCESS);
+}
+
+int8_t	draw_champion_last_face(t_window *win, SDL_Point point, int text[3],
+		int winner)
+{
+	point.x += 30;
+	point.y += 70;
+	if (winner)
+	{
+		if (draw_text(win, " 0       0", point, text) == FAILURE)
+			return (FAILURE);
+		point.y += 70;
+		point.x -= 5;
+		if (draw_text(win, "\\----------/", point, text) == FAILURE)
+			return (FAILURE);
+		return (SUCCESS);
+	}
+	if (draw_text(win, " X       X", point, text) == FAILURE)
+		return (FAILURE);
+	point.y += 70;
+	point.x -= 5;
+	if (draw_text(win, "/----------\\", point, text) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }

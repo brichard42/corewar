@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:20:08 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 17:47:10 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:17:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int8_t	draw_infos_cycle(t_window *win, t_vm *env, SDL_Point point, int text[3])
 		if ((str = ft_lltoa(env->cycle_to_die)) && str == NULL)
 			return (FAILURE);
 		if (draw_text(win, str, point, text) == FAILURE)
-		{
-			ft_strdel(&str);
-			return (FAILURE);
-		}
+			return (strdel_ret_fail(str));
 		ft_strdel(&str);
 	}
 	return (SUCCESS);

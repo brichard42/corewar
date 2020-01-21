@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 17:46:25 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:12:43 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,11 @@ typedef struct		s_image
 }					t_image;
 
 /*
+**	--------FREE FUNCTION-------------------------------------------------------
+*/
+
+int8_t				strdel_ret_fail(char *str);
+/*
 **	--------WINDOW FUNCTIONS----------------------------------------------------
 */
 int8_t				open_window(char *name, t_window *win);
@@ -132,9 +137,11 @@ int					draw_centred_text(t_window *win, char *str, SDL_Point pos,
 int8_t				draw_command_panel(t_window *win, int i);
 char				*action_name(int op_code);
 int8_t              draw_arena(t_window *win, t_vm *env, t_draw infos);
-int8_t				draw_arena_winner(t_window *win, t_champ champion);
+int8_t				draw_arena_final(t_window *win, t_vm *env);
 int8_t              draw_structure_sides(t_window *win);
 int8_t				draw_champions(t_window *win, t_vm *env, int champ_n);
+int8_t				draw_champion_last_face(t_window *win, SDL_Point,
+					int text[3], int winner);
 int8_t				draw_last_live(t_window *win, int last_live,
 					SDL_Point point, int text[3]);
 int8_t				draw_champion_name(t_window *win, char *name,
