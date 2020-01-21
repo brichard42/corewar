@@ -6,7 +6,7 @@
 #    By: brichard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by brichard          #+#    #+#              #
-#    Updated: 2019/11/07 09:00:12 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/21 14:24:59 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,61 +153,49 @@ SRCS =			ft_strlen.c \
 #                                    COlORS                                    #
 ################################################################################
 
-COM_COLOR   = \033[0;35m
-OBJ_COLOR   = \033[0;36m
-OK_COLOR    = \033[0;32m
-ERROR_COLOR = \033[0;31m
-WARN_COLOR  = \033[0;33m
-NO_COLOR    = \033[m
+# COLORS
+GREEN		= \033[0;32m
+RED			= \033[0;31m
+RESET		= \033[0m
 
-define run_and_test
-printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
-	$(1) 2> $@.log; \
-	RESULT=$$?; \
-	if [ $$RESULT -ne 0 ]; then \
-		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(ERROR_COLOR)$(ERROR_STRING)$(NO_COLOR)\n"   ; \
-	elif [ -s $@.log ]; then \
-		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $@" "$(WARN_COLOR)$(WARN_STRING)$(NO_COLOR)\n"   ; \
-	else  \
-		printf "%-60b%b" "$(COM_COLOR)$(COM_STRING)$(OBJ_COLOR) $(@F)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"   ; \
-	fi; \
-	cat $@.log; \
-	rm -f $@.log; \
-	exit $$RESULT
-endef
-
-OK_STRING    = "[OK]"
-ERROR_STRING = "[ERROR]"
-WARN_STRING  = "[WARNING]"
-COM_STRING   = "Lib_Compiling"
+#STRINGS
+BIN_STRING	= Binary
+DEL_STRING	= Deleted.
+CREA_STRING	= Created.
+COM_STRING	= Compiled.
 
 ################################################################################
 #                                   COMMANDS                                   #
 ################################################################################
 
 .PHONY: all clean fclean re
+.SILENT:
 
 all: $(NAME)
-	@echo > /dev/null
+	#echo > /dev/null
 
 $(NAME): $(OBJS_PATH) $(INC) $(D_PRINTF_OBJS) $(D_OBJS)
-	@$(call run_and_test, ar -rc $(NAME) $(D_OBJS) $(D_PRINTF_OBJS) $@)
-	@ranlib $(NAME)
-	clear
+	ar -rc $(NAME) $(D_OBJS) $(D_PRINTF_OBJS) $@
+	ranlib $(NAME)
+	printf "%-20b%-60b%b" "$(NAME):" "$(GREEN)$@" "$(COM_STRING)$(RESET)\n"
 
 $(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c
-	@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $< -I$(INC))
+	$(CC) $(CFLAGS) -o $@ -c $< -I$(INC)
+	printf "%-20b%-60b%b" "$(NAME):" "$(GREEN)$@" "$(CREA_STRING)$(RESET)\r"
 
 $(PRINTF_OBJS_PATH)/%.o: $(PRINTF_SRCS_PATH)/%.c
-	@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $< -I$(INC))
+	$(CC) $(CFLAGS) -o $@ -c $< -I$(INC)
+	printf "%-20b%-60b%b" "$(NAME):" "$(GREEN)$@" "$(CREA_STRING)$(RESET)\r"
 
 $(OBJS_PATH):
-	@mkdir -p $@
+	mkdir -p $@
 
 clean:
-	@rm -f $(D_OBJS) && rm -rf $(OBJS_PATH)
+	rm -f $(D_OBJS) && rm -rf $(OBJS_PATH)
+	printf "%-20b%-60b%b" "$(NAME):" "$(RED)$(BIN_STRING)" "$(DEL_STRING)$(RESET)\n"
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
+	printf "%-20b%-60b%b" "$(NAME):" "$(RED)$(OBJS_PATH)" "$(DEL_STRING)$(RESET)\n"
 
 re: fclean all

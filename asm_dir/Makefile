@@ -6,7 +6,7 @@
 #    By: armoulin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/28 13:51:05 by armoulin          #+#    #+#              #
-#    Updated: 2020/01/20 19:05:31 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/21 14:23:21 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ SRCS += write_file.c
 
 INC_DIR += includes/
 
-OBJS_DIR += bin/
+OBJS_DIR += obj/
 
 SRCS_DIR += $(shell find srcs -type d)
 
@@ -122,15 +122,15 @@ FCLEAN_LIB += $(addprefix make fclean -C , $(LIB_PATH))
 #------------------------------------------------------------------------------#
 
 # COLORS
-GREEN					= \033[0;32m
-RED						= \033[0;31m
-RESET					= \033[0m
+GREEN		= \033[0;32m
+RED			= \033[0;31m
+RESET		= \033[0m
 
 #STRINGS
-BIN_STRING = Binary
-DEL_STRING = Deleted.
-CREA_STRING = Created.
-COM_STRING = Compiled.
+BIN_STRING	= Binary
+DEL_STRING	= Deleted.
+CREA_STRING	= Created.
+COM_STRING	= Compiled.
 
 #------------------------------------------------------------------------------#
 #                                   COMMANDS                                   #
@@ -143,15 +143,15 @@ all: $(NAME)
 
 $(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@
-	printf "%-60b%b" "$(BINARY): $(GREEN)$(BIN_STRING)" "$(COM_STRING)$(RESET)\n"
+	printf "%-20b%-60b%b" "$(BINARY):" "$(GREEN)$(BIN_STRING)" "$(COM_STRING)$(RESET)\n"
 
 $(OBJS_PATH)%.o : %.c | Makefile
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
-	printf "%-60b%b" "$(BINARY): $(GREEN)$@" "$(CREA_STRING)$(RESET)\r"
+	printf "%-20b%-60b%b" "$(BINARY):" "$(GREEN)$@" "$(CREA_STRING)$(RESET)\r"
 
 $(OBJS_PATH):
 	$(MKDIR) $@
-	printf "%-60b%b" "$(BINARY): $(GREEN)$(OBJS_PATH)" "$(CREA_STRING)$(RESET)\n"
+	printf "%-20b%-60b%b" "$(BINARY):" "$(GREEN)$(OBJS_PATH)" "$(CREA_STRING)$(RESET)\n"
 
 $(CLEAR):
 	$@
@@ -161,10 +161,10 @@ norme:
 
 clean: 
 	$(RM) $(OBJS_PATH)
-	printf "%-60b%b" "$(BINARY): $(RED)$(OBJS_PATH)" "$(DEL_STRING)$(RESET)\n"
+	printf "%-20b%-60b%b" "$(BINARY):" "$(RED)$(OBJS_PATH)" "$(DEL_STRING)$(RESET)\n"
 
 fclean: clean
 	$(RM) $(NAME)
-	printf "%-60b%b" "$(BINARY): $(RED)$(BIN_STRING)" "$(DEL_STRING)$(RESET)\n"
+	printf "%-20b%-60b%b" "$(BINARY):" "$(RED)$(BIN_STRING)" "$(DEL_STRING)$(RESET)\n"
 
 re: fclean all

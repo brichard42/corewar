@@ -33,13 +33,15 @@ $(LIBS):
 $(CLEAR):
 	$@
 
-clean:
+clean: $(CLEAR) 
 	make clean -C vm ; make clean -C asm_dir
 
-fclean:
+fclean: $(CLEAR) 
 	make fclean -C vm ; make fclean -C asm_dir
 
-lfc:
+lfc: fclean
 	make fclean -C libft
 
-re: $(CLEAR) fclean all
+re: fclean all
+
+lre: lfc re
