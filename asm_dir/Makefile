@@ -6,7 +6,7 @@
 #    By: armoulin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/28 13:51:05 by armoulin          #+#    #+#              #
-#    Updated: 2020/01/21 16:05:02 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/21 17:06:49 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ LIB_DIR += ../libft
 #                                     PATHS                                    #
 #------------------------------------------------------------------------------#
 
-INC_PATH += ./$(INC_DIR)
+INC_PATH += ../$(INC_DIR)
 INC_PATH += $(addsuffix $(INC_DIR), $(LIB_DIR)/)
 
 OBJS_PATH = $(OBJS_DIR)

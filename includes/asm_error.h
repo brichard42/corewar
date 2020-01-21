@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:42:00 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 16:59:52 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:04:23 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stddef.h>
 
-# include "typedef.h"
+# include "asm_typedef.h"
 
 /*
 ** All error's message used.

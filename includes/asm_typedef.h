@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 16:43:25 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:08:51 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,44 @@
 # define TYPEDEF_H
 
 #include "op.h"
+
+/*
+** ==================
+**  HEADER STRUCTURE
+** ==================
+**
+** - magic:		Magic number.
+** - prog_name:	String of the champion's name.
+** - prog_size:	Computed hex code size of all the instructions.
+** - comment:	String of the comment.
+*/
+typedef struct		s_header
+{
+  unsigned int		magic;
+  char				prog_name[PROG_NAME_LENGTH + 1];
+  unsigned int		prog_size;
+  char				comment[COMMENT_LENGTH + 1];
+}					t_header;
+
+/*
+** ==============
+**  OP STRUCTURE
+** ==============
+**
+** Stores all the characteristics of an instruction.
+** See 'op.c'.
+*/
+typedef struct		s_op
+{
+	char			*name;
+	int				nb_param;
+	int				type_param[3];
+	int				op_code;
+	int				nb_cycle;
+	char			*comment;
+	t_bool			have_param_byte;
+	t_bool			is_half_int;
+}					t_op;
 
 /*
 ** =====================
