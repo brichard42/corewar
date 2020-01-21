@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 17:51:01 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:07:12 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:19:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ static int8_t	draw_procs_header(t_window *win, t_vm *env, int champ_num)
 	if ((str = ft_lltoa(env->champ[champ_num].num)) == NULL)
 		return (FAILURE);
 	if ((draw_text(win, str, point, text)) == FAILURE)
-	{
-		ft_strdel(&str);
-		return (FAILURE);
-	}
+		return (strdel_ret_fail(str));
 	ft_strdel(&str);
 	return (SUCCESS);
 }
@@ -64,7 +61,7 @@ static int8_t	draw_one_process2(t_window *win, t_process *proc, int text[3],
 	if ((str = ft_lltoa(proc->op.nb_cycle)) == NULL)
 		return (FAILURE);
 	if ((tmp = draw_text(win, str, point, text)) == FAILURE)
-		return (FAILURE);
+		return (strdel_ret_fail(str));
 	ft_strdel(&str);
 	point.x += 73;
 	if ((tmp = draw_text(win, "CYCLES", point, text)) == FAILURE)

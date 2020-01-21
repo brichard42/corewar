@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/21 14:18:16 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/21 17:47:26 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBS += $(addprefix $(LIB_PATH), $(LIB_FILES))
 #                                   LIB_FILES                                  #
 #------------------------------------------------------------------------------#
 
-LIB_FILES +=
+LIB_FILES += libft.a
 
 LIB_DWN += sdl2 sdl2_image sdl2_mixer sdl2_ttf
 
@@ -47,6 +47,7 @@ SRCS +=	draw_champions.c
 SRCS +=	draw_champions2.c
 SRCS +=	object_creation.c
 SRCS +=	draw_rectangles.c
+SRCS +=	draw_final_arena.c
 SRCS +=	draw_process_list.c
 SRCS +=	draw_command_panel.c
 SRCS +=	draw_arena_helpers.c
@@ -230,6 +231,9 @@ $(OBJS_PATH):
 
 $(CLEAR):
 	$@
+
+$(LIBS):
+	make -C $(LIB_DIR)
 
 install:
 	$(foreach lib, $(LIB_DWN), $(DWL) install $(lib); )

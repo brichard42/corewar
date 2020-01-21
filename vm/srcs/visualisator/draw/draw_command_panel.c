@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 09:35:29 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 17:40:28 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 13:34:43 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 static int8_t	command_more_info(t_window *win, int *text)
 {
-	if (draw_text(win, "\'Left/Right\' : Move in process list", create_point(520, 120),
-			text) == FAILURE)
+	if (draw_text(win, "\'Left/Right\' : Move in process list",
+			create_point(520, 120), text) == FAILURE)
 		return (FAILURE);
 	if (draw_text(win, "\'O\'                       : Speed Down",
 			create_point(900, 50), text) == FAILURE)

@@ -6,12 +6,18 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:42:06 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:05:48 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/21 17:14:27 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 #include "visualisator.h"
+
+int8_t			strdel_ret_fail(char *str)
+{
+	ft_strdel(&str);
+	return (FAILURE);
+}
 
 static int8_t	draw_structure_sides2(t_window *win, int text[3])
 {
@@ -26,7 +32,7 @@ static int8_t	draw_structure_sides2(t_window *win, int text[3])
 		if (!(str = ft_lltoa(i)))
 			return (FAILURE);
 		if (draw_text(win, str, point, text) == FAILURE)
-			return (FAILURE);
+			return (strdel_ret_fail(str));
 		ft_strdel(&str);
 		point.y = (i % 2) ? point.y + 16 : point.y + 17;
 	}
@@ -50,29 +56,11 @@ int8_t			draw_structure_sides(t_window *win)
 		if (!(str = ft_lltoa(i)))
 			return (FAILURE);
 		if (draw_text(win, str, point, text) == FAILURE)
-			return (FAILURE);
+			return (strdel_ret_fail(str));
 		ft_strdel(&str);
 		point.x = (i % 2) ? point.x + 27 : point.x + 28;
 	}
 	if (draw_structure_sides2(win, text) == FAILURE)
-		return (FAILURE);
-	return (SUCCESS);
-}
-
-int8_t			draw_arena_winner(t_window *win, t_champ champion)
-{
-	SDL_Point	point;
-	int			text[3];
-
-	point = create_point(250, 250);
-	if (create_tab_int3(text, 100, TEXT2, BOLD) == FAILURE)
-		return (FAILURE);
-	if (draw_text(win, "AND THE WINNER IS :", point, text) == FAILURE)
-		return (FAILURE);
-	point.y += 300;
-	point.x -= 150;
-	text[1] += champion.num;
-	if (draw_text(win, champion.name, point, text) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
