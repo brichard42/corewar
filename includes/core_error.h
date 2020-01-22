@@ -6,16 +6,16 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:55:15 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/15 14:47:37 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:28:13 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CORE_ERROR_H
 # define CORE_ERROR_H
+
 /*
 **	DEFINE PARSING ERROR_CODE
 */
-
 # define ERR_NO_CHAMP				0
 # define ERR_FILE_NOT_COR			1
 # define ERR_WRONG_ARG				2
@@ -46,32 +46,32 @@
 
 # define ERR_NO_CHP_AFTER_NUM		20
 
-# define ERR_MSG0					"Error: No champion given.\n"
-# define ERR_MSG1					"Error: Invalid file extension. (.cor)\n"
-# define ERR_MSG2					"Error: Invalid argument.\n"
-# define ERR_MSG3					"Error: Invalid following number after -n argument. [1 - 4]\n"
-# define ERR_MSG4					"Error: Invalid following number after -dump argument. [1 - 2147483647]\n"
-# define ERR_MSG5					"Error: Too many champions.\n"
-# define ERR_MSG6					"Error: Player num not available. [1 - 4] <= Amount of players\n"
-# define ERR_MSG20					"Error: Missing champ file after given champ number.\n"
+# define ERR_MSG0 "Error: No champion given.\n"
+# define ERR_MSG1 "Error: Invalid file extension. (.cor)\n"
+# define ERR_MSG2 "Error: Invalid argument.\n"
+# define ERR_MSG3 "Error: Invalid following number after -n ,rgument. [1 - 4]\n"
+# define ERR_MSG4 "Error: Invalid following number after -dump arg. [INT]\n"
+# define ERR_MSG5 "Error: Too many champions.\n"
+# define ERR_MSG6 "Error: Player num not available. [1 - 4]\n"
+# define ERR_MSG20 "Error: Missing champ file after given champ number.\n"
 
-# define ERR_MSG7					"Error: In Binary: Magic number (%s champion) is wrong or missing.\n"
+# define ERR_MSG7 "Error: In Binary: Magic num is wrong or missing.(%s champ)\n"
 
-# define ERR_MSG8					"Error: In Binary: Wrong %s champion's name format.\n"
+# define ERR_MSG8 "Error: In Binary: Wrong %s champion's name format.\n"
 
-# define ERR_MSG9					"Error: In Binary: Missing padding before %s champons's size.\n"
-# define ERR_MSG10					"Error: In Binary: Missing %s champion's size.\n"
-# define ERR_MSG11					"Error: In Binary: Wrong %s champion's size format.\n"
-# define ERR_MSG12					"Error: In Binary: Size of %s champion can't be negative.\n"
+# define ERR_MSG9 "Error: In Binary: Missing padding before %s champ's size.\n"
+# define ERR_MSG10 "Error: In Binary: Missing %s champion's size.\n"
+# define ERR_MSG11 "Error: In Binary: Wrong %s champion's size format.\n"
+# define ERR_MSG12 "Error: In Binary: Size of %s champion can't be negative.\n"
 
-# define ERR_MSG13					"Error: In Binary: Wrong comment format. (%s champion)\n"
-# define ERR_MSG14					"Error: In Binary: Missing padding after comment. (%s champion)\n"
+# define ERR_MSG13 "Error: In Binary: Wrong comment format. (%s champion)\n"
+# define ERR_MSG14 "Error: In Binary: Missing padding after com. (%s champ)\n"
 
-# define ERR_MSG15					"Error: Binary is incomplete -> missing %s champion's code.\n"
-# define ERR_MSG16					"Error: Code in %s champion's binary is too long.\n"
-# define ERR_MSG17					"Error: Binary corrupted. (%s champion)\n"
-# define ERR_MSG18					"Error: Invalid following number after -v argument. [1 - 64]\n"
-# define ERR_MSG19					"Error: Error while opening file / file might not exist.\n"
+# define ERR_MSG15 "Error: Binary is incomplete -> missing %s champ's code.\n"
+# define ERR_MSG16 "Error: Code in %s champion's binary is too long.\n"
+# define ERR_MSG17 "Error: Binary corrupted. (%s champion)\n"
+# define ERR_MSG18 "Error: Invalid following number after -v arg. [1 - 16]\n"
+# define ERR_MSG19 "Error: Error while opening file / file might not exist.\n"
 
 # define ERR_MSG_NUM				21
 

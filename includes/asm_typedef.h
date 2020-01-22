@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedef.h                                          :+:      :+:    :+:   */
+/*   asm_typedef.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/21 17:08:51 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/22 13:53:28 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPEDEF_H
-# define TYPEDEF_H
+#ifndef ASM_TYPEDEF_H
+# define ASM_TYPEDEF_H
 
-#include "op.h"
+# include "op.h"
 
 /*
 ** ==================
@@ -27,10 +27,10 @@
 */
 typedef struct		s_header
 {
-  unsigned int		magic;
-  char				prog_name[PROG_NAME_LENGTH + 1];
-  unsigned int		prog_size;
-  char				comment[COMMENT_LENGTH + 1];
+	unsigned int		magic;
+	char				prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int		prog_size;
+	char				comment[COMMENT_LENGTH + 1];
 }					t_header;
 
 /*
@@ -63,12 +63,12 @@ typedef struct		s_op
 ** - value:	Computed value to be translated in hex code.
 ** - temp:	If it's a label, stores label's name.
 */
-typedef struct 		s_param
+typedef struct		s_param
 {
 	char			*str;
-	int 			type;
-	int 			value;
-	char 			*temp;
+	int				type;
+	int				value;
+	char			*temp;
 }					t_param;
 
 /*
@@ -84,16 +84,15 @@ typedef struct 		s_param
 ** - nb_line:	Line in the '.s' file.
 ** - next:		Linked-list --> link to the next element.
 */
-typedef struct		s_cmd t_cmd;
 typedef struct		s_cmd
 {
 	int				op_code;
 	char			*label;
 	t_param			params[MAX_ARGS_NUMBER];
-	int 			nb_param;
+	int				nb_param;
 	size_t			size;
 	size_t			nb_line;
-	t_cmd			*next;
+	struct s_cmd	*next;
 }					t_cmd;
 
 /*
@@ -122,13 +121,13 @@ typedef struct		s_asm
 	t_op			op_tab[16];
 	t_header		header;
 	t_bool			is_name;
-	int 			i_name;
+	int				i_name;
 	t_bool			got_name;
 	t_bool			is_comment;
-	int 			i_comment;
+	int				i_comment;
 	t_bool			got_comment;
 	char			*label;
-	size_t 			label_size;
+	size_t			label_size;
 	size_t			nb_line;
 	t_cmd			*list;
 }					t_asm;

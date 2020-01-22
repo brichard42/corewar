@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/21 17:09:33 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:51:51 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft.h"
 # include "asm_typedef.h"
 # include "asm_error.h"
 
@@ -89,6 +90,7 @@ void				write_file(t_asm *asmr, char *title);
 void				write_nb_1(t_asm *asmr, int32_t fd, int nb);
 void				write_nb_4(t_asm *asmr, int32_t fd, int32_t nb);
 void				write_param_byte(t_asm *asmr, int32_t fd, t_cmd *cmd);
-void				write_param(t_asm *asmr, int32_t fd, t_param *param, int opcode);
+void				write_param(t_asm *asmr, int32_t fd, t_param *param,
+																	int opcode);
 
 #endif

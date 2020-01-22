@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 14:16:37 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/19 14:59:11 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/22 17:04:15 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 void	add(t_vm *vm, t_process *process)
 {
-	int		add;
+	int32_t	add;
 	int32_t	param1;
 	int32_t	param2;
 	int32_t	param3;

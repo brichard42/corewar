@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:02:25 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/15 15:58:44 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/22 15:20:05 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	read_magic(t_parser *parser, int32_t fd)
 {
-	unsigned char		buff[MAGIC_SIZE];
+	unsigned char		buff[sizeof(COREWAR_EXEC_MAGIC)];
 	int32_t				ret;
 	int32_t				nb;
 
 	nb = 0;
-	ret = read(fd, buff, MAGIC_SIZE);
-	if (ret > 0 && ret == (int32_t)MAGIC_SIZE)
+	ret = read(fd, buff, sizeof(COREWAR_EXEC_MAGIC));
+	if (ret > 0 && ret == (int32_t)sizeof(COREWAR_EXEC_MAGIC))
 		nb = (buff[0] << 24 | buff[1] << 16 | buff[2] << 8 | buff[3]);
 	if (COREWAR_EXEC_MAGIC != nb)
 		parsing_error(parser, ERR_MAGIC);

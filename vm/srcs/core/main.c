@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/21 13:47:40 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/22 16:34:35 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	usage(void)
 {
-	ft_putendl(USG_MSG1);
+	ft_putendl("Usage: ./corewar --visual [-dump n_cycles] \
+[(-n num) champ1.cor] ...");
 	ft_putendl(USG_MSG2);
 	ft_putendl(USG_MSG3);
 	ft_putendl(USG_MSG4);

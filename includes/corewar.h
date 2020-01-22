@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/20 16:11:47 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/22 13:34:44 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 /*
 **	-------OPERATION STRUCT FUNCTIONS-------
 */
-void	            create_op(t_process *process, int op_code);
-void	            init_op(t_op *op);
-void	            delete_op(t_process *process);
+void				create_op(t_process *process, int op_code);
+void				init_op(t_op *op);
+void				delete_op(t_process *process);
 
 /*
 **	-------PROCESS STRUCT FUNCTIONS-------
@@ -45,9 +45,9 @@ int8_t				copy_process(t_vm *vm, int pc_address, t_process *process);
 /*
 **	-------COREWAR STRUCT FUNCTIONS---------------------------------------------
 */
-t_vm    			*create_vm(void);
-t_vm    			init_vm(void);
-void    			delete_vm(t_vm *to_delete);
+t_vm				*create_vm(void);
+t_vm				init_vm(void);
+void				delete_vm(t_vm *to_delete);
 
 /*
 **	-------PARSING	FUNCTIONS-------
@@ -82,29 +82,29 @@ void				parsing_error(t_parser *parser, int32_t errer_code);
 /*
 **	-------CYCLES FUNCTIONS------------
 */
-void                cycle(t_vm *vm);
+void				cycle(t_vm *vm);
 void				check_cycle_to_die(t_vm *env);
-int8_t				main_visu(t_vm  *env);
+int8_t				main_visu(t_vm *env);
 void				kill_processes(t_vm *env);
 void				exec_proc_list(t_vm *vm, t_process *process);
 void				exec_process(t_vm *vm, t_process *process);
 uint8_t				must_dump(t_vm *vm);
-void                show_mem(t_vm *vm);
-void                show_op(t_process *process);
+void				show_mem(t_vm *vm);
+void				show_op(t_process *process);
 void				winner(t_vm *vm, uint8_t winner);
 void				cycle_actualisator(t_vm *vm, t_process *process);
-int			        check_ocp(int ocp, int op_code);
-int                 modulo(int a, int b);
-int	                move_pc(t_process *process);
-void		        reset_life_signal(t_vm *vm);
-int                 take_param_op(t_vm *vm, t_process *process);
-int                 get_indirecte(t_vm *vm, t_op *op, int nb_arg);
-int				    is_opcode(char data);
+int					check_ocp(int ocp, int op_code);
+int					modulo(int a, int b);
+int					move_pc(t_process *process);
+void				reset_life_signal(t_vm *vm);
+int					take_param_op(t_vm *vm, t_process *process);
+int					get_indirecte(t_vm *vm, t_op *op, int nb_arg);
+int					is_opcode(char data);
 int					check_params_ldi_lldi(t_process *process);
 
 /*
- **	-------COREWAR OP FUNCTIONS------------
- */
+**	-------COREWAR OP FUNCTIONS------------
+*/
 void				live(t_vm *vm, t_process *process);
 void				ld(t_vm *vm, t_process *process);
 void				st(t_vm *vm, t_process *process);
