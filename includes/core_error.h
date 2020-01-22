@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:55:15 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/22 16:28:13 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/22 18:54:08 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define ERR_FILE_NOT_OPEN			19
 
 # define ERR_NO_CHP_AFTER_NUM		20
+# define ERR_TOO_MUCH_CHAMP			21
 
 # define ERR_MSG0 "Error: No champion given.\n"
 # define ERR_MSG1 "Error: Invalid file extension. (.cor)\n"
@@ -53,7 +54,6 @@
 # define ERR_MSG4 "Error: Invalid following number after -dump arg. [INT]\n"
 # define ERR_MSG5 "Error: Too many champions.\n"
 # define ERR_MSG6 "Error: Player num not available. [1 - 4]\n"
-# define ERR_MSG20 "Error: Missing champ file after given champ number.\n"
 
 # define ERR_MSG7 "Error: In Binary: Magic num is wrong or missing.(%s champ)\n"
 
@@ -72,7 +72,9 @@
 # define ERR_MSG17 "Error: Binary corrupted. (%s champion)\n"
 # define ERR_MSG18 "Error: Invalid following number after -v arg. [1 - 16]\n"
 # define ERR_MSG19 "Error: Error while opening file / file might not exist.\n"
+# define ERR_MSG20 "Error: Missing champ file after given champ number.\n"
+# define ERR_MSG21 "Error: Too much champions given.\n"
 
-# define ERR_MSG_NUM				21
+# define ERR_MSG_NUM				22
 
 #endif

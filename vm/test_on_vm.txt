@@ -1,0 +1,10 @@
+Test on parsing :
+1 - ./corewar -> return usage. ✅
+2 - ./corewar "one champion" -> should fail but works ❗️
+3 - ./corewar "two champions" -> ✅
+4 - ./corewar "three champions" -> ✅
+5 - ./corewar "four champions" -> ✅
+6 - ./corewar "five champions" -> It fails however the error message is wrong ("Missing padding").❗️  
+7 - ./corewar "-dump no champ with or without a dump_number" -> segfault after_error_message❗️ -> fixed
+8 - ./corewar "-dump one champion" should fail but works probably because of test 2❗️ -> fixed
+9 - ./corewar "-dump more champions without dump_number" fail ❗️ -> fixed
