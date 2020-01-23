@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:55:15 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/22 18:54:08 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 11:11:44 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 
 # define ERR_NO_CHP_AFTER_NUM		20
 # define ERR_TOO_MUCH_CHAMP			21
+# define ERR_ONE_CHAMPION			22
 
 # define ERR_MSG0 "Error: No champion given.\n"
 # define ERR_MSG1 "Error: Invalid file extension. (.cor)\n"
@@ -74,7 +75,8 @@
 # define ERR_MSG19 "Error: Error while opening file / file might not exist.\n"
 # define ERR_MSG20 "Error: Missing champ file after given champ number.\n"
 # define ERR_MSG21 "Error: Too much champions given.\n"
+# define ERR_MSG22 "Error: Only one champion given.\n"
 
-# define ERR_MSG_NUM				22
+# define ERR_MSG_NUM				23
 
 #endif

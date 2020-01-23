@@ -6,7 +6,7 @@
 #    By: brichard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by brichard          #+#    #+#              #
-#    Updated: 2020/01/21 16:14:34 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/23 13:43:37 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,6 @@ SRCS =			ft_strlen.c \
 \
 				ft_pow_ldo.c \
 \
-				get_next_line.c \
 				ft_gnl.c \
 \
 				ft_isupper.c \
