@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/22 16:34:35 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:42:39 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ int			main(int ac, char **av)
 	{
 		player_caller(parser.env.champ_amount, parser.env.champ);
 		if (parser.visu == ON)
-			main_visu(&parser.env);
+		{
+			if (main_visu(&parser.env) == FAILURE)
+				ft_printf("NIQUE TA MEEEER!\n");
+		}
 		else
 			cycle(&parser.env);
 	}

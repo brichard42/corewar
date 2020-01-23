@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:55:15 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/23 11:11:44 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:30:30 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define ERR_MSG0 "Error: No champion given.\n"
 # define ERR_MSG1 "Error: Invalid file extension. (.cor)\n"
 # define ERR_MSG2 "Error: Invalid argument.\n"
-# define ERR_MSG3 "Error: Invalid following number after -n ,rgument. [1 - 4]\n"
+# define ERR_MSG3 "Error: Invalid following number after -n argument. [1 - 4]\n"
 # define ERR_MSG4 "Error: Invalid following number after -dump arg. [INT]\n"
 # define ERR_MSG5 "Error: Too many champions.\n"
 # define ERR_MSG6 "Error: Player num not available. [1 - 4]\n"

@@ -6,23 +6,20 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/23 11:10:00 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 14:40:20 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void		sort_champ_tab(t_parser *parser, t_champ champ[4],
-				int32_t chp_amount)
+static void		sort_champ_tab(t_champ champ[4], int32_t chp_amount)
 {
 	t_champ	tmp;
-	uint8_t	i;
-	uint8_t	j;
+	int8_t	i;
+	int8_t	j;
 
 	i = 0;
 	j = chp_amount;
-	if (parser->state == S_ERR)
-		return ;
 	while (j >= 1)
 	{
 		while (i < j)
@@ -42,13 +39,11 @@ static void		sort_champ_tab(t_parser *parser, t_champ champ[4],
 
 static void		check_chp_num_validity(t_parser *parser)
 {
-	uint8_t	i;
-	uint8_t	highest_num;
+	int8_t	i;
+	int8_t	highest_num;
 
 	i = 0;
 	highest_num = 0;
-	if (parser->state == S_ERR)
-		return ;
 	while (i < 4)
 	{
 		if (highest_num < parser->env.champ[i].num)
@@ -71,7 +66,7 @@ static void		end_of_arg_line(t_parser *parser)
 		parsing_error(parser, ERR_INVALID_VERB_NUM);
 	else if (parser->state == S_CHAMP)
 		parsing_error(parser, ERR_NO_CHP_AFTER_NUM);
-	else if (parser->env.champ[0].num == 0 && parser->state != S_ERR)
+	else if (parser->env.champ[0].num == 0)
 		parsing_error(parser, ERR_NO_CHAMP);
 	else if (parser->env.champ_amount > 4)
 		parsing_error(parser, ERR_TOO_MUCH_CHAMP);
@@ -87,14 +82,21 @@ int8_t			vm_parser(t_parser *parser, char **av)
 
 	parser->env = init_vm();
 	d_parser = *parser;
-	while (d_parser.state != S_ERR && *av != NULL)
+	while (d_parser.state != S_ERR)
 	{
+		if (*av == NULL)
+		{
+			end_of_arg_line(&d_parser);
+			break ;
+		}
 		get_func[d_parser.state](&d_parser, av);
 		++av;
 	}
-	end_of_arg_line(&d_parser);
 	*parser = d_parser;
-	check_chp_num_validity(parser);
-	sort_champ_tab(parser, parser->env.champ, parser->cur_chp_index - 1);
+	if (parser->state != S_ERR)
+	{
+		check_chp_num_validity(parser);
+		sort_champ_tab(parser->env.champ, parser->cur_chp_index - 1);
+	}
 	return (parser->state == S_OPTION ? SUCCESS : FAILURE);
 }

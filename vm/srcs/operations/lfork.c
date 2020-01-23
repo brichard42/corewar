@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:42:49 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:19:30 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:26:06 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	lfork(t_vm *vm, t_process *process)
 			process) == FAILURE)
 	{
 		delete_vm(vm);
+		ft_printf("exit lfork\n");
 		exit(EXIT_FAILURE);
 	}
 	if (vm->verbose & F_VERBOSE_OP)

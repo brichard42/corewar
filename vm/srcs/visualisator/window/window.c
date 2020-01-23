@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 14:44:45 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:24:30 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:55:15 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int8_t	open_window(char *name, t_window *win)
 {
 	SDL_DisplayMode	current;
 
-	SDL_Init(SDL_INIT_EVERYTHING);
-	TTF_Init();
+	if (SDL_Init(SDL_INIT_EVERYTHING) != SUCCESS)
+		return (FAILURE);
+	if (TTF_Init() == FAILURE)
+		return (FAILURE);
 	if (SDL_GetDesktopDisplayMode(0, &current) < 0)
 		return (FAILURE);
 	win->x = current.w * 0.9;

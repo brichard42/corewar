@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 14:42:06 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/21 17:14:27 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:19:08 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ int8_t			draw_structure_sides(t_window *win)
 	return (SUCCESS);
 }
 
-int8_t			underliner_helper(t_window *win, SDL_Point point, int text[3],
-				int ok)
+static int8_t	underliner_helper(t_window *win, SDL_Point point, int text[3],
+				uint8_t underliner)
 {
-	if (ok)
+	if (underliner)
 		if (draw_text(win, "|    |", point, text) == FAILURE)
 			return (FAILURE);
 	point.y += 2;

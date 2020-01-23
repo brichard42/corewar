@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/21 13:36:31 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 16:43:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int8_t		draw(t_window *win, t_vm *env, t_draw infos,
 	int	count;
 
 	count = 0;
-	SDL_SetRenderDrawColor(win->renderer, 76, 96, 133, 0);
-	SDL_RenderClear(win->renderer);
+	if (SDL_SetRenderDrawColor(win->renderer, 76, 96, 133, 0) < 0)
+		return (FAILURE);
+	if (SDL_RenderClear(win->renderer) < 0)
+		return (FAILURE);
 	if (draw_corewar(win) == FAILURE)
 		return (FAILURE);
 	if (draw_command_panel(win, infos.state))
@@ -75,14 +77,14 @@ static void	event_catcher2(t_window *win, t_draw *infos)
 void		event_catcher(t_window *win, t_draw *infos)
 {
 	if (win->event.type == SDL_QUIT)
-		infos->play = 0;
+		infos->play = OFF;
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_ESCAPE))
-		infos->play = 0;
+		infos->play = OFF;
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_SPACE))
-		infos->state = (infos->state == 0
-				|| infos->state == 2) ? 1 : 2;
+		infos->state = (infos->state == TO_START
+				|| infos->state == ACTIVE) ? PAUSED : ACTIVE;
 	if ((win->event.type == SDL_KEYUP
 			&& win->event.key.keysym.sym == SDLK_RIGHT))
 		infos->champ_ind = (infos->champ_ind < infos->champ_number - 1)
@@ -111,7 +113,7 @@ static void	informations_initializer(t_draw *infos, uint8_t champ_amount)
 	infos->champ_number = champ_amount;
 	infos->cycle_per_frame = 1;
 }
-
+uint8_t	must_dump(t_vm *vm);
 int8_t		drawer(t_window *win, t_vm *env)
 {
 	int			ret;
@@ -121,7 +123,7 @@ int8_t		drawer(t_window *win, t_vm *env)
 
 	d_process = &env->process_list;
 	informations_initializer(&infos, env->champ_amount);
-	while (infos.play == ON)
+	while (infos.play == ON && must_dump(env) == FALSE)
 	{
 		if (infos.cycle_per_frame == ++tmp_cpf)
 		{

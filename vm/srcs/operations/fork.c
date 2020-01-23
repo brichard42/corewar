@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 18:42:54 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/20 16:19:19 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/23 15:28:38 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	op_fork(t_vm *vm, t_process *process)
 												MEM_SIZE), process) == FAILURE)
 	{
 		delete_vm(vm);
+		ft_printf("exit fork\n");
 		exit(EXIT_FAILURE);
 	}
 	if (vm->verbose & F_VERBOSE_OP)
