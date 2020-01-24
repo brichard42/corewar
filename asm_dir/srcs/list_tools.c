@@ -25,6 +25,7 @@ t_cmd	*new_elem(t_asm *asmr)
 		exit_msg(ERROR_MALLOC, NULL, NULL, asmr);
 	elem->op_code = 0;
 	elem->label = NULL;
+	elem->multi_label = FALSE;
 	elem->size = 0;
 	elem->nb_line = 0;
 	elem->nb_param = 0;

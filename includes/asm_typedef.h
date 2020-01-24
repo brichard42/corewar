@@ -88,6 +88,7 @@ typedef struct		s_cmd
 {
 	int				op_code;
 	char			*label;
+	t_bool			multi_label;
 	t_param			params[MAX_ARGS_NUMBER];
 	int				nb_param;
 	size_t			size;

@@ -61,10 +61,27 @@ t_bool			check_label(char *str, t_asm *asmr)
 
 /*
 ** Stores the label using the size computed earlier.
+** If there is already a label, add ',' and the new label.
 */
 void			get_label(char *label, t_asm *asmr)
 {
-	if (!(asmr->label = ft_strnew(asmr->label_size)))
-		exit_msg(ERROR_MALLOC, NULL, NULL, NULL);
-	ft_strncpy(asmr->label, label, asmr->label_size);
+	char	*new_label;
+	size_t	size_old;
+
+	if (!asmr->label)
+	{
+		if (!(asmr->label = ft_strnew(asmr->label_size)))
+			exit_msg(ERROR_MALLOC, NULL, NULL, asmr);
+		ft_strncpy(asmr->label, label, asmr->label_size);
+	}
+	else
+	{
+		asmr->label = ft_str_addi_back(SEPARATOR_CHAR, asmr->label, 1);
+		size_old = ft_strlen(asmr->label);
+		new_label = ft_strnew(size_old + asmr->label_size);
+		ft_strcpy(new_label, asmr->label);
+		ft_strncpy(new_label + size_old, label, asmr->label_size);
+		free(asmr->label);
+		asmr->label = new_label;
+	}
 }

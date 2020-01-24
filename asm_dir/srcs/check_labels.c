@@ -18,14 +18,11 @@
 static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 {
 	t_cmd	*list;
-	size_t	size;
 
 	list = asmr->list;
-	size = ft_strlen(param->temp);
 	while (list)
 	{
-		if (list->label && size == ft_strlen(list->label) &&
-			!ft_strncmp(param->temp, list->label, size))
+		if (list->label && compare_label(list, param->temp))
 		{
 			if (list == cmd)
 				exit_msg(ERROR_LABEL_CMD, list->label, &(cmd->nb_line), asmr);

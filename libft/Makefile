@@ -84,6 +84,7 @@ SRCS =			ft_strlen.c \
 				ft_strclr.c \
 				ft_striter.c \
 				ft_striteri.c \
+				ft_str_addi_back.c \
 \
 				ft_atoi.c \
 				ft_atol.c \

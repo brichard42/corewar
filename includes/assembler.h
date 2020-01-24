@@ -68,6 +68,7 @@ void				check_params(t_asm *asmr);
 ** CHECK_PARAMS_2.C
 */
 int					get_type(char *str);
+t_bool				compare_label(t_cmd *cmd, char *label);
 
 /*
 ** CHECK_TYPES.C

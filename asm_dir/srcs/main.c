@@ -32,12 +32,12 @@ void				init_asm(t_asm *asmr)
 }
 
 //				DEBUG FUNCTION TO PRINT THE LIST OF INSTRUCTIONS
-// static void		print_list(t_cmd *list)
-// {
+//static void		print_list(t_cmd *list)
+//{
 // 	int 	i;
 // 	int 	j;
 // 	char 	*type;
-
+//
 // 	i = 1;
 // 	while (list)
 // 	{
@@ -64,7 +64,7 @@ void				init_asm(t_asm *asmr)
 // 		ft_putchar('\n');
 // 		list = list->next;
 // 	}
-// }
+//}
 
 /*
 ** Compute the chamion's size by adding all computed sizes of instructions list.

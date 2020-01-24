@@ -64,6 +64,8 @@ static void	get_all_op(char **tab, int i, t_asm *asmr)
 	if (asmr->label)
 	{
 		new->label = asmr->label;
+		if (ft_strchr(new->label, SEPARATOR_CHAR))
+			new->multi_label = TRUE;
 		asmr->label = NULL;
 		asmr->label_size = 0;
 	}
@@ -87,7 +89,7 @@ void		get_op(char *line, t_asm *asmr)
 	i = 0;
 	if (!(tab = ft_splitwhite(line)))
 		exit_msg(ERROR_MALLOC, NULL, NULL, asmr);
-	if (!asmr->label && check_label(tab[i], asmr))
+	if (check_label(tab[i], asmr))
 		get_label(tab[i++], asmr);
 	if (tab[i] && tab[i][0] != COMMENT_CHAR)
 		get_all_op(tab, i++, asmr);
