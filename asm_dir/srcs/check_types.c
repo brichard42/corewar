@@ -31,22 +31,22 @@ static void	check_param_type(t_cmd *cmd, int param_i, t_asm *asmr)
 		return ;
 	if (asmr->op_tab[cmd->op_code - 1].type_param[param_i] == 6 &&
 		(type == IND_CODE || type == DIR_CODE))
-			return ;
+		return ;
 	if (asmr->op_tab[cmd->op_code - 1].type_param[param_i] == 5 &&
 		(type == IND_CODE || type == REG_CODE))
-			return ;
+		return ;
 	if (asmr->op_tab[cmd->op_code - 1].type_param[param_i] == 4 &&
 		(type == IND_CODE))
-			return ;
+		return ;
 	if (asmr->op_tab[cmd->op_code - 1].type_param[param_i] == 3 &&
 		(type == DIR_CODE || type == REG_CODE))
-			return ;
+		return ;
 	if (asmr->op_tab[cmd->op_code - 1].type_param[param_i] == 2 &&
 		(type == DIR_CODE))
-			return ;
+		return ;
 	if (asmr->op_tab[cmd->op_code - 1].type_param[param_i] == 1 &&
 		(type == REG_CODE))
-			return ;
+		return ;
 	exit_msg(ERROR_PARAM_TYPE, NULL, &(cmd->nb_line), asmr);
 }
 
@@ -55,7 +55,7 @@ static void	check_param_type(t_cmd *cmd, int param_i, t_asm *asmr)
 */
 void		check_types(t_asm *asmr)
 {
-	t_cmd 	*list;
+	t_cmd	*list;
 	int		i;
 
 	list = asmr->list;

@@ -27,12 +27,15 @@ static void	get_name(char *line, t_asm *asmr)
 	{
 		asmr->is_name = FALSE;
 		asmr->got_name = TRUE;
-		asmr->header.prog_name[asmr->i_name] = '\0'; 
+		asmr->header.prog_name[asmr->i_name] = '\0';
 	}
 	while (ft_isspace(*line))
 		line++;
 	if (*line)
+	{
+		ft_printf("Char: %c\n", *line);
 		exit_msg(ERROR_SYNTAX, NULL, &(asmr->nb_line), asmr);
+	}
 }
 
 /*
@@ -43,14 +46,14 @@ static void	get_comment(char *line, t_asm *asmr)
 	while (*line && *line != '"')
 	{
 		if (asmr->i_comment > COMMENT_LENGTH)
-			exit_msg(ERROR_COMMENT_LENGTH, NULL, NULL, asmr);
+			exit_msg(ERROR_COMMENT_LEN, NULL, NULL, asmr);
 		asmr->header.comment[asmr->i_comment++] = *line++;
 	}
 	if (*line++ == '"')
 	{
 		asmr->is_comment = FALSE;
 		asmr->got_comment = TRUE;
-		asmr->header.comment[asmr->i_comment] = '\0'; 
+		asmr->header.comment[asmr->i_comment] = '\0';
 	}
 	while (ft_isspace(*line))
 		line++;
@@ -60,7 +63,6 @@ static void	get_comment(char *line, t_asm *asmr)
 
 /*
 ** Beginning of reading name, skip cmd string and whitespaces, set "is_name".
-** 
 */
 static void	handle_name(char *line, t_asm *asmr)
 {
@@ -93,8 +95,9 @@ static void	handle_comment(char *line, t_asm *asmr)
 ** Use 'is_***' to read name and comment on muliple lines.
 ** Get name then get comment.
 */
-void	get_header(char *line, t_asm *asmr)
+void		get_header(char *line, t_asm *asmr)
 {
+	ft_printf("%s\n", line);
 	if (asmr->is_name)
 		get_name(line, asmr);
 	else if (asmr->is_comment)

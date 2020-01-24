@@ -12,7 +12,7 @@
 
 #include "assembler.h"
 
-t_op    op_tab[17] =
+t_op g_op_tab[17] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
@@ -47,10 +47,11 @@ void	print_tab(void)
 	while (i < 16)
 	{
 		ft_printf("%s, %d, [%d, %d, %d], %d, %d, %s, %d, %d\n",
-				op_tab[i].name, op_tab[i].nb_param, op_tab[i].type_param[0],
-				op_tab[i].type_param[1], op_tab[i].type_param[2],
-				op_tab[i].op_code, op_tab[i].nb_cycle, op_tab[i].comment,
-				op_tab[i].have_param_byte, op_tab[i].is_half_int);
+				g_op_tab[i].name, g_op_tab[i].nb_param,
+				g_op_tab[i].type_param[0], g_op_tab[i].type_param[1],
+				g_op_tab[i].type_param[2], g_op_tab[i].op_code,
+				g_op_tab[i].nb_cycle, g_op_tab[i].comment,
+				g_op_tab[i].have_param_byte, g_op_tab[i].is_half_int);
 		i++;
 	}
 }
@@ -62,16 +63,16 @@ void	get_op_tab(t_op *tab)
 	i = 0;
 	while (i < 16)
 	{
-		tab[i].name = op_tab[i].name;
-		tab[i].nb_param = op_tab[i].nb_param;
-		tab[i].type_param[0] = op_tab[i].type_param[0];
-		tab[i].type_param[1] = op_tab[i].type_param[1];
-		tab[i].type_param[2] = op_tab[i].type_param[2];
-		tab[i].op_code = op_tab[i].op_code;
-		tab[i].nb_cycle = op_tab[i].nb_cycle;
-		tab[i].comment = op_tab[i].comment;
-		tab[i].have_param_byte = op_tab[i].have_param_byte;
-		tab[i].is_half_int = op_tab[i].is_half_int;
+		tab[i].name = g_op_tab[i].name;
+		tab[i].nb_param = g_op_tab[i].nb_param;
+		tab[i].type_param[0] = g_op_tab[i].type_param[0];
+		tab[i].type_param[1] = g_op_tab[i].type_param[1];
+		tab[i].type_param[2] = g_op_tab[i].type_param[2];
+		tab[i].op_code = g_op_tab[i].op_code;
+		tab[i].nb_cycle = g_op_tab[i].nb_cycle;
+		tab[i].comment = g_op_tab[i].comment;
+		tab[i].have_param_byte = g_op_tab[i].have_param_byte;
+		tab[i].is_half_int = g_op_tab[i].is_half_int;
 		i++;
 	}
 }

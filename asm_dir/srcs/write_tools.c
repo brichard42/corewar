@@ -65,14 +65,14 @@ void		write_nb_4(t_asm *asmr, int32_t fd, int32_t nb)
 }
 
 /*
-// Create the one byte parameter by adding the 2 bits of each param type.
-// Add many nul-bit as needed to fill the byte.
-// Finnaly, write it.
+** Create the one byte parameter by adding the 2 bits of each param type.
+** Add many nul-bit as needed to fill the byte.
+** Finnaly, write it.
 */
 void		write_param_byte(t_asm *asmr, int32_t fd, t_cmd *cmd)
 {
-	int 	i;
-	int8_t 	val_byte;
+	int		i;
+	int8_t	val_byte;
 
 	i = 0;
 	val_byte = 0;

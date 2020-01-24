@@ -18,8 +18,8 @@
 */
 static char	*get_param(char *str, int *i, t_asm *asmr)
 {
-	size_t 	size;
-	char 	*param;
+	size_t	size;
+	char	*param;
 
 	size = 0;
 	while (*str && *str != SEPARATOR_CHAR && *str != COMMENT_CHAR)
@@ -52,7 +52,8 @@ void		get_params(char *params, t_cmd *new, t_asm *asmr)
 			exit_msg(ERROR_ARGS_NUMBER, NULL, &(asmr->nb_line), asmr);
 		new->params[i_params++].str = get_param(&params[i], &i, asmr);
 		new->nb_param++;
-		if (params[i] == SEPARATOR_CHAR) {
+		if (params[i] == SEPARATOR_CHAR)
+		{
 			i++;
 			if (!params[i] || params[i] == COMMENT_CHAR)
 				exit_msg(ERROR_SYNTAX, NULL, &(asmr->nb_line), asmr);

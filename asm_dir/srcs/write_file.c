@@ -17,7 +17,7 @@
 */
 static char		*get_name(char *title, t_asm *asmr)
 {
-	char 	*name;
+	char	*name;
 	size_t	length;
 
 	length = ft_strlen(title);
@@ -42,7 +42,7 @@ static char		*get_name(char *title, t_asm *asmr)
 static int32_t	open_file(t_asm *asmr, char *file)
 {
 	int32_t	fd;
-	char 	*name;
+	char	*name;
 
 	name = get_name(file, asmr);
 	if ((fd = open(name, O_WRONLY | O_TRUNC | O_CREAT, 00755)) < 0)
@@ -52,51 +52,6 @@ static int32_t	open_file(t_asm *asmr, char *file)
 	}
 	free(name);
 	return (fd);
-}
-
-/*
-** Couldn't directly read and write the maximum bytes for champion's name,
-** as if name doesn't fill all memory, it could be corrupted.
-** So write until first '\0' then fill ourself.
-** Precisly, we fill to 129 (max = 128 + 1 for '\0'), then we add 3 more
-** blanks bytes because the memory works with group of 4 bytes.
-** (128 % 4 = 0 ; 129 % 4 = 1 ; 132 % 4 = 0)
-*/
-static void		write_magic_name_size(t_asm *asmr, int32_t fd)
-{
-	size_t	name_size;
-	size_t	i;
-	char	c;
-
-	write_nb_4(asmr, fd, (int32_t)asmr->header.magic);
-	c = '\0';
-	name_size = ft_strlen(asmr->header.prog_name);
-	if (write(fd, asmr->header.prog_name, name_size) != (int)name_size)
-		exit_msg(ERROR_FILE_WRITE, NULL, NULL, asmr);
-	i = PROG_NAME_LENGTH - name_size + 4;
-	while (i--)
-		if (write(fd, &c, 1) != 1)
-			exit_msg(ERROR_FILE_WRITE, NULL, NULL, asmr);
-	write_nb_4(asmr, fd, (int32_t)asmr->header.prog_size);
-}
-
-/*
-** Same remark as previous function.
-*/
-static void		write_comment(t_asm *asmr, int32_t fd)
-{
-	size_t	comment_size;
-	size_t	i;
-	char	c;
-
-	c = '\0';
-	comment_size = ft_strlen(asmr->header.comment);
-	if (write(fd, asmr->header.comment, comment_size) != (int)comment_size)
-			exit_msg(ERROR_FILE_WRITE, NULL, NULL, asmr);
-	i = COMMENT_LENGTH - comment_size + 4;
-	while (i--)
-		if (write(fd, &c, 1) != 1)
-			exit_msg(ERROR_FILE_WRITE, NULL, NULL, asmr);	
 }
 
 /*
@@ -122,7 +77,7 @@ void			write_file(t_asm *asmr, char *title)
 {
 	int32_t	fd;
 	t_cmd	*list;
-	
+
 	fd = open_file(asmr, title);
 	write_magic_name_size(asmr, fd);
 	write_comment(asmr, fd);

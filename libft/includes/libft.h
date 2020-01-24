@@ -25,7 +25,8 @@ typedef enum		e_bool
 	TRUE = 1
 }					t_bool;
 
-# define GNL_CLEAR		-42
+# define GNL_CLEAR	-42
+
 /*
 **	TYPEDEF
 */
@@ -179,7 +180,7 @@ void			ft_exit_malloc(void);
 
 int				ft_strcheck(char *s, int (*check)(int));
 
-char 			**ft_splitwhite(char const *s);
+char			**ft_splitwhite(char const *s);
 t_bool			ft_isspace(int c);
 void			ft_freetabsplit(char **tab);
 t_bool			ft_str_is_numeric(const char *s);

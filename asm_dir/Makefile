@@ -46,6 +46,7 @@ SRCS += check_labels.c
 SRCS += check_types.c
 SRCS += write_tools.c
 SRCS += write_file.c
+SRCS += write_header.c
 
 #------------------------------------------------------------------------------#
 #                                  DIRECTORIES                                 #

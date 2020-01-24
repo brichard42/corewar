@@ -93,4 +93,10 @@ void				write_param_byte(t_asm *asmr, int32_t fd, t_cmd *cmd);
 void				write_param(t_asm *asmr, int32_t fd, t_param *param,
 																	int opcode);
 
+/*
+** WRITE_HEADER.c
+*/
+void				write_magic_name_size(t_asm *asmr, int32_t fd);
+void				write_comment(t_asm *asmr, int32_t fd);
+
 #endif

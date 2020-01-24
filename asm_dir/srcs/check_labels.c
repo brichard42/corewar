@@ -17,7 +17,7 @@
 */
 static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 {
-	t_cmd 	*list;
+	t_cmd	*list;
 	size_t	size;
 
 	list = asmr->list;
@@ -38,36 +38,49 @@ static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 }
 
 /*
-** 
+** If the label if after, start counting distance and stop when found it.
 */
-static int		get_label_value(t_cmd *cmd, t_cmd *cmd_label, t_asm *asmr)
+static int		get_label_value_for(t_cmd *cmd, t_cmd *cmd_label)
 {
 	int		res_forward;
-	int		res_backward;
-	t_bool	start;
-	t_cmd	*backward;
 	t_cmd	*forward;
 
 	forward = cmd;
 	res_forward = forward->size;
 	forward = forward->next;
-	backward = asmr->list;
-	res_backward = 0;
-	start = FALSE;
-	while (backward || forward)
+	while (forward)
 	{
 		if (forward == cmd_label)
 			return (res_forward);
-		if (forward)
-			res_forward += forward->size;
+		res_forward += forward->size;
+		forward = forward->next;
+	}
+	return (0);
+}
+
+/*
+** If the label is before, start at beginning and start counting distance
+** when found it and stop when found cmd.
+*/
+static int		get_label_value(t_cmd *cmd, t_cmd *cmd_label, t_asm *asmr)
+{
+	int		res_backward;
+	t_bool	start;
+	t_cmd	*backward;
+
+	if ((res_backward = get_label_value_for(cmd, cmd_label)) != 0)
+		return (res_backward);
+	backward = asmr->list;
+	start = FALSE;
+	while (backward)
+	{
 		if (backward == cmd && start)
 			return (res_backward);
 		if (backward == cmd_label)
 			start = TRUE;
 		if (backward && start)
 			res_backward -= (int)backward->size;
-		backward = backward ? backward->next : NULL;
-		forward = forward ? forward->next : NULL;
+		backward = backward->next;
 	}
 	return (0);
 }
@@ -99,7 +112,7 @@ static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 */
 void			check_labels(t_asm *asmr)
 {
-	t_cmd 	*list;
+	t_cmd	*list;
 	int		i;
 
 	list = asmr->list;

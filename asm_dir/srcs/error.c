@@ -33,9 +33,8 @@ void	exit_msg(char *error_msg, char *str, size_t *nb, t_asm *asmr)
 {
 	if (str && nb)
 		ft_printf(error_msg, str, *nb);
-	else if (str) {
+	else if (str)
 		ft_printf(error_msg, str);
-	}
 	else if (nb)
 		ft_printf(error_msg, *nb);
 	else

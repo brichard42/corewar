@@ -53,7 +53,7 @@ t_bool			check_label(char *str, t_asm *asmr)
 	{
 		if (list->label && size == ft_strlen(list->label)
 			&& !ft_strncmp(str, list->label, size))
-			exit_msg(ERROR_LABEL_DUPLICATE, list->label, &(asmr->nb_line), asmr);
+			exit_msg(ERROR_LABEL_DUP, list->label, &(asmr->nb_line), asmr);
 		list = list->next;
 	}
 	return (TRUE);

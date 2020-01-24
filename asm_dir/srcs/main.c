@@ -15,7 +15,7 @@
 /*
 ** Initializes assembler structure's values.
 */
-void	init_asm(t_asm *asmr)
+void				init_asm(t_asm *asmr)
 {
 	get_op_tab(asmr->op_tab);
 	asmr->header.magic = COREWAR_EXEC_MAGIC;
@@ -69,9 +69,9 @@ void	init_asm(t_asm *asmr)
 /*
 ** Compute the chamion's size by adding all computed sizes of instructions list.
 */
-static unsigned int 	get_prog_size(t_cmd *list, t_asm *asmr)
+static unsigned int	get_prog_size(t_cmd *list, t_asm *asmr)
 {
-	unsigned int 	res;
+	unsigned int	res;
 
 	res = 0;
 	while (list)
@@ -93,7 +93,7 @@ static unsigned int 	get_prog_size(t_cmd *list, t_asm *asmr)
 **	Write the binary result and free malloced memory.
 **		(write_file & free_asm)
 */
-int		main(int ac, char **av)
+int					main(int ac, char **av)
 {
 	t_asm	asmr;
 

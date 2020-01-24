@@ -18,7 +18,7 @@
 t_cmd	*new_elem(t_asm *asmr)
 {
 	t_cmd	*elem;
-	int 	i;
+	int		i;
 
 	i = 0;
 	if (!(elem = (t_cmd *)ft_memalloc(sizeof(t_cmd))))
@@ -60,7 +60,7 @@ t_cmd	*add_elem(t_cmd *list, t_cmd *elem)
 */
 void	clear_list(t_cmd *list)
 {
-	t_cmd 	*cur;
+	t_cmd	*cur;
 	int		i;
 
 	i = 0;

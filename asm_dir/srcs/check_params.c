@@ -28,7 +28,7 @@ static void		check_value(t_cmd *cmd, int type, char *str, t_asm *asmr)
 /*
 ** If its a label stores it for further computing, else simple atoi.
 */
-static int	 	get_value(t_param *param, int type, char *str)
+static int		get_value(t_param *param, int type, char *str)
 {
 	if (type == REG_CODE || type == DIR_CODE)
 		str++;
@@ -37,7 +37,7 @@ static int	 	get_value(t_param *param, int type, char *str)
 		param->temp = str + 1;
 		return (0);
 	}
-	return ft_atoi(str);
+	return (ft_atoi(str));
 }
 
 /*
@@ -49,7 +49,7 @@ static int	 	get_value(t_param *param, int type, char *str)
 static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 {
 	size_t	res;
-	int 	i;
+	int		i;
 
 	res = 1;
 	if (asmr->op_tab[cmd->op_code - 1].have_param_byte)
@@ -74,7 +74,7 @@ static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 ** For each parameter:
 ** 	Get the type from the string.
 **	Check and get the value from the string.
-** 	Compute the size of hex code. 
+** 	Compute the size of hex code.
 */
 static void		check_param(t_cmd *cmd, t_asm *asmr)
 {
@@ -99,7 +99,7 @@ static void		check_param(t_cmd *cmd, t_asm *asmr)
 */
 void			check_params(t_asm *asmr)
 {
-	t_cmd 	*list;
+	t_cmd	*list;
 
 	list = asmr->list;
 	while (list)

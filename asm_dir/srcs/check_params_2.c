@@ -15,7 +15,7 @@
 /*
 ** Get the type depending on the first character.
 */
-int		get_type(char *str)
+int	get_type(char *str)
 {
 	if (str[0] == 'r')
 		return (REG_CODE);

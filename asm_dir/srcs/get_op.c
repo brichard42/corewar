@@ -15,7 +15,7 @@
 /*
 ** Check if the instruction name exist and transform it in op_code.
 */
-static int		get_op_code(char *str, t_asm *asmr)
+static int	get_op_code(char *str, t_asm *asmr)
 {
 	int i;
 
@@ -23,7 +23,7 @@ static int		get_op_code(char *str, t_asm *asmr)
 	while (i < 16)
 	{
 		if (ft_strcmp(str, asmr->op_tab[i].name) == 0)
-			return asmr->op_tab[i].op_code;
+			return (asmr->op_tab[i].op_code);
 		i++;
 	}
 	exit_msg(ERROR_OP_NAME, NULL, &(asmr->nb_line), asmr);
@@ -34,11 +34,11 @@ static int		get_op_code(char *str, t_asm *asmr)
 ** Transform the remaining array cells (only the parameters at this point)
 ** in one unique string.
 */
-static char		*one_str(char **tab, int i, t_asm *asmr)
+static char	*one_str(char **tab, int i, t_asm *asmr)
 {
 	size_t	size;
 	int		j;
-	char 	*res;
+	char	*res;
 
 	size = 0;
 	j = i;
@@ -55,10 +55,10 @@ static char		*one_str(char **tab, int i, t_asm *asmr)
 ** Create a new instruction, get and stores: label, line, op_code, parameters.
 ** Add the new instruction in asmr list.
 */
-static void		get_all_op(char **tab, int i, t_asm *asmr)
+static void	get_all_op(char **tab, int i, t_asm *asmr)
 {
 	t_cmd	*new;
-	char 	*params;
+	char	*params;
 
 	new = new_elem(asmr);
 	if (asmr->label)
@@ -79,10 +79,10 @@ static void		get_all_op(char **tab, int i, t_asm *asmr)
 ** Split the string at whitespaces, check if there is a label and get it,
 ** get the instruction.
 */
-void			get_op(char *line, t_asm *asmr)
+void		get_op(char *line, t_asm *asmr)
 {
-	char 	**tab;
-	int 	i;
+	char	**tab;
+	int		i;
 
 	i = 0;
 	if (!(tab = ft_splitwhite(line)))
