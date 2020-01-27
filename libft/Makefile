@@ -6,7 +6,7 @@
 #    By: brichard <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 12:04:00 by brichard          #+#    #+#              #
-#    Updated: 2020/01/23 13:43:37 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/27 17:57:42 by tlandema         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRCS =			ft_strlen.c \
 				ft_strnequ.c \
 				ft_strnew.c \
 				ft_realloc.c \
+				ft_strrev.c \
 				ft_strmap.c \
 				ft_strmapi.c \
 				ft_strsub.c \

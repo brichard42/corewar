@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/12 16:43:25 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:48:26 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ static void	handle_comment(char *line, t_asm *asmr)
 */
 void		get_header(char *line, t_asm *asmr)
 {
-	ft_printf("%s\n", line);
 	if (asmr->is_name)
 		get_name(line, asmr);
 	else if (asmr->is_comment)

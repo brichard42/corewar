@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:02:53 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 15:42:55 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:18:01 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	live(t_vm *vm, t_process *process)
 	{
 		vm->champ[num].last_live_cycle = vm->current_cycle;
 		vm->winner_index = num;
-		if (vm->verbose & F_VERBOSE_LIVE)
 			ft_printf("Player %d (%s) is said to be alive\n", num,
 					vm->champ[num].name);
 	}

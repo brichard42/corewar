@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:42:00 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/22 13:39:28 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:11:49 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ERROR_FILE_NAME	"The input file must end with '.s'.\n"
 # define ERROR_FILE_OPEN	"Error creating the binary file : %s.\n"
 # define ERROR_FILE_WRITE	"Error writing in the binary file.\n"
+# define ERROR_NO_CODE		"Nothing after header.\n"
 
 /*
 ** ===========

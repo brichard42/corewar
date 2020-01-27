@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:04:57 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/21 16:13:02 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:59:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char			*ft_strnstr(const char *haystack, \
 char			*ft_strchr(const char *s, int c);
 char			*ft_strnchr(const char *s, int c, size_t len);
 char			*ft_strrchr(const char *s, int c);
+char			*ft_strrev(char *str);
 int				ft_strequ(char const *s1, char const *s);
 int				ft_strnequ(char const *s1, char const *s, size_t n);
 char			*ft_strnew(size_t size);
