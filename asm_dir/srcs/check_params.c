@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 17:08:31 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:30:13 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 	while (i < cmd->nb_param)
 	{
 		if (cmd->params[i].type == REG_CODE)
-			res += REG_SIZE;
+			res += SIZE_REG;
 		else if (cmd->params[i].type == IND_CODE
 				|| asmr->op_tab[cmd->op_code - 1].is_half_int)
 			res += IND_SIZE;
@@ -80,6 +80,8 @@ static void		check_param(t_cmd *cmd, t_asm *asmr)
 {
 	int i;
 
+	if (cmd->op_code < 1 || cmd->op_code > 16)
+		return ;
 	if (cmd->nb_param != asmr->op_tab[cmd->op_code - 1].nb_param)
 		exit_msg(ERROR_ARGS_NUMBER, NULL, &(cmd->nb_line), asmr);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 17:08:31 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:49:30 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static void		write_cmd(t_asm *asmr, int32_t fd, t_cmd *cmd)
 {
 	int i;
 
+	if (cmd->size == 0)
+		return ;
 	write_nb_1(asmr, fd, cmd->op_code);
 	if (asmr->op_tab[cmd->op_code - 1].have_param_byte)
 		write_param_byte(asmr, fd, cmd);

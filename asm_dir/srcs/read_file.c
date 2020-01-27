@@ -6,11 +6,25 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/21 16:08:27 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:33:46 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "assembler.h"
+
+static void	get_last_label(t_asm *asmr)
+{
+	t_cmd	*new;
+
+	new = new_elem(asmr);
+	new->label = asmr->label;
+	if (ft_strchr(new->label, SEPARATOR_CHAR))
+		new->multi_label = TRUE;
+	asmr->label = NULL;
+	asmr->label_size = 0;
+	new->nb_line = asmr->nb_line;
+	asmr->list = add_elem(asmr->list, new);
+}
 
 /*
 ** Skip all withspaces.
@@ -50,5 +64,5 @@ void		read_file(char *file, t_asm *asmr)
 	}
 	close(fd);
 	if (asmr->label)
-		exit_msg(ERROR_LABEL_ALONE, asmr->label, &(asmr->nb_line), asmr);
+		get_last_label(asmr);
 }

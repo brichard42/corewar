@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 17:08:31 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:30:30 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void				init_asm(t_asm *asmr)
 //static void		print_list(t_cmd *list)
 //{
 // 	int 	i;
-// 	int 	j;
-// 	char 	*type;
+// 	int 	j; // 	char 	*type;
 //
 // 	i = 1;
 // 	while (list)
