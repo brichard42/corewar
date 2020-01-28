@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/28 16:53:59 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:19:23 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,13 @@
 */
 void				init_asm(t_asm *asmr)
 {
+	ft_bzero((void *)asmr, sizeof(t_asm));
 	get_op_tab(asmr->op_tab);
 	asmr->header.magic = COREWAR_EXEC_MAGIC;
 	asmr->is_name = FALSE;
-	asmr->i_name = 0;
 	asmr->got_name = FALSE;
 	asmr->is_comment = FALSE;
-	asmr->i_comment = 0;
 	asmr->got_comment = FALSE;
-	asmr->label = NULL;
-	asmr->label_size = 0;
-	asmr->nb_line = 0;
-	asmr->list = NULL;
 }
 
 //				DEBUG FUNCTION TO PRINT THE LIST OF INSTRUCTIONS

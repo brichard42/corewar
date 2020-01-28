@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:30:42 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/28 12:55:35 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/28 17:19:33 by tlandema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,11 @@
 t_cmd	*new_elem(t_asm *asmr)
 {
 	t_cmd	*elem;
-	int		i;
 
-	i = 0;
 	if (!(elem = (t_cmd *)ft_memalloc(sizeof(t_cmd))))
 		exit_msg(ERROR_MALLOC, NULL, NULL, asmr);
-	elem->op_code = 0;
-	elem->label = NULL;
+	ft_bzero((void *)elem, sizeof(t_cmd));
 	elem->multi_label = FALSE;
-	elem->size = 0;
-	elem->nb_line = 0;
-	elem->nb_param = 0; while (i < MAX_ARGS_NUMBER)
-	{
-		elem->params[i].str = NULL;
-		elem->params[i].type = 0;
-		elem->params[i].value = 0;
-		elem->params[i++].temp = NULL;
-	}
-	elem->next = NULL;
 	return (elem);
 }
 
