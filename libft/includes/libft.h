@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:04:57 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/27 17:59:23 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:27:00 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,6 @@ int				ft_strcheck(char *s, int (*check)(int));
 
 char			**ft_splitwhite(char const *s);
 t_bool			ft_isspace(int c);
-void			ft_freetabsplit(char **tab);
+void			ft_freetabsplit(char ***tab);
 t_bool			ft_str_is_numeric(const char *s);
 #endif

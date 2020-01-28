@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/27 17:33:46 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:07:03 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,20 @@ void		read_file(char *file, t_asm *asmr)
 {
 	int		fd;
 	int		ret;
-	char	*line;
 
 	if ((fd = open(file, O_RDONLY)) < 0)
 		exit_msg(ERROR_FILE, file, NULL, asmr);
-	while ((ret = ft_gnl(fd, &line)))
+	while ((ret = ft_gnl(fd, &asmr->line)))
 	{
 		if (ret == -1)
 			exit_msg(ERROR_FILE, file, NULL, asmr);
 		asmr->nb_line++;
-		handle_line(line, asmr);
-		free(line);
+		handle_line(asmr->line, asmr);
+		ft_strdel(&asmr->line);
 	}
-	close(fd);
+	if (close(fd) < 0)
+		exit_msg(ERROR_CLOSE_RFILE, NULL, NULL, asmr);
 	if (asmr->label)
 		get_last_label(asmr);
+	ft_strdel(&asmr->line);
 }

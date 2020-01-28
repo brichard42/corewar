@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:59:19 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/21 17:04:36 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:51:52 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 */
 void	free_asm(t_asm *asmr)
 {
-	if (asmr->label)
-		free(asmr->label);
+	ft_strdel(&asmr->label);
+	ft_strdel(&asmr->line);
+	ft_strdel(&asmr->garbage.params);
+	ft_freetabsplit(&asmr->garbage.tab);
 	clear_list(asmr->list);
 }
 
@@ -41,5 +43,6 @@ void	exit_msg(char *error_msg, char *str, size_t *nb, t_asm *asmr)
 		ft_printf(error_msg);
 	if (asmr)
 		free_asm(asmr);
-	exit(1);
+	ft_gnl(-42, NULL);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:42:00 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/27 18:11:49 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/28 13:23:09 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define ERROR_FILE_OPEN	"Error creating the binary file : %s.\n"
 # define ERROR_FILE_WRITE	"Error writing in the binary file.\n"
 # define ERROR_NO_CODE		"Nothing after header.\n"
+# define ERROR_CLOSE_RFILE	"Couldn't close the .s file at end of program.\n"
+# define ERROR_CLOSE_WFILE	"Couldn't close the .cor file at end of program.\n"
 
 /*
 ** ===========

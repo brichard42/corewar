@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/27 16:30:49 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:52:43 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*one_str(char **tab, int i, t_asm *asmr)
 static void	get_all_op(char **tab, int i, t_asm *asmr)
 {
 	t_cmd	*new;
-	char	*params;
+	char	**params;
 
 	new = new_elem(asmr);
 	if (asmr->label)
@@ -69,12 +69,13 @@ static void	get_all_op(char **tab, int i, t_asm *asmr)
 		asmr->label = NULL;
 		asmr->label_size = 0;
 	}
+	asmr->list = add_elem(asmr->list, new);
 	new->nb_line = asmr->nb_line;
 	new->op_code = get_op_code(tab[i++], asmr);
-	params = one_str(tab, i, asmr);
-	get_params(params, new, asmr);
-	asmr->list = add_elem(asmr->list, new);
-	free(params);
+	params = &asmr->garbage.params;
+	*params = one_str(tab, i, asmr);
+	get_params(*params, new, asmr);
+	ft_strdel(params);
 }
 
 /*
@@ -83,15 +84,16 @@ static void	get_all_op(char **tab, int i, t_asm *asmr)
 */
 void		get_op(char *line, t_asm *asmr)
 {
-	char	**tab;
+	char	***tab;
 	int		i;
 
 	i = 0;
-	if (!(tab = ft_splitwhite(line)))
+	if (!(asmr->garbage.tab  = ft_splitwhite(line)))
 		exit_msg(ERROR_MALLOC, NULL, NULL, asmr);
-	if (check_label(tab[i], asmr))
-		get_label(tab[i++], asmr);
-	if (tab[i] && tab[i][0] != COMMENT_CHAR)
-		get_all_op(tab, i++, asmr);
+	tab = &asmr->garbage.tab;
+	if (check_label((*tab)[i], asmr))
+		get_label((*tab)[i++], asmr);
+	if ((*tab)[i] && (*tab)[i][0] != COMMENT_CHAR)
+		get_all_op((*tab), i++, asmr);
 	ft_freetabsplit(tab);
 }

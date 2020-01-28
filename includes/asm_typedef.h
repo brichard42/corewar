@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/22 13:53:28 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:51:52 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ typedef struct		s_op
 typedef struct		s_param
 {
 	char			*str;
+	char			*temp;
 	int				type;
 	int				value;
-	char			*temp;
 }					t_param;
 
 /*
@@ -86,14 +86,14 @@ typedef struct		s_param
 */
 typedef struct		s_cmd
 {
-	int				op_code;
+	struct s_cmd	*next;
 	char			*label;
-	t_bool			multi_label;
 	t_param			params[MAX_ARGS_NUMBER];
+	t_bool			multi_label;
+	int				op_code;
 	int				nb_param;
 	size_t			size;
 	size_t			nb_line;
-	struct s_cmd	*next;
 }					t_cmd;
 
 /*
@@ -117,20 +117,29 @@ typedef struct		s_cmd
 ** - list:		  Linked list of instructions.
 */
 
+typedef struct		s_garbage
+{
+	char			**tab;
+	char			*params;
+
+}					t_garbage;
+
 typedef struct		s_asm
 {
+	char			*label;
+	char			*line;
+	t_cmd			*list;
 	t_op			op_tab[16];
+	t_garbage		garbage;
 	t_header		header;
 	t_bool			is_name;
-	int				i_name;
 	t_bool			got_name;
 	t_bool			is_comment;
-	int				i_comment;
 	t_bool			got_comment;
-	char			*label;
+	int				i_name;
+	int				i_comment;
 	size_t			label_size;
 	size_t			nb_line;
-	t_cmd			*list;
 }					t_asm;
 
 #endif

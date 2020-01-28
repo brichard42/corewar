@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:30:42 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/28 11:33:58 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/28 12:55:35 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,11 @@ void	clear_list(t_cmd *list)
 	while (list)
 	{
 		cur = list;
-		if (cur->label)
-			free(cur->label);
+		ft_strdel(&cur->label);
 		i = 0;
 		while (i < MAX_ARGS_NUMBER)
-			free(cur->params[i++].str);
+			ft_strdel(&cur->params[i++].str);
 		list = cur->next;
-		free(cur);
+		ft_memdel((void **)&cur);
 	}
 }

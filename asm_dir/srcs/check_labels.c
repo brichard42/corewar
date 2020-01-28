@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 17:08:31 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:58:16 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 	while (list)
 	{
 		if (list->label && compare_label(list, param->temp))
-		{
-			if (list == cmd)
-				exit_msg(ERROR_LABEL_CMD, list->label, &(cmd->nb_line), asmr);
 			return (list);
-		}
 		list = list->next;
 	}
 	exit_msg(ERROR_LABEL_UNKNOW, param->temp, &(cmd->nb_line), asmr);
@@ -86,7 +82,6 @@ static int		get_label_value(t_cmd *cmd, t_cmd *cmd_label, t_asm *asmr)
 ** Check if the type is REG and its value is between 1 and REG_NUMBER.
 ** If there if a label, check if it exist then get its value.
 ** If returned value is neativ, replace it.
-** 	(0xFFFF: max of 2 bytes)
 */
 static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 {
@@ -99,8 +94,6 @@ static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 	{
 		cmd_label = label_exist(param, cmd, asmr);
 		param->value = get_label_value(cmd, cmd_label, asmr);
-		if (param->value < 0)
-			param->value = 0xFFFF + 1 + param->value;
 	}
 }
 

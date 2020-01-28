@@ -6,7 +6,7 @@
 #    By: armoulin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/28 13:51:05 by armoulin          #+#    #+#              #
-#    Updated: 2020/01/21 17:47:49 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/28 13:26:45 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,9 @@ CC = gcc
 
 DEBUG = 0
 
+ifeq ($(DEBUG), 2)
+	CFLAGS += -g3
+endif
 ifeq ($(DEBUG), 1)
 	CFLAGS += -fsanitize=address,undefined
 	CFLAGS += -g3

@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/27 18:11:04 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:19:45 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static int32_t	open_file(t_asm *asmr, char *file)
 	name = get_name(file, asmr);
 	if ((fd = open(name, O_WRONLY | O_TRUNC | O_CREAT, 00755)) < 0)
 	{
-		free(name);
+		ft_strdel(&name);
 		exit_msg(ERROR_FILE_OPEN, file, NULL, asmr);
 	}
-	free(name);
+	ft_strdel(&name);
 	return (fd);
 }
 

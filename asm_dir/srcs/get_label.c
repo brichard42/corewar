@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/12 16:43:25 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:17:18 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void			get_label(char *label, t_asm *asmr)
 		new_label = ft_strnew(size_old + asmr->label_size);
 		ft_strcpy(new_label, asmr->label);
 		ft_strncpy(new_label + size_old, label, asmr->label_size);
-		free(asmr->label);
+		ft_strdel(&asmr->label);
 		asmr->label = new_label;
 	}
 }

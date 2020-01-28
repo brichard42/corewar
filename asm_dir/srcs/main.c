@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/27 18:06:49 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:53:59 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,17 +105,7 @@ int					main(int ac, char **av)
 	check_labels(&asmr);
 	asmr.header.prog_size = get_prog_size(asmr.list, &asmr);
 	write_file(&asmr, av[ac - 1]);
-	//							START DEBUG
-	// ft_printf("Name = %s\n", asmr.header.prog_name);
-	// ft_printf("Comment = %s\n", asmr.header.comment);
-	// ft_printf("Prog_Size = %u\n", asmr.header.prog_size);
-	// print_list(asmr.list);
-	// print_tab();
-	//							END DEBUG
 	free_asm(&asmr);
-	//ft_printf("Writing in the program %scor\n",
-	//
-	//		ft_strrev(ft_strchr(ft_strrev(av[1]), '.')));
 	av[1][ft_strlen(av[1]) - 1] = '\0';
 	ft_printf("Writing in the program %scor\n", av[1], '.');
 	return (0);
