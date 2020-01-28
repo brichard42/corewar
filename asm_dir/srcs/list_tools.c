@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:30:42 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/07 09:43:50 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/28 11:33:58 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ t_cmd	*new_elem(t_asm *asmr)
 	elem->multi_label = FALSE;
 	elem->size = 0;
 	elem->nb_line = 0;
-	elem->nb_param = 0;
-	while (i < MAX_ARGS_NUMBER)
+	elem->nb_param = 0; while (i < MAX_ARGS_NUMBER)
 	{
 		elem->params[i].str = NULL;
 		elem->params[i].type = 0;
@@ -64,12 +63,12 @@ void	clear_list(t_cmd *list)
 	t_cmd	*cur;
 	int		i;
 
-	i = 0;
 	while (list)
 	{
 		cur = list;
 		if (cur->label)
 			free(cur->label);
+		i = 0;
 		while (i < MAX_ARGS_NUMBER)
 			free(cur->params[i++].str);
 		list = cur->next;
