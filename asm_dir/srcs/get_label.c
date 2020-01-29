@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 15:40:47 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/29 17:25:56 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void			get_label(char *label, t_asm *asmr)
 	{
 		asmr->label = ft_str_addi_back(SEPARATOR_CHAR, asmr->label, 1);
 		size_old = ft_strlen(asmr->label);
-		new_label = ft_strnew(size_old + asmr->label_size);
+		if (!(new_label = ft_strnew(size_old + asmr->label_size)))
+			exit_msg(ERROR_MALLOC, NULL, NULL, asmr);
 		ft_strcpy(new_label, asmr->label);
 		ft_strncpy(new_label + size_old, label, asmr->label_size);
 		ft_strdel(&asmr->label);
