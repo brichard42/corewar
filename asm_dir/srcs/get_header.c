@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/28 17:08:30 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/29 14:24:12 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ static void	get_name(char *line, t_asm *asmr)
 	while (ft_isspace(*line))
 		line++;
 	if (*line)
-	{
-		ft_printf("Char: %c\n", *line);
 		exit_msg(ERROR_SYNTAX, NULL, &(asmr->nb_line), asmr);
-	}
 }
 
 /*

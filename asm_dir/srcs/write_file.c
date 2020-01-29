@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/28 16:19:45 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/29 15:45:17 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,12 @@ void			write_file(t_asm *asmr, char *title)
 	write_comment(asmr, fd);
 	list = asmr->list;
 	if (list == NULL)
-		exit_msg(ERROR_NO_CODE, NULL, NULL, NULL);
+		exit_msg(ERROR_NO_CODE, NULL, NULL, asmr);
 	while (list)
 	{
 		write_cmd(asmr, fd, list);
 		list = list->next;
 	}
-	close(fd);
+	if (close(fd) < 0)
+		exit_msg(ERROR_CLOSE_RFILE, NULL, NULL, asmr);
 }
