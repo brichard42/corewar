@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/30 14:41:58 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:11:17 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,27 @@ static void	get_last_label(t_asm *asmr)
 }
 
 /*
-** Skip all withspaces.
+** Skip all withspaces if not reading name or comment.
 ** Get the header (name + comment).
 ** Get instructions.
 */
 
 static void	handle_line(char *line, t_asm *asmr)
 {
-	while (*line && ft_isspace(*line))
-		line++;
-	if (!(*line) || *line == COMMENT_CHAR)
+	if (!asmr->is_name && !asmr->is_comment)
+		while (*line && ft_isspace(*line))
+			line++;
+	if (*line == COMMENT_CHAR && (!asmr->is_name && !asmr->is_comment))
 		return ;
-	else if (!asmr->got_name || !asmr->got_comment)
+	if (!(*line))
+	{
+		if (asmr->is_name)
+			asmr->header.prog_name[asmr->i_name++] = '\n';
+		else if (asmr->is_comment)
+			asmr->header.comment[asmr->i_comment++] = '\n';
+		return ;
+	}
+	if (!asmr->got_name || !asmr->got_comment)
 		get_header(line, asmr);
 	else
 		get_op(line, asmr);

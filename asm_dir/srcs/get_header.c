@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/30 14:39:41 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:11:52 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,15 @@ static void	handle_comment(char *line, t_asm *asmr)
 void		get_header(char *line, t_asm *asmr)
 {
 	if (asmr->is_name)
+	{
+		asmr->header.prog_name[asmr->i_name++] = '\n';
 		get_name(line, asmr);
+	}
 	else if (asmr->is_comment)
+	{
+		asmr->header.comment[asmr->i_comment++] = '\n';
 		get_comment(line, asmr);
+	}
 	else if (!asmr->got_name
 		&& !ft_strncmp(line, NAME_CMD_STRING,
 						ft_strlen(NAME_CMD_STRING)))
