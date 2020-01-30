@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 11:46:53 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/23 11:11:19 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:40:48 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	parsing_error(t_parser *parser, int32_t error_code)
 									ERR_MSG8, ERR_MSG9, ERR_MSG10, ERR_MSG11,
 									ERR_MSG12, ERR_MSG13, ERR_MSG14, ERR_MSG15,
 									ERR_MSG16, ERR_MSG17, ERR_MSG18, ERR_MSG19,
-									ERR_MSG20, ERR_MSG21, ERR_MSG22};
+									ERR_MSG20, ERR_MSG21};
 	static char *champ_pos[4] = {"first", "second", "third", "fourth"};
 
 	ft_printf(err_str[error_code], error_code >= 7 && error_code <= 18 ?

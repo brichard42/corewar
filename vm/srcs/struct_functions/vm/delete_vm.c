@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/20 16:13:57 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:42:43 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	delete_vm(t_vm *to_delete)
 		free_process_list(&to_delete->process_list);
 		if (to_delete->win != NULL)
 		{
+			ft_printf("Plop\n");
 			SDL_DestroyWindow(((t_window *)to_delete->win)->window);
 			SDL_DestroyRenderer(((t_window *)to_delete->win)->renderer);
 		}
