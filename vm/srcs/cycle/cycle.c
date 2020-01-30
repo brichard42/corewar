@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/30 10:58:04 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 13:23:43 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 int				is_opcode(char data)
 {
 	if (data > 0 && data < 17)
-		return (1);
-	return (0);
+		return (1); return (0);
 }
 
 uint8_t			must_dump(t_vm *vm) {
