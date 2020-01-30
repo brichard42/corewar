@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 17:35:29 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/17 15:48:49 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 17:00:06 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vm	init_vm(void)
 	new_vm.live_check_count = 0;
 	new_vm.cycle_to_dump = -1;
 	new_vm.champ_amount = 0;
-	new_vm.verbose = OFF;
+	new_vm.verbose = 1;
 	new_vm.winner_index = 0;
 	return (new_vm);
 }

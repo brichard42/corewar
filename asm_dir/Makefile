@@ -6,7 +6,7 @@
 #    By: armoulin <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/28 13:51:05 by armoulin          #+#    #+#              #
-#    Updated: 2020/01/28 13:26:45 by brichard         ###   ########.fr        #
+#    Updated: 2020/01/30 16:52:02 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,7 +145,7 @@ COM_STRING	= Compiled.
 
 all: $(NAME)
 
-$(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
+$(NAME): $(OBJS_PATH) $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@
 	printf "%-20b%-60b%b" "$(BINARY):" "$(GREEN)$(BIN_STRING)" "$(COM_STRING)$(RESET)\n"
 

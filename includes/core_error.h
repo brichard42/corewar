@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:55:15 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/30 14:34:05 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 16:44:13 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@
 # define ERR_MSG18 "Error: Invalid following number after -v arg. [1 - 16]\n"
 # define ERR_MSG19 "Error: Error while opening file / file might not exist.\n"
 # define ERR_MSG20 "Error: Missing champ file after given champ number.\n"
-# define ERR_MSG21 "Error: Too much champions given.\n"
+# define ERR_MSG21 "Error: Too many champions given.\n"
 
 # define ERR_MSG_NUM				23
 

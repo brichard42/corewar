@@ -6,7 +6,7 @@
 #    By: plaurent <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/21 14:37:23 by plaurent          #+#    #+#              #
-#    Updated: 2020/01/21 17:47:26 by tlandema         ###   ########.fr        #
+#    Updated: 2020/01/30 16:51:21 by brichard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -212,12 +212,12 @@ COM_STRING	= Compiled.
 #                                   COMMANDS                                   #
 #------------------------------------------------------------------------------#
 
-.PHONY: all fclean re install norme show
+.PHONY: all fclean re install norme
 .SILENT:
 
 all: $(NAME)
 
-$(NAME): $(LIBS) $(OBJS_PATH) $(OBJS)
+$(NAME): $(OBJS_PATH) $(OBJS)
 	$(CC) $(OBJS) $(CFLAGS) $(IFLAGS) $(LDFLAGS) -o $@
 	printf "%-20b%-60b%b" "$(BINARY):" "$(GREEN)$(BIN_STRING)" "$(COM_STRING)$(RESET)\n"
 
