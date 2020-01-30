@@ -23,11 +23,12 @@ static void	get_name(char *line, t_asm *asmr)
 			exit_msg(ERROR_NAME_LENGTH, NULL, NULL, asmr);
 		asmr->header.prog_name[asmr->i_name++] = *line++;
 	}
-	if (*line++ == '"')
+	if (*line == '"')
 	{
 		asmr->is_name = FALSE;
 		asmr->got_name = TRUE;
 		asmr->header.prog_name[asmr->i_name] = '\0';
+		line++;
 	}
 	while (ft_isspace(*line))
 		line++;
@@ -46,11 +47,12 @@ static void	get_comment(char *line, t_asm *asmr)
 			exit_msg(ERROR_COMMENT_LEN, NULL, NULL, asmr);
 		asmr->header.comment[asmr->i_comment++] = *line++;
 	}
-	if (*line++ == '"')
+	if (*line == '"')
 	{
 		asmr->is_comment = FALSE;
 		asmr->got_comment = TRUE;
 		asmr->header.comment[asmr->i_comment] = '\0';
+		line++;
 	}
 	while (ft_isspace(*line))
 		line++;
