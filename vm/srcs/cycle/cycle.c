@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 15:39:12 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/16 15:45:31 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 13:23:43 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int				is_opcode(char data)
 {
 	if (data > 0 && data < 17)
-		return (1);
-	return (0);
+		return (1); return (0);
 }
 
-uint8_t			must_dump(t_vm *vm)
-{
+uint8_t			must_dump(t_vm *vm) {
 	if ((int32_t)vm->current_cycle == vm->cycle_to_dump + 1
 			&& vm->cycle_to_dump != -1)
 	{

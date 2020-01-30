@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/30 13:46:04 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/30 13:49:06 by armoulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,6 @@ void				init_asm(t_asm *asmr)
 	asmr->is_comment = FALSE;
 	asmr->got_comment = FALSE;
 }
-
-//				DEBUG FUNCTION TO PRINT THE LIST OF INSTRUCTIONS
-//static void		print_list(t_cmd *list)
-//{
-// 	int 	i;
-// 	int 	j; // 	char 	*type;
-//
-// 	i = 1;
-// 	while (list)
-// 	{
-// 		ft_printf("Instruction n°%d (line: %lu):\n", i++, list->nb_line);
-// 		if (list->label)
-// 			ft_printf("\tLabel: %s\n", list->label);
-// 		ft_printf("\tOp Code: %d\n", list->op_code);
-// 		j = 0;
-// 		while (j < list->nb_param)
-// 		{
-// 			if (list->params[j].type == REG_CODE)
-// 				type = "REG";
-// 			else if (list->params[j].type == DIR_CODE)
-// 				type = "DIR";
-// 			else
-// 				type = "IND";
-// 			ft_printf(
-// 				"\tParam %d:\n\t\tstr: %s\n\t\ttype: %s\n\t\tvalue: %d\n\t\ttemp: %s\n",
-// 				j + 1, list->params[j].str, type,
-// 				list->params[j].value, list->params[j].temp);
-// 			j++;
-// 		}
-// 		ft_printf("\tSize: %d\n", list->size);
-// 		ft_putchar('\n');
-// 		list = list->next;
-// 	}
-//}
 
 /*
 ** Compute the chamion's size by adding all computed sizes of instructions list.
