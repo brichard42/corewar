@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 09:53:59 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/30 11:00:18 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 15:52:48 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int8_t	main_visu(t_vm *env)
 	env->win = (void *)&win;
 	if (drawer((t_window *)env->win, env) == FAILURE)
 		return (FAILURE);
+	if (env->cycle_to_dump < 0 || env->current_cycle < env->cycle_to_dump)
+		winner(env, env->winner_index);
 	return (SUCCESS);
 }
 
