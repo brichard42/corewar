@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:55:04 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:41:18 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Directly write the number as it was on 1 byte.
 */
+
 void		write_nb_1(t_asm *asmr, int32_t fd, int nb)
 {
 	if (write(fd, &nb, 1) != 1)
@@ -24,6 +25,7 @@ void		write_nb_1(t_asm *asmr, int32_t fd, int nb)
 /*
 ** Same as write_nb_4 but only with 2 bytes.
 */
+
 static void	write_nb_2(t_asm *asmr, int32_t fd, int32_t nb)
 {
 	int16_t	nb_endian;
@@ -47,6 +49,7 @@ static void	write_nb_2(t_asm *asmr, int32_t fd, int32_t nb)
 ** To do that, we read byte by byte and put them at the opposit place.
 ** (First one <--> Last one -- Second one <--> Third one)
 */
+
 void		write_nb_4(t_asm *asmr, int32_t fd, int32_t nb)
 {
 	int32_t	nb_endian;
@@ -69,6 +72,7 @@ void		write_nb_4(t_asm *asmr, int32_t fd, int32_t nb)
 ** Add many nul-bit as needed to fill the byte.
 ** Finnaly, write it.
 */
+
 void		write_param_byte(t_asm *asmr, int32_t fd, t_cmd *cmd)
 {
 	int		i;
@@ -89,6 +93,7 @@ void		write_param_byte(t_asm *asmr, int32_t fd, t_cmd *cmd)
 /*
 ** Call the right depending on param's size.
 */
+
 void		write_param(t_asm *asmr, int32_t fd, t_param *param, int opcode)
 {
 	if (param->type == REG_CODE)

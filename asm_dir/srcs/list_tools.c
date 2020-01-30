@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 15:30:42 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:39:45 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:41:38 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Create and initialize a new instruction.
 */
+
 t_cmd	*new_elem(t_asm *asmr)
 {
 	t_cmd	*elem;
@@ -29,6 +30,7 @@ t_cmd	*new_elem(t_asm *asmr)
 /*
 ** Add an instruction at the end of the linked lise.
 */
+
 t_cmd	*add_elem(t_cmd *list, t_cmd *elem)
 {
 	t_cmd	*cur;
@@ -45,6 +47,7 @@ t_cmd	*add_elem(t_cmd *list, t_cmd *elem)
 /*
 ** Free all malloced memory in the linked list.
 */
+
 void	clear_list(t_cmd *list)
 {
 	t_cmd	*cur;

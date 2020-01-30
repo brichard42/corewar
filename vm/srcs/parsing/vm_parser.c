@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 11:27:05 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/23 14:40:20 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:33:46 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ static void		end_of_arg_line(t_parser *parser)
 		parsing_error(parser, ERR_NO_CHAMP);
 	else if (parser->env.champ_amount > 4)
 		parsing_error(parser, ERR_TOO_MUCH_CHAMP);
-	else if (parser->env.champ_amount == 1)
-		parsing_error(parser, ERR_ONE_CHAMPION);
 }
 
 int8_t			vm_parser(t_parser *parser, char **av)
@@ -97,6 +95,7 @@ int8_t			vm_parser(t_parser *parser, char **av)
 	{
 		check_chp_num_validity(parser);
 		sort_champ_tab(parser->env.champ, parser->cur_chp_index - 1);
+		parser->env.winner_index = parser->env.champ_amount - 1;
 	}
 	return (parser->state == S_OPTION ? SUCCESS : FAILURE);
 }

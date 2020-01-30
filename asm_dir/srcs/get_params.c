@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:38:49 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:37:44 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 ** Stop at SEPARATOR_CHAR or COMMENT_CHAR.
 ** Stores the parameter only as its string for now.
 */
+
 static char	*get_param(char *str, int *i, t_asm *asmr)
 {
 	size_t	size;
@@ -37,6 +38,7 @@ static char	*get_param(char *str, int *i, t_asm *asmr)
 /*
 ** Check max param number, get param one by one.
 */
+
 void		get_params(char *params, t_cmd *new, t_asm *asmr)
 {
 	int i_params;

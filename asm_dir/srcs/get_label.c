@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/30 11:14:27 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:42:16 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Check all characters of the label's string.
 */
+
 static t_bool	is_label_char(char c)
 {
 	int i;
@@ -33,6 +34,7 @@ static t_bool	is_label_char(char c)
 ** Stores its size.
 ** Check if it doesn't appear earlier.
 */
+
 t_bool			check_label(char *str, t_asm *asmr)
 {
 	size_t	i;
@@ -63,6 +65,7 @@ t_bool			check_label(char *str, t_asm *asmr)
 ** Stores the label using the size computed earlier.
 ** If there is already a label, add ',' and the new label.
 */
+
 void			get_label(char *label, t_asm *asmr)
 {
 	char	*new_label;

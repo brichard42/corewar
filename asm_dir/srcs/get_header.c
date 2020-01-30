@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:24:12 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:39:41 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Stores each characters of the name, stop at '"'.
 */
+
 static void	get_name(char *line, t_asm *asmr)
 {
 	while (*line && *line != '"')
@@ -39,6 +40,7 @@ static void	get_name(char *line, t_asm *asmr)
 /*
 ** Same as for name.
 */
+
 static void	get_comment(char *line, t_asm *asmr)
 {
 	while (*line && *line != '"')
@@ -63,6 +65,7 @@ static void	get_comment(char *line, t_asm *asmr)
 /*
 ** Beginning of reading name, skip cmd string and whitespaces, set "is_name".
 */
+
 static void	handle_name(char *line, t_asm *asmr)
 {
 	line += ft_strlen(NAME_CMD_STRING);
@@ -78,6 +81,7 @@ static void	handle_name(char *line, t_asm *asmr)
 /*
 ** Same as for name.
 */
+
 static void	handle_comment(char *line, t_asm *asmr)
 {
 	line += ft_strlen(COMMENT_CMD_STRING);
@@ -94,6 +98,7 @@ static void	handle_comment(char *line, t_asm *asmr)
 ** Use 'is_***' to read name and comment on muliple lines.
 ** Get name then get comment.
 */
+
 void		get_header(char *line, t_asm *asmr)
 {
 	if (asmr->is_name)

@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:08:18 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/22 13:28:37 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:27:43 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,5 +162,7 @@ int32_t				draw_process_num(t_window *win, t_process *proc,
 					int text[3], SDL_Point point);
 int8_t				draw_infos(t_window *win, t_vm *env, t_draw infos);
 int8_t				underliner(t_window *win, t_vm *env);
+
+uint8_t				must_dump(t_vm *vm);
 
 #endif

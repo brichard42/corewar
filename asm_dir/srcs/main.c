@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/30 11:18:06 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:39:11 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Initializes assembler structure's values.
 */
+
 void				init_asm(t_asm *asmr)
 {
 	ft_bzero((void *)asmr, sizeof(t_asm));
@@ -29,6 +30,7 @@ void				init_asm(t_asm *asmr)
 /*
 ** Compute the chamion's size by adding all computed sizes of instructions list.
 */
+
 static unsigned int	get_prog_size(t_cmd *list, t_asm *asmr)
 {
 	unsigned int	res;
@@ -53,6 +55,7 @@ static unsigned int	get_prog_size(t_cmd *list, t_asm *asmr)
 **	Write the binary result and free malloced memory.
 **		(write_file & free_asm)
 */
+
 int					main(int ac, char **av)
 {
 	t_asm	asmr;

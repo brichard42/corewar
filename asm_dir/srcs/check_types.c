@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:18:38 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:37:32 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 **	2 ==> T_DIR
 **	1 ==> T_REG
 */
+
 static void	check_param_type(t_cmd *cmd, int param_i, t_asm *asmr)
 {
 	int	type;
@@ -53,6 +54,7 @@ static void	check_param_type(t_cmd *cmd, int param_i, t_asm *asmr)
 /*
 ** Check each param if param's type match the instruction requirement.
 */
+
 void		check_types(t_asm *asmr)
 {
 	t_cmd	*list;

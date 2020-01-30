@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2019/10/11 17:08:31 by armoulin         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:35:18 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Get the type depending on the first character.
 */
+
 int		get_type(char *str)
 {
 	if (str[0] == 'r')
@@ -28,6 +29,7 @@ int		get_type(char *str)
 /*
 ** Check if the label match.
 */
+
 t_bool	compare_label(t_cmd *cmd, char *label)
 {
 	size_t	size;

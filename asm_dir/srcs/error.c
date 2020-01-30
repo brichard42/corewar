@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 11:59:19 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/28 16:51:52 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:36:10 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 /*
 ** Free label if any and all the linked list.
 */
+
 void	free_asm(t_asm *asmr)
 {
 	ft_strdel(&asmr->label);
@@ -31,6 +32,7 @@ void	free_asm(t_asm *asmr)
 ** Several configurations of parameter depending on the error message.
 **	(error_msg & asmr are mendatory)
 */
+
 void	exit_msg(char *error_msg, char *str, size_t *nb, t_asm *asmr)
 {
 	if (str && nb)

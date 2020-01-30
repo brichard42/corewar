@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 15:37:57 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:36:45 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Check if the label exist and doesn't reference its own instruction.
 */
+
 static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 {
 	t_cmd	*list;
@@ -33,6 +34,7 @@ static t_cmd	*label_exist(t_param *param, t_cmd *cmd, t_asm *asmr)
 /*
 ** If the label if after, start counting distance and stop when found it.
 */
+
 static int		get_label_value_for(t_cmd *cmd, t_cmd *cmd_label)
 {
 	int		res_forward;
@@ -55,6 +57,7 @@ static int		get_label_value_for(t_cmd *cmd, t_cmd *cmd_label)
 ** If the label is before, start at beginning and start counting distance
 ** when found it and stop when found cmd.
 */
+
 static int		get_label_value(t_cmd *cmd, t_cmd *cmd_label, t_asm *asmr)
 {
 	int		res_backward;
@@ -83,6 +86,7 @@ static int		get_label_value(t_cmd *cmd, t_cmd *cmd_label, t_asm *asmr)
 ** If there if a label, check if it exist then get its value.
 ** If returned value is neativ, replace it.
 */
+
 static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 {
 	t_cmd *cmd_label;
@@ -100,6 +104,7 @@ static void		valid_param(t_param *param, t_cmd *cmd, t_asm *asmr)
 /*
 ** Check each params value and get the value of each label referenced in params.
 */
+
 void			check_labels(t_asm *asmr)
 {
 	t_cmd	*list;

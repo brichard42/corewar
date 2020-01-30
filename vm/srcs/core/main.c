@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/30 11:41:46 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:30:38 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int	visu_failed(t_parser *parser)
 	return (EXIT_FAILURE);
 }
 
-
 static int	usage(void)
 {
 	ft_putendl("Usage: ./corewar --visual [-dump n_cycles] \
@@ -26,6 +25,9 @@ static int	usage(void)
 	ft_putendl(USG_MSG2);
 	ft_putendl(USG_MSG3);
 	ft_putendl(USG_MSG4);
+	ft_putendl(USG_MSG5);
+	ft_putendl(USG_MSG6);
+	ft_putendl(USG_MSG7);
 	return (EXIT_FAILURE);
 }
 

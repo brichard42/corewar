@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:53:02 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:41:29 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 ** blanks bytes because the memory works with group of 4 bytes.
 ** (128 % 4 = 0 ; 129 % 4 = 1 ; 132 % 4 = 0)
 */
+
 void	write_magic_name_size(t_asm *asmr, int32_t fd)
 {
 	size_t	name_size;
@@ -41,6 +42,7 @@ void	write_magic_name_size(t_asm *asmr, int32_t fd)
 /*
 ** Same remark as previous function.
 */
+
 void	write_comment(t_asm *asmr, int32_t fd)
 {
 	size_t	comment_size;

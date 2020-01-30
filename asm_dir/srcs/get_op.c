@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:36:56 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:42:52 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Check if the instruction name exist and transform it in op_code.
 */
+
 static int	get_op_code(char *str, t_asm *asmr)
 {
 	int i;
@@ -34,6 +35,7 @@ static int	get_op_code(char *str, t_asm *asmr)
 ** Transform the remaining array cells (only the parameters at this point)
 ** in one unique string.
 */
+
 static char	*one_str(char **tab, int i, t_asm *asmr)
 {
 	size_t	size;
@@ -55,6 +57,7 @@ static char	*one_str(char **tab, int i, t_asm *asmr)
 ** Create a new instruction, get and stores: label, line, op_code, parameters.
 ** Add the new instruction in asmr list.
 */
+
 static void	get_all_op(char **tab, int i, t_asm *asmr)
 {
 	t_cmd	*new;
@@ -82,13 +85,14 @@ static void	get_all_op(char **tab, int i, t_asm *asmr)
 ** Split the string at whitespaces, check if there is a label and get it,
 ** get the instruction.
 */
+
 void		get_op(char *line, t_asm *asmr)
 {
 	char	***tab;
 	int		i;
 
 	i = 0;
-	if (!(asmr->garbage.tab  = ft_splitwhite(line)))
+	if (!(asmr->garbage.tab = ft_splitwhite(line)))
 		exit_msg(ERROR_MALLOC, NULL, NULL, asmr);
 	tab = &asmr->garbage.tab;
 	if (check_label((*tab)[i], asmr))

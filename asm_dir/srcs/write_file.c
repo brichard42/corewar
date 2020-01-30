@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 15:45:17 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:45:47 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Transform '*.s' in '*.cor'.
 */
+
 static char		*get_name(char *title, t_asm *asmr)
 {
 	char	*name;
@@ -39,6 +40,7 @@ static char		*get_name(char *title, t_asm *asmr)
 **	- O_CREAT	--> If file doesn't exist, create it.
 **	- 00755		--> Same as: chmod 755.
 */
+
 static int32_t	open_file(t_asm *asmr, char *file)
 {
 	int32_t	fd;
@@ -59,6 +61,7 @@ static int32_t	open_file(t_asm *asmr, char *file)
 ** - If needed, write the param byte on byte.
 ** - Write the value of each parameter.
 */
+
 static void		write_cmd(t_asm *asmr, int32_t fd, t_cmd *cmd)
 {
 	int i;
@@ -72,9 +75,11 @@ static void		write_cmd(t_asm *asmr, int32_t fd, t_cmd *cmd)
 	while (i < cmd->nb_param)
 		write_param(asmr, fd, &(cmd->params[i++]), cmd->op_code);
 }
+
 /*
 ** Open / Create the file then write all the binary
 */
+
 void			write_file(t_asm *asmr, char *title)
 {
 	int32_t	fd;

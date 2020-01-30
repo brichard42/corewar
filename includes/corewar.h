@@ -6,7 +6,7 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 15:20:45 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/23 15:11:36 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:47:44 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include "op.h"
 # include "core_typedef.h"
 # include "core_define.h"
-
-void	end(void)__attribute__((destructor));
 
 /*
 **	-------OPERATION STRUCT FUNCTIONS-------

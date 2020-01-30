@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 17:17:36 by brichard          #+#    #+#             */
-/*   Updated: 2019/10/09 18:01:12 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:53:16 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char		*ft_strchr_addr(const char *s, int c)
 		if ((*s++) == '\0')
 		{
 			--s;
-			break;
+			break ;
 		}
 	return ((char *)s);
 }
@@ -69,7 +69,7 @@ int8_t			ft_gnl(const int fd, char **line)
 			if (eol != NULL)
 			{
 				ret_gnl = READ_DONE;
-				if ((*line = ft_strsub(data.str, START, eol - data.str)) == NULL)
+				if ((*line = ft_strsub(data.str, START, eol - data.str)) == 0)
 					ret_gnl = FAILURE;
 				data.str = eol + (*eol == '\n' ? SKIP_NEWLINE : NO_SKIP);
 			}

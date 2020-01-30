@@ -6,7 +6,7 @@
 /*   By: brichard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:34:20 by brichard          #+#    #+#             */
-/*   Updated: 2020/01/22 15:55:37 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:47:18 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 /*
 **	USAGE MSG
 */
-# define USG_MSG1			"Usage: ./corewar --visual [-dump n_cycles] [(-n num) champ1.cor] ..."
 # define USG_MSG2			"	-v : Verbose"
-# define USG_MSG3			"	  - 1: Show lives"
-# define USG_MSG4			"	  - 4: Show op"
+# define USG_MSG3			"		 0: Doesn't show lives"
+# define USG_MSG4			"		 2: Show cycle num"
+# define USG_MSG5			"		 4: Show ops"
+# define USG_MSG6			"		 8: Show pc deaths"
+# define USG_MSG7			"		16: Show char from aff operation"
 
 /*
 **	TEST VALUE
@@ -46,12 +48,11 @@
 # define O_CHP_NUM			"-n"
 # define O_VERBOSE			"-v"
 # define O_VISU				"--visual"
-# define F_VERBOSE_LIVE		0x01
+# define F_VERBOSE_LIVE		0x00
 # define F_VERBOSE_CYCLE	0x02
 # define F_VERBOSE_OP		0x04
 # define F_VERBOSE_DEAD		0x08
-# define F_VERBOSE_PCMOVE	0x10
-# define F_VERBOSE_AFF		0x20
+# define F_VERBOSE_AFF		0x10
 
 /*
 **	FILE EXTENSION

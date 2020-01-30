@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 13:39:25 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:42:08 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:41:58 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	get_last_label(t_asm *asmr)
 ** Get the header (name + comment).
 ** Get instructions.
 */
+
 static void	handle_line(char *line, t_asm *asmr)
 {
 	while (*line && ft_isspace(*line))
@@ -46,6 +47,7 @@ static void	handle_line(char *line, t_asm *asmr)
 /*
 ** Open the file and handle line one by one.
 */
+
 void		read_file(char *file, t_asm *asmr)
 {
 	int		fd;

@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:17:10 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:38:14 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** Check if the value match the type.
 */
+
 static void		check_value(t_cmd *cmd, int type, char *str, t_asm *asmr)
 {
 	if (type == REG_CODE || type == DIR_CODE)
@@ -28,6 +29,7 @@ static void		check_value(t_cmd *cmd, int type, char *str, t_asm *asmr)
 /*
 ** If its a label stores it for further computing, else simple atoi.
 */
+
 static int		get_value(t_param *param, int type, char *str)
 {
 	if (type == REG_CODE || type == DIR_CODE)
@@ -46,6 +48,7 @@ static int		get_value(t_param *param, int type, char *str)
 ** If instruction got a param byte, add 1.
 ** Add the size of each param depending of their type.
 */
+
 static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 {
 	size_t	res;
@@ -76,6 +79,7 @@ static size_t	compute_size(t_cmd *cmd, t_asm *asmr)
 **	Check and get the value from the string.
 ** 	Compute the size of hex code.
 */
+
 static void		check_param(t_cmd *cmd, t_asm *asmr)
 {
 	int i;
@@ -99,6 +103,7 @@ static void		check_param(t_cmd *cmd, t_asm *asmr)
 /*
 ** Check params instruction by instruction.
 */
+
 void			check_params(t_asm *asmr)
 {
 	t_cmd	*list;

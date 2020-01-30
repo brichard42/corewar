@@ -6,7 +6,7 @@
 /*   By: tlandema <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 15:12:46 by tlandema          #+#    #+#             */
-/*   Updated: 2020/01/23 16:43:23 by tlandema         ###   ########.fr       */
+/*   Updated: 2020/01/30 14:29:54 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static void	informations_initializer(t_draw *infos, uint8_t champ_amount)
 	infos->champ_number = champ_amount;
 	infos->cycle_per_frame = 1;
 }
-uint8_t	must_dump(t_vm *vm);
+
 int8_t		drawer(t_window *win, t_vm *env)
 {
 	int			ret;
