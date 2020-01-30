@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 10:42:00 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/28 13:23:09 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 16:36:28 by armoulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define ERROR_UNEXPECTED	"Unexpected symbol at line %lu.\n"
 # define ERROR_LABEL_CHAR	"Wrong label's char at line %lu.\n"
 # define ERROR_OP_NAME		"Instruction name unknown at line %lu.\n"
-# define ERROR_ARGS_NUMBER	"Too many arguments at line %lu.\n"
+# define ERROR_ARGS_NUMBER	"Invalid argument(s) number at line %lu.\n"
 # define ERROR_NAME_LENGTH	"Champion's name is too long.\n"
 # define ERROR_COMMENT_LEN	"Comment is too long.\n"
 # define ERROR_CHAMP_SIZE	"Champion's size is too big.\n"
