@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/29 14:40:49 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:53:19 by armoulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int					main(int ac, char **av)
 		exit_msg(USAGE_ASM, NULL, NULL, NULL);
 	init_asm(&asmr);
 	read_file(av[ac - 1], &asmr);
+	ft_printf("%s\n", asmr.header.comment);
 	check_params(&asmr);
 	check_types(&asmr);
 	check_labels(&asmr);
