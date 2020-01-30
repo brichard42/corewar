@@ -6,11 +6,18 @@
 /*   By: paullaurent <paullaurent@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 14:58:38 by plaurent          #+#    #+#             */
-/*   Updated: 2020/01/29 17:27:50 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 11:41:46 by brichard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static int	visu_failed(t_parser *parser)
+{
+	delete_vm(&parser->env);
+	return (EXIT_FAILURE);
+}
+
 
 static int	usage(void)
 {
@@ -41,20 +48,11 @@ int			main(int ac, char **av)
 		if (parser.visu == ON)
 		{
 			if (main_visu(&parser.env) == FAILURE)
-				ft_printf("NIQUE TA MEEEER!\n");
+				return (visu_failed(&parser));
 		}
 		else
 			cycle(&parser.env);
 	}
 	delete_vm(&parser.env);
-	system("leaks corewar");
 	return (EXIT_SUCCESS);
 }
-/*
-void		end(void)__attribute__((destructor));
-void		end(void)
-{
-	ft_printf("in end\n");
-	while (1);
-}
-*/
