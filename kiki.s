@@ -19,8 +19,6 @@ live_5: #Test du commentaire après un label
 	live %16
 	live %-16165416549846516849841684 #Test nombre SUPER grand et neg
 	ld	%4, r9
-	fork %17    # pour aller a spartiate_quelle_est_votre_metier
-	lfork %4096
 
 test_label_pas_inline_et_avec_un_nom_long_long_long_long_y_c_o_100_ty_a_go:
                                      st													r2              ,                     -666
