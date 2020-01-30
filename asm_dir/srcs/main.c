@@ -6,7 +6,7 @@
 /*   By: armoulin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:10:13 by armoulin          #+#    #+#             */
-/*   Updated: 2020/01/30 11:18:06 by brichard         ###   ########.fr       */
+/*   Updated: 2020/01/30 13:49:06 by armoulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int					main(int ac, char **av)
 	write_file(&asmr, av[ac - 1]);
 	free_asm(&asmr);
 	av[1][ft_strlen(av[1]) - 1] = '\0';
-	ft_printf("Writing in the program %scor\n", av[1], '.');
+	ft_printf("Writing in the program %scor\n", av[1]);
 	return (0);
 }
